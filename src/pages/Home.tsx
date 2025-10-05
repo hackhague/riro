@@ -122,14 +122,14 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Button variant="default" size="lg" asChild className="flex-1 sm:flex-initial">
+                <Button variant="whatsapp" size="lg" asChild className="flex-1 sm:flex-initial">
                   <a
                     href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="mr-2" />
-                    App nu – snelste reactie
+                    WhatsApp ons nu – snelste reactie
                   </a>
                 </Button>
                 <Button variant="accent" size="lg" asChild className="flex-1 sm:flex-initial">
@@ -146,6 +146,34 @@ export default function Home() {
                   Ik ben gehackt – Spoedhulp 24/7
                 </Link>
               </Button>
+
+              {/* Trust Badges */}
+              <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">Razendsnelle hulp, lokaal bij jou thuis of bedrijf</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">Remote binnen enkele uren – ook spoedservice</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">24/7 spoedlijn voor hacks/ransomware</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">Vaste tarieven, geen verrassingen</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">Niet opgelost? €19 diagnose, geen arbeidsloon</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground/80">10+ jaar ervaring</span>
+                </div>
+              </div>
 
               {/* Micro-proof */}
               <div className="flex items-center gap-2 text-sm text-foreground/70">
@@ -315,14 +343,14 @@ export default function Home() {
             Klaar om jouw IT-probleem op te lossen?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="xl" asChild>
+            <Button variant="whatsapp" size="xl" asChild>
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp nu
+                WhatsApp ons nu
               </a>
             </Button>
             <Button

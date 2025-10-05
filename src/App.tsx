@@ -15,6 +15,14 @@ import CyberAPK from "./pages/CyberAPK";
 import Tarieven from "./pages/Tarieven";
 import Werkgebied from "./pages/Werkgebied";
 import ComputerhulpDenHaag from "./pages/ComputerhulpDenHaag";
+import ComputerhulpDelft from "./pages/ComputerhulpDelft";
+import ComputerhulpZoetermeer from "./pages/ComputerhulpZoetermeer";
+import ComputerhulpRijswijk from "./pages/ComputerhulpRijswijk";
+import ComputerhulpVoorburg from "./pages/ComputerhulpVoorburg";
+import ComputerhulpLeiden from "./pages/ComputerhulpLeiden";
+import Reviews from "./pages/Reviews";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +44,14 @@ const App = () => (
           <Route path="/tarieven" element={<Tarieven />} />
           <Route path="/werkgebied" element={<Werkgebied />} />
           <Route path="/computerhulp-den-haag" element={<ComputerhulpDenHaag />} />
+          <Route path="/computerhulp-delft" element={<ComputerhulpDelft />} />
+          <Route path="/computerhulp-zoetermeer" element={<ComputerhulpZoetermeer />} />
+          <Route path="/computerhulp-rijswijk" element={<ComputerhulpRijswijk />} />
+          <Route path="/computerhulp-voorburg" element={<ComputerhulpVoorburg />} />
+          <Route path="/computerhulp-leiden" element={<ComputerhulpLeiden />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
