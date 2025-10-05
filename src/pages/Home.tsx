@@ -2,29 +2,31 @@ import { Link } from "react-router-dom";
 import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import heroImage from "@/assets/hero-technician.jpg";
-import serviceComputer from "@/assets/service-computer.jpg";
-import serviceHack from "@/assets/service-hack.jpg";
-import serviceWifi from "@/assets/service-wifi.jpg";
+import {
+  HERO_TECHNICIAN_ILLUSTRATION,
+  SERVICE_COMPUTER_ILLUSTRATION,
+  SERVICE_HACK_ILLUSTRATION,
+  SERVICE_WIFI_ILLUSTRATION,
+} from "@/lib/imagePlaceholders";
 
 export default function Home() {
   const services = [
     {
       title: "Computerhulp",
       description: "Computer traag, virussen, softwareproblemen? Wij maken het weer snel.",
-      image: serviceComputer,
+      image: SERVICE_COMPUTER_ILLUSTRATION,
       link: "/computerhulp",
     },
     {
       title: "Ik ben gehackt",
       description: "Remote triage binnen 15 min; on-site bij spoed. Containment & schoonmaak.",
-      image: serviceHack,
+      image: SERVICE_HACK_ILLUSTRATION,
       link: "/ik-ben-gehackt",
     },
     {
       title: "WiFi & Netwerk",
       description: "Betere dekking & stabiel internet thuis of op kantoor.",
-      image: serviceWifi,
+      image: SERVICE_WIFI_ILLUSTRATION,
       link: "/wifi",
     },
   ];
@@ -101,7 +103,7 @@ export default function Home() {
             <div className="order-2 md:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src={heroImage}
+                  src={HERO_TECHNICIAN_ILLUSTRATION}
                   alt="Piet - Digitale IT-monteur van InstantIT"
                   className="w-full h-auto"
                   loading="eager"

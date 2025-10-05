@@ -1,7 +1,7 @@
 import { MessageCircle, Phone, CheckCircle2, Clock, Euro } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import serviceImage from "@/assets/service-computer.jpg";
+import { SERVICE_COMPUTER_ILLUSTRATION } from "@/lib/imagePlaceholders";
 
 export default function Computerhulp() {
   const problems = [
@@ -70,7 +70,11 @@ export default function Computerhulp() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Computerhulp in Den Haag" className="w-full h-auto" />
+              <img
+                src={SERVICE_COMPUTER_ILLUSTRATION}
+                alt="Gestileerde illustratie van computerhulp"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>

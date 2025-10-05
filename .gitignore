@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Binary artifacts tracked previously
+bun.lockb
+public/favicon.ico
+src/assets/
+wp-content/themes/instant-local-support/assets/images/
