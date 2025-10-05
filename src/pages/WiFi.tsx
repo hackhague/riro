@@ -1,7 +1,7 @@
 import { MessageCircle, Phone, Wifi, CheckCircle2, Signal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import serviceImage from "@/assets/service-wifi.jpg";
+import { SERVICE_WIFI_ILLUSTRATION } from "@/lib/imagePlaceholders";
 
 export default function WiFiPage() {
   const problems = [
@@ -68,7 +68,11 @@ export default function WiFiPage() {
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="WiFi optimalisatie in Den Haag" className="w-full h-auto" />
+              <img
+                src={SERVICE_WIFI_ILLUSTRATION}
+                alt="Gestileerde illustratie van WiFi optimalisatie"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>

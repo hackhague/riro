@@ -1,7 +1,7 @@
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import serviceImage from "@/assets/service-hack.jpg";
+import { SERVICE_HACK_ILLUSTRATION } from "@/lib/imagePlaceholders";
 
 export default function IkBenGehackt() {
   const signs = [
@@ -76,7 +76,11 @@ export default function IkBenGehackt() {
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-destructive/20">
-              <img src={serviceImage} alt="Spoedhulp bij hack of cyberaanval" className="w-full h-auto" />
+              <img
+                src={SERVICE_HACK_ILLUSTRATION}
+                alt="Gestileerde illustratie voor directe hulp bij hacks"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
