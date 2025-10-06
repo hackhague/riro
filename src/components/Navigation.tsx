@@ -12,6 +12,8 @@ export const Navigation = () => {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Diensten", path: "/diensten" },
+    { label: "Zakelijk", path: "/zakelijk" },
+    { label: "Expat", path: "/expat" },
     { label: "Tarieven", path: "/tarieven" },
     { label: "Werkgebied", path: "/werkgebied" },
     { label: "Reviews", path: "/reviews" },
@@ -56,7 +58,7 @@ export const Navigation = () => {
                 070 211 9191
               </a>
             </Button>
-            <Button variant="default" size="sm" asChild>
+            <Button variant="whatsapp" size="sm" asChild>
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
@@ -103,7 +105,7 @@ export const Navigation = () => {
                   070 211 9191
                 </a>
               </Button>
-              <Button variant="default" asChild className="w-full">
+              <Button variant="whatsapp" asChild className="w-full">
                 <a
                   href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                   target="_blank"
