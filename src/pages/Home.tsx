@@ -144,7 +144,7 @@ export default function Home() {
               </Link>
             </Button>
 
-            {/* Trust Badges - More compact */}
+            {/* Trust Badges */}
             <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
@@ -158,11 +158,15 @@ export default function Home() {
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>Vaste tarieven</span>
               </div>
+            </div>
+
+            {/* Rating */}
+            <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm">
               <div className="flex items-center gap-1.5">
-                <Star className="h-3.5 w-3.5 fill-accent text-accent" />
-                <span className="font-semibold">4.9/5</span>
+                <Star className="h-4 w-4 fill-accent text-accent" />
+                <span className="font-semibold text-foreground/80">4.9/5</span>
               </div>
-              <span>1.100+ opdrachten</span>
+              <span className="text-foreground/70">1.100+ opdrachten</span>
             </div>
           </div>
         </div>
