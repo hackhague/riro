@@ -94,98 +94,75 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-background to-secondary py-12 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Left: Video/Image */}
-            <div className="order-2 md:order-1">
-              <div className="relative rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src={heroImage}
-                  alt="Piet - Digitale IT-monteur van InstantIT"
-                  className="w-full h-auto"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent"></div>
-              </div>
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="InstantIT Computerhulp Den Haag"
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/70"></div>
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-3 md:mb-4">
+              Computerhulp & Cyberhulp in Den Haag
+            </h1>
+            <p className="text-base md:text-lg text-foreground/80 mb-6 md:mb-8">
+              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 2 uur op locatie. Vaste prijzen,
+              gratis nazorg.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
+              <Button variant="whatsapp" size="default" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp ons nu
+                </a>
+              </Button>
+              <Button variant="accent" size="default" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="h-4 w-4" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
 
-            {/* Right: Content & CTAs */}
-            <div className="order-1 md:order-2">
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
-                Computerhulp & Cyberhulp in Den Haag
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-6">
-                Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 2 uur op locatie. Vaste prijzen,
-                gratis nazorg.
-              </p>
+            <Button variant="outline" size="default" asChild className="mb-6">
+              <Link to="/ik-ben-gehackt">
+                <Zap className="h-4 w-4" />
+                Spoedhulp 24/7
+              </Link>
+            </Button>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <Button variant="whatsapp" size="lg" asChild className="flex-1 sm:flex-initial">
-                  <a
-                    href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp ons nu – snelste reactie
-                  </a>
-                </Button>
-                <Button variant="accent" size="lg" asChild className="flex-1 sm:flex-initial">
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
+            {/* Trust Badges - More compact */}
+            <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                <span>Lokale hulp binnen 2u</span>
               </div>
-
-              <Button variant="outline" size="lg" asChild className="w-full sm:w-auto mb-6">
-                <Link to="/ik-ben-gehackt">
-                  <Zap className="mr-2" />
-                  Ik ben gehackt – Spoedhulp 24/7
-                </Link>
-              </Button>
-
-              {/* Trust Badges */}
-              <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">Razendsnelle hulp, lokaal bij jou thuis of bedrijf</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">Remote binnen enkele uren – ook spoedservice</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">24/7 spoedlijn voor hacks/ransomware</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">Vaste tarieven, geen verrassingen</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">Niet opgelost? €19 diagnose, geen arbeidsloon</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground/80">10+ jaar ervaring</span>
-                </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                <span>24/7 spoedlijn</span>
               </div>
-
-              {/* Micro-proof */}
-              <div className="flex items-center gap-2 text-sm text-foreground/70">
-                <div className="flex items-center gap-1 text-accent">
-                  <Star className="h-4 w-4 fill-current" />
-                  <span className="font-semibold">4.9/5</span>
-                </div>
-                <span>|</span>
-                <span>1.100+ opdrachten</span>
-                <span>|</span>
-                <span>VOG & verzekerd</span>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                <span>Vaste tarieven</span>
               </div>
+              <div className="flex items-center gap-1.5">
+                <Star className="h-3.5 w-3.5 fill-accent text-accent" />
+                <span className="font-semibold">4.9/5</span>
+              </div>
+              <span>1.100+ opdrachten</span>
             </div>
           </div>
         </div>
