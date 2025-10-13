@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { SEO } from "@/components/SEO";
 import heroImage from "@/assets/hero-technician.jpg";
 import serviceComputer from "@/assets/service-computer.jpg";
 import serviceHack from "@/assets/service-hack.jpg";
@@ -93,6 +94,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Computerhulp in Den Haag | Digitale Eerste Hulp"
+        description="Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. Vaste caps, geen verrassingen. WhatsApp of bel 070 211 9191."
+        keywords="computerhulp den haag, cyberhulp, IT support, computer reparatie, virus verwijderen, wifi verbeteren"
+        canonical="https://www.instantit.nl/"
+      />
       {/* Hero Section */}
       <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image */}
