@@ -14,9 +14,14 @@ import {
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<string>("particulier");
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? "" : section);
+  };
 
   const menuSections = {
     particulier: [
@@ -165,51 +170,87 @@ export const Navigation = () => {
           <div className="lg:hidden py-3 border-t border-border max-h-[80vh] overflow-y-auto">
             <div className="space-y-3">
               <div>
-                <h3 className="px-2 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                <button
+                  onClick={() => toggleSection("particulier")}
+                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                >
                   Particulier
-                </h3>
-                {menuSections.particulier.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      openSection === "particulier" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "particulier" && (
+                  <div className="mt-1">
+                    {menuSections.particulier.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              
+
               <div>
-                <h3 className="px-2 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                <button
+                  onClick={() => toggleSection("spoedhulp")}
+                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                >
                   Spoedhulp
-                </h3>
-                {menuSections.spoedhulp.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      openSection === "spoedhulp" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "spoedhulp" && (
+                  <div className="mt-1">
+                    {menuSections.spoedhulp.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              
+
               <div>
-                <h3 className="px-2 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+                <button
+                  onClick={() => toggleSection("zakelijkExpat")}
+                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                >
                   Zakelijk & Expat
-                </h3>
-                {menuSections.zakelijkExpat.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${
+                      openSection === "zakelijkExpat" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openSection === "zakelijkExpat" && (
+                  <div className="mt-1">
+                    {menuSections.zakelijkExpat.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setIsOpen(false)}
+                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="pt-2 border-t border-border">
