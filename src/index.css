@@ -9,24 +9,24 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --foreground: 0 0% 3%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
+    --card-foreground: 0 0% 3%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
+    --popover-foreground: 0 0% 3%;
 
-    --primary: 256 83% 58%;
+    --primary: 221 91% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 256 83% 95%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 221 91% 97%;
+    --secondary-foreground: 0 0% 3%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 220 9% 46%;
 
-    --accent: 256 83% 58%;
+    --accent: 221 91% 55%;
     --accent-foreground: 0 0% 100%;
 
     --whatsapp: 142 70% 45%;
@@ -37,14 +37,14 @@ All colors MUST be HSL.
 
     --border: 220 14% 91%;
     --input: 220 14% 91%;
-    --ring: 256 83% 58%;
+    --ring: 221 91% 55%;
 
     --radius: 0.5rem;
 
     /* Brand gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(256 83% 58%), hsl(256 83% 48%));
-    --gradient-accent: linear-gradient(135deg, hsl(256 83% 58%), hsl(256 83% 48%));
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%), hsl(256 83% 98%));
+    --gradient-primary: linear-gradient(135deg, hsl(221 91% 55%), hsl(221 91% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(221 91% 55%), hsl(221 91% 45%));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%), hsl(221 91% 98%));
     
     /* Shadows */
     --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.1);
