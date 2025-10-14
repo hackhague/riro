@@ -405,7 +405,7 @@ export default function Home() {
               <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
               <p className="text-foreground/80">
                 Hier vind je korte en duidelijke antwoorden op de meestgestelde vragen over computerhulp, virus- en
-                malwareproblemen, netwerk- &amp; WiFi-storingen, cyberhulp en installatie/onderhoud. Staat jouw vraag er niet bij?
+                malwareproblemen, netwerk- &amp; WiFi-storingen en cyberhulp. Staat jouw vraag er niet bij?
                 Bel ons op <a className="font-semibold underline" href="tel:+31702119191">070 211 9191</a> of stuur een bericht
                 via <a className="font-semibold underline" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp</a> — we helpen je direct.
               </p>
