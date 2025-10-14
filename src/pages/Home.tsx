@@ -207,6 +207,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Appointment Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact />
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
