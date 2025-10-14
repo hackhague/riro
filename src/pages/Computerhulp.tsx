@@ -22,6 +22,15 @@ export default function Computerhulp() {
     { title: "Nazorg", desc: "Gratis herbeoordeling binnen 7 dagen (max 30 min)" },
   ];
 
+  const serviceAreas = [
+    { name: "Den Haag", link: "/computerhulp-denhaag" },
+    { name: "Delft", link: "/computerhulp-delft" },
+    { name: "Zoetermeer", link: "/computerhulp-zoetermeer" },
+    { name: "Rijswijk", link: "/computerhulp-rijswijk" },
+    { name: "Voorburg", link: "/computerhulp-voorburg" },
+    { name: "Leiden", link: "/computerhulp-leiden" },
+  ];
+
   const faqs = [
     {
       q: "Hoe snel kunnen jullie helpen?",
