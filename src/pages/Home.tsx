@@ -194,21 +194,11 @@ export default function Home() {
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
           <span className="text-white">Vaste tarieven</span>
               </div>
-              <div className="mt-3 inline-flex gap-3 text-xs text-white/85">
-                <span className="px-2 py-1 rounded bg-white/6">🔒 VOG & verzekerd</span>
-                <span className="px-2 py-1 rounded bg-white/6">💼 10+ jaar ervaring</span>
-                <span className="px-2 py-1 rounded bg-white/6">🚚 Geen voorrijkosten (Haaglanden)</span>
-              </div>
               <div className="flex items-center gap-2 ml-1 w-full text-white">
                 <Star className="h-4 w-4 fill-accent text-accent" />
                 <span className="font-semibold">4.9/5</span>
                 <span className="ml-1">• 1.100+ opdrachten</span>
               </div>
-              <div className="mt-3 inline-flex gap-3 text-xs text-white/85">
-  <span className="px-2 py-1 rounded bg-white/6">🔒 VOG & verzekerd</span>
-  <span className="px-2 py-1 rounded bg-white/6">💼 10+ jaar ervaring</span>
-  <span className="px-2 py-1 rounded bg-white/6">🚚 Geen voorrijkosten (Haaglanden)</span>
-</div>
       </div>
     </div>
   </div>
