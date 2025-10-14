@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PartnersSection from "@/components/PartnersSection";
 import serviceImage from "@/assets/service-computer.jpg";
 import { MessageCircle, Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
 
