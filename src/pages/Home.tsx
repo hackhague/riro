@@ -397,6 +397,109 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
+              <p className="text-foreground/80">
+                Hier vind je korte en duidelijke antwoorden op de meestgestelde vragen over computerhulp, virus- en
+                malwareproblemen, netwerk- &amp; WiFi-storingen, cyberhulp en installatie/onderhoud. Staat jouw vraag er niet bij?
+                Bel ons op <a className="font-semibold underline" href="tel:+31702119191">070 211 9191</a> of stuur een bericht
+                via <a className="font-semibold underline" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp</a> — we helpen je direct.
+              </p>
+            </div>
+
+            <div>
+              <div className="rounded-lg border bg-background">
+                <div className="divide-y">
+                  {/* Q1 */}
+                  <details open>
+                    <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
+                      <span>Hoe snel helpen jullie bij spoed?</span>
+                      <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
+                      <p>We reageren meestal binnen 10–30 minuten via remote. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
+                      <p className="text-foreground/70">Waarom: directe geruststelling bij spoedvragen.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
+                      </div>
+                    </div>
+                  </details>
+
+                  {/* Q2 */}
+                  <details>
+                    <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
+                      <span>Wat kost een remote QuickFix?</span>
+                      <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
+                      <p>Een remote QuickFix begint bij €39 voor 30 minuten (incl. btw). Je ziet altijd de prijs voordat we starten.</p>
+                      <p className="text-foreground/70">Waarom: prijs-transparantie verlaagt drempels.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/tarieven">Bekijk prijzen</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote hulp</a>
+                      </div>
+                    </div>
+                  </details>
+
+                  {/* Q3 */}
+                  <details>
+                    <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
+                      <span>Is remote toegang veilig?</span>
+                      <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
+                      <p>Ja — we gebruiken versleutelde tools en vragen altijd jouw toestemming voordat we meekijken. We delen je gegevens niet met derden.</p>
+                      <p className="text-foreground/70">Waarom: wegnemen van drempels rondom vertrouwen.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/hulp-op-afstand">Lees meer over veiligheid</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote</a>
+                      </div>
+                    </div>
+                  </details>
+
+                  {/* Q4 */}
+                  <details>
+                    <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
+                      <span>Wat als jullie het niet kunnen oplossen?</span>
+                      <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
+                      <p>Dan geven we duidelijk advies zonder verborgen kosten. Indien nodig krijg je een gratis herbeoordeling binnen 7 dagen.</p>
+                      <p className="text-foreground/70">Waarom: zekerheid – nooit “buiten het raam”.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/contact">Vraag gratis herbeoordeling aan</a>
+                      </div>
+                    </div>
+                  </details>
+
+                  {/* Q5 */}
+                  <details>
+                    <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
+                      <span>Hoe kan ik het snelst een afspraak maken?</span>
+                      <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
+                      <p>Het snelst is bellen of WhatsAppen — dat kost bijna geen tijd en we plannen meteen een korte intake. Je kunt ook via het afspraakformulier boeken.</p>
+                      <p className="text-foreground/70">Waarom: duidelijke next step, minder frictie.</p>
+                      <div className="flex flex-wrap gap-2">
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/afspraak">Plan afspraak</a>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <PartnersSection />
 
       {/* Final CTA */}
