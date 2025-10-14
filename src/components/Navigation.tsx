@@ -42,10 +42,10 @@ export const Navigation = () => {
   };
 
   const topNavItems = [
+    { label: "Tarieven", path: "/tarieven" },
     { label: "Contact", path: "/contact" },
     { label: "Over ons", path: "/over-ons" },
-    { label: "Tarieven", path: "/tarieven" },
-    { label: "Blog", path: "/reviews" },
+    { label: "Beoordelingen", path: "/reviews" },
     { label: "FAQ", path: "/faq" },
   ];
 
