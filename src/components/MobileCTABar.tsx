@@ -5,7 +5,7 @@ export const MobileCTABar = () => {
   return (
     <div
       className="md:hidden fixed inset-x-0 z-[100] bg-background border-t border-border shadow-lg"
-      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 10px)", paddingBottom: "env(safe-area-inset-bottom)" }}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 16px)", paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="grid grid-cols-3 gap-2 p-2">
         <Button variant="whatsapp" size="sm" asChild className="flex-col h-16 text-xs">
