@@ -63,7 +63,7 @@ export const Navigation = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm">Diensten</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-base">Diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-4 pt-2 w-[560px] grid-cols-[1fr_auto_1fr_auto_1fr] items-start">
                       <div>
@@ -74,7 +74,7 @@ export const Navigation = () => {
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -93,7 +93,7 @@ export const Navigation = () => {
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -112,7 +112,7 @@ export const Navigation = () => {
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -129,7 +129,7 @@ export const Navigation = () => {
                 {topNavItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <Link to={item.path}>
-                      <NavigationMenuLink className="text-sm px-4 py-2 hover:text-primary transition-colors">
+                      <NavigationMenuLink className="text-base px-4 py-2 hover:text-primary transition-colors">
                         {item.label}
                       </NavigationMenuLink>
                     </Link>
@@ -177,7 +177,7 @@ export const Navigation = () => {
                 <Link
                   to="/diensten"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Onze diensten
                 </Link>
@@ -185,7 +185,7 @@ export const Navigation = () => {
               <div>
                 <button
                   onClick={() => toggleSection("particulier")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Particulier
                   <ChevronDown
@@ -201,7 +201,7 @@ export const Navigation = () => {
                         key={item.path}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -213,7 +213,7 @@ export const Navigation = () => {
               <div>
                 <button
                   onClick={() => toggleSection("spoedhulp")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Spoedhulp
                   <ChevronDown
@@ -229,7 +229,7 @@ export const Navigation = () => {
                         key={item.path}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -241,7 +241,7 @@ export const Navigation = () => {
               <div>
                 <button
                   onClick={() => toggleSection("zakelijkExpat")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Zakelijk & Expat
                   <ChevronDown
@@ -257,7 +257,7 @@ export const Navigation = () => {
                         key={item.path}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -272,7 +272,7 @@ export const Navigation = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                    className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                   >
                     {item.label}
                   </Link>
