@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SEO } from "@/components/SEO";
 import AppointmentWizard from "@/components/AppointmentWizard";
+import PartnersSection from "@/components/PartnersSection";
 import heroImage from "@/assets/hero-technician.jpg";
 import serviceComputer from "@/assets/service-computer.jpg";
 import serviceHack from "@/assets/service-hack.jpg";
@@ -65,112 +66,24 @@ export default function Home() {
   ];
 
   const reviews = [
-    // SCHEVENINGEN — PIN & kassa
     {
-      id: "rev-001",
-      name: "Jan van den Berg",
-      role: "Eigenaar",
-      business: "Snackbar Strandzicht",
-      date: "2025-09-12",
-      rating: 5,
-      title: "PIN down op drukste avond — binnen 1 uur opgelost",
-      problem: "PIN- en kassasysteem viel uit op vrijdagavond tijdens drukte.",
-      solution: "4G-failover ingesteld + noodplan geactiveerd zodat kassa's bleven draaien.",
-      result: "Binnen 1 uur weer volledig online en zonder omzetverlies. Rustig en professioneel geholpen.",
-      location: "Jan van den Berg, Snackbar Strandzicht, Scheveningen"
+      problem: "PIN en kassa down op vrijdagavond",
+      solution: "4G-failover + noodplan",
+      result: "Binnen 1 uur weer online",
+      location: "Scheveningen",
     },
     {
-      id: "rev-002",
-      name: "Laura Smits",
-      date: "2025-07-03",
-      rating: 5,
-      title: "Directe noodoplossing, stress weg",
-      problem: "Kassa en pin kwamen niet meer omhoog tijdens drukke avond.",
-      solution: "Technicus schakelde snel over op 4G-failover en voerde een tijdelijk noodproces in.",
-      result: "Betaalverkeer liep binnen 45 minuten weer, klanten konden door. Aanrader voor retail.",
-      location: "Scheveningen"
+      problem: "Ransomware op laptop",
+      solution: "Herstel + 2FA",
+      result: "Alles veilig, rapport voor verzekering",
+      location: "Ypenburg",
     },
     {
-      id: "rev-003",
-      name: "Hussein Karimi",
-      date: "2025-06-21",
-      rating: 4,
-      title: "Snelle service toen het nodig was",
-      problem: "Vrijdagavond PIN-fout, onbetaalde rijen.",
-      solution: "Noodplan + 4G-failover; korte instructie gegeven aan personeel.",
-      result: "Binnen 1 uur opgelost. Kleine follow-up nodig maar prima nazorg.",
-      location: "Scheveningen"
+      problem: "WiFi dode zones",
+      solution: "Mesh + router-hardening",
+      result: "Volle snelheid op alle kamers",
+      location: "Delft",
     },
-
-    // YPENBURG — RANSOMWARE
-    {
-      id: "rev-004",
-      name: "Sanne de Vries",
-      date: "2025-08-02",
-      rating: 5,
-      title: "Ransomware snel opgeruimd, duidelijk rapport",
-      problem: "Laptop van thuiswerkplek besmet met ransomware, bestanden ontoegankelijk.",
-      solution: "Volledige herstelprocedure uitgevoerd en 2FA ingesteld, plus verzekeringrapport.",
-      result: "Alle bestanden veilig terug, overzichtelijk rapport voor verzekering. Heel professioneel.",
-      location: "Ypenburg"
-    },
-    {
-      id: "rev-005",
-      name: "Peter Klaassen",
-      date: "2025-05-18",
-      rating: 5,
-      title: "Top service: herstel & verzekeringsrapport",
-      problem: "Ransomware op laptop, paniek bij klant.",
-      solution: "Dataherstel, schoonmaak en 2FA + schriftelijk rapport voor polis.",
-      result: "Binnen twee dagen alles hersteld en verzekering kon claimen. Heel tevreden.",
-      location: "Ypenburg"
-    },
-    {
-      id: "rev-006",
-      name: "Aisha Rahman",
-      date: "2025-04-09",
-      rating: 4,
-      title: "Zeer kundig en duidelijk",
-      problem: "Laptop gegijzeld door ransomware, belangrijke bestanden ontoegankelijk.",
-      solution: "Schoonmaak, herstel en extra beveiliging (2FA) ingesteld.",
-      result: "Bestanden terug en extra beveiliging werkt goed. Prima communicatie tijdens proces.",
-      location: "Ypenburg"
-    },
-
-    // DELFT — WIFI DODE ZONES
-    {
-      id: "rev-007",
-      name: "Marieke Jansen",
-      date: "2025-09-01",
-      rating: 5,
-      title: "Eindelijk wifi op zolder en in tuin",
-      problem: "Dode wifi-zones in huis en geen bereik op zolder.",
-      solution: "Mesh-systeem geïnstalleerd en router security-hardening uitgevoerd.",
-      result: "Overal volle snelheid, apparaten blijven verbonden. Technicus legde alles rustig uit.",
-      location: "Delft"
-    },
-    {
-      id: "rev-008",
-      name: "Tom van Leeuwen",
-      date: "2025-07-29",
-      rating: 5,
-      title: "Mesh installatie werkt perfect",
-      problem: "Slechte dekking in woonkamer en slaapkamer.",
-      solution: "Mesh nodes geplaatst, router geconfigureerd en kanaalconflicten opgelost.",
-      result: "Streamen zonder bufferen, betere bereikbaarheid voor alle devices.",
-      location: "Delft"
-    },
-    {
-      id: "rev-009",
-      name: "Inge Peters",
-      date: "2025-06-05",
-      rating: 4,
-      title: "Professioneel en netjes geïnstalleerd",
-      problem: "WiFi viel vaak weg in kamers achterin het huis.",
-      solution: "Router-harden en mesh-systeem; advies voor optimale plaatsing.",
-      result: "Signaal sterk en stabiel; korte nazorg afspraak gepland om te finetunen.",
-      location: "Delft"
-    }
   ];
 
   const serviceAreas = [
@@ -483,6 +396,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
 
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
