@@ -71,7 +71,7 @@ export const Navigation = () => {
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Particulier</h3>
                         <ul className="space-y-2">
                           {menuSections.particulier.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
@@ -90,7 +90,7 @@ export const Navigation = () => {
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Spoedhulp</h3>
                         <ul className="space-y-2">
                           {menuSections.spoedhulp.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
@@ -109,7 +109,7 @@ export const Navigation = () => {
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Zakelijk & Expat</h3>
                         <ul className="space-y-2">
                           {menuSections.zakelijkExpat.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
@@ -199,7 +199,7 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.particulier.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
@@ -227,7 +227,7 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.spoedhulp.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
@@ -255,7 +255,7 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.zakelijkExpat.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
