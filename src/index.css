@@ -66,10 +66,3 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
-
-/* Reserve space for MobileCTABar on mobile so it's fully visible */
-@layer base {
-  @media (max-width: 1024px) {
-    body { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
-  }
-}
