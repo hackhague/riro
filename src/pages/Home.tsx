@@ -313,9 +313,16 @@ export default function Home() {
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Hoe het werkt</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-visible">
             {steps.map((step, index) => (
-              <div key={index} className="text-center">
+              <div
+                key={index}
+                className={`relative text-center ${
+                  index < steps.length - 1
+                    ? "md:after:content-[''] md:after:absolute md:after:top-8 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[30px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full"
+                    : ""
+                }`}
+              >
                 <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl font-bold text-primary-foreground">{step.number}</span>
                 </div>
