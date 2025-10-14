@@ -69,6 +69,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          <FloatingCallButton />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
