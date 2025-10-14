@@ -118,8 +118,8 @@ export const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start gap-2 text-background/80">
-                <Clock className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Ma–Zo 08:00–21:00<br />Hacklijn triage 24/7</span>
+                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                <span>Laan van NOI 88<br />2593 BP, Den Haag</span>
               </li>
             </ul>
           </div>
