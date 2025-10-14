@@ -155,7 +155,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                <span>Lokale hulp binnen 2u</span>
+                <span>Lokale hulp binnen 24u</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
