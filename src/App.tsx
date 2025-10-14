@@ -27,6 +27,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Zakelijk from "./pages/Zakelijk";
 import Expat from "./pages/Expat";
+import OverOns from "./pages/OverOns";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/zakelijk" element={<Zakelijk />} />
             <Route path="/expat" element={<Expat />} />
+            <Route path="/over-ons" element={<OverOns />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
