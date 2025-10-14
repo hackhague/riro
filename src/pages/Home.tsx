@@ -179,24 +179,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* USP Cards */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            {usps.map((usp, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-colors">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <usp.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-semibold text-xl mb-2">{usp.title}</h3>
-                  <p className="text-foreground/70">{usp.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Services */}
       <section className="py-12 md:py-16 bg-secondary">
@@ -221,6 +203,25 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* USP Cards */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            {usps.map((usp, index) => (
+              <Card key={index} className="border-2 hover:border-primary transition-colors">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <usp.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading font-semibold text-xl mb-2">{usp.title}</h3>
+                  <p className="text-foreground/70">{usp.description}</p>
                 </CardContent>
               </Card>
             ))}
