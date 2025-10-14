@@ -33,7 +33,8 @@ export const Navigation = () => {
     spoedhulp: [
       { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
       { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na digitale fraude" },
-      { label: "Wachtwoord reset", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
+      { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
+      { label: "Outlook account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
     ],
     zakelijkExpat: [
       { label: "Zakelijk IT-support", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
