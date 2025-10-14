@@ -199,10 +199,6 @@ export default function Home() {
                 <span className="text-foreground/70 ml-1">• 1.100+ opdrachten</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
 
             {/* Rating */}
             <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm">
