@@ -14,7 +14,7 @@ import { toast } from "@/hooks/use-toast";
 const SERVICES = [
   { id: "remote_quickfix", label: "Computerhulp op afstand" },
   { id: "onsite_standard", label: "Computerhulp aan huis" },
-  { id: "onsite_business", label: "IT-support aan kantoor" },
+  { id: "onsite_standard", label: "IT-support aan kantoor" },
   { id: "wifi_network", label: "WiFi & Netwerk optimalisatie" },
   { id: "hack_support", label: "Ik ben gehackt" },
 ];
@@ -205,7 +205,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                 </li>
                 <li className="px-4 py-4 text-sm bg-primary/80">
                   <p className="opacity-90">Kom in contact</p>
-                  <p className="opacity-80">070 211 9191 · support@instantit.nl</p>
+                  <p className="opacity-80">070 211 9191</p>
+                  <p className="opacity-80">info@instantit.nl</p>
                 </li>
               </ul>
             </nav>
