@@ -181,7 +181,7 @@ export default function Home() {
 
 
       {/* Services */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
