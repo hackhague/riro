@@ -192,6 +192,29 @@ export default function Computerhulp() {
         </div>
       </section>
 
+      {/* Service Areas */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            {serviceAreas.map((area, index) => (
+              <Link
+                key={index}
+                to={area.link}
+                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button variant="ghost" asChild>
+              <Link to="/werkgebied">Bekijk alle locaties</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
