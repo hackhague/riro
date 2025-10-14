@@ -115,7 +115,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       } as any;
 
       // Store in Supabase (table: appointments) if configured
-      const hasSupabase = !!(import.meta as any).env?.VITE_SUPABASE_URL && !!(import.meta as any).env?.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const envs: any = (import.meta as any).env || {};
+      const hasSupabase = !!envs.VITE_SUPABASE_URL && !!(envs.VITE_SUPABASE_ANON_KEY || envs.VITE_SUPABASE_PUBLISHABLE_KEY);
       if (hasSupabase) {
         const mod: any = await import("@/integrations/supabase/client");
         const sb: any = mod.supabase as any;
