@@ -1,10 +1,16 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function FloatingCallButton() {
-  return (
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted || typeof document === "undefined") return null;
+
+  return createPortal(
     <div
-      className="fixed bottom-4 right-4 md:right-6 z-[95] pointer-events-auto"
+      className="fixed bottom-4 right-4 md:right-6 z-[9999] pointer-events-auto left-auto top-auto"
       style={{
         bottom: "max(1rem, calc(env(safe-area-inset-bottom) + 1rem))",
         right: "max(1rem, calc(env(safe-area-inset-right) + 1rem))",
@@ -22,7 +28,8 @@ export function FloatingCallButton() {
           <span className="hidden md:inline">Computerstoring? Bel 070 211 9191</span>
         </a>
       </Button>
-    </div>
+    </div>,
+    document.body,
   );
 }
 export default FloatingCallButton;
