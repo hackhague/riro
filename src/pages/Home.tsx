@@ -145,13 +145,13 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">•</span>
-                <span>Vaste tarieven — geen verrassingen. Altijd gratis nazorg.</span>
+                <span>Vaste tarieven ��� geen verrassingen. Altijd gratis nazorg.</span>
               </li>
             </ul>
 
             {/* CTA Buttons — gebruik jouw Button component zoals eerder */}
             <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
-              <Button variant="whatsapp" size="default" asChild>
+              <Button variant="whatsapp" size="default" asChild className="bg-white text-black hover:bg-white/90 shadow-none">
                 <a
                   href="https://wa.me/31702119191?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
                   target="_blank"
