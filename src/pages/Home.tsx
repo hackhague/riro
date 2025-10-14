@@ -185,11 +185,6 @@ export default function Home() {
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
           <span className="text-white">Lokale hulp binnen 24u</span>
         </div>
-        <div className="flex items-center gap-2 ml-1 w-full text-white">
-          <Star className="h-4 w-4 fill-accent text-accent" />
-          <span className="font-semibold">4.9/5</span>
-          <span className="ml-1">• 1.100+ opdrachten</span>
-        </div>
         <div className="flex items-center gap-1.5">
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
           <span className="text-white">24/7 spoedlijn</span>
@@ -197,8 +192,12 @@ export default function Home() {
         <div className="flex items-center gap-1.5">
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
           <span className="text-white">Vaste tarieven</span>
-        </div>
-
+              </div>
+              <div className="flex items-center gap-2 ml-1 w-full text-white">
+                <Star className="h-4 w-4 fill-accent text-accent" />
+                <span className="font-semibold">4.9/5</span>
+                <span className="ml-1">• 1.100+ opdrachten</span>
+              </div>
       </div>
     </div>
   </div>
