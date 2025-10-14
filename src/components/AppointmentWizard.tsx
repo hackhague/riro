@@ -107,10 +107,14 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         created_at: new Date().toISOString(),
       };
 
-      // Store in Supabase (table: appointments)
-      const sb: any = supabase as any;
-      const { error } = await sb.from("appointments").insert(payload);
-      if (error) throw error;
+      // Store in Supabase (table: appointments) if configured
+      const hasSupabase = !!(import.meta as any).env?.VITE_SUPABASE_URL && !!(import.meta as any).env?.VITE_SUPABASE_PUBLISHABLE_KEY;
+      if (hasSupabase) {
+        const mod: any = await import("@/integrations/supabase/client");
+        const sb: any = mod.supabase as any;
+        const { error } = await sb.from("appointments").insert(payload);
+        if (error) throw error;
+      }
 
       // Optional Zapier webhook
       const webhook = (import.meta as any).env?.VITE_ZAPIER_WEBHOOK_URL;
