@@ -55,7 +55,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="InstantIT logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={logo} alt="InstantIT logo" className="h-20 md:h-30 w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation Menu */}
