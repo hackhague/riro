@@ -58,7 +58,7 @@ export default function Home() {
   const steps = [
     { number: "1", text: "Stuur een WhatsApp of bel" },
     { number: "2", text: "Gratis korte triage" },
-    { number: "3", text: "Remote fix of on-site binnen 2u" },
+    { number: "3", text: "Remote fix of op locatie binnen 24u" },
     { number: "4", text: "Nazorg binnen 7 dagen" },
   ];
 
