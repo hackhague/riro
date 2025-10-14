@@ -34,21 +34,21 @@ export default function PartnersSection() {
   }, [pages.length]);
 
   return (
-    <section className="py-8 md:py-10">
-      <div className="container mx-auto px-4 text-center">
+    <section className="py-8 md:py-10 overflow-hidden">
+      <div className="container mx-auto px-4 text-center overflow-hidden">
         <p className="text-sm text-muted-foreground mb-6">Wij werken samen met</p>
-        <div className="relative h-10 md:h-12">
+        <div className="relative h-12">
           {pages.map((items, idx) => (
             <div
               key={idx}
               className={`absolute inset-0 transition-opacity duration-700 ${idx === page ? "opacity-100" : "opacity-0"}`}
               aria-hidden={idx !== page}
             >
-              <div className="flex items-center justify-center gap-8 md:gap-12">
+              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 px-1">
                 {items.map((p) => (
                   <span
                     key={p.name}
-                    className="text-lg md:text-xl font-semibold text-foreground/60 select-none"
+                    className="text-base md:text-xl font-semibold text-foreground/60 select-none"
                   >
                     {p.name}
                   </span>
