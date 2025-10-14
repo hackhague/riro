@@ -45,7 +45,7 @@ export const Navigation = () => {
     { label: "Tarieven", path: "/tarieven" },
     { label: "Contact", path: "/contact" },
     { label: "Over ons", path: "/over-ons" },
-    { label: "Beoordelingen", path: "/reviews" },
+    { label: "Reviews", path: "/reviews" },
     { label: "FAQ", path: "/faq" },
   ];
 
