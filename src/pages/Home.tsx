@@ -145,7 +145,7 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-0.5 text-accent">•</span>
-                <span>Vaste tarieven ��� geen verrassingen. Altijd gratis nazorg.</span>
+                <span>Vaste tarieven geen verrassingen. Altijd gratis nazorg.</span>
               </li>
             </ul>
 
@@ -191,13 +191,6 @@ export default function Home() {
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>Vaste tarieven</span>
               </div>
-
-              <div className="flex items-center gap-2 ml-1">
-                <Star className="h-4 w-4 fill-accent text-accent" />
-                <span className="font-semibold text-white/90">4.9/5</span>
-                <span className="text-white/80 ml-1">• 1.100+ opdrachten</span>
-              </div>
-            </div>
 
             {/* Rating */}
             <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm text-white/85">
