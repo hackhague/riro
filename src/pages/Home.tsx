@@ -153,7 +153,7 @@ export default function Home() {
 
       {/* CTA Buttons — gebruik jouw Button component zoals eerder */}
       <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
-        <Button variant="whatsapp" size="default" asChild>
+        <Button variant="outline" size="default" asChild className="bg-white text-black border border-white shadow-none hover:shadow-none h-10 md:h-10 font-normal">
           <a
             href="https://wa.me/31702119191?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
             target="_blank"
@@ -183,15 +183,15 @@ export default function Home() {
       <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
         <div className="flex items-center gap-1.5">
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-          <span>Lokale hulp binnen 24u</span>
+          <span className="text-white">Lokale hulp binnen 24u</span>
         </div>
         <div className="flex items-center gap-1.5">
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-          <span>24/7 spoedlijn</span>
+          <span className="text-white">24/7 spoedlijn</span>
         </div>
         <div className="flex items-center gap-1.5">
           <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-          <span>Vaste tarieven</span>
+          <span className="text-white">Vaste tarieven</span>
         </div>
 
         <div className="flex items-center gap-2 ml-1">
