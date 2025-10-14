@@ -144,6 +144,13 @@ export default function Home() {
               </Button>
             </div>
 
+            <Button variant="outline" size="default" asChild className="mb-6">
+              <Link to="/ik-ben-gehackt">
+                <Zap className="h-4 w-4" />
+                Spoedhulp 24/7
+              </Link>
+            </Button>
+
             {/* Trust Badges */}
             <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
               <div className="flex items-center gap-1.5">
@@ -171,13 +178,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Button variant="outline" size="default" asChild className="mb-6">
-              <Link to="/ik-ben-gehackt">
-                <Zap className="h-4 w-4" />
-                Spoedhulp 24/7
-              </Link>
-            </Button>
 
       {/* USP Cards */}
       <section className="py-12 md:py-16">
