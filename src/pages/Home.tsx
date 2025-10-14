@@ -58,7 +58,7 @@ export default function Home() {
   ];
 
   const steps = [
-    { number: "1", text: "Bel of stuur WhatsApp" },
+    { number: "1", text: "Bel of WhatsApp - we reageren binnen 10-30 minuten" },
     { number: "2", text: "Korte intake (5min)" },
     { number: "3", text: "Op afstand oplossen of monteur op locatie binnen 24u" },
     { number: "4", text: "Nazorg binnen 7 dagen" },
