@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2Fb4a852d263484468b5274bec5f7ac739?format=webp&width=800";
+const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -52,10 +52,10 @@ export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="InstantIT logo" className="h-20 md:h-30 w-auto object-contain" />
+            <img src={logo} alt="InstantIT logo" className="h-14 md:h-16 lg:h-[72px] w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation Menu */}
