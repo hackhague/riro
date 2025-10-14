@@ -207,13 +207,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Appointment Section */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard />
-        </div>
-      </section>
-
       {/* Services */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
@@ -297,6 +290,13 @@ export default function Home() {
           <Button variant="accent" asChild>
             <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2"/>WhatsApp</a>
           </Button>
+        </div>
+      </section>
+
+      {/* Appointment Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard />
         </div>
       </section>
 
