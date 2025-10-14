@@ -204,7 +204,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
                 <li className="px-4 py-4 text-sm bg-primary/80">
-                  <p className="opacity-100">Kom in contact</p>
+                  <p className="opacity-100">Kom in contact:</p>
                   <p className="opacity-60">070 211 9191</p>
                   <p className="opacity-60">info@instantit.nl</p>
                 </li>
