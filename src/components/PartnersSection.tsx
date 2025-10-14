@@ -1,16 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 
 const PARTNERS = [
-  { name: "Intel" },
-  { name: "Steganos" },
-  { name: "Nero" },
-  { name: "Norton" },
-  { name: "Microsoft" },
-  { name: "Cisco" },
-  { name: "Lenovo" },
+  { name: "Microsoft (365)" },
+  { name: "Apple" },
+  { name: "Dell" },
   { name: "HP" },
-  { name: "Asus" },
-  { name: "Acer" },
+  { name: "Ubiquiti" },
+  { name: "Esset" },
+  { name: "BitDefender" },
+  { name: "Synology" },
+  { name: "Anydesk" },
+  { name: "Ziggo" },
+  { name: "KPN" },
+
+
 ];
 
 function chunk<T>(arr: T[], size: number): T[][] {
