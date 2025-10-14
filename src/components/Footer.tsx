@@ -12,7 +12,7 @@ export const Footer = () => {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F8b732d5b0cbd409588db27d023cf0b27?format=webp&width=800"
                 alt="InstantIT logo"
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-11 md:h-13 lg:h [30px] w-auto object-contain"
               />
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
