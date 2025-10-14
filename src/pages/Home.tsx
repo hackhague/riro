@@ -409,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-start">
             <div>
