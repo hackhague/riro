@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 export function FloatingCallButton() {
   return (
     <div
-      className="fixed z-[80]"
+      className="fixed bottom-4 right-4 md:right-6 z-[95] pointer-events-auto"
       style={{
         bottom: "max(1rem, calc(env(safe-area-inset-bottom) + 1rem))",
         right: "max(1rem, calc(env(safe-area-inset-right) + 1rem))",
