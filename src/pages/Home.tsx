@@ -46,7 +46,7 @@ export default function Home() {
     {
       icon: CheckCircle,
       title: "Transparant & nazorg",
-      description: "Vaste caps. Niet opgelost? Gratis herbeoordeling binnen 7 dagen (max 30 min remote).",
+      description: "Vaste tarieven. Niet opgelost? Gratis herbeoordeling binnen 7 dagen.",
     },
   ];
 
