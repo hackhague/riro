@@ -41,7 +41,7 @@ export default function Home() {
     {
       icon: Shield,
       title: "Cyber-expertise",
-      description: "Containment, herstel, Cyber APK en preventie.",
+      description: "Gehackt? We herstellen toegang, verwijderen malware en zetten uw gegevens veilig.",
     },
     {
       icon: CheckCircle,
