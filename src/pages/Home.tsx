@@ -210,7 +210,7 @@ export default function Home() {
       {/* Appointment Section */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <AppointmentWizard compact />
+          <AppointmentWizard />
         </div>
       </section>
 
