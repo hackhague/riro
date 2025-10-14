@@ -452,7 +452,6 @@ export default function Home() {
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Ja — we gebruiken versleutelde tools en vragen altijd jouw toestemming voordat we meekijken. We delen je gegevens niet met derden.</p>
-                      <p className="text-foreground/70">Waarom: wegnemen van drempels rondom vertrouwen.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/hulp-op-afstand">Lees meer over veiligheid</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote</a>
@@ -468,7 +467,6 @@ export default function Home() {
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Dan geven we duidelijk advies zonder verborgen kosten. Indien nodig krijg je een gratis herbeoordeling binnen 7 dagen.</p>
-                      <p className="text-foreground/70">Waarom: zekerheid – nooit “buiten het raam”.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/contact">Vraag gratis herbeoordeling aan</a>
                       </div>
@@ -483,7 +481,6 @@ export default function Home() {
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Het snelst is bellen of WhatsAppen — dat kost bijna geen tijd en we plannen meteen een korte intake. Je kunt ook via het afspraakformulier boeken.</p>
-                      <p className="text-foreground/70">Waarom: duidelijke next step, minder frictie.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp nu</a>
