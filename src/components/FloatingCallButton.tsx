@@ -3,16 +3,20 @@ import { Button } from "@/components/ui/button";
 
 export function FloatingCallButton() {
   return (
-    <div className="fixed right-4 bottom-4 md:right-6 md:bottom-6 z-50">
+    <div
+      className="fixed right-4 md:right-6 z-50"
+      style={{ bottom: "max(1rem, calc(env(safe-area-inset-bottom) + 1rem))" }}
+    >
       <Button
         asChild
         variant="accent"
         size="lg"
-        className="rounded-full shadow-lg focus-visible:ring-4"
+        className="rounded-full shadow-lg md:shadow-xl focus-visible:ring-4"
       >
         <a href="tel:+31702119191" aria-label="Computerstoring? Bel 070 211 9191">
           <Phone className="mr-2" />
-          Computerstoring? Bel 070 211 9191
+          <span className="inline md:hidden">Bel nu</span>
+          <span className="hidden md:inline">Computerstoring? Bel 070 211 9191</span>
         </a>
       </Button>
     </div>
