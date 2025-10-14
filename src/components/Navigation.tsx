@@ -26,6 +26,7 @@ export const Navigation = () => {
   const menuSections = {
     particulier: [
       { label: "Computerhulp", path: "/computerhulp", description: "Snelle hulp bij computerproblemen" },
+      { label: "Hulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
       { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
@@ -37,7 +38,6 @@ export const Navigation = () => {
     zakelijkExpat: [
       { label: "Zakelijk IT-support", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
       { label: "Expat support", path: "/expat", description: "IT-hulp in het Engels" },
-      { label: "Remote support", path: "/zakelijk", description: "Veilig op afstand geholpen" },
     ],
   };
 
@@ -63,7 +63,14 @@ export const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-3 p-4 w-[500px] grid-cols-3">
+                    <div className="p-4 pb-0">
+                      <NavigationMenuLink asChild>
+                        <Link to="/diensten" className="block font-semibold text-xs uppercase text-muted-foreground hover:text-primary transition-colors">
+                          Onze diensten
+                        </Link>
+                      </NavigationMenuLink>
+                    </div>
+                    <div className="grid gap-3 p-4 pt-2 w-[500px] grid-cols-3">
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Particulier</h3>
                         <ul className="space-y-2">
@@ -137,13 +144,13 @@ export const Navigation = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild>
               <a href="tel:+31702119191">
                 <Phone className="h-3.5 w-3.5" />
                 070 211 9191
               </a>
             </Button>
-            <Button variant="whatsapp" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild>
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
@@ -267,13 +274,13 @@ export const Navigation = () => {
               </div>
 
               <div className="flex flex-col gap-1.5 pt-1">
-                <Button variant="ghost" size="sm" asChild className="w-full justify-start h-8">
+                <Button variant="accent" size="sm" asChild className="w-full justify-start h-8">
                   <a href="tel:+31702119191">
                     <Phone className="h-3.5 w-3.5" />
                     070 211 9191
                   </a>
                 </Button>
-                <Button variant="whatsapp" size="sm" asChild className="w-full justify-start h-8">
+                <Button variant="accent" size="sm" asChild className="w-full justify-start h-8">
                   <a
                     href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                     target="_blank"
