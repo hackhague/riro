@@ -14,7 +14,7 @@ export default function Home() {
   const services = [
     {
       title: "Computerhulp",
-      description: "Computer traag, virussen, softwareproblemen? Wij maken het weer snel.",
+      description: "Trage of vastlopende pc? We helpen op afstand of komen langs.",
       image: serviceComputer,
       link: "/computerhulp",
     },
