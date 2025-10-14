@@ -77,7 +77,7 @@ export default function Home() {
       problem: "PIN- en kassasysteem viel uit op vrijdagavond tijdens drukte.",
       solution: "4G-failover ingesteld + noodplan geactiveerd zodat kassa's bleven draaien.",
       result: "Binnen 1 uur weer volledig online en zonder omzetverlies. Rustig en professioneel geholpen.",
-      location: "Scheveningen"
+      location: "Jan van den Berg, Snackbar Strandzicht, Scheveningen"
     },
     {
       id: "rev-002",
