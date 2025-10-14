@@ -9,11 +9,10 @@ import { DayPicker } from "react-day-picker";
 import { format, isBefore, startOfToday } from "date-fns";
 import "react-day-picker/dist/style.css";
 import { toast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 
 // Supported services for booking
 const SERVICES = [
-  { id: "remote_quickfix", label: "Remote QuickFix (30��45 min)" },
+  { id: "remote_quickfix", label: "Remote QuickFix (30–45 min)" },
   { id: "onsite_standard", label: "Computerhulp aan huis (1–2 uur)" },
   { id: "wifi_network", label: "WiFi & Netwerk optimalisatie" },
   { id: "hack_support", label: "Ik ben gehackt (spoed)" },
