@@ -190,6 +190,7 @@ export default function Home() {
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>Vaste tarieven</span>
+                </div>
               </div>
 
             {/* Rating */}
