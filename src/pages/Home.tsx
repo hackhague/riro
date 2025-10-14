@@ -317,16 +317,20 @@ export default function Home() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`relative text-center ${
+                className={`relative ${
                   index < steps.length - 1
-                    ? "md:after:content-[''] md:after:absolute md:after:top-8 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[30px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full"
+                    ? "md:after:content-[''] md:after:absolute md:after:top-10 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[38px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full"
                     : ""
                 }`}
               >
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl font-bold text-primary-foreground">{step.number}</span>
-                </div>
-                <p className="font-medium">{step.text}</p>
+                <Card className="shadow-sm">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-12 h-12 md:w-14 md:h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                      <span className="text-xl md:text-2xl font-bold text-primary-foreground">{step.number}</span>
+                    </div>
+                    <h3 className="font-heading font-semibold">{step.text}</h3>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
