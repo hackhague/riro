@@ -7,7 +7,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { MobileCTABar } from "@/components/MobileCTABar";
 import Home from "./pages/Home";
 import Diensten from "./pages/Diensten";
 import Computerhulp from "./pages/Computerhulp";
@@ -67,7 +66,6 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
-          <MobileCTABar />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
