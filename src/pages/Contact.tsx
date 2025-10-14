@@ -80,6 +80,51 @@ export default function Contact() {
           </Card>
         </div>
       </section>
+
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-6">Stel je vraag</h2>
+            <Card>
+              <CardContent className="p-6 md:p-8">
+                <form
+                  className="space-y-4"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.target as HTMLFormElement;
+                    const data = new FormData(form);
+                    const text = encodeURIComponent(
+                      `Naam: ${data.get("name")}\nTelefoon/email: ${data.get("contact")}\nVraag: ${data.get("message")}`,
+                    );
+                    window.open(`https://wa.me/31702119191?text=${text}`, "_blank");
+                  }}
+                >
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium mb-1">Naam</label>
+                      <input name="name" required className="w-full border rounded-md px-3 py-2" />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-1">Telefoon of e-mail</label>
+                      <input name="contact" required className="w-full border rounded-md px-3 py-2" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1">Je vraag</label>
+                    <textarea name="message" required className="w-full border rounded-md px-3 py-2 min-h-[120px]" />
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button type="submit" variant="accent">Verstuur via WhatsApp</Button>
+                    <Button variant="outline" asChild>
+                      <a href="mailto:support@instantit.nl">Of stuur per e-mail</a>
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

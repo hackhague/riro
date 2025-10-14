@@ -3,6 +3,7 @@ import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SEO } from "@/components/SEO";
+import AppointmentWizard from "@/components/AppointmentWizard";
 import heroImage from "@/assets/hero-technician.jpg";
 import serviceComputer from "@/assets/service-computer.jpg";
 import serviceHack from "@/assets/service-hack.jpg";
@@ -18,7 +19,7 @@ export default function Home() {
     },
     {
       title: "Ik ben gehackt",
-      description: "Remote triage binnen 15 min; on-site bij spoed. Containment & schoonmaak.",
+      description: "We kijken direct met je mee; bij spoed komen we langs. Veilig herstel en opschonen.",
       image: serviceHack,
       link: "/ik-ben-gehackt",
     },
@@ -34,7 +35,7 @@ export default function Home() {
     {
       icon: Clock,
       title: "Razendsnel & lokaal",
-      description: "Remote in 10–30 min, meestal binnen 2 uur aan de deur (Haaglanden).",
+      description: "Op afstand in 10–30 min, meestal binnen 2 uur aan de deur (Haaglanden).",
     },
     {
       icon: Shield,
@@ -56,9 +57,9 @@ export default function Home() {
   ];
 
   const steps = [
-    { number: "1", text: "App of bel" },
-    { number: "2", text: "Gratis korte triage" },
-    { number: "3", text: "Remote fix of on-site binnen 2u" },
+    { number: "1", text: "Stuur een WhatsApp of bel" },
+    { number: "2", text: "Gratis korte intake" },
+    { number: "3", text: "Op afstand oplossen of aan huis binnen 24u" },
     { number: "4", text: "Nazorg binnen 7 dagen" },
   ];
 
@@ -120,7 +121,7 @@ export default function Home() {
               Computerhulp & Cyberhulp in Den Haag
             </h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6 md:mb-8">
-              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 2 uur op locatie. Vaste prijzen,
+              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 24 uur op locatie. Vaste prijzen,
               gratis nazorg.
             </p>
 
@@ -155,7 +156,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                <span>Lokale hulp binnen 2u</span>
+                <span>Lokale hulp binnen 24u</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
@@ -195,6 +196,14 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="outline" asChild>
+              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2"/>WhatsApp</a>
+            </Button>
+            <Button variant="accent" asChild>
+              <a href="tel:+31702119191"><Phone className="mr-2"/>Bel nu</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -225,6 +234,14 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+        <div className="mt-8 flex justify-center gap-3">
+          <Button variant="outline" asChild>
+            <a href="/afspraak">Plan een afspraak</a>
+          </Button>
+          <Button variant="accent" asChild>
+            <a href="tel:+31702119191"><Phone className="mr-2"/>Bel nu</a>
+          </Button>
         </div>
       </section>
 
@@ -265,6 +282,21 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="mt-8 flex justify-center gap-3">
+          <Button variant="outline" asChild>
+            <a href="/afspraak">Plan een afspraak</a>
+          </Button>
+          <Button variant="accent" asChild>
+            <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2"/>WhatsApp</a>
+          </Button>
+        </div>
+      </section>
+
+      {/* Appointment Section */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard />
         </div>
       </section>
 
@@ -331,7 +363,7 @@ export default function Home() {
             Klaar om jouw IT-probleem op te lossen?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="whatsapp" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"

@@ -346,7 +346,7 @@ export default function Expat() {
             Contact us in English via WhatsApp or phone. We're here to help you get back online quickly.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="whatsapp" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
                 target="_blank"

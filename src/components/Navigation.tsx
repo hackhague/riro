@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,35 +25,37 @@ export const Navigation = () => {
 
   const menuSections = {
     particulier: [
-      { label: "Computerhulp", path: "/computerhulp", description: "Snelle hulp bij computerproblemen" },
+      { label: "Computerhulp", path: "/computerhulp-denhaag", description: "Snelle hulp bij computerproblemen" },
+      { label: "Hulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
       { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
     spoedhulp: [
       { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
-      { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na digitale fraude" },
-      { label: "Wachtwoord reset", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
+      { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na klikken op verdachte link" },
+      { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
     ],
     zakelijkExpat: [
       { label: "Zakelijk IT-support", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
       { label: "Expat support", path: "/expat", description: "IT-hulp in het Engels" },
-      { label: "Remote support", path: "/zakelijk", description: "Veilig op afstand geholpen" },
     ],
   };
 
   const topNavItems = [
-    { label: "Over ons", path: "/diensten" },
-    { label: "Blog", path: "/reviews" },
+    { label: "Tarieven", path: "/tarieven" },
+    { label: "Contact", path: "/contact" },
+    { label: "Over ons", path: "/over-ons" },
+    { label: "Reviews", path: "/reviews" },
     { label: "FAQ", path: "/faq" },
   ];
 
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-2 md:px-4">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="instantIT" className="h-10" />
+            <img src={logo} alt="InstantIT logo" className="h-14 md:h-16 lg:h-[72px] w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation Menu */}
@@ -61,18 +63,18 @@ export const Navigation = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-sm">Diensten</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="text-base">Diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-3 p-4 w-[500px] grid-cols-3">
+                    <div className="grid gap-3 p-4 pt-2 w-[560px] grid-cols-[1fr_auto_1fr_auto_1fr] items-start">
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Particulier</h3>
                         <ul className="space-y-2">
                           {menuSections.particulier.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -82,15 +84,16 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
+                      <div aria-hidden className="hidden lg:block w-px bg-border self-stretch mx-2" />
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Spoedhulp</h3>
                         <ul className="space-y-2">
                           {menuSections.spoedhulp.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -100,15 +103,16 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
+                      <div aria-hidden className="hidden lg:block w-px bg-border self-stretch mx-2" />
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Zakelijk & Expat</h3>
                         <ul className="space-y-2">
                           {menuSections.zakelijkExpat.map((item) => (
-                            <li key={item.path}>
+                            <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
                                   to={item.path}
-                                  className="block text-sm hover:text-primary transition-colors"
+                                  className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
@@ -125,7 +129,7 @@ export const Navigation = () => {
                 {topNavItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <Link to={item.path}>
-                      <NavigationMenuLink className="text-sm px-4 py-2 hover:text-primary transition-colors">
+                      <NavigationMenuLink className="text-base px-4 py-2 hover:text-primary transition-colors">
                         {item.label}
                       </NavigationMenuLink>
                     </Link>
@@ -137,20 +141,20 @@ export const Navigation = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a href="tel:+31702119191">
-                <Phone className="h-3.5 w-3.5" />
+                <Phone className="h-3.5 w-3.5 mr-1.5" />
                 070 211 9191
               </a>
             </Button>
-            <Button variant="whatsapp" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <MessageCircle className="h-3.5 w-3.5" />
-                WhatsApp
+                <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
+                Whatsapp Ons
               </a>
             </Button>
           </div>
@@ -170,9 +174,18 @@ export const Navigation = () => {
           <div className="lg:hidden py-3 border-t border-border max-h-[80vh] overflow-y-auto">
             <div className="space-y-3">
               <div>
+                <Link
+                  to="/diensten"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
+                >
+                  Onze diensten
+                </Link>
+              </div>
+              <div>
                 <button
                   onClick={() => toggleSection("particulier")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Particulier
                   <ChevronDown
@@ -185,10 +198,10 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.particulier.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -200,7 +213,7 @@ export const Navigation = () => {
               <div>
                 <button
                   onClick={() => toggleSection("spoedhulp")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Spoedhulp
                   <ChevronDown
@@ -213,10 +226,10 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.spoedhulp.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -228,7 +241,7 @@ export const Navigation = () => {
               <div>
                 <button
                   onClick={() => toggleSection("zakelijkExpat")}
-                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
+                  className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
                   Zakelijk & Expat
                   <ChevronDown
@@ -241,10 +254,10 @@ export const Navigation = () => {
                   <div className="mt-1">
                     {menuSections.zakelijkExpat.map((item) => (
                       <Link
-                        key={item.path}
+                        key={`${item.path}-${item.label}`}
                         to={item.path}
                         onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
                         {item.label}
                       </Link>
@@ -259,28 +272,28 @@ export const Navigation = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="block px-2 py-1.5 text-xs text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                    className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
 
-              <div className="flex flex-col gap-1.5 pt-1">
-                <Button variant="ghost" size="sm" asChild className="w-full justify-start h-8">
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Button variant="accent" size="sm" asChild className="rounded-full px-4">
                   <a href="tel:+31702119191">
-                    <Phone className="h-3.5 w-3.5" />
+                    <Phone className="h-3.5 w-3.5 mr-1.5" />
                     070 211 9191
                   </a>
                 </Button>
-                <Button variant="whatsapp" size="sm" asChild className="w-full justify-start h-8">
+                <Button variant="accent" size="sm" asChild className="rounded-full px-4">
                   <a
                     href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <MessageCircle className="h-3.5 w-3.5" />
-                    WhatsApp
+                    <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
+                    Whatsapp Ons
                   </a>
                 </Button>
               </div>

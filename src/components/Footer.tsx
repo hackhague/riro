@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -8,11 +8,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">IT</span>
-              </div>
-              <span className="font-heading font-bold text-xl">InstantIT</span>
+            <div className="mb-4">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F8b732d5b0cbd409588db27d023cf0b27?format=webp&width=800"
+                alt="InstantIT logo"
+                className="h-11 md:h-13 lg:h [30px] w-auto object-contain"
+              />
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
               Digitale Eerste Hulp voor computerproblemen, hacks en storingen in Zuid-Holland.
@@ -24,7 +25,7 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold text-lg mb-4">Diensten</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/computerhulp" className="text-background/80 hover:text-background transition-colors">
+                <Link to="/computerhulp-denhaag" className="text-background/80 hover:text-background transition-colors">
                   Computerhulp
                 </Link>
               </li>
@@ -48,19 +49,38 @@ export const Footer = () => {
                   Zakelijk
                 </Link>
               </li>
+              <li>
+                <Link to="/tarieven" className="text-background/80 hover:text-background transition-colors">
+                  Tarieven
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Service Area */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Werkgebied</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4">
+              <Link to="/werkgebied" className="hover:underline">Werkgebied</Link>
+            </h3>
             <ul className="space-y-2 text-sm text-background/80">
-              <li>Den Haag</li>
-              <li>Delft</li>
-              <li>Zoetermeer</li>
-              <li>Rijswijk</li>
-              <li>Voorburg</li>
-              <li>Leiden</li>
+              <li>
+                <Link to="/computerhulp-den-haag" className="hover:text-background transition-colors">Den Haag</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-delft" className="hover:text-background transition-colors">Delft</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-zoetermeer" className="hover:text-background transition-colors">Zoetermeer</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-rijswijk" className="hover:text-background transition-colors">Rijswijk</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-voorburg" className="hover:text-background transition-colors">Voorburg</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-leiden" className="hover:text-background transition-colors">Leiden</Link>
+              </li>
             </ul>
           </div>
 
