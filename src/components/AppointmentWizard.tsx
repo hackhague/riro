@@ -89,7 +89,12 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     if (!isStep3Valid || !isStep2Valid) return;
     setLoading(true);
     try {
-      const payload = {
+      const idFallback = (globalThis.crypto && (crypto as any).randomUUID) ? (crypto as any).randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const approvalToken = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+
+      let recordId: string | number = idFallback;
+
+      const basePayload = {
         service: booking.service,
         service_label: selectedService,
         date_iso: booking.date ? booking.date.toISOString() : null,
@@ -105,22 +110,32 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         message: booking.message,
         status: "new",
         source: "website",
+        approval_token: approvalToken,
         created_at: new Date().toISOString(),
-      };
+      } as any;
 
       // Store in Supabase (table: appointments) if configured
       const hasSupabase = !!(import.meta as any).env?.VITE_SUPABASE_URL && !!(import.meta as any).env?.VITE_SUPABASE_PUBLISHABLE_KEY;
       if (hasSupabase) {
         const mod: any = await import("@/integrations/supabase/client");
         const sb: any = mod.supabase as any;
-        const { error } = await sb.from("appointments").insert(payload);
+        const { data, error } = await sb.from("appointments").insert(basePayload).select("id").single();
         if (error) throw error;
+        if (data?.id !== undefined) recordId = data.id;
       }
 
-      // Optional Zapier webhook
-      const webhook = (import.meta as any).env?.VITE_ZAPIER_WEBHOOK_URL;
-      if (webhook) {
-        fetch(webhook, {
+      // Build approval/cancel URLs for Zapier one-click actions
+      const approveBase = (import.meta as any).env?.VITE_ZAPIER_APPROVE_WEBHOOK_URL;
+      const cancelBase = (import.meta as any).env?.VITE_ZAPIER_CANCEL_WEBHOOK_URL;
+      const approve_url = approveBase ? `${approveBase}?id=${encodeURIComponent(String(recordId))}&token=${encodeURIComponent(approvalToken)}` : undefined;
+      const cancel_url = cancelBase ? `${cancelBase}?id=${encodeURIComponent(String(recordId))}&token=${encodeURIComponent(approvalToken)}` : undefined;
+
+      const payload = { id: recordId, ...basePayload, approve_url, cancel_url };
+
+      // Notify Zapier of new appointment
+      const newWebhook = (import.meta as any).env?.VITE_ZAPIER_NEW_APPOINTMENT_WEBHOOK_URL || (import.meta as any).env?.VITE_ZAPIER_WEBHOOK_URL;
+      if (newWebhook) {
+        fetch(newWebhook, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
