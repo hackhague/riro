@@ -2,13 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
-import PartnersSection from "@/components/PartnersSection";
 import Home from "./pages/Home";
 import Diensten from "./pages/Diensten";
 import Computerhulp from "./pages/Computerhulp";
@@ -35,21 +34,6 @@ import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden";
 import Privacyverklaring from "./pages/Privacyverklaring";
 
 const queryClient = new QueryClient();
-
-const PartnersSlot = () => {
-  const { pathname } = useLocation();
-  const allowed = [
-    "/",
-    "/computerhulp",
-    "/computerhulp-denhaag",
-    "/computerhulp-den-haag",
-    "/hulp-op-afstand",
-    "/wifi",
-    "/cyber-apk",
-    "/tarieven",
-  ];
-  return allowed.includes(pathname) ? <PartnersSection /> : null;
-};
 
 const App = () => (
   <HelmetProvider>
@@ -88,7 +72,6 @@ const App = () => (
             <Route path="/privacyverklaring" element={<Privacyverklaring />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <PartnersSlot />
           <Footer />
           <FloatingCallButton />
         </BrowserRouter>
