@@ -120,7 +120,7 @@ export default function Home() {
               Computerhulp & Cyberhulp in Den Haag
             </h1>
             <p className="text-base md:text-lg text-foreground/80 mb-6 md:mb-8">
-              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 2 uur op locatie. Vaste prijzen,
+              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 24 uur op locatie. Vaste prijzen,
               gratis nazorg.
             </p>
 
