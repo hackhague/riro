@@ -8,11 +8,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">IT</span>
-              </div>
-              <span className="font-heading font-bold text-xl">InstantIT</span>
+            <div className="mb-4">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F8b732d5b0cbd409588db27d023cf0b27?format=webp&width=800"
+                alt="InstantIT logo"
+                className="h-10 md:h-12 w-auto object-contain"
+              />
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
               Digitale Eerste Hulp voor computerproblemen, hacks en storingen in Zuid-Holland.
