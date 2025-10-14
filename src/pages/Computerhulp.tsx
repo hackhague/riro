@@ -205,7 +205,7 @@ export default function Computerhulp() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Computer weer snel maken?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20computerproblemen"
                 target="_blank"

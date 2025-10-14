@@ -194,7 +194,7 @@ export default function WiFiPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar voor stabiel WiFi?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=WiFi%20traag%20in%20[ruimte]%20-%20provider%3A%20[...]"
                 target="_blank"

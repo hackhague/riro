@@ -290,7 +290,7 @@ export default function Zakelijk() {
             Of het nu gaat om spoedondersteuning, preventief onderhoud of een Cyber APK – wij staan voor je klaar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="whatsapp" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Zakelijke%20IT-hulp%20nodig"
                 target="_blank"

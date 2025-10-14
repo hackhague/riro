@@ -102,7 +102,7 @@ export default function Tarieven() {
             Bel, app of mail – we geven altijd eerst een gratis korte triage zodat je weet waar je aan toe bent.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20wil%20graag%20een%20offerte"
                 target="_blank"
