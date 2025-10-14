@@ -88,7 +88,7 @@ const App = () => (
             <Route path="/privacyverklaring" element={<Privacyverklaring />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <PartnersSection />
+          <PartnersSlot />
           <Footer />
           <FloatingCallButton />
         </BrowserRouter>
