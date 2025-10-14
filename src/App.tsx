@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import Diensten from "./pages/Diensten";
 import Computerhulp from "./pages/Computerhulp";
 import IkBenGehackt from "./pages/IkBenGehackt";
+import HulpOpAfstand from "./pages/HulpOpAfstand";
 import WiFi from "./pages/WiFi";
 import CyberAPK from "./pages/CyberAPK";
 import Tarieven from "./pages/Tarieven";
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/ik-ben-gehackt" element={<IkBenGehackt />} />
             <Route path="/wifi" element={<WiFi />} />
             <Route path="/cyber-apk" element={<CyberAPK />} />
+            <Route path="/hulp-op-afstand" element={<HulpOpAfstand />} />
             <Route path="/tarieven" element={<Tarieven />} />
             <Route path="/werkgebied" element={<Werkgebied />} />
             <Route path="/computerhulp-den-haag" element={<ComputerhulpDenHaag />} />
