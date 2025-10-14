@@ -84,7 +84,7 @@ export default function Home() {
   ];
 
   const serviceAreas = [
-    { name: "Den Haag", link: "/computerhulp-denhaag" },
+    { name: "Den Haag", link: "/computerhulp-den-haag" },
     { name: "Delft", link: "/computerhulp-delft" },
     { name: "Zoetermeer", link: "/computerhulp-zoetermeer" },
     { name: "Rijswijk", link: "/computerhulp-rijswijk" },
@@ -179,9 +179,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* USP Cards */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            {usps.map((usp, index) => (
+              <Card key={index} className="border-2 hover:border-primary transition-colors">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <usp.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-heading font-semibold text-xl mb-2">{usp.title}</h3>
+                  <p className="text-foreground/70">{usp.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -210,27 +228,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* USP Cards */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6">
-            {usps.map((usp, index) => (
-              <Card key={index} className="border-2 hover:border-primary transition-colors">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <usp.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-semibold text-xl mb-2">{usp.title}</h3>
-                  <p className="text-foreground/70">{usp.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Teaser */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Prijzen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
