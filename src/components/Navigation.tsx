@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2Fb4a852d263484468b5274bec5f7ac739?format=webp&width=800";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -55,7 +55,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="instantIT" className="h-10" />
+            <img src={logo} alt="InstantIT logo" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
 
           {/* Desktop Navigation Menu */}
@@ -65,13 +65,6 @@ export const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="p-4 pb-0">
-                      <NavigationMenuLink asChild>
-                        <Link to="/diensten" className="block font-semibold text-xs uppercase text-muted-foreground hover:text-primary transition-colors">
-                          Onze diensten
-                        </Link>
-                      </NavigationMenuLink>
-                    </div>
                     <div className="grid gap-3 p-4 pt-2 w-[500px] grid-cols-3">
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Particulier</h3>
