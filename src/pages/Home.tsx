@@ -60,8 +60,8 @@ export default function Home() {
   const steps = [
     { number: "1", text: "Bel of WhatsApp - we reageren binnen 10-30 minuten" },
     { number: "2", text: "Korte intake - we vragen wat er aan de hand is." },
-    { number: "3", text: "Op afstand oplossen of monteur op locatie binnen 24u" },
-    { number: "4", text: "Nazorg binnen 7 dagen" },
+    { number: "3", text: "Oplossing & uitleg - op afstand of op locatie, we leggen uit wat we doen" },
+    { number: "4", text: "Nazorg - 7 dagen gratis nazorg (30 min, op afstand)" },
   ];
 
   const reviews = [
