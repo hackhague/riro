@@ -433,7 +433,7 @@ export default function Home() {
                   {/* Q2 */}
                   <details>
                     <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
-                      <span>Wat kost Hulp op Afstand??</span>
+                      <span>Wat kost Hulp op Afstand?</span>
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
