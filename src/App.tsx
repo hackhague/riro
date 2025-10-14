@@ -8,6 +8,7 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import PartnersSection from "@/components/PartnersSection";
 import Home from "./pages/Home";
 import Diensten from "./pages/Diensten";
 import Computerhulp from "./pages/Computerhulp";
@@ -30,6 +31,8 @@ import Expat from "./pages/Expat";
 import OverOns from "./pages/OverOns";
 import Afspraak from "./pages/Afspraak";
 import NotFound from "./pages/NotFound";
+import AlgemeneVoorwaarden from "./pages/AlgemeneVoorwaarden";
+import Privacyverklaring from "./pages/Privacyverklaring";
 
 const queryClient = new QueryClient();
 
@@ -66,8 +69,11 @@ const App = () => (
             <Route path="/expat" element={<Expat />} />
             <Route path="/over-ons" element={<OverOns />} />
             <Route path="/afspraak" element={<Afspraak />} />
+            <Route path="/algemene-voorwaarden" element={<AlgemeneVoorwaarden />} />
+            <Route path="/privacyverklaring" element={<Privacyverklaring />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <PartnersSection />
           <Footer />
           <FloatingCallButton />
         </BrowserRouter>

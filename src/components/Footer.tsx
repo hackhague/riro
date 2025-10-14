@@ -125,8 +125,17 @@ export const Footer = () => {
           </div>
         </div>
 
+        <div className="mt-8 text-center text-sm">
+          <p className="text-background/80">KVK: 85746916 • VOG aanwezig • Bedrijfsverzekering</p>
+          <div className="mt-3 flex items-center justify-center gap-4 text-background/80">
+            <Link to="/algemene-voorwaarden" className="underline underline-offset-4 hover:text-background">Algemene Voorwaarden</Link>
+            <span className="opacity-40">•</span>
+            <Link to="/privacyverklaring" className="underline underline-offset-4 hover:text-background">Privacyverklaring</Link>
+          </div>
+        </div>
+
         <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm text-background/60">
-          <p>© {new Date().getFullYear()} InstantIT. Alle rechten voorbehouden. VOG & verzekerd.</p>
+          <p>© {new Date().getFullYear()} InstantIT. Alle rechten voorbehouden.</p>
         </div>
       </div>
     </footer>
