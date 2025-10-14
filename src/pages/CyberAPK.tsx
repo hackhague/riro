@@ -1,6 +1,7 @@
 import { MessageCircle, Phone, Shield, CheckCircle2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PartnersSection from "@/components/PartnersSection";
 
 export default function CyberAPK() {
   const checks = [
@@ -195,6 +196,8 @@ export default function CyberAPK() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
