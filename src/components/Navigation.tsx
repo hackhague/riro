@@ -65,7 +65,7 @@ export const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-sm">Diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="grid gap-3 p-4 pt-2 w-[500px] grid-cols-3">
+                    <div className="grid gap-3 p-4 pt-2 w-[560px] grid-cols-[1fr_auto_1fr_auto_1fr] items-start">
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Particulier</h3>
                         <ul className="space-y-2">
@@ -84,6 +84,7 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
+                      <div className="hidden lg:flex items-center justify-center text-muted-foreground">|</div>
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Spoedhulp</h3>
                         <ul className="space-y-2">
@@ -102,6 +103,7 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
+                      <div className="hidden lg:flex items-center justify-center text-muted-foreground">|</div>
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Zakelijk & Expat</h3>
                         <ul className="space-y-2">
