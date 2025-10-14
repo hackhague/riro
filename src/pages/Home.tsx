@@ -59,8 +59,8 @@ export default function Home() {
 
   const steps = [
     { number: "1", text: "Bel of stuur WhatsApp" },
-    { number: "2", text: "Gratis korte intake" },
-    { number: "3", text: "Op afstand oplossen of aan huis binnen 24u" },
+    { number: "2", text: "Korte intake (5min)" },
+    { number: "3", text: "Op afstand oplossen of monteur aan huis binnen 24u" },
     { number: "4", text: "Nazorg binnen 7 dagen" },
   ];
 
