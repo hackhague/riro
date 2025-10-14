@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -48,19 +49,38 @@ export const Footer = () => {
                   Zakelijk
                 </Link>
               </li>
+              <li>
+                <Link to="/tarieven" className="text-background/80 hover:text-background transition-colors">
+                  Tarieven
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Service Area */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4">Werkgebied</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4">
+              <Link to="/werkgebied" className="hover:underline">Werkgebied</Link>
+            </h3>
             <ul className="space-y-2 text-sm text-background/80">
-              <li>Den Haag</li>
-              <li>Delft</li>
-              <li>Zoetermeer</li>
-              <li>Rijswijk</li>
-              <li>Voorburg</li>
-              <li>Leiden</li>
+              <li>
+                <Link to="/computerhulp-den-haag" className="hover:text-background transition-colors">Den Haag</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-delft" className="hover:text-background transition-colors">Delft</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-zoetermeer" className="hover:text-background transition-colors">Zoetermeer</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-rijswijk" className="hover:text-background transition-colors">Rijswijk</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-voorburg" className="hover:text-background transition-colors">Voorburg</Link>
+              </li>
+              <li>
+                <Link to="/computerhulp-leiden" className="hover:text-background transition-colors">Leiden</Link>
+              </li>
             </ul>
           </div>
 
