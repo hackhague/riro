@@ -209,7 +209,7 @@ export default function Home() {
               <div className="flex items-center gap-2 ml-1 w-full text-white">
                 <Star className="h-4 w-4 fill-accent text-accent" />
                 <span className="font-semibold">4.9/5 Beoordelingen</span>
-                <span className="ml-1">• 1.100+ opdrachten</span>
+                <span className="ml-1">• 1.100+ opdrachten voltooid</span>
               </div>
       </div>
     </div>
