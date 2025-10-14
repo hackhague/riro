@@ -144,20 +144,20 @@ export const Navigation = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
-            <Button variant="accent" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a href="tel:+31702119191">
-                <Phone className="h-3.5 w-3.5" />
+                <Phone className="h-3.5 w-3.5 mr-1.5" />
                 070 211 9191
               </a>
             </Button>
-            <Button variant="accent" size="sm" asChild>
+            <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <MessageCircle className="h-3.5 w-3.5" />
-                WhatsApp
+                <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
+                Whatsapp Ons
               </a>
             </Button>
           </div>
@@ -176,11 +176,11 @@ export const Navigation = () => {
         {isOpen && (
           <div className="lg:hidden py-3 border-t border-border max-h-[80vh] overflow-y-auto">
             <div className="space-y-3">
-              <div className="px-2">
+              <div>
                 <Link
                   to="/diensten"
                   onClick={() => setIsOpen(false)}
-                  className="block font-semibold text-xs uppercase text-muted-foreground hover:text-primary transition-colors"
+                  className="flex items-center justify-between w-full px-2 py-2 text-sm font-bold text-foreground uppercase tracking-wide"
                 >
                   Onze diensten
                 </Link>
@@ -283,21 +283,20 @@ export const Navigation = () => {
               </div>
 
               <div className="flex items-center justify-center gap-3 pt-2">
-                <Button variant="accent" size="icon" asChild className="rounded-full">
-                  <a href="tel:+31702119191" aria-label="Bel 070 211 9191">
-                    <Phone className="h-4 w-4" />
-                    <span className="sr-only">Bel 070 211 9191</span>
+                <Button variant="accent" size="sm" asChild className="rounded-full px-4">
+                  <a href="tel:+31702119191">
+                    <Phone className="h-3.5 w-3.5 mr-1.5" />
+                    070 211 9191
                   </a>
                 </Button>
-                <Button variant="accent" size="icon" asChild className="rounded-full">
+                <Button variant="accent" size="sm" asChild className="rounded-full px-4">
                   <a
                     href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="WhatsApp"
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    <span className="sr-only">WhatsApp</span>
+                    <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
+                    Whatsapp Ons
                   </a>
                 </Button>
               </div>
