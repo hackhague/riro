@@ -1,3 +1,4 @@
+import type React from "react";
 import { Link } from "react-router-dom";
 import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -101,84 +102,107 @@ export default function Home() {
         keywords="computerhulp den haag, cyberhulp, IT support, computer reparatie, virus verwijderen, wifi verbeteren"
         canonical="https://www.instantit.nl/"
       />
-      {/* Hero Section */}
-      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="InstantIT Computerhulp Den Haag"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/90 to-background/70"></div>
+{/* Hero Section - drop-in vervanging */}
+<section className="relative flex items-center overflow-hidden">
+  {/* Background Image + donkere overlay */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src={heroImage}
+      alt="InstantIT monteur helpt klant met computerhulp aan huis in Den Haag"
+      className="w-full h-full object-cover object-right"
+      loading="eager"
+      {...({ fetchpriority: "high" } as React.HTMLAttributes<HTMLImageElement>)}
+    />
+    {/* Donkere overlay: sterker contrast links zodat tekst altijd leesbaar blijft */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+      }}
+      aria-hidden="true"
+    />
+  </div>
+
+  {/* Content (ongewijzigde componenten: Buttons/Link etc blijven werken) */}
+  <div className="container mx-auto px-4 relative z-10">
+    <div className="max-w-[680px] py-10 md:py-16">
+      <h1 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl leading-tight text-white mb-2 md:mb-3">
+        Computerhulp & Cyberhulp dichtbij — snel, veilig en professioneel
+      </h1>
+
+      <h2 className="font-heading font-semibold text-sm md:text-base lg:text-lg leading-snug text-white/95 mb-4 md:mb-5">
+        24/7 inzetbaar in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en Zuid-Holland
+      </h2>
+
+      {/* Compacte bullets ipv lange paragraaf */}
+      <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
+        <li className="flex items-start gap-2">
+          <span className="mt-0.5 text-accent">•</span>
+          <span><strong>InstantIT</strong> — lokale IT-professional voor computerstoringen, cyberondersteuning en WiFi-verbetering.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="mt-0.5 text-accent">•</span>
+          <span><strong>Reactie</strong> 60 minuten— <strong>meestal binnen 24 uur op locatie</strong>.</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <span className="mt-0.5 text-accent">•</span>
+          <span>Vaste tarieven — geen verrassingen. Altijd gratis nazorg.</span>
+        </li>
+      </ul>
+
+      {/* CTA Buttons — gebruik jouw Button component zoals eerder */}
+      <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
+        <Button variant="outline" size="default" asChild className="bg-white text-black border border-white shadow-none hover:shadow-none h-10 md:h-10 font-normal">
+          <a
+            href="https://wa.me/31702119191?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle className="h-4 w-4" />
+            Chat via WhatsApp
+          </a>
+        </Button>
+
+        <Button variant="accent" size="default" asChild>
+          <a href="tel:+31702119191">
+            <Phone className="h-4 w-4" />
+            Computerstoring? Bel 070 211 9191
+          </a>
+        </Button>
+
+        <Button variant="outline" size="default" asChild className="sm:ml-2">
+          <Link to="/ik-ben-gehackt">
+            <Zap className="h-4 w-4" />
+            Spoedhulp 24/7
+          </Link>
+        </Button>
+      </div>
+
+      {/* Trust badges (compact) */}
+      <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
+        <div className="flex items-center gap-1.5">
+          <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+          <span className="text-white">Lokale hulp binnen 24u</span>
         </div>
-
-        {/* Content */}
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl">
-            <h1 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-foreground mb-3 md:mb-4">
-              Computerhulp & Cyberhulp in Den Haag
-            </h1>
-            <p className="text-base md:text-lg text-foreground/80 mb-6 md:mb-8">
-              Jouw Digitale Eerste Hulp – binnen 10–30 min reactie, meestal binnen 24 uur op locatie. Vaste prijzen,
-              gratis nazorg.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
-              <Button variant="whatsapp" size="default" asChild>
-                <a
-                  href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp ons nu
-                </a>
-              </Button>
-              <Button variant="accent" size="default" asChild>
-                <a href="tel:+31702119191">
-                  <Phone className="h-4 w-4" />
-                  Bel 070 211 9191
-                </a>
-              </Button>
-            </div>
-
-            <Button variant="outline" size="default" asChild className="mb-6">
-              <Link to="/ik-ben-gehackt">
-                <Zap className="h-4 w-4" />
-                Spoedhulp 24/7
-              </Link>
-            </Button>
-
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                <span>Lokale hulp binnen 24u</span>
+        <div className="flex items-center gap-1.5">
+          <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+          <span className="text-white">24/7 spoedlijn</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+          <span className="text-white">Vaste tarieven</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                <span>24/7 spoedlijn</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
-                <span>Vaste tarieven</span>
-              </div>
-            </div>
-
-            {/* Rating */}
-            <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2 ml-1 w-full text-white">
                 <Star className="h-4 w-4 fill-accent text-accent" />
-                <span className="font-semibold text-foreground/80">4.9/5</span>
+                <span className="font-semibold">4.9/5</span>
+                <span className="ml-1">• 1.100+ opdrachten</span>
               </div>
-              <span className="text-foreground/70">1.100+ opdrachten</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* USP Cards */}
       <section className="py-12 md:py-16">
