@@ -15,7 +15,6 @@ export function FloatingCallButton() {
       >
         <a href="tel:+31702119191" aria-label="Computerstoring? Bel 070 211 9191">
           <Phone className="mr-2" />
-          <span className="inline md:hidden">Bel nu</span>
           <span className="hidden md:inline">Computerstoring? Bel 070 211 9191</span>
         </a>
       </Button>
