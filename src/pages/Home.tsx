@@ -353,7 +353,7 @@ export default function Home() {
       </section>
 
       {/* Reviews/Cases */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat klanten zeggen</h2>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
