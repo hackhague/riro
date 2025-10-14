@@ -36,7 +36,7 @@ export default function Home() {
     {
       icon: Clock,
       title: "Razendsnel & lokaal",
-      description: "Op afstand in 10–30 min, meestal binnen 2 uur aan de deur (Haaglanden).",
+      description: "Hulp op afstand in 10–30 min, meestal binnen 24 uur op locatie. Geen voorrijkosten in (Haaglanden)",
     },
     {
       icon: Shield,
