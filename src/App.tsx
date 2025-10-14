@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import FloatingCallButton from "@/components/FloatingCallButton";
 import Home from "./pages/Home";
 import Diensten from "./pages/Diensten";
 import Computerhulp from "./pages/Computerhulp";
