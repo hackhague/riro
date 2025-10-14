@@ -67,6 +67,8 @@ const App = () => (
             <Route path="/afspraak" element={<Afspraak />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          {/** Sticky global call button */}
+          <StickyCallButton />
           <Footer />
         </BrowserRouter>
       </TooltipProvider>
