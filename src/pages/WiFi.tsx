@@ -1,6 +1,7 @@
 import { MessageCircle, Phone, Wifi, CheckCircle2, Signal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PartnersSection from "@/components/PartnersSection";
 import serviceImage from "@/assets/service-wifi.jpg";
 
 export default function WiFiPage() {
@@ -188,6 +189,8 @@ export default function WiFiPage() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
