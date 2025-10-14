@@ -133,7 +133,7 @@ export default function Home() {
       </h1>
 
       <h2 className="font-heading font-semibold text-sm md:text-base lg:text-lg leading-snug text-white/95 mb-4 md:mb-5">
-        24/7 inzetbaar in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en Zuid-Holland
+        24/7 hulp in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en omgeving.
       </h2>
 
       {/* Compacte bullets ipv lange paragraaf */}
