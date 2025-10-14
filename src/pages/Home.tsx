@@ -53,7 +53,7 @@ export default function Home() {
   const pricing = [
     { name: "Hulp op afstand", price: "€39 / 30 min" },
     { name: "Aan huis", price: "€65 / uur", cap: "Geen voorrijkosten Haaglanden" },
-    { name: "Hacklijn remote", price: "€79 / 45 min" },
+    { name: "Hacklijn op afstand", price: "99 / 60 min" },
     { name: "Spoed op locatie", price: "Neem contact op", },
   ];
 
