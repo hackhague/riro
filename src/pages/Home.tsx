@@ -18,7 +18,7 @@ export default function Home() {
     },
     {
       title: "Ik ben gehackt",
-      description: "Remote triage binnen 15 min; on-site bij spoed. Containment & schoonmaak.",
+      description: "We kijken direct met je mee; bij spoed komen we langs. Veilig herstel en opschonen.",
       image: serviceHack,
       link: "/ik-ben-gehackt",
     },
@@ -34,7 +34,7 @@ export default function Home() {
     {
       icon: Clock,
       title: "Razendsnel & lokaal",
-      description: "Remote in 10–30 min, meestal binnen 2 uur aan de deur (Haaglanden).",
+      description: "Op afstand in 10–30 min, meestal binnen 2 uur aan de deur (Haaglanden).",
     },
     {
       icon: Shield,
@@ -57,8 +57,8 @@ export default function Home() {
 
   const steps = [
     { number: "1", text: "Stuur een WhatsApp of bel" },
-    { number: "2", text: "Gratis korte triage" },
-    { number: "3", text: "Remote fix of op locatie binnen 24u" },
+    { number: "2", text: "Gratis korte intake" },
+    { number: "3", text: "Op afstand oplossen of aan huis binnen 24u" },
     { number: "4", text: "Nazorg binnen 7 dagen" },
   ];
 
@@ -195,6 +195,14 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="outline" asChild>
+              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2"/>WhatsApp</a>
+            </Button>
+            <Button variant="accent" asChild>
+              <a href="tel:+31702119191"><Phone className="mr-2"/>Bel nu</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -225,6 +233,14 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+        <div className="mt-8 flex justify-center gap-3">
+          <Button variant="outline" asChild>
+            <a href="/afspraak">Plan een afspraak</a>
+          </Button>
+          <Button variant="accent" asChild>
+            <a href="tel:+31702119191"><Phone className="mr-2"/>Bel nu</a>
+          </Button>
         </div>
       </section>
 
@@ -265,6 +281,14 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="mt-8 flex justify-center gap-3">
+          <Button variant="outline" asChild>
+            <a href="/afspraak">Plan een afspraak</a>
+          </Button>
+          <Button variant="accent" asChild>
+            <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2"/>WhatsApp</a>
+          </Button>
         </div>
       </section>
 
