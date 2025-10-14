@@ -136,7 +136,7 @@ export default function Home() {
             {/* Compacte bullets ipv lange paragraaf */}
             <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
               <li className="flex items-start gap-2">
-                <span className="mt-0.5 text-accent">•</span>
+                <span className="mt-0.5 text-accent">���</span>
                 <span><strong>InstantIT</strong> — lokale technici voor computerstoringen, malwareherstel en WiFi-verbetering.</span>
               </li>
               <li className="flex items-start gap-2">
@@ -178,7 +178,7 @@ export default function Home() {
             </div>
 
             {/* Trust badges (compact) */}
-            <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-foreground/70">
+            <div className="flex flex-wrap gap-3 items-center text-xs md:text-sm text-white/85">
               <div className="flex items-center gap-1.5">
                 <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                 <span>Lokale hulp binnen 24u</span>
