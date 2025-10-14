@@ -17,7 +17,6 @@ import WiFi from "./pages/WiFi";
 import CyberAPK from "./pages/CyberAPK";
 import Tarieven from "./pages/Tarieven";
 import Werkgebied from "./pages/Werkgebied";
-import ComputerhulpDenHaag from "./pages/ComputerhulpDenHaag";
 import ComputerhulpDelft from "./pages/ComputerhulpDelft";
 import ComputerhulpZoetermeer from "./pages/ComputerhulpZoetermeer";
 import ComputerhulpRijswijk from "./pages/ComputerhulpRijswijk";
@@ -52,7 +51,8 @@ const App = () => (
             <Route path="/hulp-op-afstand" element={<HulpOpAfstand />} />
             <Route path="/tarieven" element={<Tarieven />} />
             <Route path="/werkgebied" element={<Werkgebied />} />
-            <Route path="/computerhulp-den-haag" element={<ComputerhulpDenHaag />} />
+            <Route path="/computerhulp-den-haag" element={<Computerhulp />} />
+            <Route path="/computerhulp-denhaag" element={<Computerhulp />} />
             <Route path="/computerhulp-delft" element={<ComputerhulpDelft />} />
             <Route path="/computerhulp-zoetermeer" element={<ComputerhulpZoetermeer />} />
             <Route path="/computerhulp-rijswijk" element={<ComputerhulpRijswijk />} />
