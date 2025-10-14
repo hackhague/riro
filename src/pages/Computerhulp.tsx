@@ -26,7 +26,7 @@ export default function Computerhulp() {
   const faqs = [
     {
       q: "Hoe snel kunnen jullie helpen?",
-      a: "Remote meestal binnen 10–30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
+      a: "Remote meestal binnen 10��30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
@@ -98,17 +98,26 @@ export default function Computerhulp() {
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Hoe we werken</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto overflow-visible">
             {steps.map((step, index) => (
-              <Card key={index}>
-                <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-primary-foreground">{index + 1}</span>
-                  </div>
-                  <h3 className="font-heading font-semibold text-lg mb-2">{step.title}</h3>
-                  <p className="text-sm text-foreground/70">{step.desc}</p>
-                </CardContent>
-              </Card>
+              <div
+                key={index}
+                className={`relative ${
+                  index < steps.length - 1
+                    ? "md:after:content-[''] md:after:absolute md:after:top-8 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[26px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full"
+                    : ""
+                }`}
+              >
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-2xl font-bold text-primary-foreground">{index + 1}</span>
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg mb-2">{step.title}</h3>
+                    <p className="text-sm text-foreground/70">{step.desc}</p>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
