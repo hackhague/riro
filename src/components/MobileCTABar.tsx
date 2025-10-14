@@ -16,7 +16,7 @@ export const MobileCTABar = () => {
             <span>WhatsApp</span>
           </a>
         </Button>
-        <Button variant="accent" size="sm" asChild className="flex-col h-14 text-xs">
+        <Button variant="accent" size="sm" asChild className="flex-col h-16 text-xs">
           <a href="tel:+31702119191">
             <Phone className="h-5 w-5 mb-1" />
             <span>Bel nu</span>
