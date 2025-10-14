@@ -136,7 +136,7 @@ export default function Home() {
             {/* Compacte bullets ipv lange paragraaf */}
             <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
               <li className="flex items-start gap-2">
-                <span className="mt-0.5 text-accent">���</span>
+                <span className="mt-0.5 text-accent">•</span>
                 <span><strong>InstantIT</strong> — lokale technici voor computerstoringen, malwareherstel en WiFi-verbetering.</span>
               </li>
               <li className="flex items-start gap-2">
@@ -194,18 +194,18 @@ export default function Home() {
 
               <div className="flex items-center gap-2 ml-1">
                 <Star className="h-4 w-4 fill-accent text-accent" />
-                <span className="font-semibold text-foreground/80">4.9/5</span>
-                <span className="text-foreground/70 ml-1">• 1.100+ opdrachten</span>
+                <span className="font-semibold text-white/90">4.9/5</span>
+                <span className="text-white/80 ml-1">• 1.100+ opdrachten</span>
               </div>
             </div>
 
             {/* Rating */}
-            <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm">
+            <div className="flex flex-wrap gap-2 items-center mt-3 text-xs md:text-sm text-white/85">
               <div className="flex items-center gap-1.5">
                 <Star className="h-4 w-4 fill-accent text-accent" />
-                <span className="font-semibold text-foreground/80">4.9/5</span>
+                <span className="font-semibold text-white/90">4.9/5</span>
               </div>
-              <span className="text-foreground/70">1.100+ opdrachten</span>
+              <span className="text-white/80">1.100+ opdrachten</span>
             </div>
           </div>
         </div>
