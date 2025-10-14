@@ -84,7 +84,7 @@ export default function Home() {
   ];
 
   const serviceAreas = [
-    { name: "Den Haag", link: "/computerhulp" },
+    { name: "Den Haag", link: "/computerhulp-denhaag" },
     { name: "Delft", link: "/computerhulp-delft" },
     { name: "Zoetermeer", link: "/computerhulp-zoetermeer" },
     { name: "Rijswijk", link: "/computerhulp-rijswijk" },
