@@ -25,7 +25,7 @@ export const Navigation = () => {
 
   const menuSections = {
     particulier: [
-      { label: "Computerhulp", path: "/computerhulp", description: "Snelle hulp bij computerproblemen" },
+      { label: "Computerhulp", path: "/computerhulp-denhaag", description: "Snelle hulp bij computerproblemen" },
       { label: "Hulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
       { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
