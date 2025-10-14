@@ -1,4 +1,3 @@
-import { Phone, MessageCircle, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle, Zap } from "lucide-react";
 
