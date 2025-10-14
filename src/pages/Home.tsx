@@ -3,6 +3,7 @@ import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SEO } from "@/components/SEO";
+import AppointmentWizard from "@/components/AppointmentWizard";
 import heroImage from "@/assets/hero-technician.jpg";
 import serviceComputer from "@/assets/service-computer.jpg";
 import serviceHack from "@/assets/service-hack.jpg";
