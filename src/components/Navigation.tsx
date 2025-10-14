@@ -84,7 +84,7 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
-                      <div className="hidden lg:flex items-center justify-center text-muted-foreground">|</div>
+                      <div aria-hidden className="hidden lg:block w-px bg-border self-stretch mx-2" />
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Spoedhulp</h3>
                         <ul className="space-y-2">
@@ -103,7 +103,7 @@ export const Navigation = () => {
                           ))}
                         </ul>
                       </div>
-                      <div className="hidden lg:flex items-center justify-center text-muted-foreground">|</div>
+                      <div aria-hidden className="hidden lg:block w-px bg-border self-stretch mx-2" />
                       <div>
                         <h3 className="font-semibold text-xs uppercase text-muted-foreground mb-2">Zakelijk & Expat</h3>
                         <ul className="space-y-2">
