@@ -437,7 +437,6 @@ export default function Home() {
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Een remote QuickFix begint bij €39 voor 30 minuten (incl. btw). Je ziet altijd de prijs voordat we starten.</p>
-                      <p className="text-foreground/70">Waarom: prijs-transparantie verlaagt drempels.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/tarieven">Bekijk prijzen</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote hulp</a>
