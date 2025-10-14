@@ -22,7 +22,7 @@ export const MobileCTABar = () => {
             <span>Bel nu</span>
           </a>
         </Button>
-        <Button variant="outline" size="sm" asChild className="flex-col h-14 text-xs">
+        <Button variant="outline" size="sm" asChild className="flex-col h-16 text-xs">
           <a href="/ik-ben-gehackt">
             <Zap className="h-5 w-5 mb-1" />
             <span>Gehackt</span>
