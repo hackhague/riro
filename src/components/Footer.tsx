@@ -25,7 +25,7 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold text-lg mb-4">Diensten</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/computerhulp" className="text-background/80 hover:text-background transition-colors">
+                <Link to="/computerhulp-denhaag" className="text-background/80 hover:text-background transition-colors">
                   Computerhulp
                 </Link>
               </li>
