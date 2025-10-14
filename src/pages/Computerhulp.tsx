@@ -1,6 +1,7 @@
 import { MessageCircle, Phone, CheckCircle2, Clock, Euro } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PartnersSection from "@/components/PartnersSection";
 import serviceImage from "@/assets/service-computer.jpg";
 
 export default function Computerhulp() {
@@ -199,6 +200,8 @@ export default function Computerhulp() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
