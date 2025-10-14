@@ -54,6 +54,14 @@ export default function Tarieven() {
               </Card>
             ))}
           </div>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="outline" asChild>
+              <a href="/afspraak">Plan een afspraak</a>
+            </Button>
+            <Button variant="accent" asChild>
+              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp ons</a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -74,6 +82,14 @@ export default function Tarieven() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="outline" asChild>
+              <a href="/afspraak">Plan een afspraak</a>
+            </Button>
+            <Button variant="accent" asChild>
+              <a href="tel:+31702119191">Bel nu</a>
+            </Button>
           </div>
         </div>
       </section>
