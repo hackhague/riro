@@ -230,7 +230,7 @@ export default function Home() {
       </section>
 
       {/* Pricing Teaser */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Prijzen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
