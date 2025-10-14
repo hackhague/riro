@@ -422,7 +422,7 @@ export default function Home() {
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>We reageren meestal binnen 10–30 minuten via remote. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
-                      <p className="text-foreground/70">Waarom: directe geruststelling bij spoedvragen.</p>
+                
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
