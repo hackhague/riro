@@ -36,6 +36,21 @@ import Privacyverklaring from "./pages/Privacyverklaring";
 
 const queryClient = new QueryClient();
 
+const PartnersSlot = () => {
+  const { pathname } = useLocation();
+  const allowed = [
+    "/",
+    "/computerhulp",
+    "/computerhulp-denhaag",
+    "/computerhulp-den-haag",
+    "/hulp-op-afstand",
+    "/wifi",
+    "/cyber-apk",
+    "/tarieven",
+  ];
+  return allowed.includes(pathname) ? <PartnersSection /> : null;
+};
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
