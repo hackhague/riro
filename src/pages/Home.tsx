@@ -110,7 +110,7 @@ export default function Home() {
       alt="InstantIT monteur helpt klant met computerhulp aan huis in Den Haag"
       className="w-full h-full object-cover object-right"
       loading="eager"
-      fetchPriority="high"
+      {...({ fetchpriority: "high" } as React.HTMLAttributes<HTMLImageElement>)}
     />
     {/* Donkere overlay: sterker contrast links zodat tekst altijd leesbaar blijft */}
     <div
