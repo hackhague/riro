@@ -176,6 +176,15 @@ export const Navigation = () => {
         {isOpen && (
           <div className="lg:hidden py-3 border-t border-border max-h-[80vh] overflow-y-auto">
             <div className="space-y-3">
+              <div className="px-2">
+                <Link
+                  to="/diensten"
+                  onClick={() => setIsOpen(false)}
+                  className="block font-semibold text-xs uppercase text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Onze diensten
+                </Link>
+              </div>
               <div>
                 <button
                   onClick={() => toggleSection("particulier")}
@@ -273,21 +282,22 @@ export const Navigation = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-1.5 pt-1">
-                <Button variant="accent" size="sm" asChild className="w-full justify-start h-8">
-                  <a href="tel:+31702119191">
-                    <Phone className="h-3.5 w-3.5" />
-                    070 211 9191
+              <div className="flex items-center justify-center gap-3 pt-2">
+                <Button variant="accent" size="icon" asChild className="rounded-full">
+                  <a href="tel:+31702119191" aria-label="Bel 070 211 9191">
+                    <Phone className="h-4 w-4" />
+                    <span className="sr-only">Bel 070 211 9191</span>
                   </a>
                 </Button>
-                <Button variant="accent" size="sm" asChild className="w-full justify-start h-8">
+                <Button variant="accent" size="icon" asChild className="rounded-full">
                   <a
                     href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="WhatsApp"
                   >
-                    <MessageCircle className="h-3.5 w-3.5" />
-                    WhatsApp
+                    <MessageCircle className="h-4 w-4" />
+                    <span className="sr-only">WhatsApp</span>
                   </a>
                 </Button>
               </div>
