@@ -12,9 +12,9 @@ import { toast } from "@/hooks/use-toast";
 
 // Supported services for booking
 const SERVICES = [
-  { id: "remote_quickfix", label: "Hulp op afstand" },
+  { id: "remote_quickfix", label: "Computerhulp op afstand" },
   { id: "onsite_standard", label: "Computerhulp aan huis" },
-  { id: "onsite_standard", label: "Computerhulp aan kantoor" },
+  { id: "onsite_standard", label: "IT-support aan kantoor" },
   { id: "wifi_network", label: "WiFi & Netwerk optimalisatie" },
   { id: "hack_support", label: "Ik ben gehackt" },
 ];
