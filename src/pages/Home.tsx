@@ -157,7 +157,9 @@ export default function Home() {
         24/7 computerhulp in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en omgeving.
       </h2>
 
-      {/* Compacte bullets ipv lange paragraaf */}
+{/* Desktop */}
+<div className="hidden md:block">
+    {/* Compacte bullets ipv lange paragraaf */}
       <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
@@ -172,6 +174,21 @@ export default function Home() {
           <span>Vaste tarieven — geen verrassingen. Altijd gratis nazorg.</span>
         </li>
       </ul>
+</div>
+
+{/* Mobiel: accordion */}
+<div className="md:hidden">
+  <details className="bg-black/60 rounded-lg p-3 text-white/90">
+    <summary className="font-semibold">Waarom kiezen voor InstantIT?</summary>
+    <ul className="mt-2 space-y-2 text-sm">
+      <li>InstantIT — lokale IT-professional voor computerstoringen, hackondersteuning en WiFi-verbetering.</li>
+      <li><strong>Binnen</strong> 10–30 minuten reactie — meestal dezelfde dag op locatie.</li>
+      <li>Vaste tarieven — geen verrassingen. Altijd gratis nazorg.</li>
+    </ul>
+  </details>
+</div>
+
+    
 
       {/* CTA Buttons — gebruik jouw Button component zoals eerder */}
       <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
