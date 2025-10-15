@@ -274,7 +274,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
-           {services.map((service, index) => (
+ {services.map((service, index) => (
   <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
     <div className="aspect-video relative overflow-hidden">
       <img
@@ -300,6 +300,7 @@ export default function Home() {
     </CardContent>
   </Card>
 ))}
+
           </div>
         </div>
         <div className="mt-8 flex justify-center gap-3">
