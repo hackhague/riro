@@ -274,26 +274,33 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-xl mb-2">{service.title}</h3>
-                  <p className="text-foreground/70 mb-4">{service.description}</p>
-                  <Button variant="ghost" asChild className="group/btn">
-                    <Link to={service.link}>
-                      Lees verder
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+           {services.map((service, index) => (
+  <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
+    <div className="aspect-video relative overflow-hidden">
+      <img
+        src={service.image}
+        alt={service.title}
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent pointer-events-none transition-opacity duration-300 group-hover:opacity-80"
+      />
+    </div>
+
+    <CardContent className="p-6">
+      <h3 className="font-heading font-semibold text-xl mb-2">{service.title}</h3>
+      <p className="text-foreground/70 mb-4">{service.description}</p>
+      <Button variant="ghost" asChild className="group/btn">
+        <Link to={service.link}>
+          Lees verder
+          <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+        </Link>
+      </Button>
+    </CardContent>
+  </Card>
+))}
+
             ))}
           </div>
         </div>
