@@ -460,7 +460,7 @@ export default function Home() {
       <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
 <p className="text-foreground/80">
   Hier beantwoorden we de meestgestelde vragen over <strong>computerhulp</strong>, <strong>virusverwijdering</strong>, 
-  <strong>WiFi-problemen</strong> en <strong>cyberhulp</strong>. 
+  <strong> WiFi-problemen</strong> en <strong>cyberhulp</strong>. 
   Zo weet je precies wat je kunt verwachten van onze service. 
   Staat jouw vraag er niet tussen? Bel ons op{" "}
   <a className="font-semibold underline" href="tel:+31702119191">070 211 9191</a> of stuur een bericht via{" "}
