@@ -127,7 +127,7 @@ export default function Home() {
 
   {/* Content (ongewijzigde componenten: Buttons/Link etc blijven werken) */}
   <div className="container mx-auto px-4 relative z-10">
-    <div className="max-w-[680px] py-10 md:py-16">
+    <div className="max-w-[600px] py-10 md:py-16">
       <h1 className="font-heading font-bold text-xl md:text-2xl lg:text-3xl leading-tight text-white mb-2 md:mb-3">
       Computerproblemen of gehackt? Wij lossen het snel voor je op
 
