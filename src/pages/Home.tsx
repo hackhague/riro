@@ -284,7 +284,7 @@ export default function Home() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent pointer-events-none transition-opacity duration-300 group-hover:opacity-80"
+        className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-transparent pointer-events-none transition-opacity duration-300 group-hover:opacity-80"
       />
     </div>
 
