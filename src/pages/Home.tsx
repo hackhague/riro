@@ -15,25 +15,29 @@ export default function Home() {
   const services = [
     {
       title: "Computerhulp aan huis",
-      description: "Trage of vastlopende pc? We helpen op afstand of komen langs.",
+      description:
+        "Problemen met een desktop of laptop? Onze monteur komt bij u thuis of op kantoor, repareert hardware & software en legt alles duidelijk uit. Vaste tarieven, gratis nazorg.",
       image: serviceComputer,
       link: "/computerhulp",
     },
     {
       title: "Computerhulp op afstand",
-      description: "Trage of vastlopende pc? We helpen op afstand of komen langs.",
+      description:
+        "Direct hulp via beveiligde schermdeling: snel updates, virusverwijdering en performance-tuning. Reactie meestal binnen 10–30 minuten — veilig en efficiënt.",
       image: serviceComputer,
-      link: "/computerhulp",
+      link: "/computerhulp-op-afstand",
     },
     {
-      title: "Ik ben gehackt",
-      description: "We kijken direct met je mee; bij spoed komen we langs. Veilig herstel en opschonen.",
+      title: "Gehackt? Herstel & beveiliging",
+      description:
+        "Gehackt of ransomware-verdacht? We stoppen de aanval, herstellen toegang, verwijderen malware en zetten extra bescherming (bijv. 2FA) in. Rapport voor verzekering mogelijk.",
       image: serviceHack,
       link: "/ik-ben-gehackt",
     },
     {
-      title: "WiFi & Netwerk",
-      description: "Betere dekking & stabiel internet thuis of op kantoor.",
+      title: "WiFi & Netwerk optimalisatie",
+      description:
+        "Slechte wifi of dode zones? We ontwerpen en installeren mesh-oplossingen, optimaliseren je routerinstellingen en verbeteren netwerkbeveiliging voor thuis of kantoor.",
       image: serviceWifi,
       link: "/wifi",
     },
