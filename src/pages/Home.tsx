@@ -37,7 +37,7 @@ export default function Home() {
     {
       title: "WiFi & Netwerk optimalisatie",
       description:
-        "Slechte wifi of dode zones? We ontwerpen en installeren mesh-oplossingen, optimaliseren je routerinstellingen en verbeteren netwerkbeveiliging voor thuis of kantoor.",
+        "Slechte wifi of dode zones? We optimaliseren je routerinstellingen en verbeteren netwerkbeveiliging voor thuis of kantoor.",
       image: serviceWifi,
       link: "/wifi",
     },
