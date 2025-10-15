@@ -23,7 +23,7 @@ export default function Home() {
     {
       title: "Computerhulp op afstand",
       description:
-        "Direct hulp via beveiligde schermdeling: snel updates, virusverwijdering en performance-tuning. Reactie meestal binnen 10–30 minuten — veilig en efficiënt.",
+        "Direct hulp via beveiligde schermdeling: snel computerhulp, updates, virusverwijdering en computer sneller maken.",
       image: serviceComputer,
       link: "/computerhulp-op-afstand",
     },
