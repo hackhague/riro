@@ -272,6 +272,10 @@ export default function Home() {
       {/* Services */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
+        <Card className="relative overflow-hidden group border-2 border-transparent hover:border-[#F97316] transition-colors">
+  <div className="absolute top-4 left-4 z-10">
+    <span className="inline-block bg-[#F97316] w-2 h-2 rounded-full" aria-hidden />
+  </div>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
  {services.map((service, index) => (
