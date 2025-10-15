@@ -68,7 +68,7 @@ export default function Home() {
   ];
 
   const pricing = [
-    { name: "Hulp op afstand", price: "€39 / 30 min" },
+    { name: "Computerhulp op afstand", price: "€39 / 30 min" },
     { name: "Aan huis", price: "€65 / uur", cap: "Geen voorrijkosten in Haaglanden (min. 1 uur)" },
     { name: "Hacklijn op afstand", price: "€50 / 30 min" },
     { name: "Spoed op locatie", price: "Neem contact op", },
