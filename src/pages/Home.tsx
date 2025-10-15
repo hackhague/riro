@@ -14,7 +14,13 @@ import serviceWifi from "@/assets/service-wifi.jpg";
 export default function Home() {
   const services = [
     {
-      title: "Computerhulp",
+      title: "Computerhulp aan huis",
+      description: "Trage of vastlopende pc? We helpen op afstand of komen langs.",
+      image: serviceComputer,
+      link: "/computerhulp",
+    },
+    {
+      title: "Computerhulp op afstand",
       description: "Trage of vastlopende pc? We helpen op afstand of komen langs.",
       image: serviceComputer,
       link: "/computerhulp",
