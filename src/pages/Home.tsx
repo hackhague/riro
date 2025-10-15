@@ -47,12 +47,12 @@ export default function Home() {
     {
       icon: Zap,
       title: "Cyber-expertise",
-      description: "Herstel bij hacks, malwareverwijdering en beveiligingsadvies (Cyber APK).",
+      description: "Herstel bij hacks, accounntherstel en beveiligingsadvies.",
     },
     {
       icon: CheckCircle,
       title: "Transparante tarieven & nazorg",
-      description: "Vaste caps, geen verrassingen. Gratis herbeoordeling binnen 7 dagen.",
+      description: "Vaste tarieven, geen verrassingen. Gratis herbeoordeling binnen 7 dagen.",
     },
     {
       icon: Star,
