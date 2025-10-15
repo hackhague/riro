@@ -173,7 +173,7 @@ export default function Home() {
           </a>
         </Button>
 
-        <Button
+        {/*<Button
           asChild
           className="sm:ml-2 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold bg-white text-accent ring-2 ring-accent shadow-lg hover:shadow-xl hover:bg-white/95 focus-visible:ring-4"
         >
@@ -181,7 +181,7 @@ export default function Home() {
             <Zap className="h-4 w-4" />
             Spoedhulp 24/7
           </Link>
-        </Button>
+        </Button>*/}
       </div>
 
       {/* Trust badges (compact) */}
