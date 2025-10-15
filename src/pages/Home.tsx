@@ -224,7 +224,7 @@ export default function Home() {
       {/* USP Cards */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Waarom kiezen voor ons?</h2>
+         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Waarom kiezen voor InstantIT?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {usps.map((usp, index) => (
               <Card key={index} className="border-2 hover:border-primary transition-colors">
