@@ -30,7 +30,7 @@ export default function Home() {
     {
       title: "Gehackt? Herstel & beveiliging",
       description:
-        "Gehackt of ransomware-verdacht? We stoppen de aanval, herstellen toegang, verwijderen malware en zetten extra bescherming (bijv. 2FA) in. Rapport voor verzekering mogelijk.",
+        "Gehackt of ransomware-verdacht? We stoppen de aanval, herstellen toegang, verwijderen malware en zetten extra bescherming (bijv. 2FA) in.",
       image: serviceHack,
       link: "/ik-ben-gehackt",
     },
