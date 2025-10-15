@@ -300,8 +300,6 @@ export default function Home() {
     </CardContent>
   </Card>
 ))}
-
-            ))}
           </div>
         </div>
         <div className="mt-8 flex justify-center gap-3">
