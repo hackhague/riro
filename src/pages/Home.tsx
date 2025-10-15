@@ -141,7 +141,7 @@ export default function Home() {
       <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
-          <span><strong>InstantIT</strong> — lokale IT-professional voor computerstoringen, cyberondersteuning en WiFi-verbetering.</span>
+          <span><strong>InstantIT</strong> — lokale IT-professional voor computerstoringen, hackondersteuning en WiFi-verbetering.</span>
         </li>
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
