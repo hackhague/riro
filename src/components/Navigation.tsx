@@ -36,7 +36,8 @@ export const Navigation = () => {
       { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
     ],
     zakelijkExpat: [
-      { label: "Zakelijk IT-support", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
+      { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
+      { label: "Zakelijk IT-support aan huis", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
       { label: "Expat support", path: "/expat", description: "IT-hulp in het Engels" },
     ],
   };
