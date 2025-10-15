@@ -36,18 +36,28 @@ export default function Home() {
   const usps = [
     {
       icon: Clock,
-      title: "Razendsnel & lokaal",
-      description: "Hulp op afstand in 10–30 min, meestal binnen 24 uur op locatie. Geen voorrijkosten in (Haaglanden)",
+      title: "Snel & lokaal",
+      description: "Reactie binnen 10–30 min; op locatie meestal binnen 24 uur in Haaglanden.",
     },
     {
       icon: Shield,
+      title: "Betrouwbare specialisten",
+      description: "Gescreend en minimaal 5+ jaar ervaring van onze opgeleide IT-Specialisten.",
+    },
+    {
+      icon: Zap,
       title: "Cyber-expertise",
-      description: "Gehackt? We herstellen toegang, verwijderen malware en zetten uw gegevens veilig.",
+      description: "Herstel bij hacks, malwareverwijdering en beveiligingsadvies (Cyber APK).",
     },
     {
       icon: CheckCircle,
-      title: "Transparant & nazorg",
-      description: "Vaste tarieven. Niet opgelost? Gratis herbeoordeling binnen 7 dagen.",
+      title: "Transparante tarieven & nazorg",
+      description: "Vaste caps, geen verrassingen. Gratis herbeoordeling binnen 7 dagen.",
+    },
+    {
+      icon: Star,
+      title: "Regionaal actief",
+      description: "Direct inzetbaar in Den Haag, Delft, Zoetermeer, Rijswijk & omgeving.",
     },
   ];
 
