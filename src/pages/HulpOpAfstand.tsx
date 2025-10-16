@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import PartnersSection from "@/components/PartnersSection";
 import serviceImage from "@/assets/service-computer.jpg";
 import { MessageCircle, Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
 
@@ -28,7 +29,7 @@ export default function HulpOpAfstand() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Hulp op afstand
+                Computerhulp op afstand
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
                 Directe remote support via schermdeling. Veilig, snel en zonder voorrijkosten.
@@ -98,6 +99,8 @@ export default function HulpOpAfstand() {
           </div>
         </div>
       </section>
+
+      <PartnersSection />
 
       {/* Pricing callout */}
       <section className="py-16">

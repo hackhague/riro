@@ -25,8 +25,8 @@ export const Navigation = () => {
 
   const menuSections = {
     particulier: [
-      { label: "Computerhulp", path: "/computerhulp-denhaag", description: "Snelle hulp bij computerproblemen" },
-      { label: "Hulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
+      { label: "Computerhulp aan huis", path: "/computerhulp-denhaag", description: "Snelle hulp bij computerproblemen" },
+      { label: "Computerhulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
       { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
@@ -36,7 +36,8 @@ export const Navigation = () => {
       { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
     ],
     zakelijkExpat: [
-      { label: "Zakelijk IT-support", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
+      { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
+      { label: "Zakelijk IT-support op locatie", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
       { label: "Expat support", path: "/expat", description: "IT-hulp in het Engels" },
     ],
   };
