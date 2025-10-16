@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
 import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, ArrowRight } from "lucide-react";
@@ -159,12 +160,13 @@ export default function Home() {
 <section className="relative flex items-center overflow-hidden">
   {/* Background Image + donkere overlay */}
   <div className="absolute inset-0 z-0">
-    <img
+    <Image
       src={heroImage}
       alt="InstantIT monteur helpt klant met computerhulp aan huis in Den Haag"
-      className="w-full h-full object-cover object-right"
-      loading="eager"
-      fetchPriority="high"
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover object-right"
     />
     {/* Donkere overlay: sterker contrast links zodat tekst altijd leesbaar blijft */}
     <div
@@ -318,10 +320,13 @@ export default function Home() {
  {services.map((service, index) => (
   <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
     <div className="aspect-video relative overflow-hidden">
-      <img
+      <Image
         src={service.image}
         alt={service.title}
-        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        fill
+        loading="lazy"
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
       <div
         aria-hidden="true"
