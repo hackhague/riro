@@ -30,6 +30,29 @@ const DEFAULT_SLOTS = [
   "18:00 – 20:00",
 ];
 
+const generateApprovalToken = () => {
+  const cryptoApi =
+    typeof globalThis !== "undefined"
+      ? ((globalThis.crypto ?? (globalThis as any).msCrypto) as Crypto & {
+          randomUUID?: () => string;
+        })
+      : undefined;
+
+  if (cryptoApi) {
+    if (typeof cryptoApi.randomUUID === "function") {
+      return cryptoApi.randomUUID();
+    }
+
+    if (typeof cryptoApi.getRandomValues === "function") {
+      const bytes = new Uint8Array(16);
+      cryptoApi.getRandomValues(bytes);
+      return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+    }
+  }
+
+  return `${Date.now().toString(36)}${Date.now().toString(36)}`;
+};
+
 function getTimeSlotsForDate(date: Date) {
   // Disable same-day past ranges
   const now = new Date();
@@ -91,8 +114,10 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     if (!isStep3Valid || !isStep2Valid) return;
     setLoading(true);
     try {
-      const idFallback = (globalThis.crypto && (crypto as any).randomUUID) ? (crypto as any).randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      const approvalToken = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
+      const idFallback = (globalThis.crypto && (crypto as any).randomUUID)
+        ? (crypto as any).randomUUID()
+        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const approvalToken = generateApprovalToken();
 
       let recordId: string | number = idFallback;
 
