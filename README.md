@@ -64,6 +64,17 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/e1a130b6-3a0d-41f3-9d48-853115ae6774) and click on Share -> Publish.
 
+### Deploying to Cloudflare Pages
+
+To deploy this project on Cloudflare Pages:
+
+1. Remove any `bun.lockb` file from the repository root so the build uses Node/npm.
+2. In **Build settings**, set:
+   - **Install command**: `npm ci`
+   - **Build command**: `npx @cloudflare/next-on-pages@latest build`
+   - **Output directory**: `.vercel/output/static`
+3. Run the Pages build. It should finish quickly because `npx @cloudflare/next-on-pages@latest build` stops after creating `.vercel/output`.
+
 ## Can I connect a custom domain to my Lovable project?
 
 Yes, you can!
