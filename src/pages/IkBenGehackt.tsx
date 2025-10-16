@@ -65,9 +65,9 @@ export default function IkBenGehackt(): JSX.Element {
     "@type": "HowTo",
     "name": "Wat te doen als uw Instagram of Gmail is gehackt",
     "step": [
-      { "@type": "HowToStep", "name": "Blijf rustig", "text": "Verander niets totdat je weet wat er precies is gebeurd." },
-      { "@type": "HowToStep", "name": "Bel of app InstantIT", "text": "Stuur een screenshot en wij starten op afstand hulp." },
-      { "@type": "HowToStep", "name": "Reset wachtwoord en 2FA", "text": "Wij helpen met het terugkrijgen van het account en zetten 2FA aan." }
+      {"@type":"HowToStep","name":"Blijf rustig","text":"Verander niets totdat je weet wat er precies is gebeurd."},
+      {"@type":"HowToStep","name":"Bel of app InstantIT","text":"Stuur een screenshot en wij starten op afstand hulp."},
+      {"@type":"HowToStep","name":"Reset wachtwoord en 2FA","text":"Wij helpen met het terugkrijgen van het account en zetten 2FA aan."}
     ]
   };
 
@@ -80,12 +80,12 @@ export default function IkBenGehackt(): JSX.Element {
       "@type": "LocalBusiness",
       "name": "InstantIT",
       "telephone": "+31-70-2119191",
-      "address": { "@type": "PostalAddress", "addressLocality": "Den Haag", "addressCountry": "NL" }
+      "address": {"@type":"PostalAddress","addressLocality":"Den Haag","addressCountry":"NL"}
     },
     "areaServed": "Haaglanden",
     "offers": [
-      { "@type": "Offer", "price": "149.00", "priceCurrency": "EUR", "name": "Op afstand triage (tot 60 min)" },
-      { "@type": "Offer", "price": "199.00", "priceCurrency": "EUR", "name": "Spoed on-site (tot 2 uur)" }
+      {"@type":"Offer","price":"149.00","priceCurrency":"EUR","name":"Op afstand triage (tot 60 min)"},
+      {"@type":"Offer","price":"199.00","priceCurrency":"EUR","name":"Spoed on-site (tot 2 uur)"}
     ]
   };
 
