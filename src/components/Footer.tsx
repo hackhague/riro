@@ -1,5 +1,5 @@
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -12,7 +12,7 @@ export const Footer = () => {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F8b732d5b0cbd409588db27d023cf0b27?format=webp&width=800"
                 alt="InstantIT logo"
-                className="h-11 md:h-13 lg:h [30px] w-auto object-contain"
+                className="h-11 md:h-[52px] lg:h-[72px] w-auto object-contain"
               />
             </div>
             <p className="text-background/80 text-sm leading-relaxed">
@@ -25,32 +25,35 @@ export const Footer = () => {
             <h3 className="font-heading font-semibold text-lg mb-4">Diensten</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/computerhulp-denhaag" className="text-background/80 hover:text-background transition-colors">
+                <Link
+                  href="/computerhulp-den-haag"
+                  className="text-background/80 hover:text-background transition-colors"
+                >
                   Computerhulp
                 </Link>
               </li>
               <li>
-                <Link to="/ik-ben-gehackt" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/ik-ben-gehackt" className="text-background/80 hover:text-background transition-colors">
                   Ik ben gehackt
                 </Link>
               </li>
               <li>
-                <Link to="/wifi" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/wifi" className="text-background/80 hover:text-background transition-colors">
                   WiFi & Netwerk
                 </Link>
               </li>
               <li>
-                <Link to="/cyber-apk" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/cyber-apk" className="text-background/80 hover:text-background transition-colors">
                   Cyber APK
                 </Link>
               </li>
               <li>
-                <Link to="/zakelijk" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/zakelijk" className="text-background/80 hover:text-background transition-colors">
                   Zakelijk
                 </Link>
               </li>
               <li>
-                <Link to="/tarieven" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/tarieven" className="text-background/80 hover:text-background transition-colors">
                   Tarieven
                 </Link>
               </li>
@@ -60,26 +63,26 @@ export const Footer = () => {
           {/* Service Area */}
           <div>
             <h3 className="font-heading font-semibold text-lg mb-4">
-              <Link to="/werkgebied" className="hover:underline">Werkgebied</Link>
+              <Link href="/werkgebied" className="hover:underline">Werkgebied</Link>
             </h3>
             <ul className="space-y-2 text-sm text-background/80">
               <li>
-                <Link to="/computerhulp-den-haag" className="hover:text-background transition-colors">Den Haag</Link>
+                <Link href="/computerhulp-den-haag" className="hover:text-background transition-colors">Den Haag</Link>
               </li>
               <li>
-                <Link to="/computerhulp-delft" className="hover:text-background transition-colors">Delft</Link>
+                <Link href="/computerhulp-delft" className="hover:text-background transition-colors">Delft</Link>
               </li>
               <li>
-                <Link to="/computerhulp-zoetermeer" className="hover:text-background transition-colors">Zoetermeer</Link>
+                <Link href="/computerhulp-zoetermeer" className="hover:text-background transition-colors">Zoetermeer</Link>
               </li>
               <li>
-                <Link to="/computerhulp-rijswijk" className="hover:text-background transition-colors">Rijswijk</Link>
+                <Link href="/computerhulp-rijswijk" className="hover:text-background transition-colors">Rijswijk</Link>
               </li>
               <li>
-                <Link to="/computerhulp-voorburg" className="hover:text-background transition-colors">Voorburg</Link>
+                <Link href="/computerhulp-voorburg" className="hover:text-background transition-colors">Voorburg</Link>
               </li>
               <li>
-                <Link to="/computerhulp-leiden" className="hover:text-background transition-colors">Leiden</Link>
+                <Link href="/computerhulp-leiden" className="hover:text-background transition-colors">Leiden</Link>
               </li>
             </ul>
           </div>
@@ -128,9 +131,9 @@ export const Footer = () => {
         <div className="mt-8 text-center text-sm">
           <p className="text-background/80">KVK: 85746916 • VOG aanwezig • Bedrijfsverzekering</p>
           <div className="mt-3 flex items-center justify-center gap-4 text-background/80">
-            <Link to="/algemene-voorwaarden" className="underline underline-offset-4 hover:text-background">Algemene Voorwaarden</Link>
+            <Link href="/algemene-voorwaarden" className="underline underline-offset-4 hover:text-background">Algemene Voorwaarden</Link>
             <span className="opacity-40">•</span>
-            <Link to="/privacyverklaring" className="underline underline-offset-4 hover:text-background">Privacyverklaring</Link>
+            <Link href="/privacyverklaring" className="underline underline-offset-4 hover:text-background">Privacyverklaring</Link>
           </div>
         </div>
 
