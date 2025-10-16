@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Export van Tailwind configuratie, kleuren, spacing en typografie als baseline voor Next.js migratie.",
+  "tokens": {
+    "colors": {},
+    "spacing": {},
+    "fontFamily": {},
+    "fontSize": {},
+    "boxShadow": {},
+    "screens": {}
+  },
+  "notes": [
+    "Vul deze structuur met data uit tailwind.config.ts en eventuele custom CSS variabelen.",
+    "Voeg indien nodig extra secties toe voor radii, z-index, animaties."
+  ]
+}

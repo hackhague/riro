@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
@@ -15,9 +18,9 @@ import {
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
-  const location = useLocation();
+  const pathname = usePathname();
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? "" : section);
@@ -25,7 +28,11 @@ export const Navigation = () => {
 
   const menuSections = {
     particulier: [
-      { label: "Computerhulp aan huis", path: "/computerhulp-denhaag", description: "Snelle hulp bij computerproblemen" },
+      {
+        label: "Computerhulp aan huis",
+        path: "/computerhulp-den-haag",
+        description: "Snelle hulp bij computerproblemen",
+      },
       { label: "Computerhulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
       { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
@@ -55,7 +62,7 @@ export const Navigation = () => {
       <div className="container mx-auto px-2 md:px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <img src={logo} alt="InstantIT logo" className="h-14 md:h-16 lg:h-[72px] w-auto object-contain" />
           </Link>
 
@@ -74,7 +81,7 @@ export const Navigation = () => {
                             <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
-                                  to={item.path}
+                                  href={item.path}
                                   className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
@@ -93,7 +100,7 @@ export const Navigation = () => {
                             <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
-                                  to={item.path}
+                                  href={item.path}
                                   className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
@@ -112,7 +119,7 @@ export const Navigation = () => {
                             <li key={`${item.path}-${item.label}`}>
                               <NavigationMenuLink asChild>
                                 <Link
-                                  to={item.path}
+                                  href={item.path}
                                   className="block text-base hover:text-primary transition-colors"
                                 >
                                   <div className="font-medium">{item.label}</div>
@@ -129,11 +136,14 @@ export const Navigation = () => {
                 
                 {topNavItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
-                    <Link to={item.path}>
-                      <NavigationMenuLink className="text-base px-4 py-2 hover:text-primary transition-colors">
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.path}
+                        className="text-base px-4 py-2 hover:text-primary transition-colors"
+                      >
                         {item.label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
@@ -176,7 +186,7 @@ export const Navigation = () => {
             <div className="space-y-3">
               <div>
                 <Link
-                  to="/diensten"
+                  href="/diensten"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-between w-full px-2 py-2 text-base font-bold text-foreground uppercase tracking-wide"
                 >
@@ -200,7 +210,7 @@ export const Navigation = () => {
                     {menuSections.particulier.map((item) => (
                       <Link
                         key={`${item.path}-${item.label}`}
-                        to={item.path}
+                        href={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
@@ -228,7 +238,7 @@ export const Navigation = () => {
                     {menuSections.spoedhulp.map((item) => (
                       <Link
                         key={`${item.path}-${item.label}`}
-                        to={item.path}
+                        href={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
@@ -256,7 +266,7 @@ export const Navigation = () => {
                     {menuSections.zakelijkExpat.map((item) => (
                       <Link
                         key={`${item.path}-${item.label}`}
-                        to={item.path}
+                        href={item.path}
                         onClick={() => setIsOpen(false)}
                         className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                       >
@@ -271,7 +281,7 @@ export const Navigation = () => {
                 {topNavItems.map((item) => (
                   <Link
                     key={item.path}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => setIsOpen(false)}
                     className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                   >
