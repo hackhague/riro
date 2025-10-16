@@ -148,7 +148,7 @@ export default function IkBenGehackt() {
               <CardContent className="p-6 text-center">
                 <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Spoed on-site</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€199</p>
+                <p className="text-3xl font-bold text-primary mb-1">€299</p>
                 <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • direct veilig maken</p>
                 <p className="text-xs text-foreground/70">Komt alleen als het echt nodig is</p>
               </CardContent>
