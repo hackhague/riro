@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase, Clock } from "lucide-react";
+import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Diensten() {
+  // --- META (plek dit in je head via je bestaande setup)
+  // title: "Diensten — Computerhulp & Cyberhulp in Den Haag | InstantIT"
+  // description: "Computerhulp aan huis & remote, hacklijn, WiFi-verbetering en Cyber-APK voor particulieren en kleine bedrijven in Haaglanden. Transparante prijzen."
+  // canonical: https://instantit.nl/diensten
+
   const consumerServices = [
     {
       icon: Laptop,
-      title: "Computerhulp aan huis of op afstand",
+      title: "Computerhulp aan huis & remote",
       description: "Trage laptop? Printer doet raar? Wij lossen het op, thuis of op afstand.",
       link: "/computerhulp",
       features: [
-        "Snel diagnose & oplossing",
-        "Opschonen en versnellen",
+        "Snelle diagnose en directe oplossing",
+        "Opschonen en sneller maken",
         "Printer- en software-installatie",
-        "Back-up advies en herstel"
+        "Back-up advies en herstel",
       ],
     },
     {
@@ -23,10 +28,10 @@ export default function Diensten() {
       description: "Iemand in je account of computer? We helpen je veilig terug en voorkomen herhaling.",
       link: "/ik-ben-gehackt",
       features: [
-        "Directe computerhulp op afstand (meestal binnen 60 min)",
-        "Wachtwoord & 2-stapsverificatie (2FA)",
+        "Directe remote hulp (meestal binnen 60 min)",
+        "Wachtwoord reset & 2FA instellen",
         "Account terughalen (Instagram, Gmail, Facebook)",
-        "Kort herstelrapport voor verzekering"
+        "Kort herstelrapport voor verzekering",
       ],
     },
     {
@@ -35,22 +40,22 @@ export default function Diensten() {
       description: "Slechte wifi? We maken je wifi stabiel en veilig in huis.",
       link: "/wifi",
       features: [
-        "Dekking en snelheidstest",
+        "Dekking & snelheidstest",
         "Mesh-advies en installatie",
         "Gasten-wifi en kindersloten",
-        "Veilige router-instellingen"
+        "Veilige router-instellingen",
       ],
     },
     {
       icon: CheckCircle2,
       title: "Cyber-APK voor thuis",
-      description: "Een slimme veiligheidscheck: direct zichtbaar wat je kunt verbeteren.",
+      description: "Een eenvoudige veiligheidscheck: direct inzicht en een kort rapport met acties.",
       link: "/cyber-apk",
       features: [
         "Wachtwoord- en 2FA-check",
         "Antivirus & updates controleren",
         "Back-up status controleren",
-        "Eenvoudig stappenplan & kort rapport"
+        "Eenvoudig stappenplan & kort rapport",
       ],
     },
   ];
@@ -59,55 +64,102 @@ export default function Diensten() {
     {
       icon: Briefcase,
       title: "Snel hulp bij kassa / PIN / internet",
-      description: "Kassa of pin doet het niet? Wij zorgen dat u weer door kunt met verkopen.",
+      description: "Kassa of pin werkt niet? Wij zorgen dat u weer kan verkopen.",
       link: "/zakelijk-spoed",
       features: [
-        "Snelle remote-first triage",
+        "Remote-first triage zodat u snel weer verder kan",
         "Nood-4G of tijdelijke internetoplossing",
-        "Herstel en short-term werkend maken",
-        "Duidelijk rapport met vervolgstappen"
+        "Ter plaatse herstellen of tijdelijk werkend maken",
+        "Kort rapport met vervolgstappen",
       ],
     },
     {
       icon: Shield,
-      title: "Incident hulp voor uw praktijk of winkel",
-      description: "Phishing, gehackte e-mail of vergrendelde systemen? Wij helpen direct en praktisch.",
+      title: "Incident hulp voor praktijk of winkel",
+      description: "Phishing, gehackte e-mail of vergrendelde systemen? We helpen direct en praktisch.",
       link: "/ik-ben-gehackt",
       features: [
-        "Containment: toegang blokkeren waar nodig",
-        "Account- en mailbox herstel",
-        "Nazorg: 2FA en herstelplan voor medewerkers",
-        "Rapport voor verzekeraar of administratie"
+        "Toegang blokkeren waar nodig",
+        "E-mail en account herstel",
+        "Nazorg: 2FA en instructie voor medewerkers",
+        "Rapport voor verzekering of administratie",
       ],
     },
     {
       icon: Wifi,
       title: "Netwerk & beveiliging voor kleine bedrijven",
-      description: "Stabiele wifi en een veilig netwerk voor kassa’s, iPads en printers.",
+      description: "Stabiele wifi en een veilig netwerk voor kassa’s, tablets en printers.",
       link: "/wifi",
       features: [
-        "Netwerksegmentatie (zakelijk/gast)",
+        "Zakelijk/gast netwerk scheiden",
         "Wifi-dekking en stabiliteit",
         "Aanbeveling voor betaalbare hardware",
-        "Backup-routines en controle"
+        "Back-up routines en controle",
       ],
     },
     {
       icon: CheckCircle2,
       title: "Cyber-APK voor bedrijven",
-      description: "Eén korte check die u direct inzicht geeft in risico’s en praktische oplossingen.",
+      description: "Een korte scan die direct laat zien wat prioriteit heeft en wat praktisch te doen is.",
       link: "/cyber-apk",
       features: [
-        "Quick-check (wachtwoorden, 2FA, back-up)",
-        "Eenvoudig beveiligingsplan voor personeel",
+        "Quick-check: wachtwoorden, 2FA, back-up",
+        "Praktische stappen voor medewerkers",
         "Prioriteitenlijst met kosteninschatting",
-        "Kort rapport om mee aan de slag te gaan"
+        "Kort rapport om mee aan de slag te gaan",
       ],
     },
   ];
 
+  // JSON-LD: LocalBusiness + OfferCatalog (zorg dat url en phone kloppen)
+  const localBusinessLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "InstantIT - Digitale Eerste Hulp",
+    "url": "https://instantit.nl",
+    "telephone": "+31-70-2119191",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Den Haag",
+      "addressCountry": "NL"
+    },
+    "serviceArea": [
+      {"@type":"Place","name":"Den Haag"},
+      {"@type":"Place","name":"Delft"},
+      {"@type":"Place","name":"Zoetermeer"},
+      {"@type":"Place","name":"Rijswijk"},
+      {"@type":"Place","name":"Voorburg"},
+      {"@type":"Place","name":"Leiden"}
+    ],
+    "openingHours": "Mo-Su 08:00-21:00",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "InstantIT diensten",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "Remote triage (hacklijn)"},
+          "price": "149.00",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {"@type": "Service", "name": "Spoed on-site (tot 2 uur)"},
+          "price": "199.00",
+          "priceCurrency": "EUR"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="min-h-screen">
+      {/* JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
+      />
+
       {/* Header */}
       <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
@@ -119,6 +171,20 @@ export default function Diensten() {
               Van snelle hulp bij een hack tot eenvoudige controles om problemen te voorkomen.
               InstantIT helpt particulieren en kleine bedrijven in Den Haag en omgeving.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* LLM-answer card (kort, feitelijk) */}
+      <section className="py-6">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="rounded-lg border p-4 bg-white">
+            <p className="font-medium">Wie</p>
+            <p className="mb-2">Particulieren en kleine bedrijven in Haaglanden.</p>
+            <p className="font-medium">Wat</p>
+            <p className="mb-2">Hulp bij hacks, trage computers, wifi en back-ups.</p>
+            <p className="font-medium">Wanneer & prijs</p>
+            <p>Remote meestal binnen 60 min (cap €149). On-site doorgaans binnen 24–48 uur (spoed mogelijk).</p>
           </div>
         </div>
       </section>
@@ -229,8 +295,7 @@ export default function Diensten() {
 
           <div className="mt-8 max-w-3xl mx-auto text-center">
             <p className="text-foreground/70">
-              Heeft u een winkel, praktijk of kantoor en is het écht dringend? Vraag naar onze <strong>spoed on-site</strong> optie.
-              Als we een spoedslot vrij hebben, kunnen we vaak binnen <strong>2 uur</strong> reageren.
+              Dringend nodig? Vraag naar onze <strong>spoed on-site</strong> optie. Als we een spoedslot vrij hebben, kunnen we vaak binnen <strong>2 uur</strong> reageren.
             </p>
           </div>
         </div>
@@ -241,7 +306,7 @@ export default function Diensten() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Weet je niet zeker wat je nodig hebt?</h2>
           <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
-            Geen probleem. App of bel even — we helpen je meteen bepalen wat het snelst werkt.
+            App of bel even — we helpen je meteen bepalen wat het snelst werkt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="lg" asChild>
