@@ -136,11 +136,14 @@ export const Navigation = () => {
                 
                 {topNavItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
-                    <Link href={item.path}>
-                      <NavigationMenuLink className="text-base px-4 py-2 hover:text-primary transition-colors">
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.path}
+                        className="text-base px-4 py-2 hover:text-primary transition-colors"
+                      >
                         {item.label}
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
