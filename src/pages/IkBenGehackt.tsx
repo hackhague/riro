@@ -5,33 +5,37 @@ import serviceImage from "@/assets/service-hack.jpg";
 
 export default function IkBenGehackt() {
   const signs = [
-    "Accounts waar je niet bij kan (wachtwoorden gewijzigd)",
-    "Onbekende transacties of berichten",
-    "Computer vergrendeld met losgeldeis",
-    "Pop-ups over virussen (ook fake)",
-    "Familie/vrienden ontvangen rare berichten van jou",
-    "Webcam of microfoon lijken actief",
+    "Je kunt niet meer inloggen (wachtwoord aangepast)",
+    "Onbekende betalingen of vreemde berichten",
+    "Bestanden zijn vergrendeld en je ziet een losgeldeis",
+    "Opdringerige pop-ups of valse virusmeldingen",
+    "Vrienden/familie krijgen rare berichten van jouw account",
+    "Je camera of microfoon werkt zonder dat jij dat doet",
   ];
 
   const steps = [
-    { title: "Triage", desc: "Remote binnen 15 min - wat is er aan de hand?" },
-    { title: "Containment", desc: "Isoleren + damage control (account lockdown, disconnect)" },
-    { title: "Herstel", desc: "Schoonmaken, wachtwoorden resetten, 2FA instellen" },
-    { title: "Preventie", desc: "Hardening + advies om herhaling te voorkomen" },
+    { title: "Stap 1 — Kort contact", desc: "We bellen of appen kort: wat is er gebeurd en welke apparaten zijn geraakt?" },
+    { title: "Stap 2 — Veilig maken", desc: "We blokkeren toegang waar mogelijk en halen het apparaat van internet." },
+    { title: "Stap 3 — Terugzetten", desc: "We halen malware weg, herstellen accounts en zetten veilige wachtwoorden en 2FA." },
+    { title: "Stap 4 — Voorkomen", desc: "We leggen uit wat je anders kunt doen en zetten extra beveiliging klaar." },
   ];
 
   const faqs = [
     {
-      q: "Moet ik betalen aan hackers?",
-      a: "Nee, nooit! Ook al beloven ze dat ze de bestanden terugeven – vaak doen ze dat niet. Bel ons eerst.",
+      q: "Moet ik hackers betalen?",
+      a: "Nee — betaal nooit direct losgeld. Bel ons eerst; vaak zijn er andere opties en betalen biedt geen garantie.",
     },
     {
-      q: "Hoe snel moeten jullie erbij zijn?",
-      a: "Bij een actieve hack: direct. Remote triage binnen 15 min, on-site indien nodig binnen 2u (spoed).",
+      q: "Hoe snel komen jullie helpen?",
+      a: "We starten meestal binnen **60 minuten** via remote. Als nodig, komen we op locatie binnen **24–48 uur**. Spoedslots mogelijk als we vrij zijn.",
     },
     {
-      q: "Kan ik een rapport krijgen voor verzekering?",
-      a: "Ja, we leveren een incident summary voor je cyber-/inboedelverzekering (indien van toepassing).",
+      q: "Krijg ik een rapport voor mijn verzekering?",
+      a: "Ja. Na het incident ontvang je een kort overzicht met wat er is gebeurd en welke stappen we hebben genomen. Dat kun je gebruiken voor je verzekering of aangifte.",
+    },
+    {
+      q: "Hoe betaal ik?",
+      a: "Remote hulp gaat via een veilige betaallink (vooraf). Voor on-site kun je direct met pin betalen. Geen verrassingen achteraf.",
     },
   ];
 
@@ -44,13 +48,14 @@ export default function IkBenGehackt() {
             <div>
               <div className="inline-flex items-center gap-2 bg-destructive/20 text-destructive px-4 py-2 rounded-full mb-4">
                 <Zap className="h-4 w-4" />
-                <span className="font-semibold text-sm">24/7 Spoedhulp</span>
+                <span className="font-semibold text-sm">Spoedhulp beschikbaar</span>
               </div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Gehackt? Direct hulp – 24/7 hacklijn
+                Gehackt? Direct hulp in Den Haag & omgeving
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Remote triage binnen 15 minuten. Containment, herstel en preventie. Ook 's nachts en in het weekend.
+                We starten meestal binnen <strong>60 minuten</strong> via remote. Als het nodig is komen we op locatie binnen <strong>24–48 uur</strong>.
+                Avonden en weekend zijn mogelijk — bel of app direct.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
@@ -72,7 +77,7 @@ export default function IkBenGehackt() {
               </div>
               <p className="text-sm text-foreground/60 mt-4">
                 <AlertTriangle className="h-4 w-4 inline mr-1" />
-                Betaal NOOIT losgeld zonder eerst met ons te overleggen
+                Betaal <strong>nooit</strong> losgeld zonder eerst met ons te overleggen.
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-destructive/20">
@@ -86,7 +91,7 @@ export default function IkBenGehackt() {
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Signalen dat je bent gehackt
+            Signalenen dat je hulp nodig hebt
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {signs.map((sign, index) => (
@@ -104,7 +109,7 @@ export default function IkBenGehackt() {
       {/* How We Work - Emergency */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze aanpak</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we doen en hoe</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {steps.map((step, index) => (
               <Card key={index} className="border-2 border-accent/20">
@@ -118,21 +123,24 @@ export default function IkBenGehackt() {
               </Card>
             ))}
           </div>
+          <p className="text-sm text-foreground/70 max-w-3xl mx-auto text-center mt-6">
+            We werken stap voor stap en leggen alles in gewone taal uit. Je krijgt altijd een kort verslag met wat we hebben gedaan.
+          </p>
         </div>
       </section>
 
       {/* Pricing - Emergency */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Spoed tarieven</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven voor spoedhulp</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Card className="border-2 border-accent">
               <CardContent className="p-6 text-center">
                 <Zap className="h-8 w-8 text-accent mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Hacklijn remote</h3>
-                <p className="text-3xl font-bold text-accent mb-1">€79</p>
-                <p className="text-sm text-foreground/60 mb-4">per 45 min • cap €149</p>
-                <p className="text-xs text-foreground/70">24/7 beschikbaar</p>
+                <h3 className="font-heading font-semibold text-xl mb-2">Remote triage</h3>
+                <p className="text-3xl font-bold text-accent mb-1">€149</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 60 minuten • direct advies & eerste hulp</p>
+                <p className="text-xs text-foreground/70">Meestal binnen 60 minuten bereikbaar</p>
               </CardContent>
             </Card>
 
@@ -141,49 +149,50 @@ export default function IkBenGehackt() {
                 <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Spoed on-site</h3>
                 <p className="text-3xl font-bold text-primary mb-1">€199</p>
-                <p className="text-sm text-foreground/60 mb-4">tot 2 uur</p>
-                <p className="text-xs text-foreground/70">Bij acute dreiging (bijv. ransomware)</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • direct veilig maken</p>
+                <p className="text-xs text-foreground/70">Komt alleen als het echt nodig is</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6 text-center">
                 <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Follow-up</h3>
+                <h3 className="font-heading font-semibold text-xl mb-2">Nazorg & advies</h3>
                 <p className="text-3xl font-bold text-primary mb-1">€65</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Hardening & preventie na incident</p>
+                <p className="text-sm text-foreground/60 mb-4">Per uur • instellingen & preventie</p>
+                <p className="text-xs text-foreground/70">2FA, wachtwoordmanager en back-ups</p>
               </CardContent>
             </Card>
           </div>
+          <p className="text-sm text-foreground/70 text-center mt-6">
+            Betaal veilig via pin of vooraf via een betaallink voor remote hulp. Geen verrassingen.
+          </p>
         </div>
       </section>
 
       {/* Case Study */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Recente case</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Recente klus</h2>
           <Card className="max-w-3xl mx-auto border-2 border-destructive/20">
             <CardContent className="p-8">
               <div className="mb-6">
                 <span className="text-xs font-semibold text-destructive uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Laptop vergrendeld met losgeldeis van €500 in Bitcoin. Alle bestanden ontoegankelijk. Paniek omdat
-                  familiefoto's en belastinggegevens erop staan."
+                  "Laptop vergrendeld met losgeldeis. Familie- en belastingbestanden ontoegankelijk. Paniek."
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  Remote triage binnen 12 min. Ransomware variant herkend (oude versie). Decryptor beschikbaar. Laptop
-                  geïsoleerd, bestanden hersteld, 2FA ingesteld op alle accounts, passwordmanager opgezet.
+                  Remote gestart binnen 60 minuten. Laptop kort van internet gehaald, variant gecontroleerd en
+                  bestanden hersteld met beschikbare tool. Accounts beveiligd, 2FA ingesteld en wachtwoorden vernieuwd.
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Alle data terug zonder losgeld. Follow-up preventie sessie (Cyber APK). Kosten: €149 remote + €65
-                  follow-up."
+                  "Data terug zonder losgeld. Nazorgsessie (Cyber-APK) gepland. Kosten: €149 remote + €65 nazorg."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Ypenburg, Den Haag</p>
@@ -212,9 +221,9 @@ export default function IkBenGehackt() {
       {/* Urgent CTA */}
       <section className="py-16 bg-destructive text-destructive-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel je? Bel direct!</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">We helpen direct — bel of app nu</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Bij een hack telt elke minuut. Wacht niet – laat ons eerst kijken voordat je losgeld betaalt.
+            Bij een hack telt snelheid. Laat ons eerst kijken voordat je stappen als betalen overweegt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
