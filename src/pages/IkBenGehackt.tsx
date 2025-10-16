@@ -1,12 +1,13 @@
+import React from "react";
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import serviceImage from "@/assets/service-hack.jpg";
 
-export default function IkBenGehackt() {
+export default function IkBenGehackt(): JSX.Element {
   // --- META (zet in head)
   // title: "Ik ben gehackt? Direct hulp in Den Haag | InstantIT"
-  // description: "Gehackt? We starten meestal binnen 60 min via remote. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
+  // description: "Gehackt? We starten meestal binnen 60 min op afstand. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
 
   const signs = [
     "Je kunt niet meer inloggen (wachtwoord aangepast)",
@@ -24,7 +25,7 @@ export default function IkBenGehackt() {
     { title: "Stap 4 — Nazorg", desc: "We geven een kort rapport en eenvoudige tips tegen herhaling." },
   ];
 
-  // JSON-LD: FAQ + HowTo + Service offers
+  // JSON-LD: FAQ + HowTo + Service offers (zoekmachines lezen dit)
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -42,7 +43,7 @@ export default function IkBenGehackt() {
         "name": "Hoe snel helpen jullie?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We starten meestal binnen 60 minuten via remote. Als we naar u toe moeten, plannen we binnen 24–48 uur of sneller als we een spoedslot hebben."
+          "text": "We starten meestal binnen 60 minuten op afstand. Als we naar u toe moeten, plannen we binnen 24–48 uur of sneller als we een spoedslot hebben."
         }
       },
       {
@@ -62,7 +63,7 @@ export default function IkBenGehackt() {
     "name": "Wat te doen als uw Instagram of Gmail is gehackt",
     "step": [
       { "@type": "HowToStep", "name": "Blijf rustig", "text": "Verander niets totdat je weet wat er precies is gebeurd." },
-      { "@type": "HowToStep", "name": "Bel of app InstantIT", "text": "Stuur een screenshot en wij starten remote triage." },
+      { "@type": "HowToStep", "name": "Bel of app InstantIT", "text": "Stuur een screenshot en wij starten op afstand hulp." },
       { "@type": "HowToStep", "name": "Reset wachtwoord en 2FA", "text": "Wij helpen met het terugkrijgen van het account en zetten 2FA aan." }
     ]
   };
@@ -70,8 +71,8 @@ export default function IkBenGehackt() {
   const serviceOfferLd = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Hacklijn - remote triage",
-    "description": "Remote hulp bij gehackte accounts en ransomware. Direct advies en containment.",
+    "name": "Hacklijn - op afstand triage",
+    "description": "Hulp bij gehackte accounts en ransomware. Direct advies en containment.",
     "provider": {
       "@type": "LocalBusiness",
       "name": "InstantIT",
@@ -80,14 +81,16 @@ export default function IkBenGehackt() {
     },
     "areaServed": "Haaglanden",
     "offers": [
-      { "@type": "Offer", "price": "149.00", "priceCurrency": "EUR", "name": "Remote triage (tot 60 min)" },
-      { "@type": "Offer", "price": "199.00", "priceCurrency": "EUR", "name": "Spoed on-site (tot 2 uur)" }
+      { "@type": "Offer", "price": "149.00", "priceCurrency": "EUR", "name": "Op afstand triage (tot 60 min)" },
+      { "@type": "Offer", "price": "199.00", "priceCurrency": "EUR", "name": "Spoed on-site (tot 2 uur)" },
+      { "@type": "Offer", "price": "249.00", "priceCurrency": "EUR", "name": "Spoed op locatie (zakelijk) - tot 2 uur" },
+      { "@type": "Offer", "price": "499.00", "priceCurrency": "EUR", "name": "First Response pakket (zakelijk) - tot 4 uur" }
     ]
   };
 
   return (
     <div className="min-h-screen">
-      {/* JSON-LD */}
+      {/* JSON-LD (niet zichtbaar voor bezoekers) */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceOfferLd) }} />
@@ -105,7 +108,7 @@ export default function IkBenGehackt() {
                 Gehackt? Direct hulp — Den Haag
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                We starten meestal binnen <strong>60 minuten</strong> via remote. Als nodig, op locatie binnen <strong>24–48 uur</strong>.
+                We starten meestal binnen <strong>60 minuten</strong> op afstand. Als nodig, op locatie binnen <strong>24–48 uur</strong>.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
@@ -140,14 +143,14 @@ export default function IkBenGehackt() {
         </div>
       </section>
 
-      {/* LLM-answer card */}
+      {/* LLM-answer card (zichtbaar en kort) */}
       <section className="py-6">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="rounded-lg border p-4 bg-white">
             <p className="font-medium">Kort & direct</p>
             <p className="mb-2">Wie: Particulieren en kleine bedrijven in Haaglanden.</p>
-            <p className="mb-2">Wat: Account herstel, malware verwijderen, en een kort rapport.</p>
-            <p>Wanneer: Remote meestal binnen 60 min. On-site binnen 24–48 uur als nodig.</p>
+            <p className="mb-2">Wat: Account herstel, malware verwijderen en een kort rapport.</p>
+            <p>Wanneer: Op afstand meestal binnen 60 min. Op locatie binnen 24–48 uur als nodig.</p>
           </div>
         </div>
       </section>
@@ -192,41 +195,88 @@ export default function IkBenGehackt() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Pricing (aangepast, zonder vakjargon) */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <p className="text-center text-foreground/70 max-w-3xl mx-auto mb-8">
+            We starten meestal <strong>binnen 60 minuten op afstand</strong>. Als het nodig is komen we <strong>binnen 24–48 uur</strong> langs.
+            Duidelijke prijzen, geen verrassingen.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Particulier – op afstand */}
             <Card className="border-2 border-accent">
               <CardContent className="p-6 text-center">
                 <Zap className="h-8 w-8 text-accent mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Remote triage</h3>
+                <h3 className="font-heading font-semibold text-xl mb-2">Eerste hulp op afstand (particulier)</h3>
                 <p className="text-3xl font-bold text-accent mb-1">€149</p>
-                <p className="text-sm text-foreground/60 mb-4">Tot 60 minuten • advies en eerste hulp</p>
-                <p className="text-xs text-foreground/70">Meestal binnen 60 minuten bereikbaar</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 60 min • vaak genoeg voor herstel</p>
+                <p className="text-xs text-foreground/70">
+                  Wachtwoorden resetten, 2-stapsverificatie, vreemde e-mailregels uit, controle op malware.
+                </p>
               </CardContent>
             </Card>
 
+            {/* Particulier – aan huis */}
             <Card>
               <CardContent className="p-6 text-center">
                 <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Spoed on-site</h3>
+                <h3 className="font-heading font-semibold text-xl mb-2">Spoed aan huis (particulier)</h3>
                 <p className="text-3xl font-bold text-primary mb-1">€199</p>
-                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • veilig maken en rapport</p>
-                <p className="text-xs text-foreground/70">Alleen bij acute dreiging</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • we maken je apparaat weer veilig</p>
+                <p className="text-xs text-foreground/70">Als op afstand niet kan of er haast is. Avond/weekend mogelijk als er plek is.</p>
               </CardContent>
             </Card>
 
+            {/* Zakelijk – op afstand */}
+            <Card>
+              <CardContent className="p-6 text-center">
+                <Zap className="h-8 w-8 text-accent mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">Eerste hulp op afstand (zakelijk)</h3>
+                <p className="text-3xl font-bold text-accent mb-1">€159</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 60 min • snel weer doorwerken</p>
+                <p className="text-xs text-foreground/70">Accounts herstellen, mailbox opschonen, schakelen met bank/leverancier waar nodig.</p>
+              </CardContent>
+            </Card>
+
+            {/* Zakelijk – op locatie */}
+            <Card>
+              <CardContent className="p-6 text-center">
+                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">Spoed op locatie (zakelijk)</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€249</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • kassa/PIN/e-mail weer werkend</p>
+                <p className="text-xs text-foreground/70">We zetten u weer werkend neer en maken een kort verslag met vervolgstappen.</p>
+              </CardContent>
+            </Card>
+
+            {/* First Response pakket */}
+            <Card className="border-2 border-primary">
+              <CardContent className="p-6 text-center">
+                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">First Response pakket (zakelijk)</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€499</p>
+                <p className="text-sm text-foreground/60 mb-4">Tot 4 uur • op afstand + op locatie</p>
+                <p className="text-xs text-foreground/70">Zwaardere incidenten: veilig stellen, tijdelijk werkend maken en kort rapport.</p>
+              </CardContent>
+            </Card>
+
+            {/* Nazorg */}
             <Card>
               <CardContent className="p-6 text-center">
                 <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Nazorg & preventie</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€65</p>
-                <p className="text-sm text-foreground/60 mb-4">Per uur • 2FA, wachtwoorden en back-ups</p>
-                <p className="text-xs text-foreground/70">Heldere stappen om herhaling te voorkomen</p>
+                <p className="text-3xl font-bold text-primary mb-1">€69</p>
+                <p className="text-sm text-foreground/60 mb-4">Per uur • wachtwoordmanager, back-up, tips</p>
+                <p className="text-xs text-foreground/70">Gratis herbeoordeling binnen 7 dagen (30 min op afstand).</p>
               </CardContent>
             </Card>
           </div>
+
+          <p className="text-center text-foreground/60 text-sm mt-8">
+            Op afstand: vooraf betalen via betaallink. Aan huis/zakelijk: pinnen mogelijk. Extra tijd altijd in overleg.
+          </p>
         </div>
       </section>
 
@@ -252,7 +302,7 @@ export default function IkBenGehackt() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel niet — bel of app direct</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Bij een hack telt elke minuut. Laat ons eerst kijken voordat je stopt of betaalt.
+            Bij een hack telt elke minuut. Laat ons eerst kijken voordat je stappen als betalen overweegt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="xl" asChild className="bg-background text-destructive hover:bg-background/90">
