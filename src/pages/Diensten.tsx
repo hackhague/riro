@@ -7,7 +7,7 @@ export default function Diensten() {
   const consumerServices = [
     {
       icon: Laptop,
-      title: "Computerhulp aan huis & remote",
+      title: "Computerhulp aan huis of op afstand",
       description: "Trage laptop? Printer doet raar? Wij lossen het op, thuis of op afstand.",
       link: "/computerhulp",
       features: [
@@ -23,7 +23,7 @@ export default function Diensten() {
       description: "Iemand in je account of computer? We helpen je veilig terug en voorkomen herhaling.",
       link: "/ik-ben-gehackt",
       features: [
-        "Directe remote hulp (meestal binnen 60 min)",
+        "Directe computerhulp op afstand (meestal binnen 60 min)",
         "Wachtwoord & 2-stapsverificatie (2FA)",
         "Account terughalen (Instagram, Gmail, Facebook)",
         "Kort herstelrapport voor verzekering"
