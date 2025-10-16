@@ -1,0 +1,11 @@
+{
+  "description": "Gebruik dit bestand om alle Next.js route skeletons te definiëren voor taak T4.2.",
+  "routes": [
+    { "path": "/", "segment": "app/(marketing)/page.tsx", "notes": "Home" }
+  ],
+  "instructions": [
+    "Voeg elke bestaande SPA route toe met het gewenste Next.js pad.",
+    "Markeer dynamische segmenten met [param] en geef revalidate defaults aan.",
+    "Gebruik dit bestand als input voor delegatie prompts."
+  ]
+}
