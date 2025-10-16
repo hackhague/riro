@@ -8,7 +8,7 @@ export default function Diensten() {
     {
       icon: Laptop,
       title: "Computerhulp",
-      description: "Computer traag, virussen, softwareproblemen? Remote of aan huis.",
+      description: "Computer traag, virussen, softwareproblemen? Op afstand of aan huis.",
       link: "/computerhulp",
       features: ["Virusverwijdering", "Performance optimalisatie", "Software installatie", "Data backup"],
     },
@@ -17,7 +17,7 @@ export default function Diensten() {
       title: "Ik ben gehackt",
       description: "24/7 hacklijn voor spoedhulp. Containment, herstel & preventie.",
       link: "/ik-ben-gehackt",
-      features: ["Remote triage binnen 15 min", "Containment & isolatie", "Forensisch onderzoek", "Preventie & hardening"],
+      features: ["Op afstand triage binnen 15 min", "Containment & isolatie", "Forensisch onderzoek", "Preventie & hardening"],
     },
     {
       icon: Wifi,
