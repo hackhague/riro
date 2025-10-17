@@ -9,11 +9,13 @@ Configure these secrets in the **Cloudflare Pages** project dashboard under **Se
 | `ADMIN_INBOX` | Destination inbox for operational alerts and escalations. | Use a monitored shared mailbox (e.g., Google Workspace group) so multiple maintainers receive alerts. |
 | `ZAPIER_WEBHOOK_CONTACT` | Zapier webhook URL that proxies contact form submissions into the CRM/Zap. | Create or locate the corresponding Zap in Zapier and copy the "Catch Hook" URL. |
 | `ZAPIER_WEBHOOK_SUPPORT` | Zapier webhook URL for support requests or other automations. | Provide distinct URLs per workflow to simplify debugging. |
-| `SUPABASE_URL` | Supabase project REST endpoint used by API routes. | Copy from **Project Settings → API → Project URL** in Supabase. |
-| `SUPABASE_SERVICE_ROLE_KEY` | Service-role key for server-side Supabase access. | Retrieve from **Project Settings → API → Project API keys** and store as an encrypted secret. Never expose this key client-side. |
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project REST endpoint used by browser and edge clients. | Copy from **Project Settings → API → Project URL** in Supabase. |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`<br/>or `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | Publishable (anon) key used to instantiate the Supabase client in the browser. | Copy the **anon** key from **Project Settings → API → Project API keys**. Supabase may label this key as “publishable default” in the dashboard—either variable name works. |
+| `SUPABASE_SERVICE_ROLE_KEY` *(optional)* | Service-role key for privileged server-side Supabase access (not currently used by this app). | Only set if future routes require it. Store as an encrypted secret and never expose this key client-side. |
 
 **Tips**
 - Use the **Bulk add variables** option to paste all secrets at once.
+- When copying from the Supabase dashboard, paste the `https://...supabase.co` project URL into `NEXT_PUBLIC_SUPABASE_URL` and the publishable anon key (e.g., `sb_publishable_...`) into the chosen `NEXT_PUBLIC_SUPABASE_*` variable.
 - For preview branches, override values only when you must isolate traffic (e.g., dedicated staging Supabase project).
 - Audit the **Deployments → Environment variables** history after rotations to confirm the expected values.
 

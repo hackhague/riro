@@ -106,7 +106,20 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         city: booking.city,
         message: booking.message,
         source: "website",
-      };
+        approval_token: approvalToken,
+        created_at: new Date().toISOString(),
+      } as any;
+
+      // Store in Supabase (table: appointments) if configured
+      const supabaseUrl =
+        process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey =
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ??
+        process.env.VITE_SUPABASE_ANON_KEY ??
+        process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const hasSupabase = !!supabaseUrl && !!supabaseAnonKey;
 
       const response = await fetch("/api/appointments", {
         method: "POST",
