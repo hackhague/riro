@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 
 import type { Database } from "@/integrations/supabase/types";
-import { notifyContactSubmission } from "@/app/api/_lib/notify";
+import { sendContactNotifications } from "@/lib/notifications";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Naam is verplicht").max(200),
@@ -107,14 +107,13 @@ export async function POST(request: Request) {
   }
 
   try {
-    await notifyContactSubmission({
+    await sendContactNotifications({
       name: parsed.name,
       contact: parsed.contact,
-      email,
-      phone,
       message: parsed.message,
       recordId,
       metadata: metadata ?? undefined,
+      customerEmail: email,
     });
   } catch (error) {
     console.error("Contact notification failed", error);

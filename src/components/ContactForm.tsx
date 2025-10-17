@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 
@@ -9,6 +9,15 @@ type FormStatus = "idle" | "loading" | "success" | "error";
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string | null>(null);
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,6 +32,10 @@ export function ContactForm() {
 
     setStatus("loading");
     setError(null);
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current);
+      resetTimerRef.current = null;
+    }
 
     try {
       const response = await fetch("/api/contact", {
@@ -38,7 +51,15 @@ export function ContactForm() {
 
       form.reset();
       setStatus("success");
+      resetTimerRef.current = setTimeout(() => {
+        setStatus("idle");
+        resetTimerRef.current = null;
+      }, 8000);
     } catch (err) {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+        resetTimerRef.current = null;
+      }
       const message = err instanceof Error ? err.message : "Er is iets misgegaan.";
       setError(message);
       setStatus("error");
@@ -46,7 +67,7 @@ export function ContactForm() {
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
+    <form className="space-y-4" onSubmit={handleSubmit} aria-busy={status === "loading"}>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium mb-1" htmlFor="contact-name">
