@@ -147,6 +147,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       const supabaseAnonKey =
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
         process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
+        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ??
         process.env.VITE_SUPABASE_ANON_KEY ??
         process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
       const hasSupabase = !!supabaseUrl && !!supabaseAnonKey;
