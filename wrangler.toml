@@ -1,3 +1,0 @@
-# Cloudflare Pages configuration for local deployments
-name = "riro"
-pages_build_output_dir = "./out"
