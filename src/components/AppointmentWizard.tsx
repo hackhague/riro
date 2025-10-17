@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calendar as CalendarIcon, CheckCircle2, User as UserIcon, Info } from "lucide-react";
 import { DayPicker } from "react-day-picker";
-import { format, isBefore, startOfToday } from "date-fns";
+import { format, startOfToday } from "date-fns";
 import "react-day-picker/dist/style.css";
 import { toast } from "@/hooks/use-toast";
 
@@ -29,29 +29,6 @@ const DEFAULT_SLOTS = [
   "15:00 – 17:00",
   "18:00 – 20:00",
 ];
-
-const generateApprovalToken = () => {
-  const cryptoApi =
-    typeof globalThis !== "undefined"
-      ? ((globalThis.crypto ?? (globalThis as any).msCrypto) as Crypto & {
-          randomUUID?: () => string;
-        })
-      : undefined;
-
-  if (cryptoApi) {
-    if (typeof cryptoApi.randomUUID === "function") {
-      return cryptoApi.randomUUID();
-    }
-
-    if (typeof cryptoApi.getRandomValues === "function") {
-      const bytes = new Uint8Array(16);
-      cryptoApi.getRandomValues(bytes);
-      return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
-    }
-  }
-
-  return `${Date.now().toString(36)}${Date.now().toString(36)}`;
-};
 
 function getTimeSlotsForDate(date: Date) {
   // Disable same-day past ranges
@@ -114,28 +91,20 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     if (!isStep3Valid || !isStep2Valid) return;
     setLoading(true);
     try {
-      const idFallback = (globalThis.crypto && (crypto as any).randomUUID)
-        ? (crypto as any).randomUUID()
-        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      const approvalToken = generateApprovalToken();
-
-      let recordId: string | number = idFallback;
-
-      const basePayload = {
+      const payload = {
         service: booking.service,
-        service_label: selectedService,
-        date_iso: booking.date ? booking.date.toISOString() : null,
-        date_display: booking.date ? format(booking.date, "PPP") : null,
-        time_slot: booking.timeSlot,
-        first_name: booking.firstName,
-        last_name: booking.lastName,
+        serviceLabel: selectedService || booking.service,
+        dateISO: booking.date ? booking.date.toISOString() : null,
+        dateDisplay: booking.date ? format(booking.date, "PPP") : null,
+        timeSlot: booking.timeSlot,
+        firstName: booking.firstName,
+        lastName: booking.lastName,
         email: booking.email,
         phone: booking.phone,
         street: booking.street,
-        postal_code: booking.postalCode,
+        postalCode: booking.postalCode,
         city: booking.city,
         message: booking.message,
-        status: "new",
         source: "website",
         approval_token: approvalToken,
         created_at: new Date().toISOString(),
@@ -152,38 +121,18 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
       const hasSupabase = !!supabaseUrl && !!supabaseAnonKey;
 
-      if (hasSupabase) {
-        const mod: any = await import("@/integrations/supabase/client");
-        const sb: any = mod.supabase as any;
-        const { data, error } = await sb.from("appointments").insert(basePayload).select("id").single();
-        if (error) throw error;
-        if (data?.id !== undefined) recordId = data.id;
-      }
+      const response = await fetch("/api/appointments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      // Build approval/cancel URLs for Zapier one-click actions
-      const approveBase =
-        process.env.NEXT_PUBLIC_ZAPIER_APPROVE_WEBHOOK_URL ??
-        process.env.VITE_ZAPIER_APPROVE_WEBHOOK_URL;
-      const cancelBase =
-        process.env.NEXT_PUBLIC_ZAPIER_CANCEL_WEBHOOK_URL ??
-        process.env.VITE_ZAPIER_CANCEL_WEBHOOK_URL;
-      const approve_url = approveBase ? `${approveBase}?id=${encodeURIComponent(String(recordId))}&token=${encodeURIComponent(approvalToken)}` : undefined;
-      const cancel_url = cancelBase ? `${cancelBase}?id=${encodeURIComponent(String(recordId))}&token=${encodeURIComponent(approvalToken)}` : undefined;
+      const result = await response.json().catch(() => null);
 
-      const payload = { id: recordId, ...basePayload, approve_url, cancel_url };
-
-      // Notify Zapier of new appointment
-      const newWebhook =
-        process.env.NEXT_PUBLIC_ZAPIER_NEW_APPOINTMENT_WEBHOOK_URL ??
-        process.env.NEXT_PUBLIC_ZAPIER_WEBHOOK_URL ??
-        process.env.VITE_ZAPIER_NEW_APPOINTMENT_WEBHOOK_URL ??
-        process.env.VITE_ZAPIER_WEBHOOK_URL;
-      if (newWebhook) {
-        fetch(newWebhook, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }).catch(() => {});
+      if (!response.ok) {
+        const description =
+          (result && (result.error ?? result.message)) || "Probeer het later opnieuw.";
+        throw new Error(description);
       }
 
       toast({ title: "Afspraak verstuurd", description: "We nemen snel contact op om te bevestigen." });
