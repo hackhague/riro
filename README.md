@@ -54,7 +54,7 @@ npm run dev
 
 This project is built with:
 
-- Vite
+- Next.js 14 (App Router)
 - TypeScript
 - React
 - shadcn-ui
@@ -66,14 +66,18 @@ Simply open [Lovable](https://lovable.dev/projects/e1a130b6-3a0d-41f3-9d48-85311
 
 ### Deploying to Cloudflare Pages
 
-To deploy this project on Cloudflare Pages:
+Cloudflare Pages can deploy this site directly via static HTML export. Configure your project as follows:
 
-1. Remove any `bun.lockb` file from the repository root so the build uses Node/npm.
-2. In **Build settings**, set:
-   - **Install command**: `npm ci`
-   - **Build command**: `npx @cloudflare/next-on-pages@latest build`
-   - **Output directory**: `.vercel/output/static`
-3. Run the Pages build. It should finish quickly because `npx @cloudflare/next-on-pages@latest build` stops after creating `.vercel/output`.
+1. In the Cloudflare dashboard, go to **Workers & Pages → Create application → Pages → Import an existing Git repository** and choose this repo.
+2. Under **Build settings**, select the **Next.js (Static HTML Export)** preset. Cloudflare will populate:
+   - **Production branch**: `main`
+   - **Build command**: `npx next build`
+   - **Build output directory**: `out`
+3. Override the **Install command** to `npm ci` if you prefer reproducible installs.
+4. Add the required `NEXT_PUBLIC_*` environment variables for Supabase, Zapier, analytics, etc. in the Pages dashboard.
+5. Trigger your first deployment. Pages will install dependencies, run `npx next build` (which exports to `out` thanks to `next.config.mjs`), upload the static assets, and attach the Cloudflare Pages Functions bundled in `/functions`.
+
+> Need a manual deployment instead? Run `npm ci && npx next build` locally, then upload the generated `out/` directory with `wrangler pages deploy out`.
 
 ## Can I connect a custom domain to my Lovable project?
 
