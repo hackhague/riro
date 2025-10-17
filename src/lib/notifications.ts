@@ -1,311 +1,201 @@
-import { z } from "zod";
+import { Resend } from "resend";
 
-export type NotificationErrorCode =
-  | "missing_environment"
-  | "validation_error"
-  | "resend_request_failed"
-  | "zapier_request_failed"
-  | "unexpected_error";
+const adminEmailEnvKeys = [
+  "CONTACT_NOTIFICATION_ADMIN_EMAIL",
+  "ADMIN_NOTIFICATION_EMAIL",
+  "ADMIN_INBOX",
+] as const;
 
-export class NotificationError extends Error {
-  readonly code: NotificationErrorCode;
-  readonly details?: Record<string, unknown>;
+const fromEmailEnvKeys = ["CONTACT_NOTIFICATION_FROM_EMAIL", "RESEND_FROM_EMAIL"] as const;
 
-  constructor(
-    code: NotificationErrorCode,
-    message: string,
-    details?: Record<string, unknown>
-  ) {
-    super(message);
-    this.name = "NotificationError";
-    this.code = code;
-    this.details = details;
+function getFirstEnv(keys: readonly string[]): string | null {
+  for (const key of keys) {
+    const value = process.env[key];
+    if (value) {
+      return value;
+    }
   }
+
+  return null;
 }
 
-const baseContentShape = {
-  subject: z.string().min(1, "A subject is required"),
-  html: z.string().optional(),
-  text: z.string().optional(),
-  from: z.string().email().optional(),
-  replyTo: z.string().email().optional(),
-};
-
-const baseContentSchema = z
-  .object(baseContentShape)
-  .superRefine((value, ctx) => {
-    if (!value.html && !value.text) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["html"],
-        message: "Either HTML or text content must be provided",
-      });
-    }
-  });
-
-const customerContentSchema = z
-  .object({
-    ...baseContentShape,
-    to: z.string().email("A valid recipient address is required"),
-  })
-  .superRefine((value, ctx) => {
-    if (!value.html && !value.text) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["html"],
-        message: "Either HTML or text content must be provided",
-      });
-    }
-  });
-
-const resendPayloadSchema = z
-  .object({
-    from: z.string().email("A valid 'from' address is required"),
-    to: z.union([
-      z.string().email("A valid recipient address is required"),
-      z.array(z.string().email("A valid recipient address is required")).min(1),
-    ]),
-    subject: z.string().min(1, "A subject is required"),
-    html: z.string().optional(),
-    text: z.string().optional(),
-    reply_to: z.string().email().optional(),
-  })
-  .refine((value) => Boolean(value.html ?? value.text), {
-    message: "Either HTML or text content must be provided",
-    path: ["html"],
-  });
-
-export type ResendEmailPayload = z.infer<typeof resendPayloadSchema>;
-
-export interface BaseNotificationInput {
-  subject: string;
-  html?: string;
-  text?: string;
-  from?: string;
-  replyTo?: string;
-}
-
-export interface CustomerNotificationInput extends BaseNotificationInput {
-  to: string;
-}
-
-export interface AdminNotificationInput extends BaseNotificationInput {}
-
-const RESEND_API_URL = "https://api.resend.com/emails";
-const DEFAULT_FROM_EMAIL = process.env.RESEND_FROM_EMAIL;
-const ADMIN_EMAIL = process.env.ADMIN_NOTIFICATION_EMAIL;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const ZAPIER_WEBHOOK_URL = process.env.ZAPIER_WEBHOOK_URL;
-
-function assertEnvironmentVariable(
-  value: string | undefined,
-  name: string
-): asserts value is string {
+function requireEnv(value: string | null, name: string): string {
   if (!value) {
-    throw new NotificationError(
-      "missing_environment",
-      `${name} environment variable is required`,
-      { name }
-    );
+    throw new Error(`${name} environment variable is required`);
   }
+
+  return value;
 }
 
-export function buildResendEmailPayload(
-  input: BaseNotificationInput & { to: string | string[] }
-): ResendEmailPayload {
-  const parsed = resendPayloadSchema.safeParse({
-    from: input.from ?? DEFAULT_FROM_EMAIL,
-    to: input.to,
-    subject: input.subject,
-    html: input.html,
-    text: input.text,
-    reply_to: input.replyTo,
-  });
+let cachedResend: Resend | null = null;
 
-  if (!parsed.success) {
-    throw new NotificationError("validation_error", "Invalid email payload", {
-      issues: parsed.error.issues,
-    });
+function getResendClient() {
+  if (cachedResend) {
+    return cachedResend;
   }
 
-  return parsed.data;
+  const apiKey = requireEnv(process.env.RESEND_API_KEY ?? null, "RESEND_API_KEY");
+  cachedResend = new Resend(apiKey);
+  return cachedResend;
 }
 
-async function postToResend(payload: ResendEmailPayload) {
-  assertEnvironmentVariable(RESEND_API_KEY, "RESEND_API_KEY");
+const defaultFromAddress =
+  getFirstEnv(fromEmailEnvKeys) ?? "Instant IT <support@instantit.nl>";
 
-  try {
-    const response = await fetch(RESEND_API_URL, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!response.ok) {
-      const responseText = await response.text();
-      throw new NotificationError(
-        "resend_request_failed",
-        "Failed to send email through Resend",
-        {
-          status: response.status,
-          body: responseText,
-        }
-      );
-    }
-
-    return response.json();
-  } catch (error) {
-    if (error instanceof NotificationError) {
-      throw error;
-    }
-
-    throw new NotificationError("resend_request_failed", "Resend request failed", {
-      cause: error instanceof Error ? error.message : "Unknown error",
-    });
-  }
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
-async function postToZapier(event: string, payload: unknown) {
-  if (!ZAPIER_WEBHOOK_URL) {
-    return;
-  }
-
-  try {
-    const response = await fetch(ZAPIER_WEBHOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ event, payload }),
-    });
-
-    if (!response.ok) {
-      const responseText = await response.text();
-      throw new NotificationError(
-        "zapier_request_failed",
-        "Zapier webhook request failed",
-        {
-          status: response.status,
-          body: responseText,
-        }
-      );
-    }
-  } catch (error) {
-    if (error instanceof NotificationError) {
-      throw error;
-    }
-
-    throw new NotificationError(
-      "zapier_request_failed",
-      "Zapier webhook request failed",
-      {
-        cause: error instanceof Error ? error.message : "Unknown error",
-      }
-    );
-  }
+function formatMultiline(value: string) {
+  return escapeHtml(value).replace(/\n/g, "<br />");
 }
 
-function logError(context: string, error: unknown) {
-  if (error instanceof NotificationError) {
-    console.error(`[notifications] ${context}`, {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-    });
-  } else {
-    console.error(`[notifications] ${context} unexpected error`, error);
+function formatMetadata(metadata?: Record<string, unknown> | null) {
+  if (!metadata || Object.keys(metadata).length === 0) {
+    return "";
   }
+
+  const formatted = escapeHtml(JSON.stringify(metadata, null, 2));
+  return `<h3>Metadata</h3><pre>${formatted}</pre>`;
 }
 
-export async function sendAdminNotification(
-  input: AdminNotificationInput
-) {
-  try {
-    assertEnvironmentVariable(ADMIN_EMAIL, "ADMIN_NOTIFICATION_EMAIL");
-
-    const content = baseContentSchema.safeParse(input);
-
-    if (!content.success) {
-      throw new NotificationError("validation_error", "Invalid email content", {
-        issues: content.error.issues,
-      });
-    }
-
-    const payload = buildResendEmailPayload({
-      ...content.data,
-      from: content.data.from ?? DEFAULT_FROM_EMAIL,
-      to: ADMIN_EMAIL,
-      replyTo: content.data.replyTo,
-    });
-
-    const response = await postToResend(payload);
-    await postToZapier("admin_notification", {
-      to: ADMIN_EMAIL,
-      subject: content.data.subject,
-    });
-
-    return response;
-  } catch (error) {
-    logError("sendAdminNotification", error);
-
-    if (error instanceof NotificationError) {
-      throw error;
-    }
-
-    throw new NotificationError(
-      "unexpected_error",
-      "Failed to send admin notification",
-      {
-        cause:
-          error instanceof Error ? error.message : "Unknown error occurred",
-      }
-    );
+function formatRecordId(recordId?: string | number | null) {
+  if (recordId === undefined || recordId === null) {
+    return "";
   }
+
+  return `<p><strong>Supabase record:</strong> ${escapeHtml(String(recordId))}</p>`;
 }
 
-export async function sendCustomerNotification(
-  input: CustomerNotificationInput
-) {
-  try {
-    const parsed = customerContentSchema.safeParse(input);
+export interface ContactNotificationInput {
+  name: string;
+  contact: string;
+  message: string;
+  recordId?: string | number | null;
+  metadata?: Record<string, unknown> | null;
+  customerEmail?: string | null;
+}
 
-    if (!parsed.success) {
-      throw new NotificationError("validation_error", "Invalid email content", {
-        issues: parsed.error.issues,
-      });
-    }
+export type ResendEmailOptions = Parameters<Resend["emails"]["send"]>[0];
 
-    const payload = buildResendEmailPayload({
-      ...parsed.data,
-      from: parsed.data.from ?? DEFAULT_FROM_EMAIL,
-      to: parsed.data.to,
-      replyTo: parsed.data.replyTo,
-    });
+export function buildAdminEmail(
+  input: ContactNotificationInput,
+  overrides?: Partial<ResendEmailOptions>
+): ResendEmailOptions {
+  const from = overrides?.from ?? defaultFromAddress;
+  const to = overrides?.to ?? requireEnv(getFirstEnv(adminEmailEnvKeys), "CONTACT_NOTIFICATION_ADMIN_EMAIL");
+  const subject = overrides?.subject ?? `Nieuw contactbericht van ${input.name}`;
+  const replyTo = overrides?.reply_to ?? input.customerEmail ?? undefined;
 
-    const response = await postToResend(payload);
-    await postToZapier("customer_notification", {
-      to: parsed.data.to,
-      subject: parsed.data.subject,
-    });
+  const textLines = [
+    "Nieuw contactbericht",
+    "",
+    `Naam: ${input.name}`,
+    `Contact: ${input.contact}`,
+    "",
+    input.message,
+  ];
 
-    return response;
-  } catch (error) {
-    logError("sendCustomerNotification", error);
-
-    if (error instanceof NotificationError) {
-      throw error;
-    }
-
-    throw new NotificationError(
-      "unexpected_error",
-      "Failed to send customer notification",
-      {
-        cause:
-          error instanceof Error ? error.message : "Unknown error occurred",
-      }
-    );
+  if (input.recordId) {
+    textLines.push("", `Supabase record: ${String(input.recordId)}`);
   }
+
+  if (input.metadata && Object.keys(input.metadata).length > 0) {
+    textLines.push("", "Metadata:", JSON.stringify(input.metadata, null, 2));
+  }
+
+  const text = textLines.join("\n");
+  const html = `
+    <h1>Nieuw contactbericht</h1>
+    <p><strong>Naam:</strong> ${escapeHtml(input.name)}</p>
+    <p><strong>Contact:</strong> ${escapeHtml(input.contact)}</p>
+    <p><strong>Bericht:</strong><br />${formatMultiline(input.message)}</p>
+    ${formatRecordId(input.recordId)}
+    ${formatMetadata(input.metadata)}
+  `;
+
+  return {
+    from,
+    to,
+    subject,
+    text,
+    html,
+    reply_to: replyTo,
+  } satisfies ResendEmailOptions;
+}
+
+export function buildCustomerEmail(
+  input: ContactNotificationInput,
+  overrides?: Partial<ResendEmailOptions>
+): ResendEmailOptions | null {
+  const customerEmail = overrides?.to ?? input.customerEmail ?? null;
+
+  if (!customerEmail) {
+    return null;
+  }
+
+  const from = overrides?.from ?? defaultFromAddress;
+  const subject = overrides?.subject ?? "We hebben je bericht ontvangen";
+
+  const text = [
+    `Hoi ${input.name},`,
+    "",
+    "Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op.",
+    "",
+    "Je hebt het volgende bericht gestuurd:",
+    "",
+    input.message,
+    "",
+    "Met vriendelijke groet,",
+    "Instant IT",
+  ].join("\n");
+
+  const html = `
+    <p>Hoi ${escapeHtml(input.name)},</p>
+    <p>Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op.</p>
+    <p>Je hebt het volgende bericht gestuurd:</p>
+    <blockquote>${formatMultiline(input.message)}</blockquote>
+    <p>Met vriendelijke groet,<br />Instant IT</p>
+  `;
+
+  return {
+    from,
+    to: customerEmail,
+    subject,
+    text,
+    html,
+  } satisfies ResendEmailOptions;
+}
+
+export async function sendContactNotifications(input: ContactNotificationInput) {
+  const resend = getResendClient();
+  const adminPayload = buildAdminEmail(input);
+  const adminResult = await resend.emails.send(adminPayload);
+
+  if (adminResult.error) {
+    throw new Error(`Failed to send admin notification: ${adminResult.error.message}`);
+  }
+
+  const customerPayload = buildCustomerEmail(input);
+  let customerId: string | null = null;
+
+  if (customerPayload) {
+    const customerResult = await resend.emails.send(customerPayload);
+
+    if (customerResult.error) {
+      throw new Error(`Failed to send customer notification: ${customerResult.error.message}`);
+    }
+
+    customerId = customerResult.data?.id ?? null;
+  }
+
+  return {
+    adminId: adminResult.data?.id ?? null,
+    customerId,
+  };
 }
