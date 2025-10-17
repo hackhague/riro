@@ -106,8 +106,6 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         city: booking.city,
         message: booking.message,
         source: "website",
-        approval_token: approvalToken,
-        created_at: new Date().toISOString(),
       } as any;
 
       // Store in Supabase (table: appointments) if configured
