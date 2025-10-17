@@ -1,18 +1,48 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
 export function ContactForm() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const form = event.currentTarget;
-    const data = new FormData(form);
-    const text = encodeURIComponent(
-      `Naam: ${data.get("name")}\nTelefoon/email: ${data.get("contact")}\nVraag: ${data.get("message")}`,
-    );
-    window.open(`https://wa.me/31702119191?text=${text}`, "_blank");
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      contact: String(formData.get("contact") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+    };
+
+    setStatus("loading");
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(data?.error ?? "Versturen mislukt. Probeer het later opnieuw.");
+      }
+
+      form.reset();
+      setStatus("success");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Er is iets misgegaan.";
+      setError(message);
+      setStatus("error");
+    }
   };
 
   return (
@@ -43,13 +73,28 @@ export function ContactForm() {
         />
       </div>
       <div className="flex flex-col sm:flex-row gap-3">
-        <Button type="submit" variant="accent">
-          Verstuur via WhatsApp
+        <Button type="submit" variant="accent" disabled={status === "loading"}>
+          {status === "loading" ? "Versturen..." : status === "success" ? "Bericht verstuurd" : "Verstuur bericht"}
+        </Button>
+        <Button variant="whatsapp" asChild>
+          <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+            Verstuur via WhatsApp
+          </a>
         </Button>
         <Button variant="outline" asChild>
           <a href="mailto:support@instantit.nl">Of stuur per e-mail</a>
         </Button>
       </div>
+      {status === "error" && error ? (
+        <p className="text-sm text-destructive" role="alert">
+          {error}
+        </p>
+      ) : null}
+      {status === "success" ? (
+        <p className="text-sm text-primary" role="status">
+          Bedankt! We nemen zo snel mogelijk contact met je op.
+        </p>
+      ) : null}
     </form>
   );
 }
