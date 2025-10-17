@@ -108,32 +108,26 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         source: "website",
       } as any;
 
-      // Store in Supabase (table: appointments) if configured
-      const supabaseUrl =
-        process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey =
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
-        process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ??
-        process.env.VITE_SUPABASE_ANON_KEY ??
-        process.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-      const hasSupabase = !!supabaseUrl && !!supabaseAnonKey;
-
       const response = await fetch("/api/appointments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      const result = await response.json().catch(() => null);
+      const result = (await response.json().catch(() => null)) as
+        | { success?: boolean; error?: string; message?: string }
+        | null;
 
-      if (!response.ok) {
+      if (!response.ok || !result?.success) {
         const description =
-          (result && (result.error ?? result.message)) || "Probeer het later opnieuw.";
+          result?.error || result?.message || "Probeer het later opnieuw.";
         throw new Error(description);
       }
 
-      toast({ title: "Afspraak verstuurd", description: "We nemen snel contact op om te bevestigen." });
+      toast({
+        title: "Afspraak verstuurd",
+        description: result.message || "We nemen snel contact op om te bevestigen.",
+      });
       setStep(0);
       setBooking({
         service: SERVICES[0].id,

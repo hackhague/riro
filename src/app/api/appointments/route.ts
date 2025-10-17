@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
@@ -47,24 +48,6 @@ function consumeToken(ip: string) {
   return true;
 }
 
-function generateApprovalToken() {
-  const cryptoApi = (globalThis as typeof globalThis & { crypto?: Crypto }).crypto;
-
-  if (cryptoApi) {
-    if (typeof cryptoApi.randomUUID === "function") {
-      return cryptoApi.randomUUID();
-    }
-
-    if (typeof cryptoApi.getRandomValues === "function") {
-      const bytes = new Uint8Array(16);
-      cryptoApi.getRandomValues(bytes);
-      return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
-    }
-  }
-
-  return `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}`;
-}
-
 const bookingSchema = z.object({
   service: z.string().min(1),
   serviceLabel: z.string().min(1),
@@ -90,6 +73,7 @@ function sanitizeString(value: string | null | undefined) {
 export async function POST(request: Request) {
   const ip = getClientIp(request);
   if (!consumeToken(ip)) {
+    console.warn("Rate limit exceeded for IP", ip);
     return NextResponse.json(
       { error: "Too many requests" },
       {
@@ -105,11 +89,16 @@ export async function POST(request: Request) {
   try {
     rawBody = await request.json();
   } catch {
+    console.warn("Invalid JSON payload received", { ip });
     return NextResponse.json({ error: "Invalid JSON payload" }, { status: 400 });
   }
 
   const parsed = bookingSchema.safeParse(rawBody);
   if (!parsed.success) {
+    console.warn("Validation failed for appointment payload", {
+      ip,
+      errors: parsed.error.flatten(),
+    });
     return NextResponse.json(
       { error: "Invalid booking payload", details: parsed.error.flatten() },
       { status: 400 }
@@ -131,6 +120,7 @@ export async function POST(request: Request) {
     "";
 
   if (!supabaseUrl || !supabaseKey) {
+    console.error("Supabase credentials missing while handling appointment request");
     return NextResponse.json(
       { error: "Supabase credentials are not configured" },
       { status: 500 }
@@ -144,7 +134,7 @@ export async function POST(request: Request) {
     },
   });
 
-  const approvalToken = generateApprovalToken();
+  const approvalToken = crypto.randomUUID();
 
   const sanitized = {
     service: sanitizeString(body.service),
@@ -239,7 +229,11 @@ export async function POST(request: Request) {
     source: sanitized.source,
   };
 
-  await sendAppointmentNotifications(notificationPayload);
+  try {
+    await sendAppointmentNotifications(notificationPayload);
+  } catch (error) {
+    console.error("Failed to dispatch appointment notifications", error);
+  }
 
   return NextResponse.json(
     {
@@ -247,6 +241,7 @@ export async function POST(request: Request) {
       id: recordId,
       approveUrl,
       cancelUrl,
+      message: "We nemen snel contact op om de afspraak te bevestigen.",
     },
     { status: 201 }
   );
