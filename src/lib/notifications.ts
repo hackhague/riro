@@ -83,14 +83,18 @@ export interface ContactNotificationInput {
 
 export type ResendEmailOptions = Parameters<Resend["emails"]["send"]>[0];
 
+type ResendEmailOverrides = Partial<ResendEmailOptions> & {
+  replyTo?: string;
+};
+
 export function buildAdminEmail(
   input: ContactNotificationInput,
-  overrides?: Partial<ResendEmailOptions>
+  overrides?: ResendEmailOverrides
 ): ResendEmailOptions {
   const from = overrides?.from ?? defaultFromAddress;
   const to = overrides?.to ?? requireEnv(getFirstEnv(adminEmailEnvKeys), "CONTACT_NOTIFICATION_ADMIN_EMAIL");
   const subject = overrides?.subject ?? `Nieuw contactbericht van ${input.name}`;
-  const replyTo = overrides?.reply_to ?? input.customerEmail ?? undefined;
+  const replyTo = overrides?.replyTo ?? input.customerEmail ?? undefined;
 
   const textLines = [
     "Nieuw contactbericht",
@@ -125,7 +129,7 @@ export function buildAdminEmail(
     subject,
     text,
     html,
-    reply_to: replyTo,
+    replyTo,
   } satisfies ResendEmailOptions;
 }
 
