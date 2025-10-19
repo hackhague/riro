@@ -77,7 +77,7 @@ export default function Home() {
     {
       icon: Shield,
       title: "Betrouwbare specialisten",
-      description: "Gescreend en minimaal 5+ jaar ervaring van onze opgeleide IT-Specialisten.",
+      description: "Gescreend en minimaal 5+ jaar ervaaaring van onze opgeleide IT-Specialisten.",
     },
     {
       icon: Zap,
