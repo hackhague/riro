@@ -272,55 +272,106 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------- SERVICES (TEGELS) ------------------- */}
+      {/* ------------------- MAIN SERVICES (3 BLOKKEN) ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Onze Diensten
+            Hoe kan InstantIT je helpen?
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceBlocks.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                className="group relative block overflow-hidden rounded-xl"
-                aria-label={`${item.title} – Meer info`}
-              >
-                <div className="aspect-[16/11] relative">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    loading="lazy"
-                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-95"
-                  />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+            <Link
+              href="/computerhulp"
+              className="group relative block overflow-hidden rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 hover:shadow-lg transition-all duration-300"
+              aria-label="Computerhulp aan huis – Meer info"
+            >
+              <div className="aspect-[16/11] relative flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300" />
+              </div>
+
+              <div className="pointer-events-none absolute inset-0 flex items-end">
+                <div className="w-full p-5 md:p-6">
+                  <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
+                    Computerhulp aan huis
+                  </h3>
+                  <p className="text-white/90 text-sm md:text-base mt-2">
+                    Directe hulp op je locatie in Haaglanden
+                  </p>
+
+                  <span
+                    className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
+                               font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
+                  >
+                    Meer info
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
                 </div>
+              </div>
 
-                <div className="pointer-events-none absolute inset-0 flex items-end">
-                  <div className="w-full p-5 md:p-6">
-                    <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
-                      {item.title}
-                    </h3>
+              <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
+            </Link>
 
-                    <span
-                      className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
-                                 font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
-                    >
-                      Meer info
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
+            <Link
+              href="/hulp-op-afstand"
+              className="group relative block overflow-hidden rounded-xl bg-gradient-to-br from-green-500 to-green-700 hover:shadow-lg transition-all duration-300"
+              aria-label="Computerhulp op afstand – Meer info"
+            >
+              <div className="aspect-[16/11] relative flex items-center justify-center bg-gradient-to-br from-green-500 to-green-700">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300" />
+              </div>
+
+              <div className="pointer-events-none absolute inset-0 flex items-end">
+                <div className="w-full p-5 md:p-6">
+                  <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
+                    Computerhulp op afstand
+                  </h3>
+                  <p className="text-white/90 text-sm md:text-base mt-2">
+                    Snelle remote hulp, meestal binnen 30 minuten
+                  </p>
+
+                  <span
+                    className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
+                               font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
+                  >
+                    Meer info
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
                 </div>
+              </div>
 
-                <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
-              </Link>
-            ))}
+              <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
+            </Link>
+
+            <Link
+              href="/ik-ben-gehackt"
+              className="group relative block overflow-hidden rounded-xl bg-gradient-to-br from-red-500 to-red-700 hover:shadow-lg transition-all duration-300"
+              aria-label="Hackservice – Meer info"
+            >
+              <div className="aspect-[16/11] relative flex items-center justify-center bg-gradient-to-br from-red-500 to-red-700">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-300" />
+              </div>
+
+              <div className="pointer-events-none absolute inset-0 flex items-end">
+                <div className="w-full p-5 md:p-6">
+                  <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
+                    Hackservice
+                  </h3>
+                  <p className="text-white/90 text-sm md:text-base mt-2">
+                    Gehackt? Wij helpen je 24/7 met cyberherstel
+                  </p>
+
+                  <span
+                    className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
+                               font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
+                  >
+                    Meer info
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+
+              <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
+            </Link>
           </div>
 
           <div className="mt-8 flex justify-center gap-3">
