@@ -103,12 +103,14 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
   const selectedCategory = useMemo(() => SERVICE_CATEGORIES.find((c) => c.id === booking.serviceCategory)?.title ?? "", [booking.serviceCategory]);
 
   const handleSubmit = async () => {
-    if (!isStep3Valid || !isStep2Valid) return;
+    if (!isStep4Valid || !isStep3Valid) return;
     setLoading(true);
     try {
       const payload = {
         service: booking.service,
         serviceLabel: selectedService || booking.service,
+        serviceCategory: booking.serviceCategory || undefined,
+        serviceCategoryLabel: selectedCategory || undefined,
         dateISO: booking.date ? booking.date.toISOString() : null,
         dateDisplay: booking.date ? format(booking.date, "PPP") : null,
         timeSlot: booking.timeSlot,
