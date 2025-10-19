@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock, Euro, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, Clock, Euro } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
