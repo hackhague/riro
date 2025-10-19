@@ -288,13 +288,13 @@ export default function Diensten() {
                   <div className="flex gap-3">
                     <Button variant="default" asChild>
                       <Link href={service.link}>
-                        Lees meer
+                        Meer info
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
                       <a href="tel:+31702119191">
-                        Bel direct
+                        Bel nu
                       </a>
                     </Button>
                   </div>
