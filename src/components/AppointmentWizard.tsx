@@ -24,7 +24,7 @@ const SERVICES = [
 const SERVICE_CATEGORIES = [
   { id: "printerhulp", title: "Printerhulp" },
   { id: "email", title: "E-mail Problemen" },
-  { id: "hardware", title: "Windows/Mac/Linux Problemen" },
+  { id: "hardware", title: "Windows/Mac Problemen" },
   { id: "wifi", title: "Internet & WiFi" },
   { id: "tablet", title: "Tablet & Smartphone" },
   { id: "uitleg", title: "Uitleg & Les" },
