@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  /const serviceBlocks = [
+  const serviceBlocks = [
     { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.jpg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
