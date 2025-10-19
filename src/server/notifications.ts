@@ -1,3 +1,5 @@
+import { Resend } from "resend";
+
 const ADMIN_NOTIFICATION_ENDPOINT =
   process.env.APPOINTMENT_ADMIN_NOTIFICATION_WEBHOOK_URL ??
   process.env.ZAPIER_ADMIN_NOTIFICATION_WEBHOOK_URL ??
@@ -16,7 +18,36 @@ const CUSTOMER_NOTIFICATION_ENDPOINT =
   null;
 
 const ADMIN_EMAILS = process.env.APPOINTMENT_ADMIN_EMAILS;
-const DEFAULT_FROM = process.env.APPOINTMENT_FROM_EMAIL ?? process.env.ZAPIER_FROM_EMAIL ?? null;
+const DEFAULT_FROM = process.env.APPOINTMENT_FROM_EMAIL ?? process.env.ZAPIER_FROM_EMAIL ?? process.env.RESEND_FROM_EMAIL ?? "Instant IT <support@instantit.nl>";
+
+let cachedResend: Resend | null = null;
+
+function getResendClient() {
+  if (cachedResend) {
+    return cachedResend;
+  }
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+
+  cachedResend = new Resend(apiKey);
+  return cachedResend;
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function formatMultiline(value: string) {
+  return escapeHtml(value).replace(/\n/g, "<br />");
+}
 
 type AppointmentNotificationPayload = {
   id: string | number | null;
