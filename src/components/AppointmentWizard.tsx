@@ -148,6 +148,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       setStep(0);
       setBooking({
         service: SERVICES[0].id,
+        serviceCategory: "",
         date: undefined,
         timeSlot: "",
         firstName: "",
