@@ -12,6 +12,10 @@ import {
   Zap,
   ArrowRight,
   ZapOff,
+  Home,
+  Zap as Lightning,
+  Laptop,
+  AlertCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
