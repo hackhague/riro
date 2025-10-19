@@ -51,36 +51,34 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const blocks = [
+  const services = [
     {
-      title: "Computerhulp",
-      href: "/computerhulp",
-      image: "/images/services/computerhulp.jpg",
+      title: "Computerhulp aan huis",
+      description:
+        "Problemen met een desktop of laptop? Onze monteur komt bij u thuis of op kantoor, repareert hardware & software en legt alles duidelijk uit. Vaste tarieven, gratis nazorg.",
+      image: serviceComputer,
+      link: "/computerhulp",
     },
     {
-      title: "Printerhulp",
-      href: "/printer",
-      image: "/images/services/printerhulp.jpg",
+      title: "Computerhulp op afstand",
+      description:
+        "Direct hulp via beveiligde schermdeling: snel computerhulp, updates, virusverwijdering en computer sneller maken.",
+      image: serviceComputer,
+      link: "/hulp-op-afstand",
     },
     {
-      title: "E-mail Problemen",
-      href: "/email",
-      image: "/images/services/email-problemen.jpg",
+      title: "Gehackt? Herstel & beveiliging",
+      description:
+        "Gehackt of ransomware-verdacht? We stoppen de aanval, herstellen toegang, verwijderen malware en zetten extra bescherming (bijv. 2FA) in.",
+      image: serviceHack,
+      link: "/ik-ben-gehackt",
     },
     {
-      title: "Internet & WiFi",
-      href: "/wifi",
-      image: "/images/services/wifi.jpg",
-    },
-    {
-      title: "Tablet & Smartphone",
-      href: "/mobiel-tablet",
-      image: "/images/services/tablet-smartphone.jpg",
-    },
-    {
-      title: "Uitleg & Les",
-      href: "/uitleg-les",
-      image: "/images/services/uitleg-les.jpg",
+      title: "WiFi & Netwerk optimalisatie",
+      description:
+        "Slechte wifi of dode zones? We optimaliseren je routerinstellingen en verbeteren netwerkbeveiliging voor thuis of kantoor.",
+      image: serviceWifi,
+      link: "/wifi",
     },
   ];
 
