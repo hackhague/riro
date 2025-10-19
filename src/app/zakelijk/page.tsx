@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Building2, Store, Coffee, CheckCircle, Shield, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 export const metadata: Metadata = {
-  title: "Zakelijke IT-support",
+  title: "Zakelijke IT-support | MKB, Retail & Horeca",
   description:
-    "IT-support voor winkels, horeca en mkb: spoedservice, strippenkaart en cybersecurity checks.",
+    "IT-support voor winkels, restaurants en bedrijven. Spoedservice, strippenkaart en veiligheidscontroles. Snelle respons.",
   alternates: {
     canonical: "https://www.instantit.nl/zakelijk",
   },
