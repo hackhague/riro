@@ -21,6 +21,15 @@ const SERVICES = [
   { id: "hack_support", label: "Ik ben gehackt" },
 ];
 
+// Service categories for "Computerhulp op afstand" and "Computerhulp aan huis"
+const SERVICE_CATEGORIES = [
+  { id: "printerhulp", title: "Printerhulp" },
+  { id: "email", title: "E-mail Problemen" },
+  { id: "wifi", title: "Internet & WiFi" },
+  { id: "tablet", title: "Tablet & Smartphone" },
+  { id: "uitleg", title: "Uitleg & Les" },
+];
+
 // Default 2-uur tijdsloten
 const DEFAULT_SLOTS = [
   "09:00 – 11:00",
