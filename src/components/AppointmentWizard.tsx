@@ -197,7 +197,19 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                   {isStep1Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === 1 ? "bg-primary" : "bg-primary/90"}`}>
+                {needsCategoryStep && (
+                  <li className={`px-4 py-4 flex items-center justify-between ${step === 1 ? "bg-primary" : "bg-primary/90"}`}>
+                    <div className="flex items-center gap-3">
+                      <Info className="h-5 w-5" />
+                      <div>
+                        <p className="text-sm opacity-80">Onderwerp</p>
+                        <p className="text-sm font-semibold truncate max-w-[160px]">{selectedCategory || "Kies een onderwerp"}</p>
+                      </div>
+                    </div>
+                    {isStep2Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  </li>
+                )}
+                <li className={`px-4 py-4 flex items-center justify-between ${step === (needsCategoryStep ? 2 : 1) ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
@@ -207,9 +219,9 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                       </p>
                     </div>
                   </div>
-                  {isStep2Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === 2 ? "bg-primary" : "bg-primary/90"}`}>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === (needsCategoryStep ? 3 : 2) ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
@@ -219,7 +231,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                       </p>
                     </div>
                   </div>
-                  {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
                 <li className="px-4 py-4 text-sm bg-primary/80">
                   <p className="opacity-100">Kom in contact:</p>
