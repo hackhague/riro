@@ -266,6 +266,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <PartnersSection />
 
       {/* ------------------- MAIN SERVICES (4 SERVICES - 2x2 GRID) ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
@@ -657,7 +658,6 @@ export default function Home() {
         </div>
       </section>
 
-      <PartnersSection />
 
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
