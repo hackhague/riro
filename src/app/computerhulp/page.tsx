@@ -44,16 +44,6 @@ export default function Computerhulp() {
     { title: "Fix & uitleg", desc: "We lossen het op én leggen uit wat er aan de hand was" },
     { title: "Nazorg", desc: "Gratis herbeoordeling binnen 7 dagen (max 30 min)" },
   ];
-  export default function Home() {
-  // ---------- SERVICE TEGELS (nieuwe blokken) ----------
-  const serviceBlocks = [
-    { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
-    { title: "Tablet & Smartphone", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
-    { title: "Uitleg & Les", href: "/uitleg-les", image: "/images/services/uitleg-les.jpg" },
-  ];
 
   const faqs = [
     {
