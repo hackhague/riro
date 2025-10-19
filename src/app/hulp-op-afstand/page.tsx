@@ -3,13 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { MessageCircle, Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-computer.jpg";
 
 export const metadata: Metadata = {
-  title: "Computerhulp op afstand",
+  title: "Computerhulp op afstand | Snelle hulp via schermdeling",
   description:
-    "Directe remote support via schermdeling. Veilig, snel en zonder voorrijkosten.",
+    "Directe hulp op afstand via veilige schermdeling. Meestal binnen 10–30 minuten reactie. €39–€99, geen voorrijkosten.",
   alternates: {
     canonical: "https://www.instantit.nl/hulp-op-afstand",
   },
