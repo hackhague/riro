@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import AppointmentWizard from "@/components/AppointmentWizard";
 
 const serviceImage = "/images/service-hack.jpg";
 
 export const metadata: Metadata = {
-  title: "Ik ben gehackt? Direct hulp",
+  title: "Gehackt? Direct hulp in Den Haag | InstantIT",
   description:
-    "Gehackt? We starten meestal binnen 60 minuten op afstand. Account herstel, ransomware check en rapport voor verzekering.",
+    "Je bent gehackt? We helpen meestal binnen 60 minuten. Wachtwoorden resetten, virussen verwijderen, accounts herstellen.",
   alternates: {
     canonical: "https://www.instantit.nl/ik-ben-gehackt",
   },
