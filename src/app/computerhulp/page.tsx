@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock, Euro } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, Clock, Euro, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import {
+  Star,
+  Clock,
+  Shield,
+  CheckCircle,
+  MessageCircle,
+  Phone,
+  Zap,
+  ArrowRight,
+  ZapOff,
+} from "lucide-react";
 
 const serviceImage = "/images/service-computer.jpg";
 
