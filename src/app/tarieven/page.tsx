@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 
 export default function Tarieven() {
   const consumerPricing = [
-    { name: "Remote QuickFix", price: "€39", unit: "per 30 min", cap: "cap €99", desc: "Voor eenvoudige vragen en snelle fixes" },
-    { name: "Aan huis", price: "€65", unit: "per uur (min. 1u)", cap: "geen voorrijkosten Haaglanden", desc: "On-site support in Zuid-Holland" },
-    { name: "Hacklijn remote", price: "€79", unit: "per 45 min", cap: "cap €149", desc: "24/7 spoedhulp bij hack of cyberincident" },
-    { name: "Spoed on-site", price: "€199", unit: "tot 2 uur", cap: "bij acute dreiging", desc: "Emergency response binnen 2u" },
+    { name: "Computerhulp op afstand", price: "€39", unit: "per 30 min", cap: "cap €99", desc: "Voor eenvoudige vragen en snelle oplossingen" },
+    { name: "Computerhulp aan huis", price: "€65", unit: "per uur (min. 1u)", cap: "geen voorrijkosten Haaglanden", desc: "On-site ondersteuning in Zuid-Holland" },
+    { name: "Hacklijn 24/7", price: "€79", unit: "per 45 min", cap: "cap €149", desc: "Spoedhulp bij hack of cyberincident" },
+    { name: "Spoedhulp on-site", price: "€199", unit: "vast tarief", cap: "voor acute problemen", desc: "Snel ter plaatse wanneer je ons nodig hebt" },
     { name: "Cyber APK", price: "€129", unit: "60–90 min", cap: "incl. rapport", desc: "Preventieve veiligheidscheck" },
     { name: "WiFi optimalisatie", price: "€149", unit: "survey + plan", cap: "excl. hardware", desc: "Betere dekking en stabiliteit" },
   ];
@@ -66,11 +66,11 @@ export default function Tarieven() {
             ))}
           </div>
           <div className="mt-8 flex justify-center gap-3">
-            <Button variant="outline" asChild>
+            <Button variant="accent" asChild>
               <a href="/afspraak">Plan een afspraak</a>
             </Button>
-            <Button variant="accent" asChild>
-              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp ons</a>
+            <Button variant="outline" asChild>
+              <a href="tel:+31702119191">Bel nu</a>
             </Button>
           </div>
         </div>
@@ -95,10 +95,10 @@ export default function Tarieven() {
             ))}
           </div>
           <div className="mt-8 flex justify-center gap-3">
-            <Button variant="outline" asChild>
+            <Button variant="accent" asChild>
               <a href="/afspraak">Plan een afspraak</a>
             </Button>
-            <Button variant="accent" asChild>
+            <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
             </Button>
           </div>

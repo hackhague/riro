@@ -409,14 +409,14 @@ export default function Home() {
 
                   <details>
                     <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
-                      <span>Wat kost Computerhulp op Afstand?</span>
+                      <span>Wat kost computerhulp op afstand?</span>
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
-                      <p>Een remote QuickFix begint bij €39 voor 30 minuten (incl. btw). Je ziet altijd de prijs voordat we starten.</p>
+                      <p>Computerhulp op afstand begint bij €39 voor 30 minuten. Je ziet altijd de prijs voordat we starten.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/tarieven">Bekijk prijzen</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote hulp</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start hulp</a>
                       </div>
                     </div>
                   </details>

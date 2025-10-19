@@ -262,11 +262,10 @@ export function HomepageServicesClient() {
           {services.map((service) => (
             <Card
               key={service.id}
-              className={`border-2 hover:border-primary transition-colors flex flex-col ${
-                service.isPopular
+              className={`border-2 hover:border-primary transition-colors flex flex-col ${service.isPopular
                   ? "border-primary ring-1 ring-primary/20"
                   : ""
-              }`}
+                }`}
             >
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Header with icon and popular badge */}

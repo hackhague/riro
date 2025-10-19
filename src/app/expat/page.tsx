@@ -22,7 +22,7 @@ export default function Expat() {
     {
       icon: Clock,
       title: "Fast Response",
-      description: "Remote within 10-30 minutes, on-site usually within 2 hours in The Hague area.",
+      description: "Remote within 10-30 minutes, on-site usually within 24 hours in The Hague area.",
     },
     {
       icon: Shield,
@@ -51,7 +51,7 @@ export default function Expat() {
 
   const pricing = [
     {
-      name: "Remote QuickFix",
+      name: "Remote Computer Help",
       price: "€39 / 30 min",
       cap: "capped at €99",
       description: "For software issues, virus removal, configuration",
@@ -63,7 +63,7 @@ export default function Expat() {
       description: "For hardware, network setup, home office installation",
     },
     {
-      name: "Emergency Hack Support",
+      name: "Emergency Security Support",
       price: "€79 / 45 min",
       cap: "capped at €149 remote",
       description: "24/7 available for urgent security issues",

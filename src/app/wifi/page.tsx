@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, Wifi, CheckCircle2, Signal } from "lucide-react";
+import Link from "next/link";
+import { Phone, Wifi, CheckCircle2, Signal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -64,19 +65,14 @@ export default function WiFiPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=WiFi%20probleem%3A%20[beschrijf%20je%20situatie]"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
+                  <a href="/afspraak">
+                    Plan een afspraak
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
                     <Phone className="mr-2" />
-                    Bel 070 211 9191
+                    Bel nu
                   </a>
                 </Button>
               </div>

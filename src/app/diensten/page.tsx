@@ -235,14 +235,13 @@ export default function Diensten() {
                   <div className="flex gap-3">
                     <Button variant="default" asChild>
                       <Link href={service.link}>
-                        Lees meer
+                        Meer info
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
-                    <Button variant="accent" asChild>
-                      <a href="https://wa.me/31702119191?text=Hallo%2C%20ik%20wil%20hulp%20met%20%5Bservice%5D">
-                        <MessageCircle className="mr-2" />
-                        WhatsApp
+                    <Button variant="outline" asChild>
+                      <a href="tel:+31702119191">
+                        Bel nu
                       </a>
                     </Button>
                   </div>
@@ -289,13 +288,13 @@ export default function Diensten() {
                   <div className="flex gap-3">
                     <Button variant="default" asChild>
                       <Link href={service.link}>
-                        Lees meer
+                        Meer info
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
                       <a href="tel:+31702119191">
-                        Bel direct
+                        Bel nu
                       </a>
                     </Button>
                   </div>

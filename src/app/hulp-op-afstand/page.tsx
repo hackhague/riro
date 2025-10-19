@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import { MessageCircle, Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
+import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
@@ -141,17 +142,10 @@ export default function HulpOpAfstand() {
             </Card>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button variant="accent" size="lg" asChild>
-                <a
-                  href="https://wa.me/31702119191?text=Ik%20wil%20graag%20hulp%20op%20afstand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="mr-2" />
-                  Start nu
-                </a>
+                <Link href="/afspraak">Plan een afspraak</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="/afspraak">Plan een afspraak</a>
+                <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
               </Button>
             </div>
           </div>
@@ -169,18 +163,18 @@ export default function HulpOpAfstand() {
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">
-            Klaar om je probleem opgelost te krijgen?
+            Klaar om hulp te krijgen?
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a
-                href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20op%20afstand%20nodig"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="mr-2" />
-                WhatsApp nu
-              </a>
+            <Button
+              variant="outline"
+              size="xl"
+              asChild
+              className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+            >
+              <Link href="/afspraak">
+                Plan een afspraak
+              </Link>
             </Button>
             <Button
               variant="outline"
@@ -190,7 +184,7 @@ export default function HulpOpAfstand() {
             >
               <a href="tel:+31702119191">
                 <Phone className="mr-2" />
-                Bel 070 211 9191
+                Bel nu
               </a>
             </Button>
           </div>
