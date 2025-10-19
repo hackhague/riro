@@ -43,7 +43,7 @@ export default function PartnersSection() {
           {pages.map((items, idx) => (
             <div
               key={idx}
-              className={`absolute inset-0 transition-opacity duration-700 ${idx === page ? "opacity-100" : "opacity-0"}`}
+              className={`absolute inset-0 transition-opacity duration-400 ${idx === page ? "opacity-100" : "opacity-0"}`}
               aria-hidden={idx !== page}
             >
               <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 px-1">
