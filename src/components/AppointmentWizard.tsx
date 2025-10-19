@@ -29,6 +29,8 @@ const SERVICE_CATEGORIES = [
   { id: "wifi", title: "Internet & WiFi" },
   { id: "tablet", title: "Tablet & Smartphone" },
   { id: "uitleg", title: "Uitleg & Les" },
+  { id: "overigg", title: "Overig" },
+
 ];
 
 // Default 2-uur tijdsloten
