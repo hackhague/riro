@@ -277,7 +277,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp nodig?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp heeft u nodig?</h3>
                 </div>
                 <div className="grid gap-3 max-w-lg">
                   {SERVICE_CATEGORIES.map((category) => (
