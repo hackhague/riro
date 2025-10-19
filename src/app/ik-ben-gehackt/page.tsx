@@ -308,22 +308,29 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* Urgent CTA */}
       <section className="py-16 bg-destructive text-destructive-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel niet — bel of app direct</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Bij een hack telt elke minuut. Laat ons eerst kijken voordat je stappen als betalen overweegt.
+            Als je bent gehackt, telt elke minuut. Zeg nooit direct "ja" tegen losgeldvragen. Bel ons eerst.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="xl" asChild className="bg-background text-destructive hover:bg-background/90">
               <a
-                href="https://wa.me/31702119191?text=Ik%20ben%20gehackt%3A%20[kort%20probleem]"
+                href="https://wa.me/31702119191?text=Ik%20ben%20gehackt%3A%20[wat%20is%20er%20gebeurd]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp spoedhulp
+                WhatsApp nu
               </a>
             </Button>
             <Button variant="accent" size="xl" asChild>
