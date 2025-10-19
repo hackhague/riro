@@ -23,7 +23,7 @@ const SERVICES = [
 // Service categories for "Computerhulp op afstand" and "Computerhulp aan huis"
 const SERVICE_CATEGORIES = [
   { id: "hardware", title: "Windows/Mac Problemen" },
-  { id: "hardware", title: "Software problemen" },
+  { id: "software", title: "Software problemen" },
   { id: "printerhulp", title: "Printerhulp" },
   { id: "email", title: "E-mail Problemen" },
   { id: "wifi", title: "Internet & WiFi" },
