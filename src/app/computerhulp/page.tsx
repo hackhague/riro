@@ -212,10 +212,10 @@ export default function Computerhulp() {
           </div>
 
           <div className="mt-8 flex justify-center gap-3">
-            <Button variant="outline" asChild>
+            <Button variant="accent" asChild>
               <Link href="/afspraak">Plan een afspraak</Link>
             </Button>
-            <Button variant="accent" asChild>
+            <Button variant="outline" asChild>
               <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
             </Button>
           </div>
@@ -225,7 +225,7 @@ export default function Computerhulp() {
       {/* Pricing */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Card className="border-2 border-primary">
               <CardContent className="p-6 text-center">
