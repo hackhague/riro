@@ -12,7 +12,7 @@ import {
   Zap,
   ArrowRight,
   ZapOff,
-  Home,
+  Home as HomeIcon,
   Laptop,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -289,7 +289,7 @@ export default function Home() {
                   <Home className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold text-xl mb-1">Computerhulp aan huis</h3>
-                <p className="text-xs text-muted-foreground mb-2">Met afspraak • 48���72 uur</p>
+                <p className="text-xs text-muted-foreground mb-2">Met afspraak • 48–72 uur</p>
                 <p className="text-2xl font-bold text-primary mb-3">€69/uur</p>
                 <p className="text-foreground/70 text-sm mb-4 flex-1">
                   Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten.
