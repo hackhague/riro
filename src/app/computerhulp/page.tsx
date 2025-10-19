@@ -154,9 +154,9 @@ export default function Computerhulp() {
             <Card className="border-2 border-primary">
               <CardContent className="p-6 text-center">
                 <Euro className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp op afstand</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€1 per minuut</p>
-                <p className="text-sm text-foreground/60 mb-4">minimum afname 30 min. Maximum tarief €99  </p>
+                <h3 className="font-heading font-semibold text-xl mb-2">Remote QuickFix</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€39</p>
+                <p className="text-sm text-foreground/60 mb-4">per 30 min • cap €99</p>
                 <p className="text-xs text-foreground/70">Meestal binnen 10–30 min reactie</p>
               </CardContent>
             </Card>
