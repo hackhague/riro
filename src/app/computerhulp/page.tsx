@@ -5,13 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-computer.jpg";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Den Haag & Regio",
+  title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
   description:
-    "Van trage computers tot virusverwijdering – wij lossen het snel en transparant op. Remote of aan huis.",
+    "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp",
   },
@@ -28,14 +30,14 @@ export default function Computerhulp() {
   ];
 
   const problems = [
-    "Computer traag of crasht regelmatig",
-    "Virussen, malware of ransomware",
-    "Softwareproblemen en installaties",
-    "Windows/Mac updates die mislukken",
-    "Blauwe schermen (BSOD)",
-    "Data backup en herstel",
-    "Hardware diagnose en advies",
-    "Printers en randapparatuur",
+    "Computer werkt te langzaam of sluit zomaar af",
+    "Virus of schadelijke software op je apparaat",
+    "Programma's die niet willen installeren",
+    "Updates die misgaan",
+    "Computer geeft rare foutmeldingen",
+    "Je bestanden back-uppen",
+    "Apparaat reparatie en onderhoud",
+    "Printers en apparaten instellen",
   ];
 
   const serviceAreas = [
@@ -80,20 +82,20 @@ export default function Computerhulp() {
                 Computerhulp in Den Haag & regio
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Van trage computers tot virusverwijdering – wij lossen het snel en transparant op. Remote of aan huis.
+                Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="default" size="lg" asChild>
+                <Button variant="accent" size="lg" asChild>
                   <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20computerproblemen"
+                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="mr-2" />
-                    App nu
+                    WhatsApp nu
                   </a>
                 </Button>
-                <Button variant="accent" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
                     <Phone className="mr-2" />
                     Bel 070 211 9191
@@ -156,11 +158,13 @@ export default function Computerhulp() {
 
       <PartnersSection />
 
-      {/* ------------------- SERVICES (TEGELS) ------------------- */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <HomepageServicesClient />
+
+      {/* ------------------- RELATED SERVICES ------------------- */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Onze Diensten
+            Andere diensten
           </h2>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -328,19 +332,26 @@ export default function Computerhulp() {
         </div>
       </section>
 
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Computer weer snel maken?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar om je computer te fixen?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20computerproblemen"
+                href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                Start remote hulp
+                WhatsApp nu
               </a>
             </Button>
             <Button

@@ -88,17 +88,17 @@ export default function Expat() {
               we understand your needs and speak your language.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="whatsapp" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <a
                   href="https://wa.me/31702119191?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2" />
-                  WhatsApp us now – fastest response
+                  WhatsApp now
                 </a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
                   Call 070 211 9191

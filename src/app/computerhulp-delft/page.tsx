@@ -30,17 +30,17 @@ export default function ComputerhulpDelft() {
               Remote binnen 10–30 minuten, on-site meestal binnen 2 uur. Vaste prijzen, geen verrassingen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="whatsapp" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <a
                   href="https://wa.me/31702119191?text=Hallo%2C%20ik%20ben%20in%20Delft%20–%20kunnen%20jullie%20helpen%3F"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2" />
-                  WhatsApp ons nu
+                  WhatsApp nu
                 </a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
                   Bel 070 211 9191

@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Building2, Store, Coffee, CheckCircle, Shield, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 export const metadata: Metadata = {
-  title: "Zakelijke IT-support",
+  title: "Zakelijke IT-support | MKB, Retail & Horeca",
   description:
-    "IT-support voor winkels, horeca en mkb: spoedservice, strippenkaart en cybersecurity checks.",
+    "IT-support voor winkels, restaurants en bedrijven. Spoedservice, strippenkaart en veiligheidscontroles. Snelle respons.",
   alternates: {
     canonical: "https://www.instantit.nl/zakelijk",
   },
@@ -87,17 +89,17 @@ export default function Zakelijk() {
               dat je bedrijf draaiende blijft.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="whatsapp" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <a
                   href="https://wa.me/31702119191?text=Zakelijke%20IT-hulp%20nodig"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2" />
-                  WhatsApp ons nu – snelste reactie
+                  WhatsApp nu
                 </a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
                   Bel 070 211 9191
@@ -290,6 +292,15 @@ export default function Zakelijk() {
         </div>
       </section>
 
+      <HomepageServicesClient />
+
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
@@ -297,7 +308,7 @@ export default function Zakelijk() {
             Klaar om jouw bedrijf te laten draaien zonder IT-zorgen?
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Of het nu gaat om spoedondersteuning, preventief onderhoud of een Cyber APK – wij staan voor je klaar.
+            Of het nu gaat om spoedhulp, preventief onderhoud of veiligheidscontrole – wij staan voor je klaar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
@@ -307,7 +318,7 @@ export default function Zakelijk() {
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp ons nu
+                WhatsApp nu
               </a>
             </Button>
             <Button

@@ -112,7 +112,7 @@ export function HomepageServicesClient() {
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: "Hackservice & Cyberherstel",
       subtitle: "Spoed • 24/7 beschikbaar",
-      price: "€50/30 min",
+      price: "Neem contact op voor prijsopgave",
       description:
         "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging.",
       features: [
@@ -208,7 +208,7 @@ export function HomepageServicesClient() {
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: "Cybersecurity & Incident Response",
       subtitle: "Spoed • 24/7 beschikbaar",
-      price: "€75/30 min",
+      price: "Neem contact op voor prijsopgave",
       description:
         "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [

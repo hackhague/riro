@@ -241,7 +241,8 @@ export default function Diensten() {
                     </Button>
                     <Button variant="accent" asChild>
                       <a href="https://wa.me/31702119191?text=Hallo%2C%20ik%20wil%20hulp%20met%20%5Bservice%5D">
-                        Afspraak maken
+                        <MessageCircle className="mr-2" />
+                        WhatsApp
                       </a>
                     </Button>
                   </div>
@@ -319,12 +320,13 @@ export default function Diensten() {
             App of bel even — we helpen je meteen bepalen wat het snelst werkt.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="default" size="lg" asChild>
+            <Button variant="accent" size="lg" asChild>
               <a
                 href="https://wa.me/31702119191?text=Hallo%2C%20ik%20wil%20advies%20over%20mijn%20computer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                <MessageCircle className="mr-2" />
                 WhatsApp ons
               </a>
             </Button>

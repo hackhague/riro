@@ -3,11 +3,12 @@ import { MessageCircle, Phone, Shield, CheckCircle2, FileText } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import AppointmentWizard from "@/components/AppointmentWizard";
 
 export const metadata: Metadata = {
-  title: "Cyber APK – Veiligheidscheck",
+  title: "Cyber APK – Veiligheidscheck Computer & Netwerk",
   description:
-    "Preventieve check van apparaten, netwerk en accounts. Ontvang een duidelijk rapport met actiepunten voor betere cybersecurity.",
+    "Preventieve veiligheidscheck van je apparaten, router en accounts. Ontvang een duidelijk rapport met aanbevelingen.",
   alternates: {
     canonical: "https://www.instantit.nl/cyber-apk",
   },
@@ -61,17 +62,17 @@ export default function CyberAPK() {
               Preventieve check van je apparaten, netwerk en accounts. Weet waar je kwetsbaar bent voordat het misgaat.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="default" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <a
                   href="https://wa.me/31702119191?text=Ik%20wil%20een%20Cyber%20APK%20inplannen"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2" />
-                  Plan een APK
+                  WhatsApp nu
                 </a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
                   Bel 070 211 9191
@@ -218,19 +219,26 @@ export default function CyberAPK() {
 
       <PartnersSection />
 
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Preventief checken?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" size="xl" asChild>
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
                 href="https://wa.me/31702119191?text=Ik%20wil%20een%20Cyber%20APK%20inplannen"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                Plan een APK
+                WhatsApp nu
               </a>
             </Button>
             <Button

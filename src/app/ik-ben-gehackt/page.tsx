@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import AppointmentWizard from "@/components/AppointmentWizard";
 
 const serviceImage = "/images/service-hack.jpg";
 
 export const metadata: Metadata = {
-  title: "Ik ben gehackt? Direct hulp",
+  title: "Gehackt? Direct hulp in Den Haag | InstantIT",
   description:
-    "Gehackt? We starten meestal binnen 60 minuten op afstand. Account herstel, ransomware check en rapport voor verzekering.",
+    "Je bent gehackt? We helpen meestal binnen 60 minuten. Wachtwoorden resetten, virussen verwijderen, accounts herstellen.",
   alternates: {
     canonical: "https://www.instantit.nl/ik-ben-gehackt",
   },
@@ -20,19 +21,19 @@ export default function IkBenGehackt(): JSX.Element {
   // description: "Gehackt? We starten meestal binnen 60 min op afstand. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
 
   const signs = [
-    "Je kunt niet meer inloggen (wachtwoord aangepast)",
-    "Onbekende betalingen of vreemde berichten",
-    "Bestanden zijn vergrendeld met een losgeldeis",
-    "Opdringerige pop-ups of valse virusmeldingen",
-    "Vrienden of familie krijgen rare berichten van jouw account",
-    "Camera of microfoon werkt zonder dat jij dat doet",
+    "Je kunt niet meer inloggen op je account",
+    "Je ziet vreemde uitgaven of onbekende betalingen",
+    "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen",
+    "De computer geeft steeds waarschuwingen over virussen",
+    "Vrienden zeggen dat ze rare berichten van jou krijgen",
+    "Je camera of microfoon doet dingen zonder dat je dat wilt",
   ];
 
   const steps = [
-    { title: "Stap 1 — Kort contact", desc: "Je stuurt een screenshot of beschrijving. We bellen of appen kort." },
-    { title: "Stap 2 — Veilig maken", desc: "We blokkeren toegang en halen het apparaat van internet als dat helpt." },
-    { title: "Stap 3 — Herstel", desc: "We verwijderen malware, herstellen accounts en zetten 2FA aan." },
-    { title: "Stap 4 — Nazorg", desc: "We geven een kort rapport en eenvoudige tips tegen herhaling." },
+    { title: "Stap 1 — Bellen", desc: "Je belt of appt ons. We beluisteren kort wat er is gebeurd." },
+    { title: "Stap 2 — Veilig maken", desc: "We zetten je account op veilig en halen je apparaat van het internet als dat nodig is." },
+    { title: "Stap 3 — Herstellen", desc: "We verwijderen de virus, herstellen je accounts en zetten extra beveiliging aan." },
+    { title: "Stap 4 — Uitleg", desc: "We geven je een kort verslag en handige tips zodat het niet meer gebeurt." },
   ];
 
   // JSON-LD: FAQ + HowTo + Service offers (zoekmachines lezen dit)
@@ -307,22 +308,29 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* Urgent CTA */}
       <section className="py-16 bg-destructive text-destructive-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel niet — bel of app direct</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Bij een hack telt elke minuut. Laat ons eerst kijken voordat je stappen als betalen overweegt.
+            Als je bent gehackt, telt elke minuut. Zeg nooit direct "ja" tegen losgeldvragen. Bel ons eerst.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="default" size="xl" asChild className="bg-background text-destructive hover:bg-background/90">
               <a
-                href="https://wa.me/31702119191?text=Ik%20ben%20gehackt%3A%20[kort%20probleem]"
+                href="https://wa.me/31702119191?text=Ik%20ben%20gehackt%3A%20[wat%20is%20er%20gebeurd]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp spoedhulp
+                WhatsApp nu
               </a>
             </Button>
             <Button variant="accent" size="xl" asChild>
