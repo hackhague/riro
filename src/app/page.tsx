@@ -12,6 +12,8 @@ import {
   Zap,
   ArrowRight,
   ZapOff,
+  Home as HomeIcon,
+  Laptop,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -94,13 +96,6 @@ export default function Home() {
       title: "Regionaal actief",
       description: "Direct inzetbaar in Den Haag, Delft, Zoetermeer, Rijswijk & omgeving.",
     },
-  ];
-
-  const pricing = [
-    { name: "Computerhulp op afstand", price: "€39 / 30 min" },
-    { name: "Computerhulp aan huis", price: "€65 / uur", cap: "Geen voorrijkosten in Haaglanden (min. 1 uur)" },
-    { name: "Hacklijn op afstand", price: "€50 / 30 min" },
-    { name: "Spoed op locatie", price: "Neem contact op" },
   ];
 
   const steps = [
@@ -271,87 +266,196 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <PartnersSection />
 
-      {/* ------------------- SERVICES (TEGELS) ------------------- */}
+      {/* ------------------- MAIN SERVICES (4 SERVICES - 2x2 GRID) ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Onze Diensten
+            Hoe kan InstantIT je helpen?
           </h2>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceBlocks.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                className="group relative block overflow-hidden rounded-xl"
-                aria-label={`${item.title} – Meer info`}
-              >
-                <div className="aspect-[16/11] relative">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    loading="lazy"
-                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-95"
-                  />
+          <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto mb-8">
+            {/* Card 1: Computerhulp aan huis */}
+            <Card className="border-2 hover:border-primary transition-colors flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <HomeIcon className="h-6 w-6 text-primary" />
                 </div>
+                <h3 className="font-heading font-semibold text-xl mb-1">Computerhulp aan huis</h3>
+                <p className="text-xs text-muted-foreground mb-2">Met afspraak • 48–72 uur</p>
+                <p className="text-2xl font-bold text-primary mb-3">€69/uur</p>
+                <p className="text-foreground/70 text-sm mb-4 flex-1">
+                  Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten.
+                </p>
 
-                <div className="pointer-events-none absolute inset-0 flex items-end">
-                  <div className="w-full p-5 md:p-6">
-                    <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
-                      {item.title}
-                    </h3>
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Expert diagnose & oplossing</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Gratis 7 dagen nazorg</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Live uitleg & transparantie</span>
+                  </li>
+                </ul>
 
-                    <span
-                      className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
-                                 font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
-                    >
-                      Meer info
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
+                <div className="flex flex-col gap-2">
+                  <Button asChild>
+                    <Link href="/computerhulp">Meer info</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <Link href="/afspraak">Maak afspraak</Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 2: IT Spoedhulp aan huis (POPULAIR) */}
+            <Card className="border-2 border-primary hover:border-primary transition-colors flex flex-col ring-1 ring-primary/20">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="bg-accent text-accent-foreground text-xs font-bold px-2.5 py-1 rounded-full">
+                    POPULAIR
                   </div>
                 </div>
+                <h3 className="font-heading font-semibold text-xl mb-1">IT Spoedhulp aan huis</h3>
+                <p className="text-xs text-muted-foreground mb-2">Spoed • Meestal binnen 24 uur</p>
+                <p className="text-2xl font-bold text-primary mb-3">€85/uur</p>
+                <p className="text-foreground/70 text-sm mb-4 flex-1">
+                  Snel ter plaatse voor acute problemen. Geen afspraak nodig – we bellen direct terug.
+                </p>
 
-                <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
-              </Link>
-            ))}
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Spoedeisend ter plaatse</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Geen afspraak nodig</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Gratis 7 dagen nazorg</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-col gap-2">
+                  <Button asChild>
+                    <a href="tel:+31702119191">
+                      <Phone className="h-4 w-4 mr-2" />
+                      Bel nu - 070 211 9191
+                    </a>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 3: Computerhulp op afstand */}
+            <Card className="border-2 hover:border-primary transition-colors flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Laptop className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-heading font-semibold text-xl mb-1">Computerhulp op afstand</h3>
+                <p className="text-xs text-muted-foreground mb-2">Remote • 10–30 minuten reactie</p>
+                <p className="text-2xl font-bold text-primary mb-3">€39–€99</p>
+                <p className="text-foreground/70 text-sm mb-4 flex-1">
+                  Snelle remote hulp. €1/minuut, max €99. Veilige versleutelde verbinding.
+                </p>
+
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Snelle respons (meestal direct)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Veilige versleuteling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Live uitleg & 7 dagen nazorg</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-col gap-2">
+                  <Button asChild>
+                    <Link href="/hulp-op-afstand">Meer info</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a href="https://wa.me/31702119191?text=Ik%20heb%20nu%20hulp%20nodig%20op%20afstand" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="h-4 w-4 mr-2" />
+                      Start nu
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Card 4: Hackservice */}
+            <Card className="border-2 hover:border-primary transition-colors flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-heading font-semibold text-xl mb-1">Hackservice & Cyberherstel</h3>
+                <p className="text-xs text-muted-foreground mb-2">Spoed • 24/7 beschikbaar</p>
+                <p className="text-2xl font-bold text-primary mb-3">€50/30 min</p>
+                <p className="text-foreground/70 text-sm mb-4 flex-1">
+                  Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging.
+                </p>
+
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>24/7 cybersteun</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Malware verwijdering & verharding</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Rapport voor verzekering</span>
+                  </li>
+                </ul>
+
+                <div className="flex flex-col gap-2">
+                  <Button asChild>
+                    <Link href="/ik-ben-gehackt">Meer info</Link>
+                  </Button>
+                  <Button variant="outline" asChild>
+                    <a href="tel:+31702119191">
+                      <Phone className="h-4 w-4 mr-2" />
+                      Bel SPOED
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="mt-8 flex justify-center gap-3">
+          <div className="flex justify-center gap-3">
             <Button variant="outline" asChild>
               <Link href="/afspraak">Plan een afspraak</Link>
             </Button>
             <Button variant="accent" asChild>
               <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- PRICING ------------------- */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Prijzen</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {pricing.map((item, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-lg mb-2">{item.name}</h3>
-                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm text-foreground/60">{item.cap}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button variant="default" size="lg" asChild>
-              <Link href="/tarieven">Bekijk alle tarieven</Link>
             </Button>
           </div>
         </div>
@@ -554,7 +658,6 @@ export default function Home() {
         </div>
       </section>
 
-      <PartnersSection />
 
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
