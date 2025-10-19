@@ -69,10 +69,11 @@ type Booking = {
 };
 
 export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
-  const [step, setStep] = useState<0 | 1 | 2>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     service: SERVICES[0].id,
+    serviceCategory: "",
     date: undefined,
     timeSlot: "",
     firstName: "",
@@ -84,6 +85,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     city: "",
     message: "",
   });
+
+  const needsCategoryStep = booking.service === "remote_quickfix" || booking.service === "onsite_standard";
 
   const isStep1Valid = !!booking.service;
   const isStep2Valid = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
