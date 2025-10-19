@@ -201,7 +201,7 @@ export default function Home() {
         </li>
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
-          <span><strong>Binnen</strong> 10-30 minuten reactie — <strong>meestal dezelfde dag nog hulp op afstand of locatie</strong>.</span>
+          <span><strong>Binnen</strong> 10-30 minuten reactie — <strong>meestal dezelfde dag nog hulp op afstand of op locatie</strong>.</span>
         </li>
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
