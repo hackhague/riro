@@ -89,8 +89,9 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
   const needsCategoryStep = booking.service === "remote_quickfix" || booking.service === "onsite_standard";
 
   const isStep1Valid = !!booking.service;
-  const isStep2Valid = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
-  const isStep3Valid =
+  const isStep2Valid = !needsCategoryStep || !!booking.serviceCategory;
+  const isStep3Valid = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
+  const isStep4Valid =
     booking.firstName.trim() !== "" &&
     booking.lastName.trim() !== "" &&
     booking.phone.trim() !== "" &&
@@ -99,6 +100,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     booking.city.trim() !== "";
 
   const selectedService = useMemo(() => SERVICES.find((s) => s.id === booking.service)?.label ?? "", [booking.service]);
+  const selectedCategory = useMemo(() => SERVICE_CATEGORIES.find((c) => c.id === booking.serviceCategory)?.title ?? "", [booking.serviceCategory]);
 
   const handleSubmit = async () => {
     if (!isStep3Valid || !isStep2Valid) return;
