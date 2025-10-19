@@ -302,10 +302,10 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               </div>
             )}
 
-            {step === 1 && (
+            {step === (needsCategoryStep ? 2 : 1) && (
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => setStep(needsCategoryStep ? 1 : 0)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Datum & tijdslot</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -342,8 +342,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                 </div>
                 <div className="mt-6 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(0)}>Vorige</Button>
-                  <Button onClick={() => setStep(2)} disabled={!isStep2Valid}>Volgende stap</Button>
+                  <Button variant="outline" onClick={() => setStep(needsCategoryStep ? 1 : 0)}>Vorige</Button>
+                  <Button onClick={() => setStep(needsCategoryStep ? 3 : 2)} disabled={!isStep3Valid}>Volgende stap</Button>
                 </div>
               </div>
             )}
