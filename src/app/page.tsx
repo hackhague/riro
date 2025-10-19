@@ -25,7 +25,7 @@ const heroImage = "/images/hero-technician.jpg";
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
   description:
-    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min readfsdfsdfctie, meestal binnen 2 uur aan de deur. WhatsApp of bel 070 211 9191.",
+    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. WhatsApp of bel 070 211 9191.",
   keywords: [
     "computerhulp den haag",
     "cyberhulp",
@@ -79,7 +79,7 @@ export default function Home() {
     {
       icon: Shield,
       title: "Betrouwbare specialisten",
-      description: "Gescreend en minimaal 5+ jaar ervaaaring van onze opgeleide IT-Specialisten.",
+      description: "Gescreend en minimaal 5+ jaar ervaring van onze opgeleide IT-Specialisten.",
     },
     {
       icon: Zap,
