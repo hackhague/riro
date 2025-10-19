@@ -162,8 +162,10 @@ export default function WiFiPage() {
         </div>
       </section>
 
+      <HomepageServicesClient />
+
       {/* Case Study */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht</h2>
           <Card className="max-w-3xl mx-auto">
@@ -171,22 +173,19 @@ export default function WiFiPage() {
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Jaren oude router van provider. WiFi op zolder en in tuin valt constant weg. Kinderen kunnen niet
-                  gamen, thuiswerken is een drama."
+                  "Ouwe router van provider. WiFi op zolder en in tuin werkt niet goed. Kinderen kunnen niet gamen, thuiswerken is moeilijk."
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  WiFi survey gedaan. Advies: TP-Link Deco mesh (3 units). Geïnstalleerd, kanalen geoptimaliseerd,
-                  gastnetwerk + ouderschapcontroles geconfigureerd.
+                  We hebben eerst gekeken hoe sterk het signaal is in je huis. Daarna hebben we een betere router gekozen en die goed ingesteld.
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Volle snelheid op alle kamers, tuin en zolder. Geen uitval meer. Kosten: €149 survey/install + €179
-                  hardware."
+                  "Nu heb je overal in huis goed internet. Ook op zolder en in de tuin. Geen vertraging meer. Prijs: €149 onderzoek/instellen + €179 voor apparaat."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Delft</p>
@@ -196,7 +195,7 @@ export default function WiFiPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veelgestelde vragen</h2>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -214,19 +213,26 @@ export default function WiFiPage() {
 
       <PartnersSection />
 
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar voor stabiel WiFi?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar voor beter WiFi?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=WiFi%20traag%20in%20[ruimte]%20-%20provider%3A%20[...]"
+                href="https://wa.me/31702119191?text=WiFi%20probleem%3A%20[beschrijf%20je%20situatie]"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp je situatie
+                WhatsApp nu
               </a>
             </Button>
             <Button
