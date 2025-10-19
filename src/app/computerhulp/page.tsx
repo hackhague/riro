@@ -176,7 +176,7 @@ export default function Computerhulp() {
                 <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Nazorg</h3>
                 <p className="text-3xl font-bold text-primary mb-1">Gratis</p>
-                <p className="text-sm text-foreground/60 mb-4">binnen 7 dagen</p>
+                <p className="text-sm text-foreground/60 mb-4">binnen 5 dagen</p>
                 <p className="text-xs text-foreground/70">Max 30 min remote herbeoordeling</p>
               </CardContent>
             </Card>
