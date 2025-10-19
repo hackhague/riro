@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import {
   Star,
   Clock,
