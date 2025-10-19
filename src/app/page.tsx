@@ -222,8 +222,6 @@ export default function Home() {
   </details>
 </div>
 
-    
-
       {/* CTA Buttons — gebruik jouw Button component zoals eerder */}
       <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
         <Button variant="outline" size="default" asChild className="bg-white text-black border border-white shadow-none hover:shadow-none h-10 md:h-10 font-normal">
