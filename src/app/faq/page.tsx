@@ -122,16 +122,16 @@ export default function FAQ() {
               Geen probleem! Neem contact met ons op via WhatsApp of telefoon. We helpen je graag verder.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="whatsapp" size="lg" asChild>
-                <a
-                  href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20een%20vraag%20over"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="mr-2" />
-                  WhatsApp ons
-                </a>
-              </Button>
+              <Button variant="accent" size="lg" asChild>
+              <a
+                href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20een%20vraag%20over"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="mr-2" />
+                WhatsApp ons
+              </a>
+            </Button>
               <Button variant="accent" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
