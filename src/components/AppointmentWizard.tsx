@@ -348,10 +348,10 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               </div>
             )}
 
-            {step === 2 && (
+            {step === (needsCategoryStep ? 3 : 2) && (
               <div>
                 <div className="flex items-center gap-3 mb-4">
-                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => setStep(needsCategoryStep ? 2 : 1)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Jouw informatie</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -389,8 +389,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                 </div>
                 <div className="mt-6 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(1)}>Vorige</Button>
-                  <Button onClick={handleSubmit} disabled={!isStep3Valid || loading}>
+                  <Button variant="outline" onClick={() => setStep(needsCategoryStep ? 2 : 1)}>Vorige</Button>
+                  <Button onClick={handleSubmit} disabled={!isStep4Valid || loading}>
                     {loading ? "Versturen..." : "Afspraak versturen"}
                   </Button>
                 </div>
