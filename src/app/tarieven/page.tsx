@@ -15,16 +15,16 @@ export const metadata: Metadata = {
 
 export default function Tarieven() {
   const consumerPricing = [
-    { name: "Computerhulp op afstand", price: "€35", unit: "eerste 30 min", extra: "+ €15/15 min daarna", desc: "Snelle remote hulp met lage instapkosten. Transparante per-minuut afrekening." },
-    { name: "Computerhulp aan huis", price: "€59", unit: "eerste 45 min", extra: "+ €17,25/15 min daarna", desc: "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten." },
-    { name: "IT Spoedhulp aan huis", price: "€89", unit: "eerste uur", extra: "+ €19,50/15 min daarna", desc: "Snel ter plaatse voor acute problemen. Geen afspraak nodig." },
+    { name: "Computerhulp op afstand", price: "€35", unit: "Eerste 30 min", extra: "Daarna €15 per 15 min", desc: "Snelle remote hulp met lage instapkosten. Transparante per-minuut afrekening." },
+    { name: "Computerhulp aan huis", price: "€59", unit: "Eerste 45 min", extra: "Daarna €17,25 per 15 min", desc: "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten." },
+    { name: "IT Spoedhulp aan huis", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor acute problemen. Geen afspraak nodig." },
     { name: "Hackservice & Cyberherstel", price: "Op aanvraag", unit: "24/7 beschikbaar", extra: "Afhankelijk van omvang incident", desc: "Gehackt? Virus, malware, ransomware? Wij helpen met spoedreparatie & beveiging." },
   ];
 
   const businessPricing = [
-    { name: "IT-support aan kantoor", price: "€79", unit: "eerste uur (ex btw)", extra: "+ €20/15 min daarna", desc: "Professionele IT-ondersteuning op uw kantoor in Haaglanden. Geen voorrijkosten." },
-    { name: "IT-support op afstand", price: "€35", unit: "eerste 30 min (ex btw)", extra: "+ €17,50/15 min daarna", desc: "Snelle remote support voor zakelijke systemen. Consistent tarief." },
-    { name: "IT Spoedhulp kantoor", price: "€89", unit: "eerste uur", extra: "+ €19,50/15 min daarna", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
+    { name: "IT-support aan kantoor", price: "€79", unit: "Eerste uur (ex btw)", extra: "Daarna €20 per 15 min", desc: "Professionele IT-ondersteuning op uw kantoor in Haaglanden. Geen voorrijkosten." },
+    { name: "IT-support op afstand", price: "€35", unit: "Eerste 30 min (ex btw)", extra: "Daarna €17,50 per 15 min", desc: "Snelle remote support voor zakelijke systemen. Consistent tarief." },
+    { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
     { name: "Cybersecurity & Incident Response", price: "Op aanvraag", unit: "24/7 beschikbaar", extra: "Forensics en hardening included", desc: "Cyberincidenten, beveiligingscontroles en bedrijfsmatige beveiliging." },
   ];
 
