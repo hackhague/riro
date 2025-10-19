@@ -192,19 +192,76 @@ async function postNotification(endpoint: string, payload: NotificationRequest) 
 export async function sendAppointmentNotifications(appointment: AppointmentNotificationPayload) {
   const tasks: Promise<void>[] = [];
 
+  // Send admin notification via Resend email
+  const resend = getResendClient();
+  const adminRecipients = ADMIN_EMAILS
+    ? ADMIN_EMAILS.split(",").map((email) => email.trim()).filter(Boolean)
+    : [];
+
+  if (resend && adminRecipients.length > 0) {
+    const { subject, html, text } = buildAdminAppointmentEmail(appointment);
+
+    for (const adminEmail of adminRecipients) {
+      tasks.push(
+        (async () => {
+          try {
+            const result = await resend.emails.send({
+              from: DEFAULT_FROM,
+              to: adminEmail,
+              subject,
+              html,
+              text,
+              replyTo: appointment.email || undefined,
+            });
+
+            if (result.error) {
+              console.error("Failed to send admin appointment email", { error: result.error, email: adminEmail });
+            }
+          } catch (error) {
+            console.error("Error sending admin appointment email", { error, email: adminEmail });
+          }
+        })()
+      );
+    }
+  }
+
+  // Send customer confirmation via Resend email
+  if (resend && appointment.email) {
+    const { subject, html, text } = buildCustomerAppointmentEmail(appointment);
+
+    tasks.push(
+      (async () => {
+        try {
+          const result = await resend.emails.send({
+            from: DEFAULT_FROM,
+            to: appointment.email,
+            subject,
+            html,
+            text,
+          });
+
+          if (result.error) {
+            console.error("Failed to send customer appointment confirmation email", result.error);
+          }
+        } catch (error) {
+          console.error("Error sending customer appointment confirmation email", error);
+        }
+      })()
+    );
+  }
+
+  // Also send via Zapier webhooks if configured
   if (ADMIN_NOTIFICATION_ENDPOINT) {
-    const adminRecipients = ADMIN_EMAILS
-      ? ADMIN_EMAILS.split(",").map((email) => email.trim()).filter(Boolean)
-      : [];
+    const zapierAdminRecipients = adminRecipients.length > 0 ? adminRecipients : [];
 
     tasks.push(
       postNotification(ADMIN_NOTIFICATION_ENDPOINT, {
         target: "admin",
         appointment,
-        to: adminRecipients,
+        to: zapierAdminRecipients,
         from: DEFAULT_FROM,
       }).catch((error) => {
-        console.error("Failed to send admin appointment notification", error);
+        console.warn("Failed to send admin appointment notification via webhook", error);
       })
     );
   }
@@ -217,7 +274,7 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
         to: [appointment.email],
         from: DEFAULT_FROM,
       }).catch((error) => {
-        console.error("Failed to send customer appointment notification", error);
+        console.warn("Failed to send customer appointment notification via webhook", error);
       })
     );
   }
