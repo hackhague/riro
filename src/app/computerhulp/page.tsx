@@ -156,8 +156,8 @@ export default function Computerhulp() {
                 <Euro className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp op afstand</h3>
                 <p className="text-3xl font-bold text-primary mb-1">€1 per minuut</p>
-                <p className="text-sm text-foreground/60 mb-4">minimum afname 30 min. Maximum tarief €99  </p>
-                <p className="text-xs text-foreground/70">Meestal binnen 10–30 min reactie</p>
+                <p className="text-sm text-foreground/60 mb-4">Minimum afname 30 minuten. Maximum tarief €99  </p>
+                <p className="text-xs text-foreground/70">Meestal dezelfde dag geholpen </p>
               </CardContent>
             </Card>
 
