@@ -98,13 +98,6 @@ export default function Home() {
     },
   ];
 
-  const pricing = [
-    { name: "Computerhulp op afstand", price: "€39 / 30 min" },
-    { name: "Computerhulp aan huis", price: "€65 / uur", cap: "Geen voorrijkosten in Haaglanden (min. 1 uur)" },
-    { name: "Hacklijn op afstand", price: "€50 / 30 min" },
-    { name: "Spoed op locatie", price: "Neem contact op" },
-  ];
-
   const steps = [
     { number: "1", text: "Bel of WhatsApp - we reageren binnen 10-30 minuten" },
     { number: "2", text: "Korte intake - we vragen wat er aan de hand is." },
@@ -462,29 +455,6 @@ export default function Home() {
             </Button>
             <Button variant="accent" asChild>
               <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------- PRICING ------------------- */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Prijzen</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {pricing.map((item, index) => (
-              <Card key={index} className="text-center">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-lg mb-2">{item.name}</h3>
-                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm text-foreground/60">{item.cap}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button variant="default" size="lg" asChild>
-              <Link href="/tarieven">Bekijk alle tarieven</Link>
             </Button>
           </div>
         </div>
