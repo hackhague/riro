@@ -156,6 +156,68 @@ export default function Computerhulp() {
 
       <PartnersSection />
 
+      {/* ------------------- SERVICES (TEGELS) ------------------- */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
+            Onze Diensten
+          </h2>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceBlocks.map((item, i) => (
+              <Link
+                key={i}
+                href={item.href}
+                className="group relative block overflow-hidden rounded-xl"
+                aria-label={`${item.title} – Meer info`}
+              >
+                <div className="aspect-[16/11] relative">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    loading="lazy"
+                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-95"
+                  />
+                </div>
+
+                <div className="pointer-events-none absolute inset-0 flex items-end">
+                  <div className="w-full p-5 md:p-6">
+                    <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
+                      {item.title}
+                    </h3>
+
+                    <span
+                      className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
+                                 font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
+                    >
+                      Meer info
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </div>
+
+                <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="outline" asChild>
+              <Link href="/afspraak">Plan een afspraak</Link>
+            </Button>
+            <Button variant="accent" asChild>
+              <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
