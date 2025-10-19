@@ -14,20 +14,23 @@ import { toast } from "@/hooks/use-toast";
 
 // Supported services for booking
 const SERVICES = [
-  { id: "remote_quickfix", label: "Computerhulp op afstand" },
-  { id: "onsite_standard", label: "Computerhulp aan huis" },
-  { id: "onsite_business", label: "IT-support aan kantoor" },
-  { id: "wifi_network", label: "WiFi & Netwerk optimalisatie" },
-  { id: "hack_support", label: "Ik ben gehackt" },
+  { id: "remote_quickfix", label: "Particulier - Computerhulp op afstand" },
+  { id: "onsite_standard", label: "Particulier - Computerhulp aan huis" },
+  { id: "onsite_business", label: "Zakelijk - IT-support op afstand" },
+  { id: "onsite_business_remote", label: "Zakelijk - IT-support aan kantoor" },
 ];
 
 // Service categories for "Computerhulp op afstand" and "Computerhulp aan huis"
 const SERVICE_CATEGORIES = [
+  { id: "hardware", title: "Windows/Mac Problemen" },
+  { id: "software", title: "Software problemen" },
   { id: "printerhulp", title: "Printerhulp" },
   { id: "email", title: "E-mail Problemen" },
   { id: "wifi", title: "Internet & WiFi" },
   { id: "tablet", title: "Tablet & Smartphone" },
   { id: "uitleg", title: "Uitleg & Les" },
+  { id: "overigg", title: "Overig" },
+
 ];
 
 // Default 2-uur tijdsloten
@@ -278,7 +281,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp nodig?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp heeft u nodig?</h3>
                 </div>
                 <div className="grid gap-3 max-w-lg">
                   {SERVICE_CATEGORIES.map((category) => (
@@ -384,7 +387,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                     <Input id="city" value={booking.city} onChange={(e) => setBooking((b) => ({ ...b, city: e.target.value }))} className="mt-2" />
                   </div>
                   <div className="md:col-span-2">
-                    <Label htmlFor="message">Omschrijf hier uw probleem:</Label>
+                    <Label htmlFor="message">Omschrijf hier uw probleem of vraag:</Label>
                     <textarea id="message" className="w-full border rounded-md px-3 py-2 mt-2 min-h-[100px]" value={booking.message} onChange={(e) => setBooking((b) => ({ ...b, message: e.target.value }))} />
                   </div>
                 </div>
