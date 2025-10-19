@@ -3,7 +3,6 @@ import Image from "next/image";
 import { MessageCircle, Phone, CheckCircle2, Clock, Euro, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 
