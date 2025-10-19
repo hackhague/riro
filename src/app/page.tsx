@@ -201,7 +201,7 @@ export default function Home() {
         </li>
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
-          <span><strong>Binnen</strong> 10-30 minuten reactie — <strong>meestal dezelfde dag nog hulp op afstand of op locatie</strong>.</span>
+          <span><strong>Binnen</strong> 10-30 minuten reactie — <strong>meestal dezelfde dag nog hulp op afstand of locatie</strong>.</span>
         </li>
         <li className="flex items-start gap-2">
           <span className="mt-0.5 text-accent">•</span>
@@ -312,12 +312,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services (blok-tegels, zoals screenshot) */}
+      {/* Services */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Onze Diensten
-          </h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze Diensten</h2>
           <div className="grid md:grid-cols-3 gap-6">
  {services.map((service, index) => (
   <Card key={index} className="overflow-hidden group hover:shadow-lg transition-shadow">
