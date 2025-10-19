@@ -30,14 +30,14 @@ export default function Computerhulp() {
   ];
 
   const problems = [
-    "Computer traag of crasht regelmatig",
-    "Virussen, malware of ransomware",
-    "Softwareproblemen en installaties",
-    "Windows/Mac updates die mislukken",
-    "Blauwe schermen (BSOD)",
-    "Data backup en herstel",
-    "Hardware diagnose en advies",
-    "Printers en randapparatuur",
+    "Computer werkt te langzaam of sluit zomaar af",
+    "Virus of schadelijke software op je apparaat",
+    "Programma's die niet willen installeren",
+    "Updates die misgaan",
+    "Computer geeft rare foutmeldingen",
+    "Je bestanden back-uppen",
+    "Apparaat reparatie en onderhoud",
+    "Printers en apparaten instellen",
   ];
 
   const serviceAreas = [
