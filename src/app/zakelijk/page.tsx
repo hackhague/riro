@@ -89,17 +89,17 @@ export default function Zakelijk() {
               dat je bedrijf draaiende blijft.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button variant="whatsapp" size="lg" asChild>
+              <Button variant="accent" size="lg" asChild>
                 <a
                   href="https://wa.me/31702119191?text=Zakelijke%20IT-hulp%20nodig"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <MessageCircle className="mr-2" />
-                  WhatsApp ons nu – snelste reactie
+                  WhatsApp nu
                 </a>
               </Button>
-              <Button variant="accent" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
                   Bel 070 211 9191
