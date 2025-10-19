@@ -252,7 +252,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                 <div className="grid gap-4 max-w-lg">
                   <div>
                     <Label htmlFor="service">Dienst</Label>
-                    <Select value={booking.service} onValueChange={(v) => setBooking((b) => ({ ...b, service: v }))}>
+                    <Select value={booking.service} onValueChange={(v) => setBooking((b) => ({ ...b, service: v, serviceCategory: "" }))}>
                       <SelectTrigger id="service" className="mt-2">
                         <SelectValue placeholder="Kies een dienst" />
                       </SelectTrigger>
@@ -267,9 +267,37 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                 </div>
                 <div className="mt-6 flex justify-end">
-                  <Button onClick={() => setStep(1)} disabled={!isStep1Valid}>
+                  <Button onClick={() => setStep(needsCategoryStep ? 1 : 2)} disabled={!isStep1Valid}>
                     Volgende stap
                   </Button>
+                </div>
+              </div>
+            )}
+
+            {needsCategoryStep && step === 1 && (
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
+                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp nodig?</h3>
+                </div>
+                <div className="grid gap-3 max-w-lg">
+                  {SERVICE_CATEGORIES.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setBooking((b) => ({ ...b, serviceCategory: category.id }))}
+                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                        booking.serviceCategory === category.id
+                          ? "border-primary bg-primary/10"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <p className="font-semibold text-foreground">{category.title}</p>
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-6 flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(0)}>Vorige</Button>
+                  <Button onClick={() => setStep(2)} disabled={!isStep2Valid}>Volgende stap</Button>
                 </div>
               </div>
             )}
