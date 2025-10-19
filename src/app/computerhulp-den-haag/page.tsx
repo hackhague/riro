@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
@@ -12,5 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComputerhulpDenHaagPage() {
-  return <Computerhulp />;
+  return <Computerhulp city="Den Haag" />;
 }
