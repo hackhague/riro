@@ -82,20 +82,20 @@ export default function Computerhulp() {
                 Computerhulp in Den Haag & regio
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Van trage computers tot virusverwijdering – wij lossen het snel en transparant op. Remote of aan huis.
+                Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="default" size="lg" asChild>
+                <Button variant="accent" size="lg" asChild>
                   <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20computerproblemen"
+                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="mr-2" />
-                    App nu
+                    WhatsApp nu
                   </a>
                 </Button>
-                <Button variant="accent" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
                     <Phone className="mr-2" />
                     Bel 070 211 9191
