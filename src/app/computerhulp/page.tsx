@@ -222,44 +222,6 @@ export default function Computerhulp() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Euro className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp op afstand</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€1 per minuut</p>
-                <p className="text-sm text-foreground/60 mb-4">Minimum afname 30 minuten. Maximum tarief €99  </p>
-                <p className="text-xs text-foreground/70">Meestal dezelfde dag geholpen </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€69</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur (min. 1u)</p>
-                <p className="text-xs text-foreground/70">Geen voorrijkosten in Haaglanden</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Nazorg</h3>
-                <p className="text-3xl font-bold text-primary mb-1">Gratis</p>
-                <p className="text-sm text-foreground/60 mb-4">binnen 5 dagen</p>
-                <p className="text-xs text-foreground/70">Max 30 min remote herbeoordeling</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Case Study */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
