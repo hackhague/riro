@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Voorburg",
+  title: "Computerhulp in Voorburg | Snel & Betrouwbaar",
   description:
-    "Computerhulp aan huis in Voorburg en Leidschendam. Remote binnen 30 minuten, on-site meestal binnen 2 uur.",
+    "Computerhulp aan huis in Voorburg en Leidschendam. Remote binnen 10–30 minuten, on-site meestal binnen 24 uur.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-voorburg",
   },
@@ -23,11 +23,11 @@ export default function ComputerhulpVoorburg() {
               <MapPin className="h-10 w-10 text-primary" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-              Computerhulp in Voorburg – binnen 2 uur geholpen
+              Computerhulp in Voorburg
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 mb-8">
-              InstantIT helpt particulieren en bedrijven in Leidschendam-Voorburg. 
-              Remote binnen 10–30 minuten, on-site meestal binnen 2 uur. Vaste prijzen, geen verrassingen.
+              InstantIT helpt particulieren en bedrijven in Leidschendam-Voorburg.
+              Remote binnen 10–30 minuten reactie, on-site meestal binnen 24 uur. Vaste prijzen, geen verrassingen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="accent" size="lg" asChild>
@@ -61,8 +61,8 @@ export default function ComputerhulpVoorburg() {
                 <div>
                   <h2 className="font-heading font-bold text-2xl mb-3">Lokaal & Snel in Voorburg</h2>
                   <p className="text-foreground/80 mb-4">
-                    Of je nu in Voorburg of Leidschendam woont – wij zijn er snel. 
-                    Remote support in 10–30 minuten, on-site meestal binnen 2 uur. 
+                    Of je nu in Voorburg of Leidschendam woont – wij zijn er snel.
+                    Remote support in 10–30 minuten, on-site meestal binnen 24 uur.
                     Geen voorrijkosten binnen Haaglanden.
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
@@ -72,7 +72,7 @@ export default function ComputerhulpVoorburg() {
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">On-site meestal binnen 2 uur</span>
+                      <span className="text-sm">On-site meestal binnen 24 uur</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
