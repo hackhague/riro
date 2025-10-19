@@ -18,8 +18,6 @@ const SERVICES = [
   { id: "onsite_standard", label: "Particulier - Computerhulp aan huis" },
   { id: "onsite_business", label: "Zakelijk - IT-support op afstand" },
   { id: "onsite_business_remote", label: "Zakelijk - IT-support aan kantoor" },
-  { id: "wifi_network", label: "WiFi & Netwerk optimalisatie" },
-  { id: "hack_support", label: "Ik ben gehackt" },
 ];
 
 // Service categories for "Computerhulp op afstand" and "Computerhulp aan huis"
