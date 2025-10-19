@@ -3,11 +3,12 @@ import { MessageCircle, Phone, Shield, CheckCircle2, FileText } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import AppointmentWizard from "@/components/AppointmentWizard";
 
 export const metadata: Metadata = {
-  title: "Cyber APK – Veiligheidscheck",
+  title: "Cyber APK – Veiligheidscheck Computer & Netwerk",
   description:
-    "Preventieve check van apparaten, netwerk en accounts. Ontvang een duidelijk rapport met actiepunten voor betere cybersecurity.",
+    "Preventieve veiligheidscheck van je apparaten, router en accounts. Ontvang een duidelijk rapport met aanbevelingen.",
   alternates: {
     canonical: "https://www.instantit.nl/cyber-apk",
   },
