@@ -158,11 +158,13 @@ export default function Computerhulp() {
 
       <PartnersSection />
 
-      {/* ------------------- SERVICES (TEGELS) ------------------- */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <HomepageServicesClient />
+
+      {/* ------------------- RELATED SERVICES ------------------- */}
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Onze Diensten
+            Andere diensten
           </h2>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
