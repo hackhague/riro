@@ -5,13 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-computer.jpg";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Den Haag & Regio",
+  title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
   description:
-    "Van trage computers tot virusverwijdering – wij lossen het snel en transparant op. Remote of aan huis.",
+    "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp",
   },
