@@ -20,7 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Computerhulp() {
+interface ComputerhulpProps {
+  city?: string;
+  cityUrl?: string;
+}
+
+export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
@@ -80,7 +85,7 @@ export default function Computerhulp() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Computerhulp in Den Haag & regio
+                Computerhulp in {city}
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
                 Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
