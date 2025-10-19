@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import { MessageCircle, Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
+import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
