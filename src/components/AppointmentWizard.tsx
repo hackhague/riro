@@ -55,6 +55,7 @@ function getTimeSlotsForDate(date: Date) {
 
 type Booking = {
   service: string;
+  serviceCategory: string;
   date: Date | undefined;
   timeSlot: string;
   firstName: string;
