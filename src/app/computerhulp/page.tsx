@@ -57,7 +57,7 @@ export default function Computerhulp() {
   const faqs = [
     {
       q: "Hoe snel kunnen jullie helpen?",
-      a: "Remote meestal binnen 10��30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
+      a: "Remote meestal binnen 10-30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
