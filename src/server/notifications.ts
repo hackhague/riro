@@ -228,13 +228,14 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
   // Send customer confirmation via Resend email
   if (resend && appointment.email) {
     const { subject, html, text } = buildCustomerAppointmentEmail(appointment);
+    const customerEmail = appointment.email;
 
     tasks.push(
       (async () => {
         try {
           const result = await resend.emails.send({
             from: DEFAULT_FROM,
-            to: appointment.email,
+            to: customerEmail,
             subject,
             html,
             text,
