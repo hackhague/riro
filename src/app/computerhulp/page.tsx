@@ -165,7 +165,7 @@ export default function Computerhulp() {
               <CardContent className="p-6 text-center">
                 <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
                 <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€65</p>
+                <p className="text-3xl font-bold text-primary mb-1">€69</p>
                 <p className="text-sm text-foreground/60 mb-4">per uur (min. 1u)</p>
                 <p className="text-xs text-foreground/70">Geen voorrijkosten in Haaglanden</p>
               </CardContent>
