@@ -20,12 +20,12 @@ export default function IkBenGehackt(): JSX.Element {
   // description: "Gehackt? We starten meestal binnen 60 min op afstand. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
 
   const signs = [
-    "Je kunt niet meer inloggen (wachtwoord aangepast)",
-    "Onbekende betalingen of vreemde berichten",
-    "Bestanden zijn vergrendeld met een losgeldeis",
-    "Opdringerige pop-ups of valse virusmeldingen",
-    "Vrienden of familie krijgen rare berichten van jouw account",
-    "Camera of microfoon werkt zonder dat jij dat doet",
+    "Je kunt niet meer inloggen op je account",
+    "Je ziet vreemde uitgaven of onbekende betalingen",
+    "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen",
+    "De computer geeft steeds waarschuwingen over virussen",
+    "Vrienden zeggen dat ze rare berichten van jou krijgen",
+    "Je camera of microfoon doet dingen zonder dat je dat wilt",
   ];
 
   const steps = [
