@@ -141,17 +141,10 @@ export default function HulpOpAfstand() {
             </Card>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button variant="accent" size="lg" asChild>
-                <a
-                  href="https://wa.me/31702119191?text=Ik%20wil%20graag%20hulp%20op%20afstand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="mr-2" />
-                  Start nu
-                </a>
+                <Link href="/afspraak">Plan een afspraak</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="/afspraak">Plan een afspraak</a>
+                <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
               </Button>
             </div>
           </div>
