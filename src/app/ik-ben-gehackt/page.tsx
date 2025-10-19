@@ -29,10 +29,10 @@ export default function IkBenGehackt(): JSX.Element {
   ];
 
   const steps = [
-    { title: "Stap 1 — Kort contact", desc: "Je stuurt een screenshot of beschrijving. We bellen of appen kort." },
-    { title: "Stap 2 — Veilig maken", desc: "We blokkeren toegang en halen het apparaat van internet als dat helpt." },
-    { title: "Stap 3 — Herstel", desc: "We verwijderen malware, herstellen accounts en zetten 2FA aan." },
-    { title: "Stap 4 — Nazorg", desc: "We geven een kort rapport en eenvoudige tips tegen herhaling." },
+    { title: "Stap 1 — Bellen", desc: "Je belt of appt ons. We beluisteren kort wat er is gebeurd." },
+    { title: "Stap 2 — Veilig maken", desc: "We zetten je account op veilig en halen je apparaat van het internet als dat nodig is." },
+    { title: "Stap 3 — Herstellen", desc: "We verwijderen de virus, herstellen je accounts en zetten extra beveiliging aan." },
+    { title: "Stap 4 — Uitleg", desc: "We geven je een kort verslag en handige tips zodat het niet meer gebeurt." },
   ];
 
   // JSON-LD: FAQ + HowTo + Service offers (zoekmachines lezen dit)
