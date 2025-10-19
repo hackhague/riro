@@ -286,7 +286,7 @@ export default function Home() {
             <Card className="border-2 hover:border-primary transition-colors flex flex-col">
               <CardContent className="p-6 flex flex-col h-full">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Home className="h-6 w-6 text-primary" />
+                  <HomeIcon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-heading font-semibold text-xl mb-1">Computerhulp aan huis</h3>
                 <p className="text-xs text-muted-foreground mb-2">Met afspraak • 48–72 uur</p>
