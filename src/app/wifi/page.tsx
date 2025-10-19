@@ -3,13 +3,15 @@ import { MessageCircle, Phone, Wifi, CheckCircle2, Signal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+import AppointmentWizard from "@/components/AppointmentWizard";
+import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-wifi.jpg";
 
 export const metadata: Metadata = {
-  title: "WiFi & Netwerk optimalisatie",
+  title: "WiFi & Internet verbeteren | Stabiel thuis en op kantoor",
   description:
-    "Slechte wifi of dode zones? We optimaliseren je routerinstellingen en verbeteren netwerkbeveiliging.",
+    "WiFi traag of dode zones? We helpen je router beter in te stellen. Geen dode zones meer, sneller internet.",
   alternates: {
     canonical: "https://www.instantit.nl/wifi",
   },
