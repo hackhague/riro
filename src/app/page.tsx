@@ -272,7 +272,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------- MAIN SERVICES (3 BLOKKEN - VERTICAL CARDS) ------------------- */}
+      {/* ------------------- MAIN SERVICES (4 BLOKKEN - 2x2 GRID) ------------------- */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -284,157 +284,191 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
-            {/* Card 1: Aan Huis */}
-            <div className="group flex flex-col h-full rounded-2xl border-2 border-border bg-white hover:border-blue-500 hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 h-24 flex items-center justify-center border-b-2 border-blue-200">
+          <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+            {/* Card 1: Computerhulp aan huis (Donkerblauw) */}
+            <div className="group flex flex-col h-full rounded-2xl border-2 border-blue-900 bg-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="bg-gradient-to-br from-blue-700 to-blue-900 h-20 flex items-center justify-center">
                 <div className="text-5xl">🏠</div>
               </div>
 
-              <div className="flex-1 p-6 md:p-7 flex flex-col">
-                <h3 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-2">
-                  Aan huis
+              <div className="flex-1 p-6 flex flex-col">
+                <h3 className="font-heading font-bold text-2xl text-foreground mb-1">
+                  Computerhulp aan huis
                 </h3>
-                <p className="text-blue-600 font-semibold text-lg mb-4">
+                <p className="text-xs text-foreground/60 mb-3">Met afspraak • Binnen 48–72 uur</p>
+                <p className="text-blue-900 font-bold text-2xl mb-4">
                   €69/uur
                 </p>
-                <p className="text-foreground/70 text-sm mb-6">
-                  Direct hulp op jouw locatie. Geen voorrijkosten in Haaglanden (min. 1 uur).
+                <p className="text-foreground/70 text-sm mb-5">
+                  Grondige diagnose en reparatie op jouw locatie. Geen voorrijkosten.
                 </p>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Meestal binnen 2 uur aan de deur</span>
+                <ul className="space-y-2 mb-6 flex-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-900 flex-shrink-0 mt-0.5" />
+                    <span>Expert diagnose & oplossing</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Expert diagnose + reparatie</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-900 flex-shrink-0 mt-0.5" />
+                    <span>Gratis 7 dagen nazorg</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Gratis 30 min nazorg</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Alle problemen welkom</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-900 flex-shrink-0 mt-0.5" />
+                    <span>Live uitleg van wat we doen</span>
                   </li>
                 </ul>
 
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold h-12 rounded-lg mb-3" asChild>
+                <Button className="w-full bg-blue-900 hover:bg-blue-950 text-white font-semibold h-11 rounded-lg mb-3" asChild>
+                  <Link href="/computerhulp">Meer info</Link>
+                </Button>
+
+                <Button variant="outline" className="w-full border-2 border-blue-900 text-blue-900 hover:bg-blue-50 font-semibold h-10" asChild>
+                  <Link href="/afspraak">Maak afspraak</Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Card 2: IT Spoedhulp aan huis (Middenblauw - POPULAIR) */}
+            <div className="group flex flex-col h-full rounded-2xl border-2 border-blue-500 bg-white hover:shadow-xl transition-all duration-300 overflow-hidden ring-2 ring-blue-200">
+              <div className="bg-gradient-to-br from-blue-400 to-blue-600 h-20 flex items-center justify-center relative">
+                <div className="absolute top-3 right-3 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full">
+                  POPULAIR
+                </div>
+                <div className="text-5xl">⚡</div>
+              </div>
+
+              <div className="flex-1 p-6 flex flex-col">
+                <h3 className="font-heading font-bold text-2xl text-foreground mb-1">
+                  IT Spoedhulp aan huis
+                </h3>
+                <p className="text-xs text-foreground/60 mb-3">Spoed • Meestal binnen 24 uur</p>
+                <p className="text-blue-600 font-bold text-2xl mb-4">
+                  €85/uur
+                </p>
+                <p className="text-foreground/70 text-sm mb-5">
+                  Snel ter plaatse voor acute problemen. Geen afspraak nodig – we bellen je terug.
+                </p>
+
+                <ul className="space-y-2 mb-6 flex-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span>Spoedeisend ter plaatse</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span>Geen afspraak nodig</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span>Gratis 7 dagen nazorg</span>
+                  </li>
+                </ul>
+
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold h-11 rounded-lg mb-3" asChild>
                   <a href="tel:+31702119191">Bel nu - 070 211 9191</a>
                 </Button>
 
                 <Button variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold h-10" asChild>
                   <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4 mr-2" />
-                    Start via WhatsApp
+                    WhatsApp
                   </a>
                 </Button>
               </div>
             </div>
 
-            {/* Card 2: Op Afstand */}
-            <div className="group flex flex-col h-full rounded-2xl border-2 border-border bg-white hover:border-green-500 hover:shadow-xl transition-all duration-300 overflow-hidden transform md:scale-105">
-              <div className="bg-gradient-to-br from-green-50 to-green-100 h-24 flex items-center justify-center border-b-2 border-green-200 relative">
-                <div className="absolute top-2 right-2 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full">
-                  POPULAIR
-                </div>
+            {/* Card 3: Computerhulp op afstand (Lichtblauw) */}
+            <div className="group flex flex-col h-full rounded-2xl border-2 border-blue-300 bg-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="bg-gradient-to-br from-blue-100 to-blue-300 h-20 flex items-center justify-center">
                 <div className="text-5xl">💻</div>
               </div>
 
-              <div className="flex-1 p-6 md:p-7 flex flex-col">
-                <h3 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-2">
-                  Op afstand
+              <div className="flex-1 p-6 flex flex-col">
+                <h3 className="font-heading font-bold text-2xl text-foreground mb-1">
+                  Computerhulp op afstand
                 </h3>
-                <p className="text-green-600 font-semibold text-lg mb-4">
+                <p className="text-xs text-foreground/60 mb-3">Remote • 10–30 minuten reactie</p>
+                <p className="text-blue-600 font-bold text-2xl mb-4">
                   €39–€99
                 </p>
-                <p className="text-foreground/70 text-sm mb-6">
-                  Remote hulp binnen 10–30 minuten. €1/min, max €99 voor 99 minuten.
+                <p className="text-foreground/70 text-sm mb-5">
+                  Snelle remote hulp. €1/minuut, max €99. Meestal direct beschikbaar.
                 </p>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Snelle respons (meestal direct)</span>
+                <ul className="space-y-2 mb-6 flex-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span>Snelle respons</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Veilige versleutelde verbinding</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span>Veilige versleuteling</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Directe live uitleg</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">7 dagen gratis nazorg</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span>Live uitleg & support</span>
                   </li>
                 </ul>
 
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold h-12 rounded-lg mb-3" asChild>
-                  <a href="https://wa.me/31702119191?text=Ik%20heb%20nu%20hulp%20nodig%20op%20afstand" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="h-4 w-4 mr-2" />
-                    Start direct
-                  </a>
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold h-11 rounded-lg mb-3" asChild>
+                  <Link href="/hulp-op-afstand">Meer info</Link>
                 </Button>
 
-                <Button variant="outline" className="w-full border-2 border-green-600 text-green-600 hover:bg-green-50 font-semibold h-10" asChild>
-                  <a href="/hulp-op-afstand">Meer informatie</a>
+                <Button variant="outline" className="w-full border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-semibold h-10" asChild>
+                  <a href="https://wa.me/31702119191?text=Ik%20heb%20nu%20hulp%20nodig%20op%20afstand" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Start nu
+                  </a>
                 </Button>
               </div>
             </div>
 
-            {/* Card 3: Hackservice */}
-            <div className="group flex flex-col h-full rounded-2xl border-2 border-border bg-white hover:border-red-500 hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="bg-gradient-to-br from-red-50 to-red-100 h-24 flex items-center justify-center border-b-2 border-red-200">
+            {/* Card 4: Hackservice (Rood) */}
+            <div className="group flex flex-col h-full rounded-2xl border-2 border-red-500 bg-white hover:shadow-xl transition-all duration-300 overflow-hidden">
+              <div className="bg-gradient-to-br from-red-500 to-red-700 h-20 flex items-center justify-center">
                 <div className="text-5xl">🛡️</div>
               </div>
 
-              <div className="flex-1 p-6 md:p-7 flex flex-col">
-                <h3 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-2">
+              <div className="flex-1 p-6 flex flex-col">
+                <h3 className="font-heading font-bold text-2xl text-foreground mb-1">
                   Hackservice
                 </h3>
-                <p className="text-red-600 font-semibold text-lg mb-4">
+                <p className="text-xs text-foreground/60 mb-3">Spoed • 24/7 beschikbaar</p>
+                <p className="text-red-600 font-bold text-2xl mb-4">
                   €50/30 min
                 </p>
-                <p className="text-foreground/70 text-sm mb-6">
-                  24/7 cyberherstel. Gehackt, virus, ransomware? Wij redden je uit de brand.
+                <p className="text-foreground/70 text-sm mb-5">
+                  Gehackt? Virus, ransomware? Wij helpen 24/7. Snel herstel en beveiging.
                 </p>
 
-                <ul className="space-y-3 mb-8 flex-1">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Spoedeisende hulp 24/7</span>
+                <ul className="space-y-2 mb-6 flex-1 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span>24/7 cybersteun</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Malware verwijdering + verharding</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span>Malware verwijdering</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Accountherstel & 2FA setup</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Rapport voor verzekering</span>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
+                    <span>Rapport voor verzekering</span>
                   </li>
                 </ul>
 
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold h-12 rounded-lg mb-3" asChild>
-                  <a href="tel:+31702119191">Bel SPOED - 070 211 9191</a>
+                <Button className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold h-11 rounded-lg mb-3" asChild>
+                  <Link href="/ik-ben-gehackt">Meer info</Link>
                 </Button>
 
                 <Button variant="outline" className="w-full border-2 border-red-600 text-red-600 hover:bg-red-50 font-semibold h-10" asChild>
-                  <a href="/ik-ben-gehackt">Wat te doen?</a>
+                  <a href="tel:+31702119191">Bel SPOED</a>
                 </Button>
               </div>
             </div>
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-foreground/60 mb-6">Onzeker wat je nodig hebt?</p>
+            <p className="text-foreground/60 mb-6">Weet je niet zeker welke service je nodig hebt?</p>
             <Button size="lg" variant="default" asChild>
               <Link href="/afspraak">Plan gratis intake gesprek</Link>
             </Button>
