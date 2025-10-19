@@ -285,11 +285,8 @@ export function HomepageServicesClient() {
                 <h3 className="font-heading font-semibold text-xl mb-1">
                   {service.title}
                 </h3>
-                <p className="text-xs text-muted-foreground mb-2">
+                <p className="text-xs text-muted-foreground mb-3">
                   {service.subtitle}
-                </p>
-                <p className="text-2xl font-bold text-primary mb-3">
-                  {service.price}
                 </p>
 
                 {/* Description */}
