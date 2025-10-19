@@ -49,16 +49,16 @@ export default function Tarieven() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Particulieren</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {consumerPricing.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="font-heading text-xl">{item.name}</CardTitle>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-4xl font-bold text-primary mb-1">{item.price}</p>
+                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
                   <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
-                  <p className="text-xs font-semibold text-accent mb-4">{item.cap}</p>
+                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
                   <p className="text-sm text-foreground/70">{item.desc}</p>
                 </CardContent>
               </Card>
@@ -79,15 +79,16 @@ export default function Tarieven() {
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Zakelijk (MKB)</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {businessPricing.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="font-heading text-xl">{item.name}</CardTitle>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-4xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-4">{item.unit}</p>
+                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                  <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
+                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
                   <p className="text-sm text-foreground/70">{item.desc}</p>
                 </CardContent>
               </Card>
