@@ -41,8 +41,8 @@ export function HomepageServicesClient() {
       id: "hulp-aan-huis",
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
       title: "Computerhulp aan huis",
-      subtitle: "Met afspraak • Meestal binnen 24 uur",
-      price: "",
+      subtitle: "Met afspraak • 48–72 uur",
+      price: "€69/uur",
       description:
         "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten.",
       features: [
@@ -51,16 +51,16 @@ export function HomepageServicesClient() {
         "Live uitleg & transparantie",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/computerhulp", variant: "default" },
-        { label: "Plan een afspraak", href: "/afspraak", variant: "outline" },
+        { label: "Meer info", href: "/computerhulp", variant: "default" },
+        { label: "Maak afspraak", href: "/afspraak", variant: "outline" },
       ],
     },
     {
       id: "spoedhulp-aan-huis",
       icon: <Zap className="h-6 w-6 text-primary" />,
-      title: "Spoedhulp aan huis",
-      subtitle: "Spoed • Snel ter plaatse",
-      price: "",
+      title: "IT Spoedhulp aan huis",
+      subtitle: "Spoed • Meestal binnen 24 uur",
+      price: "€85/uur",
       description:
         "Snel ter plaatse voor acute problemen. Geen afspraak nodig – we bellen direct terug.",
       features: [
@@ -70,7 +70,7 @@ export function HomepageServicesClient() {
       ],
       links: [
         {
-          label: "Bel nu",
+          label: "Bel nu - 070 211 9191",
           href: "tel:+31702119191",
           variant: "default",
           icon: <Phone className="h-4 w-4" />,
@@ -89,16 +89,16 @@ export function HomepageServicesClient() {
       icon: <Laptop className="h-6 w-6 text-primary" />,
       title: "Computerhulp op afstand",
       subtitle: "Remote • 10–30 minuten reactie",
-      price: "",
+      price: "€39–€99",
       description:
-        "Snelle remote hulp via veilige schermdeling. Meestal direct geholpen.",
+        "Snelle remote hulp. €1/minuut, max €99. Veilige versleutelde verbinding.",
       features: [
         "Snelle respons (meestal direct)",
         "Veilige versleuteling",
         "Live uitleg & 7 dagen nazorg",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/hulp-op-afstand", variant: "default" },
+        { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
         {
           label: "Start nu",
           href: "https://wa.me/31702119191?text=Ik%20heb%20nu%20hulp%20nodig%20op%20afstand",
@@ -110,20 +110,20 @@ export function HomepageServicesClient() {
     {
       id: "hackservice",
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: "Gehackt? Spoedhulp",
+      title: "Hackservice & Cyberherstel",
       subtitle: "Spoed • 24/7 beschikbaar",
-      price: "",
+      price: "Neem contact op voor prijsopgave",
       description:
-        "Gehackt? Virus, malware of ransomware? We helpen snel en praktisch.",
+        "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging.",
       features: [
-        "24/7 beschikbaarheid",
-        "Malware verwijdering",
+        "24/7 cybersteun",
+        "Malware verwijdering & verharding",
         "Rapport voor verzekering",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/ik-ben-gehackt", variant: "default" },
+        { label: "Meer info", href: "/ik-ben-gehackt", variant: "default" },
         {
-          label: "Bel direct",
+          label: "Bel SPOED",
           href: "tel:+31702119191",
           variant: "outline",
           icon: <Phone className="h-4 w-4" />,
@@ -137,8 +137,8 @@ export function HomepageServicesClient() {
       id: "it-support-kantoor",
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
       title: "IT-support aan kantoor",
-      subtitle: "Met afspraak • Meestal binnen 24 uur",
-      price: "",
+      subtitle: "Met afspraak • 48–72 uur",
+      price: "€85/uur",
       description:
         "Professionele IT-ondersteuning op uw kantoorlocatie in Haaglanden. Geen voorrijkosten.",
       features: [
@@ -147,16 +147,16 @@ export function HomepageServicesClient() {
         "Volledige transparantie & documentatie",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/zakelijk", variant: "default" },
-        { label: "Plan een afspraak", href: "/afspraak", variant: "outline" },
+        { label: "Meer info", href: "/zakelijk", variant: "default" },
+        { label: "Maak afspraak", href: "/afspraak", variant: "outline" },
       ],
     },
     {
       id: "spoedhulp-kantoor",
       icon: <Zap className="h-6 w-6 text-primary" />,
-      title: "Spoedhulp kantoor",
-      subtitle: "Spoed • Snel ter plaatse",
-      price: "",
+      title: "IT Spoedhulp kantoor",
+      subtitle: "Spoed • Meestal binnen 2 uur",
+      price: "€99/uur",
       description:
         "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig – we bellen direct terug.",
       features: [
@@ -166,7 +166,7 @@ export function HomepageServicesClient() {
       ],
       links: [
         {
-          label: "Bel nu",
+          label: "Bel nu - 070 211 9191",
           href: "tel:+31702119191",
           variant: "default",
           icon: <Phone className="h-4 w-4" />,
@@ -185,7 +185,7 @@ export function HomepageServicesClient() {
       icon: <Laptop className="h-6 w-6 text-primary" />,
       title: "IT-support op afstand",
       subtitle: "Remote • 10–30 minuten reactie",
-      price: "",
+      price: "€49–€149",
       description:
         "Snelle remote support voor zakelijke systemen. Veilige versleutelde verbinding.",
       features: [
@@ -194,7 +194,7 @@ export function HomepageServicesClient() {
         "Live ondersteuning & zakelijke nazorg",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/zakelijk", variant: "default" },
+        { label: "Meer info", href: "/zakelijk", variant: "default" },
         {
           label: "Start nu",
           href: "https://wa.me/31702119191?text=Zakelijke%20IT-hulp%20nodig%20op%20afstand",
@@ -206,20 +206,20 @@ export function HomepageServicesClient() {
     {
       id: "cybersecurity-zakelijk",
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: "Cyberincidennt & veiligheid",
+      title: "Cybersecurity & Incident Response",
       subtitle: "Spoed • 24/7 beschikbaar",
-      price: "",
+      price: "Neem contact op voor prijsopgave",
       description:
-        "Hack of cyberincident? We helpen snel met beveiliging en herstel.",
+        "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [
         "24/7 cybersteun",
-        "Incident response",
-        "Beveiligingsadvies & rapport",
+        "Incident response & forensics",
+        "Beveiligingsaudit & rapportage",
       ],
       links: [
-        { label: "Meer info & prijzen", href: "/zakelijk", variant: "default" },
+        { label: "Meer info", href: "/zakelijk", variant: "default" },
         {
-          label: "Bel direct",
+          label: "Bel SPOED",
           href: "tel:+31702119191",
           variant: "outline",
           icon: <Phone className="h-4 w-4" />,
@@ -262,11 +262,10 @@ export function HomepageServicesClient() {
           {services.map((service) => (
             <Card
               key={service.id}
-              className={`border-2 hover:border-primary transition-colors flex flex-col ${
-                service.isPopular
+              className={`border-2 hover:border-primary transition-colors flex flex-col ${service.isPopular
                   ? "border-primary ring-1 ring-primary/20"
                   : ""
-              }`}
+                }`}
             >
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Header with icon and popular badge */}
@@ -285,8 +284,11 @@ export function HomepageServicesClient() {
                 <h3 className="font-heading font-semibold text-xl mb-1">
                   {service.title}
                 </h3>
-                <p className="text-xs text-muted-foreground mb-3">
+                <p className="text-xs text-muted-foreground mb-2">
                   {service.subtitle}
+                </p>
+                <p className="text-2xl font-bold text-primary mb-3">
+                  {service.price}
                 </p>
 
                 {/* Description */}
