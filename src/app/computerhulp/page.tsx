@@ -27,6 +27,15 @@ export default function Computerhulp() {
     "Printers en randapparatuur",
   ];
 
+  const serviceAreas = [
+    { name: "Den Haag", link: "/computerhulp-den-haag" },
+    { name: "Delft", link: "/computerhulp-delft" },
+    { name: "Zoetermeer", link: "/computerhulp-zoetermeer" },
+    { name: "Rijswijk", link: "/computerhulp-rijswijk" },
+    { name: "Voorburg", link: "/computerhulp-voorburg" },
+    { name: "Leiden", link: "/computerhulp-leiden" },
+  ];
+
   const steps = [
     { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
     { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 2u aan de deur" },
@@ -201,6 +210,29 @@ export default function Computerhulp() {
               <p className="text-sm text-foreground/60 mt-4">Wateringse Veld, Den Haag</p>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            {serviceAreas.map((area, index) => (
+              <Link
+                key={index}
+                href={area.link}
+                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
+              >
+                {area.name}
+              </Link>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button variant="ghost" asChild>
+              <Link href="/werkgebied">Bekijk alle locaties</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
