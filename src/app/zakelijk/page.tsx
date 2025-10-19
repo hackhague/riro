@@ -292,6 +292,15 @@ export default function Zakelijk() {
         </div>
       </section>
 
+      <HomepageServicesClient />
+
+      {/* Appointment Wizard */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AppointmentWizard compact={false} />
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
@@ -299,7 +308,7 @@ export default function Zakelijk() {
             Klaar om jouw bedrijf te laten draaien zonder IT-zorgen?
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-            Of het nu gaat om spoedondersteuning, preventief onderhoud of een Cyber APK – wij staan voor je klaar.
+            Of het nu gaat om spoedhulp, preventief onderhoud of veiligheidscontrole – wij staan voor je klaar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
@@ -309,7 +318,7 @@ export default function Zakelijk() {
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="mr-2" />
-                WhatsApp ons nu
+                WhatsApp nu
               </a>
             </Button>
             <Button
