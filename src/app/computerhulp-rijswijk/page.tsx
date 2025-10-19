@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Rijswijk | Snel & Betrouwbaar",
@@ -12,7 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ComputerhulpRijswijk() {
+export default function ComputerhulpRijswijkPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
