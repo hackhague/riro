@@ -22,6 +22,7 @@ interface ServiceCard {
   title: string;
   subtitle: string;
   price: string;
+  priceSubtitle: string;
   description: string;
   features: string[];
   links: Array<{
@@ -42,13 +43,14 @@ export function HomepageServicesClient() {
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
       title: "Computerhulp aan huis",
       subtitle: "Met afspraak • 48–72 uur",
-      price: "€69/uur",
+      price: "€59",
+      priceSubtitle: "Eerste 45 min • daarna €17,25 per 15 min",
       description:
         "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten.",
       features: [
         "Expert diagnose & oplossing",
+        "Transparante per-minuut afrekening",
         "Gratis 7 dagen nazorg",
-        "Live uitleg & transparantie",
       ],
       links: [
         { label: "Meer info", href: "/computerhulp", variant: "default" },
@@ -60,7 +62,8 @@ export function HomepageServicesClient() {
       icon: <Zap className="h-6 w-6 text-primary" />,
       title: "IT Spoedhulp aan huis",
       subtitle: "Spoed • Meestal binnen 24 uur",
-      price: "€85/uur",
+      price: "€89",
+      priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
       description:
         "Snel ter plaatse voor acute problemen. Geen afspraak nodig – we bellen direct terug.",
       features: [
@@ -89,12 +92,13 @@ export function HomepageServicesClient() {
       icon: <Laptop className="h-6 w-6 text-primary" />,
       title: "Computerhulp op afstand",
       subtitle: "Remote • 10–30 minuten reactie",
-      price: "€39–€99",
+      price: "€35",
+      priceSubtitle: "Eerste 30 min • daarna €15 per 15 min",
       description:
-        "Snelle remote hulp. €1/minuut, max €99. Veilige versleutelde verbinding.",
+        "Snelle remote hulp met lage instapkosten. Veilige versleutelde verbinding.",
       features: [
         "Snelle respons (meestal direct)",
-        "Veilige versleuteling",
+        "Lage instapprijs – geen drempel",
         "Live uitleg & 7 dagen nazorg",
       ],
       links: [
@@ -114,7 +118,7 @@ export function HomepageServicesClient() {
       subtitle: "Spoed • 24/7 beschikbaar",
       price: "Neem contact op voor prijsopgave",
       description:
-        "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging.",
+        "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging. Schadeomvang bepaalt exacte tarief.",
       features: [
         "24/7 cybersteun",
         "Malware verwijdering & verharding",
@@ -138,12 +142,13 @@ export function HomepageServicesClient() {
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
       title: "IT-support aan kantoor",
       subtitle: "Met afspraak • 48–72 uur",
-      price: "€85/uur",
+      price: "€79",
+      priceSubtitle: "Eerste uur • daarna €20 per 15 min (ex btw)",
       description:
         "Professionele IT-ondersteuning op uw kantoorlocatie in Haaglanden. Geen voorrijkosten.",
       features: [
         "Expert diagnose & zakelijke oplossingen",
-        "Gratis 7 dagen nazorg",
+        "Realistische marge & professioneel tarief",
         "Volledige transparantie & documentatie",
       ],
       links: [
@@ -156,7 +161,8 @@ export function HomepageServicesClient() {
       icon: <Zap className="h-6 w-6 text-primary" />,
       title: "IT Spoedhulp kantoor",
       subtitle: "Spoed • Meestal binnen 2 uur",
-      price: "€99/uur",
+      price: "€89",
+      priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
       description:
         "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig – we bellen direct terug.",
       features: [
@@ -185,12 +191,13 @@ export function HomepageServicesClient() {
       icon: <Laptop className="h-6 w-6 text-primary" />,
       title: "IT-support op afstand",
       subtitle: "Remote • 10–30 minuten reactie",
-      price: "€49–€149",
+      price: "€35",
+      priceSubtitle: "Eerste 30 min • daarna €17,50 per 15 min (ex btw)",
       description:
         "Snelle remote support voor zakelijke systemen. Veilige versleutelde verbinding.",
       features: [
         "Snelle respons (meestal direct)",
-        "Veilige versleuteling",
+        "Consistent met particuliere structuur",
         "Live ondersteuning & zakelijke nazorg",
       ],
       links: [
@@ -287,8 +294,11 @@ export function HomepageServicesClient() {
                 <p className="text-xs text-muted-foreground mb-2">
                   {service.subtitle}
                 </p>
-                <p className="text-2xl font-bold text-primary mb-3">
+                <p className="text-3xl font-bold text-primary mb-1">
                   {service.price}
+                </p>
+                <p className="text-xs text-foreground/60 mb-3">
+                  {service.priceSubtitle}
                 </p>
 
                 {/* Description */}

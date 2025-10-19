@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock, Euro, ArrowRight } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -19,7 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Computerhulp() {
+interface ComputerhulpProps {
+  city?: string;
+  cityUrl?: string;
+}
+
+export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
@@ -79,7 +85,7 @@ export default function Computerhulp() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Computerhulp in Den Haag & regio
+                Computerhulp in {city}
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
                 Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
@@ -160,105 +166,7 @@ export default function Computerhulp() {
 
       <HomepageServicesClient />
 
-      {/* ------------------- RELATED SERVICES ------------------- */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            Andere diensten
-          </h2>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceBlocks.map((item, i) => (
-              <Link
-                key={i}
-                href={item.href}
-                className="group relative block overflow-hidden rounded-xl"
-                aria-label={`${item.title} – Meer info`}
-              >
-                <div className="aspect-[16/11] relative">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    loading="lazy"
-                    sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 group-hover:opacity-95"
-                  />
-                </div>
-
-                <div className="pointer-events-none absolute inset-0 flex items-end">
-                  <div className="w-full p-5 md:p-6">
-                    <h3 className="font-heading text-white font-semibold text-xl md:text-2xl drop-shadow-sm">
-                      {item.title}
-                    </h3>
-
-                    <span
-                      className="mt-3 inline-flex items-center gap-2 rounded-md bg-white/10 px-3 py-2 text-sm
-                                 font-medium text-white backdrop-blur ring-1 ring-white/30 transition-colors group-hover:bg-white/15"
-                    >
-                      Meer info
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
-                  </div>
-                </div>
-
-                <span className="absolute inset-0 rounded-xl ring-0 ring-primary/0 focus:outline-none focus:ring-4 group-focus:ring-primary/40" />
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-8 flex justify-center gap-3">
-            <Button variant="accent" asChild>
-              <Link href="/afspraak">Plan een afspraak</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Euro className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp op afstand</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€1 per minuut</p>
-                <p className="text-sm text-foreground/60 mb-4">Minimum afname 30 minuten. Maximum tarief €99  </p>
-                <p className="text-xs text-foreground/70">Meestal dezelfde dag geholpen </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Computerhulp aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€69</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur (min. 1u)</p>
-                <p className="text-xs text-foreground/70">Geen voorrijkosten in Haaglanden</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Nazorg</h3>
-                <p className="text-3xl font-bold text-primary mb-1">Gratis</p>
-                <p className="text-sm text-foreground/60 mb-4">binnen 5 dagen</p>
-                <p className="text-xs text-foreground/70">Max 30 min remote herbeoordeling</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
 
       {/* Case Study */}
       <section className="py-12 md:py-16 bg-secondary">

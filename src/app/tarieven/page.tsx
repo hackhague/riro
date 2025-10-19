@@ -15,18 +15,17 @@ export const metadata: Metadata = {
 
 export default function Tarieven() {
   const consumerPricing = [
-    { name: "Computerhulp op afstand", price: "€39", unit: "per 30 min", cap: "cap €99", desc: "Voor eenvoudige vragen en snelle oplossingen" },
-    { name: "Computerhulp aan huis", price: "€65", unit: "per uur (min. 1u)", cap: "geen voorrijkosten Haaglanden", desc: "On-site ondersteuning in Zuid-Holland" },
-    { name: "Hacklijn 24/7", price: "€79", unit: "per 45 min", cap: "cap €149", desc: "Spoedhulp bij hack of cyberincident" },
-    { name: "Spoedhulp on-site", price: "€199", unit: "vast tarief", cap: "voor acute problemen", desc: "Snel ter plaatse wanneer je ons nodig hebt" },
-    { name: "Cyber APK", price: "€129", unit: "60–90 min", cap: "incl. rapport", desc: "Preventieve veiligheidscheck" },
-    { name: "WiFi optimalisatie", price: "€149", unit: "survey + plan", cap: "excl. hardware", desc: "Betere dekking en stabiliteit" },
+    { name: "Computerhulp op afstand", price: "€35", unit: "Eerste 30 min", extra: "Daarna €15 per 15 min", desc: "Snelle remote hulp met lage instapkosten. Transparante per-minuut afrekening." },
+    { name: "Computerhulp aan huis", price: "€59", unit: "Eerste 45 min", extra: "Daarna €17,25 per 15 min", desc: "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten." },
+    { name: "IT Spoedhulp aan huis", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor acute problemen. Geen afspraak nodig." },
+    { name: "Hackservice & Cyberherstel", price: "Op aanvraag", unit: "24/7 beschikbaar", extra: "Afhankelijk van omvang incident", desc: "Gehackt? Virus, malware, ransomware? Wij helpen met spoedreparatie & beveiging." },
   ];
 
   const businessPricing = [
-    { name: "Ad-hoc support", price: "€99", unit: "per uur", desc: "Flexibele zakelijke support" },
-    { name: "Strippenkaart 10 uur", price: "€850", unit: "10 uur tegoed", desc: "€85/u – 1 jaar geldig" },
-    { name: "IR First Response", price: "€495", unit: "2u senior", desc: "Incident response (start remote/on-site)" },
+    { name: "IT-support aan kantoor", price: "€79", unit: "Eerste uur (ex btw)", extra: "Daarna €20 per 15 min", desc: "Professionele IT-ondersteuning op uw kantoor in Haaglanden. Geen voorrijkosten." },
+    { name: "IT-support op afstand", price: "€35", unit: "Eerste 30 min (ex btw)", extra: "Daarna €17,50 per 15 min", desc: "Snelle remote support voor zakelijke systemen. Consistent tarief." },
+    { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
+    { name: "Cybersecurity & Incident Response", price: "Op aanvraag", unit: "24/7 beschikbaar", extra: "Forensics en hardening included", desc: "Cyberincidenten, beveiligingscontroles en bedrijfsmatige beveiliging." },
   ];
 
   return (
@@ -50,16 +49,16 @@ export default function Tarieven() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Particulieren</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {consumerPricing.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="font-heading text-xl">{item.name}</CardTitle>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-4xl font-bold text-primary mb-1">{item.price}</p>
+                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
                   <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
-                  <p className="text-xs font-semibold text-accent mb-4">{item.cap}</p>
+                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
                   <p className="text-sm text-foreground/70">{item.desc}</p>
                 </CardContent>
               </Card>
@@ -80,15 +79,16 @@ export default function Tarieven() {
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Zakelijk (MKB)</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {businessPricing.map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="font-heading text-xl">{item.name}</CardTitle>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-4xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-4">{item.unit}</p>
+                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                  <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
+                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
                   <p className="text-sm text-foreground/70">{item.desc}</p>
                 </CardContent>
               </Card>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick } from "lucide-react";
+import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
