@@ -63,17 +63,17 @@ export default function WiFiPage() {
                 Geen dode zones meer. Stabiel, snel en veilig internet in heel je huis of kantoor.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="default" size="lg" asChild>
+                <Button variant="accent" size="lg" asChild>
                   <a
-                    href="https://wa.me/31702119191?text=WiFi%20traag%20in%20[ruimte]%20-%20provider%3A%20[...]"
+                    href="https://wa.me/31702119191?text=WiFi%20probleem%3A%20[beschrijf%20je%20situatie]"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="mr-2" />
-                    App je situatie
+                    WhatsApp nu
                   </a>
                 </Button>
-                <Button variant="accent" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
                     <Phone className="mr-2" />
                     Bel 070 211 9191
