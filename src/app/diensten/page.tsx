@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase } from "lucide-react";
+import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
