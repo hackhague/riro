@@ -144,6 +144,8 @@ export default function Computerhulp() {
         </div>
       </section>
 
+      <PartnersSection />
+
       {/* Pricing */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -253,8 +255,6 @@ export default function Computerhulp() {
           </div>
         </div>
       </section>
-
-      <PartnersSection />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
