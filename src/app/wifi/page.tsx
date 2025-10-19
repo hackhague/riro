@@ -19,12 +19,12 @@ export const metadata: Metadata = {
 
 export default function WiFiPage() {
   const problems = [
-    "Trage WiFi of verbinding valt weg",
-    "Dode zones in huis of kantoor",
-    "Te veel apparaten, netwerk overbelast",
-    "Router nog nooit geconfigureerd of ge-update",
-    "Onveilige standaard wachtwoorden",
-    "Uitbreiden naar tuin, schuur of bijgebouw",
+    "WiFi werkt soms goed, soms slecht",
+    "Bepaalde ruimtes hebben geen goed signaal",
+    "Te veel apparaten, netwerk wordt langzaam",
+    "Router is verouderd of nooit goed ingesteld",
+    "Niet zeker of je WiFi veilig is",
+    "Internet bereikt niet tot aan de tuin of garage",
   ];
 
   const steps = [
