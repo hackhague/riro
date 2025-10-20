@@ -162,17 +162,18 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
   const faqs = [
     {
-      q: "Hoe snel kunnen jullie helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
+      q: "Hoe snel kunnen jullie in " + city + " helpen?",
+      a: "Remote meestal binnen 10-30 min reactie. On-site in en rond " + city + " meestal binnen 2 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs. Remote tijd rekenen we af tegen on-site als we toch komen.",
+      a: "Dan komen we langs in " + city + ". Remote tijd rekenen we af tegen on-site als we toch komen.",
     },
     {
       q: "Is remote veilig?",
       a: "Ja! We gebruiken versleutelde tools en vragen altijd toestemming voordat we iets doen.",
     },
+    ...(currentCityData.faqExtra || []),
   ];
 
   return (
