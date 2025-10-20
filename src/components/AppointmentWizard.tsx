@@ -94,6 +94,7 @@ type Booking = {
   postalCode: string;
   city: string;
   message: string;
+  deliveryMethod?: string;
 };
 
 export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
