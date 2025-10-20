@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,6 +13,9 @@ export const metadata: Metadata = {
     "Je bent gehackt? We helpen meestal binnen 60 minuten. Wachtwoorden resetten, virussen verwijderen, accounts herstellen.",
   alternates: {
     canonical: "https://www.instantit.nl/ik-ben-gehackt",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/ik-ben-gehackt",
+    },
   },
 };
 
@@ -37,36 +41,21 @@ export default function IkBenGehackt(): JSX.Element {
   ];
 
   // JSON-LD: FAQ + HowTo + Service offers (zoekmachines lezen dit)
-  const faqLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Moet ik hackers betalen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nee. Betaal nooit direct losgeld. Bel ons eerst; vaak is er een andere oplossing en betalen biedt geen garantie."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hoe snel helpen jullie?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We starten meestal binnen 60 minuten op afstand. Als we naar u toe moeten, plannen we binnen 24–48 uur of sneller als we een spoedslot hebben."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Krijg ik een rapport voor verzekering?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja. We leveren een kort incidentoverzicht dat je kunt gebruiken voor je verzekering of aangifte."
-        }
-      }
-    ]
-  };
+  const faqLd = faqPageJsonLd([
+    {
+      question: "Moet ik hackers betalen?",
+      answer: "Nee. Betaal nooit direct losgeld. Bel ons eerst; vaak is er een andere oplossing en betalen biedt geen garantie.",
+    },
+    {
+      question: "Hoe snel helpen jullie?",
+      answer:
+        "We starten meestal binnen 60 minuten op afstand. Als we naar u toe moeten, plannen we binnen 24–48 uur of sneller als we een spoedslot hebben.",
+    },
+    {
+      question: "Krijg ik een rapport voor verzekering?",
+      answer: "Ja. We leveren een kort incidentoverzicht dat je kunt gebruiken voor je verzekering of aangifte.",
+    },
+  ]);
 
   const howToLd = {
     "@context": "https://schema.org",
@@ -79,32 +68,89 @@ export default function IkBenGehackt(): JSX.Element {
     ]
   };
 
-  const serviceOfferLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Hacklijn - op afstand triage",
-    "description": "Hulp bij gehackte accounts en ransomware. Direct advies en containment.",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "InstantIT",
-      "telephone": "+31-70-2119191",
-      "address": { "@type": "PostalAddress", "addressLocality": "Den Haag", "addressCountry": "NL" }
+  const toSchemaPrice = (price: string) => {
+    const normalized = price.replace(/[^0-9,]/g, "").replace(",", ".");
+    return normalized.includes(".") ? normalized : `${normalized}.00`;
+  };
+
+  const businessProfileLd = localBusinessJsonLd({
+    name: "InstantIT - Digitale Eerste Hulp",
+    url: "https://www.instantit.nl",
+    phone: "+31 70 211 9191",
+    email: "hallo@instantit.nl",
+    image: "https://www.instantit.nl/images/service-hack.jpg",
+    logo: "https://www.instantit.nl/android-chrome-512x512.png",
+    address: {
+      streetAddress: "Laan van NOI 88",
+      addressLocality: "Den Haag",
+      postalCode: "2593 BP",
+      addressCountry: "NL",
     },
-    "areaServed": "Haaglanden",
-    "offers": [
-      { "@type": "Offer", "price": "149.00", "priceCurrency": "EUR", "name": "Op afstand triage (tot 60 min)" },
-      { "@type": "Offer", "price": "199.00", "priceCurrency": "EUR", "name": "Spoed on-site (tot 2 uur)" },
-      { "@type": "Offer", "price": "249.00", "priceCurrency": "EUR", "name": "Spoed op locatie (zakelijk) - tot 2 uur" },
-      { "@type": "Offer", "price": "499.00", "priceCurrency": "EUR", "name": "First Response pakket (zakelijk) - tot 4 uur" }
-    ]
+    areaServed: "Haaglanden",
+    sameAs: [
+      "https://www.facebook.com/instantit.nl",
+      "https://www.instagram.com/instantit.nl",
+      "https://www.linkedin.com/company/instantit-nl",
+      "https://maps.app.goo.gl/9eQ2TUtQfem57CCw8",
+    ],
+  });
+
+  const serviceOfferLd = {
+    ...serviceOfferJsonLd({
+      name: "Directe hulp bij gehackt",
+      description: "Hulp bij gehackte accounts, ransomware en spoedbeveiliging.",
+      serviceType: "Directe hulp bij gehackt",
+      areaServed: "Haaglanden",
+      offers: [
+        {
+          name: PRICE_TIERS.hackedRemote.label,
+          price: toSchemaPrice(PRICE_TIERS.hackedRemote.price),
+          priceCurrency: "EUR",
+          url: `https://www.instantit.nl${PRICE_TIERS.hackedRemote.href}`,
+          description: PRICE_TIERS.hackedRemote.subline,
+        },
+        {
+          name: PRICE_TIERS.hackedOnsite.label,
+          price: toSchemaPrice(PRICE_TIERS.hackedOnsite.price),
+          priceCurrency: "EUR",
+          url: `https://www.instantit.nl${PRICE_TIERS.hackedOnsite.href}`,
+          description: PRICE_TIERS.hackedOnsite.subline,
+        },
+        {
+          name: PRICE_TIERS.hackedBusiness.label,
+          price: toSchemaPrice(PRICE_TIERS.hackedBusiness.price),
+          priceCurrency: "EUR",
+          url: `https://www.instantit.nl${PRICE_TIERS.hackedBusiness.href}`,
+          description: PRICE_TIERS.hackedBusiness.subline,
+        },
+        {
+          name: PRICE_TIERS.hackedFirstResponse.label,
+          price: toSchemaPrice(PRICE_TIERS.hackedFirstResponse.price),
+          priceCurrency: "EUR",
+          url: `https://www.instantit.nl${PRICE_TIERS.hackedFirstResponse.href}`,
+          description: PRICE_TIERS.hackedFirstResponse.subline,
+        },
+      ],
+    }),
+    provider: {
+      "@type": "LocalBusiness",
+      name: "InstantIT",
+      telephone: "+31 70 211 9191",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Den Haag",
+        addressCountry: "NL",
+      },
+    },
   };
 
   return (
     <div className="min-h-screen">
       {/* JSON-LD (niet zichtbaar voor bezoekers) */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceOfferLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([faqLd, howToLd, serviceOfferLd, businessProfileLd]) }}
+      />
 
       {/* Hero */}
       <section className="bg-gradient-to-b from-destructive/10 to-background py-16 md:py-20">
@@ -148,7 +194,14 @@ export default function IkBenGehackt(): JSX.Element {
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-destructive/20">
-              <img src={serviceImage} alt="Spoedhulp bij hack of cyberaanval" className="w-full h-auto" />
+              <Image
+                src={serviceImage}
+                alt="Spoedhulp bij hack of cyberaanval"
+                className="w-full h-auto"
+                width={800}
+                height={600}
+                priority={false}
+              />
             </div>
           </div>
         </div>
