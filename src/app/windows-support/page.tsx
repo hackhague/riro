@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-windows.jpg";
 
@@ -108,8 +107,6 @@ export default function WindowsSupportPage() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Windows 10 End of Life Warning */}
       <section className="py-12 md:py-16 bg-accent/10 border-l-4 border-accent">

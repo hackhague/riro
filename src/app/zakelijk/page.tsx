@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "Zakelijke IT-support | MKB, Retail & Horeca",
@@ -110,8 +109,6 @@ export default function Zakelijk() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Industries We Serve */}
       <section className="py-12 md:py-16">

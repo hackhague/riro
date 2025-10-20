@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
-import { PriceBox } from "@/components/ui/PriceBox";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -244,8 +243,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* ------------------- USPs ------------------- */}
       <section className="py-12 md:py-16">

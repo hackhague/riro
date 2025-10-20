@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-antivirus.jpg";
 
@@ -138,8 +137,6 @@ export default function AntivirusSetupPage() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Security Warning */}
       <section className="py-12 md:py-16 bg-destructive/10 border-l-4 border-destructive">

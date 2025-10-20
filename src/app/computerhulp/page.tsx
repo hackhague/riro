@@ -8,8 +8,6 @@ import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/PriceBox";
-import { PRICE_TIERS } from "@/data/pricing";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
@@ -44,7 +42,6 @@ type CityContent = {
     intro: string;
     highlights: string[];
     links: { label: string; href: string }[];
-    priceTierIds: (keyof typeof PRICE_TIERS)[];
     imageAlt: string;
   };
 };
@@ -79,7 +76,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Directe hulp bij gehackt", href: "/ik-ben-gehackt" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT computerhulp aan huis in Den Haag",
     },
   },
@@ -111,7 +108,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Mac & Windows support", href: "/diensten" },
         { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT ondersteunt een ondernemer in Delft",
     },
   },
@@ -143,7 +140,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Cyber-APK", href: "/cyber-apk" },
         { label: "Bekijk alle prijzen", href: "/tarieven" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT helpt een huisartsenpraktijk in Leiden",
     },
   },
@@ -175,7 +172,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Bekijk zakelijke diensten", href: "/zakelijk" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT monteurs herstellen kassasysteem in Rijswijk",
     },
   },
@@ -207,7 +204,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Bekijk tarieven", href: "/tarieven" },
         { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT geeft computerles in Voorburg",
     },
   },
@@ -239,7 +236,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Zakelijke pakketten", href: "/zakelijk" },
         { label: "Direct gehackt-hulp", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT optimaliseert netwerk bij bedrijf in Zoetermeer",
     },
   },
@@ -330,16 +327,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
     description: hero.intro,
     serviceType: "Computerhulp",
     areaServed: city,
-    offers: hero.priceTierIds.map((tierId) => {
-      const tier = PRICE_TIERS[tierId];
-      return {
-        name: tier.label,
-        price: tier.price,
-        priceCurrency: "EUR",
-        url: `https://www.instantit.nl${tier.href}`,
-        description: tier.subline,
-      };
-    }),
+    offers: [],
   });
 
   const faqSchema = faqPageJsonLd(
@@ -393,9 +381,6 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
                   </a>
                 </Button>
               </div>
-              <div className="mt-6">
-                <PriceBox tierIds={hero.priceTierIds} />
-              </div>
               <div className="mt-8 flex flex-wrap gap-3">
                 {hero.links.map((link) => (
                   <Link
@@ -422,8 +407,6 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
