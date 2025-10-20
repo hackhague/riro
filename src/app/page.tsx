@@ -73,6 +73,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
 export default function Home() {
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
