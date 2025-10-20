@@ -458,7 +458,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
 
       <HomepageServicesClient />
 
-      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
+      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} title="Wij kunnen helpen met" />
 
       {/* Neighborhoods */}
       <section className="py-12 md:py-16">

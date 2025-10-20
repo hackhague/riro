@@ -242,7 +242,7 @@ export default function IkBenGehackt(): JSX.Element {
       </section>
 
       {/* Specific Help Services */}
-      <OtherServicesGrid serviceBlocks={helpServiceBlocks} showCTA={true} />
+      <OtherServicesGrid serviceBlocks={helpServiceBlocks} showCTA={true} title="Meest voorkomende problemen" />
 
       {/* FAQ (visual) */}
       <section className="py-12 md:py-16">
