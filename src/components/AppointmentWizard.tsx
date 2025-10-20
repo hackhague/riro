@@ -6,34 +6,44 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calendar as CalendarIcon, CheckCircle2, User as UserIcon, Info } from "lucide-react";
+import { Calendar as CalendarIcon, CheckCircle2, User as UserIcon, HelpCircle, Radio } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { format, startOfToday } from "date-fns";
 import "react-day-picker/dist/style.css";
 import { toast } from "@/hooks/use-toast";
 
-// Supported services for booking
-const SERVICES = [
-  { id: "remote_quickfix", label: "Particulier - Computerhulp op afstand" },
-  { id: "onsite_standard", label: "Particulier - Computerhulp aan huis" },
-  { id: "onsite_business", label: "Zakelijk - IT-support op afstand" },
-  { id: "onsite_business_remote", label: "Zakelijk - IT-support aan kantoor" },
+// Problem categories (shown first)
+const PROBLEM_CATEGORIES = [
+  { id: "hardware", title: "Computer/Laptop Problemen", description: "Trage computer, crash, Windows/Mac issues" },
+  { id: "security", title: "Hack/Beveiliging", description: "Gehackt, virus, malware, account herstellen" },
+  { id: "network", title: "Internet & WiFi", description: "WiFi traag/weg, netwerkproblemen" },
+  { id: "hardware_other", title: "Printer/Apparaten", description: "Printer, scanner, apparaten instellen" },
+  { id: "mobile", title: "Tablet & Smartphone", description: "iPad, Android telefoon hulp" },
+  { id: "training", title: "Uitleg & Les", description: "Training, handleiding, leren hoe het werkt" },
+  { id: "other", title: "Iets anders", description: "Niet zeker? Bel ons even" },
 ];
 
-// Service categories for "Computerhulp op afstand" and "Computerhulp aan huis"
-const SERVICE_CATEGORIES = [
-  { id: "hardware", title: "Windows/Mac Problemen" },
-  { id: "software", title: "Software problemen" },
-  { id: "printerhulp", title: "Printerhulp" },
-  { id: "email", title: "E-mail Problemen" },
-  { id: "wifi", title: "Internet & WiFi" },
-  { id: "tablet", title: "Tablet & Smartphone" },
-  { id: "uitleg", title: "Uitleg & Les" },
-  { id: "overigg", title: "Overig" },
-
+// Service type (particulier vs zakelijk) - shown second
+const SERVICE_TYPES = [
+  { id: "particulier", label: "Voor mij thuis" },
+  { id: "zakelijk", label: "Voor mijn bedrijf/winkel" },
 ];
 
-// Default 2-uur tijdsloten
+// Delivery methods based on service type
+const DELIVERY_METHODS = {
+  particulier: [
+    { id: "remote", label: "Computerhulp op afstand (€35)", description: "Remote via scherm - snel en voordelig" },
+    { id: "onsite", label: "Computerhulp aan huis (€59)", description: "Bij jou thuis - volledige diagnose" },
+    { id: "spoed", label: "IT Spoedhulp aan huis (€89)", description: "Urgentie? Op afspraak of direct" },
+  ],
+  zakelijk: [
+    { id: "remote", label: "IT-support op afstand (€35)", description: "Remote hulp voor jouw bedrijf" },
+    { id: "onsite", label: "IT-support aan kantoor (€79)", description: "Bij jou ter plaatse - volledige fix" },
+    { id: "spoed", label: "IT Spoedhulp kantoor (€89)", description: "Kassa down? PIN weg? Spoed beschikbaar" },
+  ],
+};
+
+// Default 2-uur (48-72 uur for standaard) tijdsloten
 const DEFAULT_SLOTS = [
   "09:00 – 11:00",
   "11:00 – 13:00",
@@ -43,7 +53,6 @@ const DEFAULT_SLOTS = [
 ];
 
 function getTimeSlotsForDate(date: Date) {
-  // Disable same-day past ranges
   const now = new Date();
   if (date.toDateString() !== now.toDateString()) return DEFAULT_SLOTS;
 
@@ -57,8 +66,9 @@ function getTimeSlotsForDate(date: Date) {
 }
 
 type Booking = {
-  service: string;
-  serviceCategory: string;
+  problemCategory: string;
+  serviceType: string;
+  deliveryMethod: string;
   date: Date | undefined;
   timeSlot: string;
   firstName: string;
@@ -72,11 +82,12 @@ type Booking = {
 };
 
 export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
-  const [step, setStep] = useState<0 | 1 | 2 | 3>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
-    service: SERVICES[0].id,
-    serviceCategory: "",
+    problemCategory: "",
+    serviceType: "particulier",
+    deliveryMethod: "",
     date: undefined,
     timeSlot: "",
     firstName: "",
@@ -89,10 +100,10 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     message: "",
   });
 
-  const needsCategoryStep = booking.service === "remote_quickfix" || booking.service === "onsite_standard";
-
-  const isStep1Valid = !!booking.service;
-  const isStep2Valid = !needsCategoryStep || !!booking.serviceCategory;
+  // Validation for each step
+  const isStep0Valid = !!booking.problemCategory;
+  const isStep1Valid = !!booking.serviceType;
+  const isStep2Valid = !!booking.deliveryMethod;
   const isStep3Valid = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
   const isStep4Valid =
     booking.firstName.trim() !== "" &&
@@ -102,18 +113,21 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     booking.postalCode.trim() !== "" &&
     booking.city.trim() !== "";
 
-  const selectedService = useMemo(() => SERVICES.find((s) => s.id === booking.service)?.label ?? "", [booking.service]);
-  const selectedCategory = useMemo(() => SERVICE_CATEGORIES.find((c) => c.id === booking.serviceCategory)?.title ?? "", [booking.serviceCategory]);
+  const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
+  const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
+  const selectedDeliveryMethod = useMemo(() => {
+    const methods = DELIVERY_METHODS[booking.serviceType as keyof typeof DELIVERY_METHODS] || [];
+    return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
+  }, [booking.serviceType, booking.deliveryMethod]);
 
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep3Valid) return;
     setLoading(true);
     try {
       const payload = {
-        service: booking.service,
-        serviceLabel: selectedService || booking.service,
-        serviceCategory: booking.serviceCategory || undefined,
-        serviceCategoryLabel: selectedCategory || undefined,
+        problemCategory: booking.problemCategory,
+        serviceType: booking.serviceType,
+        deliveryMethod: booking.deliveryMethod,
         dateISO: booking.date ? booking.date.toISOString() : null,
         dateDisplay: booking.date ? format(booking.date, "PPP") : null,
         timeSlot: booking.timeSlot,
@@ -126,7 +140,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         city: booking.city,
         message: booking.message,
         source: "website",
-      } as any;
+      };
 
       const response = await fetch("/api/appointments", {
         method: "POST",
@@ -150,8 +164,9 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       });
       setStep(0);
       setBooking({
-        service: SERVICES[0].id,
-        serviceCategory: "",
+        problemCategory: "",
+        serviceType: "particulier",
+        deliveryMethod: "",
         date: undefined,
         timeSlot: "",
         firstName: "",
@@ -171,6 +186,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
   };
 
   const today = startOfToday();
+  const availableDeliveryMethods = DELIVERY_METHODS[booking.serviceType as keyof typeof DELIVERY_METHODS] || [];
 
   return (
     <div className="w-full">
@@ -178,8 +194,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
         <div className="text-center mb-8">
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak!</h2>
           <p className="text-foreground/80 mt-2">
-            Kies een dienst, selecteer een datum en tijdslot en vul je gegevens in. We bevestigen je afspraak per
-            telefoon of e-mail.
+            Vertel ons wat je probleem is, kies hoe je hulp wilt ontvangen, en we plannen je in. We bevestigen je afspraak per telefoon of e-mail.
           </p>
         </div>
       )}
@@ -192,27 +207,35 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <ul className="divide-y divide-white/10">
                 <li className={`px-4 py-4 flex items-center justify-between ${step === 0 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
-                    <Info className="h-5 w-5" />
+                    <HelpCircle className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Dienst selectie</p>
-                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedService || "Kies een dienst"}</p>
+                      <p className="text-sm opacity-80">Wat is het probleem?</p>
+                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedProblem || "Kies een categorie"}</p>
+                    </div>
+                  </div>
+                  {isStep0Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                </li>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 1 ? "bg-primary" : "bg-primary/90"}`}>
+                  <div className="flex items-center gap-3">
+                    <Radio className="h-5 w-5" />
+                    <div>
+                      <p className="text-sm opacity-80">Type hulp</p>
+                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedServiceType || "Kies type"}</p>
                     </div>
                   </div>
                   {isStep1Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                {needsCategoryStep && (
-                  <li className={`px-4 py-4 flex items-center justify-between ${step === 1 ? "bg-primary" : "bg-primary/90"}`}>
-                    <div className="flex items-center gap-3">
-                      <Info className="h-5 w-5" />
-                      <div>
-                        <p className="text-sm opacity-80">Onderwerp</p>
-                        <p className="text-sm font-semibold truncate max-w-[160px]">{selectedCategory || "Kies een onderwerp"}</p>
-                      </div>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 2 ? "bg-primary" : "bg-primary/90"}`}>
+                  <div className="flex items-center gap-3">
+                    <HelpCircle className="h-5 w-5" />
+                    <div>
+                      <p className="text-sm opacity-80">Hoe hulp?</p>
+                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedDeliveryMethod || "Kies methode"}</p>
                     </div>
-                    {isStep2Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
-                  </li>
-                )}
-                <li className={`px-4 py-4 flex items-center justify-between ${step === (needsCategoryStep ? 2 : 1) ? "bg-primary" : "bg-primary/90"}`}>
+                  </div>
+                  {isStep2Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                </li>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 3 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
@@ -224,7 +247,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                   {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === (needsCategoryStep ? 3 : 2) ? "bg-primary" : "bg-primary/90"}`}>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 4 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
@@ -251,64 +274,92 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
           <CardContent className="p-6 md:p-8">
             {step === 0 && (
               <div>
-                <h3 className="font-heading font-semibold text-xl mb-4">Dienst selectie</h3>
-                <div className="grid gap-4 max-w-lg">
-                  <div>
-                    <Label htmlFor="service">Dienst</Label>
-                    <Select value={booking.service} onValueChange={(v) => setBooking((b) => ({ ...b, service: v, serviceCategory: "" }))}>
-                      <SelectTrigger id="service" className="mt-2">
-                        <SelectValue placeholder="Kies een dienst" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {SERVICES.map((s) => (
-                          <SelectItem key={s.id} value={s.id}>
-                            {s.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+                <h3 className="font-heading font-semibold text-xl mb-6">Wat is jouw probleem?</h3>
+                <div className="grid gap-3 max-w-lg">
+                  {PROBLEM_CATEGORIES.map((category) => (
+                    <button
+                      key={category.id}
+                      onClick={() => setBooking((b) => ({ ...b, problemCategory: category.id }))}
+                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                        booking.problemCategory === category.id
+                          ? "border-primary bg-primary/10"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <p className="font-semibold text-foreground">{category.title}</p>
+                      <p className="text-sm text-foreground/70 mt-1">{category.description}</p>
+                    </button>
+                  ))}
                 </div>
-                <div className="mt-6 flex justify-end">
-                  <Button onClick={() => setStep(needsCategoryStep ? 1 : 2)} disabled={!isStep1Valid}>
+                <div className="mt-8 flex justify-end">
+                  <Button onClick={() => setStep(1)} disabled={!isStep0Valid}>
                     Volgende stap
                   </Button>
                 </div>
               </div>
             )}
 
-            {needsCategoryStep && step === 1 && (
+            {step === 1 && (
               <div>
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Wat voor hulp heeft u nodig?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Is dit voor jezelf of je bedrijf?</h3>
                 </div>
                 <div className="grid gap-3 max-w-lg">
-                  {SERVICE_CATEGORIES.map((category) => (
+                  {SERVICE_TYPES.map((type) => (
                     <button
-                      key={category.id}
-                      onClick={() => setBooking((b) => ({ ...b, serviceCategory: category.id }))}
+                      key={type.id}
+                      onClick={() => setBooking((b) => ({ ...b, serviceType: type.id, deliveryMethod: "" }))}
                       className={`p-4 rounded-lg border-2 text-left transition-all ${
-                        booking.serviceCategory === category.id
+                        booking.serviceType === type.id
                           ? "border-primary bg-primary/10"
                           : "border-border hover:border-primary/50"
                       }`}
                     >
-                      <p className="font-semibold text-foreground">{category.title}</p>
+                      <p className="font-semibold text-foreground">{type.label}</p>
                     </button>
                   ))}
                 </div>
-                <div className="mt-6 flex justify-between">
+                <div className="mt-8 flex justify-between">
                   <Button variant="outline" onClick={() => setStep(0)}>Vorige</Button>
-                  <Button onClick={() => setStep(2)} disabled={!isStep2Valid}>Volgende stap</Button>
+                  <Button onClick={() => setStep(2)} disabled={!isStep1Valid}>Volgende stap</Button>
                 </div>
               </div>
             )}
 
-            {step === (needsCategoryStep ? 2 : 1) && (
+            {step === 2 && (
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Button variant="ghost" onClick={() => setStep(needsCategoryStep ? 1 : 0)} className="px-2">←</Button>
+                <div className="flex items-center gap-3 mb-6">
+                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
+                  <h3 className="font-heading font-semibold text-xl">Hoe wil je hulp ontvangen?</h3>
+                </div>
+                <div className="grid gap-3 max-w-lg">
+                  {availableDeliveryMethods.map((method) => (
+                    <button
+                      key={method.id}
+                      onClick={() => setBooking((b) => ({ ...b, deliveryMethod: method.id }))}
+                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                        booking.deliveryMethod === method.id
+                          ? "border-primary bg-primary/10"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                    >
+                      <p className="font-semibold text-foreground">{method.label}</p>
+                      <p className="text-sm text-foreground/70 mt-1">{method.description}</p>
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-8 flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(1)}>Vorige</Button>
+                  <Button onClick={() => setStep(3)} disabled={!isStep2Valid}>Volgende stap</Button>
+                </div>
+              </div>
+            )}
+
+            {step === 3 && (
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <Button variant="ghost" onClick={() => setStep(2)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Datum & tijdslot</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-6">
@@ -344,17 +395,17 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                     </div>
                   </div>
                 </div>
-                <div className="mt-6 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(needsCategoryStep ? 1 : 0)}>Vorige</Button>
-                  <Button onClick={() => setStep(needsCategoryStep ? 3 : 2)} disabled={!isStep3Valid}>Volgende stap</Button>
+                <div className="mt-8 flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(2)}>Vorige</Button>
+                  <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>Volgende stap</Button>
                 </div>
               </div>
             )}
 
-            {step === (needsCategoryStep ? 3 : 2) && (
+            {step === 4 && (
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Button variant="ghost" onClick={() => setStep(needsCategoryStep ? 2 : 1)} className="px-2">←</Button>
+                <div className="flex items-center gap-3 mb-6">
+                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Jouw informatie</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -391,8 +442,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                     <textarea id="message" className="w-full border rounded-md px-3 py-2 mt-2 min-h-[100px]" value={booking.message} onChange={(e) => setBooking((b) => ({ ...b, message: e.target.value }))} />
                   </div>
                 </div>
-                <div className="mt-6 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(needsCategoryStep ? 2 : 1)}>Vorige</Button>
+                <div className="mt-8 flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(3)}>Vorige</Button>
                   <Button onClick={handleSubmit} disabled={!isStep4Valid || loading}>
                     {loading ? "Versturen..." : "Afspraak versturen"}
                   </Button>
