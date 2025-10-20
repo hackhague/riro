@@ -120,10 +120,10 @@ export default function PhishingHulp() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {recognitionTips.map((tip, i) => (
-              <Card key={i} className="border-l-4 border-l-amber-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
-                  <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center mb-3">
-                    <AlertTriangle className="h-5 w-5 text-amber-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                    <AlertTriangle className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{tip.title}</h3>
                   <p className="text-sm text-foreground/70">{tip.description}</p>
