@@ -44,12 +44,6 @@ export const Navigation = () => {
           { label: "Cyber APK", path: "/cyber-apk" },
         ],
       },
-      { label: "Printerhulp", path: "/printer", description: "Papiertoringen, cartridges en meer" },
-      { label: "E-mail problemen", path: "/email", description: "Outlook, Gmail instellen" },
-      { label: "Internet & WiFi", path: "/wifi", description: "Betrouwbaar en snel internet" },
-      { label: "Smartphone & Tablet", path: "/mobiel-tablet", description: "WhatsApp, apps en meer" },
-      { label: "Computerlessen", path: "/uitleg-les", description: "Rustige les op eigen tempo" },
-      { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
