@@ -25,7 +25,7 @@ export function OtherServicesGrid({ serviceBlocks, showCTA = true, title = "Ande
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-          Meest voorkomende problemen
+          {title}
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
