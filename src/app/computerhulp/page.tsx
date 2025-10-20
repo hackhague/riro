@@ -25,6 +25,100 @@ interface ComputerhulpProps {
   cityUrl?: string;
 }
 
+// City-specific data with neighborhoods and case studies
+const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: string; solution: string; result: string; location: string }; faqExtra?: { q: string; a: string }[] }> = {
+  "Den Haag": {
+    neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
+    caseStudy: {
+      problem: "Kantoorlaptop crasht na Windows update in Centrum",
+      solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
+      result: "Werkdag voortgezet, alle data veilig, kosten €49",
+      location: "Den Haag Centrum",
+    },
+    faqExtra: [
+      {
+        q: "Helpen jullie ook bedrijven in Den Haag?",
+        a: "Ja! Veel kantoren in Den Haag gebruiken ons voor spoedservice en preventief onderhoud. Zakelijke contracten beschikbaar.",
+      },
+    ],
+  },
+  "Delft": {
+    neighborhoods: ["Binnenstad", "Wippolder", "Voorhof", "Tanthof", "Hof van Delft"],
+    caseStudy: {
+      problem: "Tech startup in Delft: alle computers ransomware geïnfecteerd",
+      solution: "Quarantaine, malware verwijdering, backup terugzet, 2FA en firewall geconfigureerd",
+      result: "Bedrijf veilig gesteld, geen gegevens verloren, rapport voor verzekering",
+      location: "Delft Binnenstad",
+    },
+    faqExtra: [
+      {
+        q: "Zijn jullie bekend met Delft's tech- en universiteitsomgeving?",
+        a: "Ja, veel studenten en ondernemers in Delft kiezen ons. We begrijpen de IT-behoeften van de tech community.",
+      },
+    ],
+  },
+  "Leiden": {
+    neighborhoods: ["Bos- en Gasthuisdistrict", "Morsdistrict", "Boerhaavedistrict", "Merenwijk", "Stevenshofdistrict"],
+    caseStudy: {
+      problem: "Huisarts aan Prins Clausplein: e-mailserver down",
+      solution: "Remote stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
+      result: "Alle patiëntgegevens veilig, praktijk online in 2 uur",
+      location: "Leiden Merenwijk",
+    },
+    faqExtra: [
+      {
+        q: "Hebben jullie ervaring met medische- of kantoorpraktijken?",
+        a: "Zeker! We hebben veel huisartsen en kantoren geholpen. GDPR-compliant en discreet.",
+      },
+    ],
+  },
+  "Rijswijk": {
+    neighborhoods: ["Oud-Rijswijk", "Leeuwendaal", "Te Werve", "Rembrandtkwartier", "Ministerbuurt"],
+    caseStudy: {
+      problem: "Winkel in Oud-Rijswijk: PIN niet werkend op vrijdag",
+      solution: "On-site diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
+      result: "PIN werkend in 1 uur, geen omzet verliest",
+      location: "Rijswijk Oud-Rijswijk",
+    },
+    faqExtra: [
+      {
+        q: "Kunnen jullie ook snelle kassasysteem ondersteuning geven?",
+        a: "Ja, we hebben veel winkels en restaurants geholpen met PIN-problemen en kassasystemen.",
+      },
+    ],
+  },
+  "Voorburg": {
+    neighborhoods: ["Voorburg West", "Voorburg Midden", "Bovenveen", "Essesteijn", "Voorburg Noord"],
+    caseStudy: {
+      problem: "Familie in Voorburg Midden: computer verergerd na update",
+      solution: "Op locatie diagnose, systeem herstellen, beveiligingsupdate, training voor groepsbeleid",
+      result: "Ouders weer zelfstandig, preventief advies gegeven",
+      location: "Voorburg Midden",
+    },
+    faqExtra: [
+      {
+        q: "Zijn jullie ook geschikt voor huishoudens met oudere bewoners?",
+        a: "Ja, veel families in Voorburg vertrouwen ons met hun oudercomputerhulp. We gaan rustig en geduldig te werk.",
+      },
+    ],
+  },
+  "Zoetermeer": {
+    neighborhoods: ["Rokkeveen", "Oosterheem", "Seghwaert", "Meerzicht", "Buytenwegh-de Leyens"],
+    caseStudy: {
+      problem: "Bedrijf in Rokkeveen: WiFi down, medewerkers kunnen niet werken",
+      solution: "Router reset, firmware update, WiFi hergebruikt, mesh-netwerk geadviseerd",
+      result: "Stabiele WiFi hersteld, 2 uur downtime voorkomen",
+      location: "Zoetermeer Rokkeveen",
+    },
+    faqExtra: [
+      {
+        q: "Helpen jullie bij netwerk-upgrades voor groeiende bedrijven?",
+        a: "Zeker, we hebben veel snelgroeiende bedrijven in Zoetermeer ondersteund met netwerkupgrades.",
+      },
+    ],
+  },
+};
+
 export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
@@ -34,6 +128,10 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
   ];
+
+  // Get city-specific data
+  const currentCityData = cityData[city] || cityData["Den Haag"];
+  const neighborhoods = currentCityData.neighborhoods;
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
