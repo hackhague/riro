@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
 export default function Diensten() {
   // --- META (plek dit in je head via je bestaande setup)
   // title: "Diensten — Computerhulp & Cyberhulp in Den Haag | InstantIT"
