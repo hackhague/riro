@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-lessons.jpg";
 
@@ -64,7 +65,7 @@ export default function UitlegLesPage() {
     },
     {
       q: "Hoeveel kost een computerles aan huis?",
-      a: "€59 per uur. Je hoeft niet lang aan het stuk – een uur per week is perfect om rustig te leren.",
+      a: "We volgen onze vaste tarieven. Een sessie duurt meestal een uur; samen stemmen we af hoe vaak we langskomen.",
     },
     {
       q: "Ben ik niet te oud om nog te leren computeren?",
@@ -118,6 +119,8 @@ export default function UitlegLesPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* What We Teach */}
       <section className="py-12 md:py-16">
@@ -182,34 +185,6 @@ export default function UitlegLesPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <BookOpen className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Per les</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Flexibel – elke week of eens per maand</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Heart className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Pakket</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€270</p>
-                <p className="text-sm text-foreground/60 mb-4">5 lessen</p>
-                <p className="text-xs text-foreground/70">Bespaar €25 – vol flexibiliteit</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Case Study */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -231,7 +206,7 @@ export default function UitlegLesPage() {
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Nu videobel ik elke week met mijn dochter! Ik hoef mijn kleindochter te zien groeien. Superblij! Investering: €270."
+                  "Nu videobel ik elke week met mijn dochter! Ik hoef mijn kleindochter te zien groeien. Superblij! Alles vooraf afgesproken, zonder verrassingen."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Voorburg</p>

@@ -6,13 +6,14 @@ import PartnersSection from "@/components/PartnersSection";
 import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-computer.jpg";
 
 export const metadata: Metadata = {
   title: "Computerhulp op afstand | Snelle hulp via schermdeling",
   description:
-    "Directe hulp op afstand via veilige schermdeling. Meestal binnen 10–30 minuten reactie. €39–€99, geen voorrijkosten.",
+    "Directe hulp op afstand via veilige schermdeling. Meestal binnen 10–30 minuten reactie. Transparante tarieven, geen verrassingen.",
   alternates: {
     canonical: "https://www.instantit.nl/hulp-op-afstand",
   },
@@ -22,7 +23,7 @@ export default function HulpOpAfstand() {
   const benefits = [
     { title: "Snel geholpen", desc: "Meestal binnen 10–30 minuten reactie en direct aan de slag" },
     { title: "Veilig", desc: "Versleutelde verbinding, jij geeft per stap toestemming" },
-    { title: "Transparante prijs", desc: "€39–€99, geen verrassingen. Je ziet de prijs vooraf" },
+    { title: "Transparante prijs", desc: "We werken met vaste tarieven. Je ziet vooraf wat het kost." },
     { title: "Geen bezoek nodig", desc: "Ideaal voor snelle fixes, advies en ondersteuning" },
   ];
 
@@ -74,6 +75,8 @@ export default function HulpOpAfstand() {
         </div>
       </section>
 
+      <PriceBox />
+
       {/* Benefits */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -118,40 +121,6 @@ export default function HulpOpAfstand() {
 
       <HomepageServicesClient />
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Hoeveel kost het?</h2>
-            <Card className="border-2 border-primary/20">
-              <CardContent className="p-8">
-                <p className="text-4xl font-bold text-primary mb-2">€39–€99</p>
-                <p className="text-lg text-foreground/80 mb-4">Meestal binnen 10–30 minuten reactie</p>
-                <p className="text-foreground/70 mb-6">
-                  Je betaalt <strong>€1 per minuut</strong>. Minimum 30 minuten (€39), maximum €99. Je ziet de prijs altijd vooraf voordat we starten.
-                </p>
-                <div className="bg-primary/5 border border-primary/20 rounded-lg p-4 text-sm text-foreground/80 mb-6">
-                  <p className="font-semibold mb-2">Wat inbegrepen:</p>
-                  <ul className="space-y-1 text-left">
-                    <li>✓ Veilige, versleutelde verbinding</li>
-                    <li>✓ Uitleg wat we doen</li>
-                    <li>✓ 7 dagen gratis nazorg (30 min op afstand)</li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <Button variant="accent" size="lg" asChild>
-                <Link href="/afspraak">Plan een afspraak</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <PlanAppointmentCta
         preselect={{
           channel: "remote",
@@ -172,7 +141,7 @@ export default function HulpOpAfstand() {
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
               <Link href="/afspraak">
-                Plan een afspraak
+                Afspraak maken
               </Link>
             </Button>
             <Button

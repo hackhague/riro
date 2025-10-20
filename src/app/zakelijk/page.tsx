@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "Zakelijke IT-support | MKB, Retail & Horeca",
@@ -47,7 +48,7 @@ export default function Zakelijk() {
     {
       icon: Clock,
       title: "Strippenkaart & Contract",
-      description: "10 uur support vanaf €550 (i.p.v. €650) of maandabonnement voor regelmatige hulp.",
+    description: "Strippenkaart of abonnement mogelijk voor regelmatige support. Tarieven stemmen we vooraf af.",
     },
   ];
 
@@ -110,6 +111,8 @@ export default function Zakelijk() {
         </div>
       </section>
 
+      <PriceBox />
+
       {/* Industries We Serve */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -166,15 +169,15 @@ export default function Zakelijk() {
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Remote vanaf €39/30 min (cap €99)</span>
+                    <span>Remote support met vaste tarieven en duidelijke caps</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>On-site €65/uur (geen voorrijkosten Haaglanden)</span>
+                    <span>On-site support zonder voorrijkosten in Haaglanden</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Spoed on-site €199 (max 24-48u)</span>
+                    <span>Spoed op locatie binnen 24-48 uur met prioriteit</span>
                   </li>
                 </ul>
               </CardContent>
@@ -190,11 +193,11 @@ export default function Zakelijk() {
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>10 uur support: €550 (i.p.v. €650)</span>
+                    <span>10-uur strippenkaart met voordelige staffel</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>20 uur support: €1.050 (i.p.v. €1.300)</span>
+                    <span>20-uur strippenkaart met extra voordeel</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -268,7 +271,7 @@ export default function Zakelijk() {
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">Transparante prijzen</h3>
                 <p className="text-foreground/70">
-                  Vaste tarieven met caps. Geen verborgen kosten. Niet opgelost? Alleen €19 diagnose.
+                  Vaste tarieven met caps. Geen verborgen kosten. Niet opgelost? Alleen een vooraf afgesproken diagnosevergoeding.
                 </p>
               </CardContent>
             </Card>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Apple, CheckCircle2, HardDrive, MessageCircle } from "lucide-react";
+import { Phone, Apple, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-mac.jpg";
 
@@ -48,7 +49,7 @@ export default function MacSupportPage() {
     },
     {
       q: "Hoeveel kost Mac ondersteuning?",
-      a: "€59/uur aan huis, €39/30 min remote. Diagnose is altijd inbegrepen.",
+      a: "We volgen onze vaste tarieven. Aan huis of remote stemmen we de investering vooraf met je af. Diagnose en nazorg zijn inbegrepen.",
     },
     {
       q: "Heb ik AppleCare+ nodig?",
@@ -98,6 +99,8 @@ export default function MacSupportPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
@@ -162,34 +165,6 @@ export default function MacSupportPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Card className="border-2">
-              <CardContent className="p-6 text-center">
-                <Apple className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Mac ondersteuning aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Diagnose, reparatie en optimalisatie</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <HardDrive className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Remote ondersteuning</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€39</p>
-                <p className="text-sm text-foreground/60 mb-4">30 minuten</p>
-                <p className="text-xs text-foreground/70">Voor snelle probleemoplossing</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       <HomepageServicesClient />
 
       {/* Case Study */}
@@ -213,7 +188,7 @@ export default function MacSupportPage() {
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "MacBook voelt weer als nieuw! Supersnel. Dank je! Kosten: €89 (ongeveer 1,5 uur)."
+                  "MacBook voelt weer als nieuw! Supersnel. Dank je! Alle afspraken en kosten vooraf duidelijk afgestemd."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Leiden</p>

@@ -25,12 +25,14 @@ export type PlanAppointmentCtaProps = {
     channel?: string;
     speed?: string;
   };
+  ctaLabel?: string;
 };
 
 export function PlanAppointmentCta({
   title = "Plan direct een afspraak",
   description = "We reageren binnen 10–30 minuten. Kies je voorkeur en we bevestigen per telefoon of WhatsApp.",
   preselect,
+  ctaLabel = "Afspraak maken",
 }: PlanAppointmentCtaProps) {
   const href = buildHref("/afspraak", preselect);
 
@@ -53,7 +55,7 @@ export function PlanAppointmentCta({
 
             <div className="flex flex-col gap-3">
               <Button asChild size="lg" className="w-full">
-                <Link href={href}>Plan een afspraak</Link>
+                <Link href={href}>{ctaLabel}</Link>
               </Button>
               <Button asChild variant="secondary" size="lg" className="w-full">
                 <a href="tel:+31702119191">

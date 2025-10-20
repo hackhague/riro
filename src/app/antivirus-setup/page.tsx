@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-antivirus.jpg";
 
@@ -34,13 +35,13 @@ export default function AntivirusSetupPage() {
     {
       name: "ESET Internet Security",
       desc: "Licht, snel, betrouwbaar",
-      price: "€60/jaar",
+      price: "Jaarlicentie via partner",
       badge: "Partnership",
     },
     {
       name: "ESET NOD32",
       desc: "Geavanceerde bescherming",
-      price: "€80/jaar",
+      price: "Jaarlicentie beschikbaar",
       badge: "Partnership",
     },
     {
@@ -52,19 +53,19 @@ export default function AntivirusSetupPage() {
     {
       name: "Kaspersky",
       desc: "Krachtig en geavanceerd",
-      price: "€65/jaar",
+      price: "Jaarlicentie beschikbaar",
       badge: "Optioneel",
     },
     {
       name: "Bitdefender",
       desc: "Licht en snel",
-      price: "€55/jaar",
+      price: "Jaarlicentie beschikbaar",
       badge: "Optioneel",
     },
     {
       name: "Norton",
       desc: "Volledig pakket",
-      price: "€70/jaar",
+      price: "Bundelopties beschikbaar",
       badge: "Optioneel",
     },
   ];
@@ -87,7 +88,7 @@ export default function AntivirusSetupPage() {
     },
     {
       q: "Hoe veel kost antivirus installatie?",
-      a: "Installatie is €39 (30 min remote) of €59 (1 uur aan huis). De antivirus zelf kost €55-80 per jaar.",
+      a: "We hanteren vaste tarieven voor remote en aan huis. De licentie zelf stemmen we vooraf met je af op basis van het pakket dat je kiest.",
     },
     {
       q: "Kan ik meerdere antivirus programma's tegelijk gebruiken?",
@@ -137,6 +138,8 @@ export default function AntivirusSetupPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* Security Warning */}
       <section className="py-12 md:py-16 bg-destructive/10 border-l-4 border-destructive">
@@ -285,44 +288,6 @@ export default function AntivirusSetupPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card className="border-2">
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Installatie Remote</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€39</p>
-                <p className="text-sm text-foreground/60">30 minuten</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Installatie Aan Huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60">1 uur</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Lock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">ESET Internet Security</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€60</p>
-                <p className="text-sm text-foreground/60">per jaar</p>
-              </CardContent>
-            </Card>
-          </div>
-          <p className="text-center text-foreground/70 mt-6">
-            Antivirus installatie + ESET 1 jaar = €99 (kan ook per maand €5/maand)
-          </p>
         </div>
       </section>
 
