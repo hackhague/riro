@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Reviews & Resultaten",
@@ -61,25 +64,44 @@ export default function Reviews() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt="InstantIT reviews en resultaten"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-16 md:py-20">
           <div className="max-w-3xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-6">
-              <Star className="h-10 w-10 text-accent fill-current" />
-              <Star className="h-10 w-10 text-accent fill-current" />
-              <Star className="h-10 w-10 text-accent fill-current" />
-              <Star className="h-10 w-10 text-accent fill-current" />
-              <Star className="h-10 w-10 text-accent fill-current" />
+              <Star className="h-10 w-10 text-yellow-400 fill-current" />
+              <Star className="h-10 w-10 text-yellow-400 fill-current" />
+              <Star className="h-10 w-10 text-yellow-400 fill-current" />
+              <Star className="h-10 w-10 text-yellow-400 fill-current" />
+              <Star className="h-10 w-10 text-yellow-400 fill-current" />
             </div>
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Wat klanten over ons zeggen
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-8">
+            <p className="text-lg md:text-xl text-white/90 mb-8">
               Echte problemen, snelle oplossingen – bekijk hoe InstantIT particulieren en bedrijven in Zuid-Holland helpt.
             </p>
-            <div className="flex items-center justify-center gap-4 text-sm text-foreground/70">
+            <div className="flex items-center justify-center gap-4 text-sm text-white/80">
               <div className="flex items-center gap-2">
-                <Star className="h-5 w-5 text-accent fill-current" />
+                <Star className="h-5 w-5 text-yellow-400 fill-current" />
                 <span className="font-semibold text-lg">4.9/5</span>
               </div>
               <span>|</span>

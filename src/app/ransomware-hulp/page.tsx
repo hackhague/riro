@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MessageCircle, Phone, AlertTriangle, Lock, Shield, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Ransomware Infectie? Wat Je Nu Moet Doen",
@@ -73,8 +76,27 @@ export default function RansomwareHulp() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-destructive/30 to-destructive/10">
-        <div className="container mx-auto px-4 relative z-10">
+      <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt="InstantIT ransomware hulp"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-20 md:py-32">
           <div className="max-w-4xl mx-auto text-center">
             <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Lock className="h-8 w-8 text-white" />
