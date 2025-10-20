@@ -19,34 +19,53 @@ export const metadata: Metadata = {
 };
 
 export default function WiFiPage() {
+  const services = [
+    "Nieuwe router installatie en setup",
+    "WiFi installatie en verbetering",
+    "Internet snelheid optimaliseren",
+    "Router configuratie",
+    "Veilig internetten instellen",
+    "Smart TV aansluiten",
+    "WiFi bereik uitbreiden",
+    "Mesh netwerk instellingen",
+  ];
+
   const problems = [
-    "WiFi werkt soms goed, soms slecht",
-    "Bepaalde ruimtes hebben geen goed signaal",
-    "Te veel apparaten, netwerk wordt langzaam",
-    "Router is verouderd of nooit goed ingesteld",
-    "Niet zeker of je WiFi veilig is",
-    "Internet bereikt niet tot aan de tuin of garage",
+    "Internet valt steeds weg",
+    "WiFi bereik is te klein (dode zones)",
+    "Trage internetsnelheid",
+    "Smart TV heeft geen internet",
+    "WiFi wachtwoord vergeten",
+    "Nieuwe router installeren",
   ];
 
   const steps = [
-    { title: "WiFi survey", desc: "We meten dekking en signaalsterkte" },
-    { title: "Advies & plan", desc: "Mesh, extenders of nieuwe router? We adviseren" },
-    { title: "Installatie", desc: "Professionele setup en configuratie" },
-    { title: "Hardening", desc: "Veilige instellingen + documentatie" },
+    { title: "Netwerk analyse", desc: "We testen je internetverbinding en WiFi signaal" },
+    { title: "Optimalisatie", desc: "We optimaliseren instellingen voor beste prestaties" },
+    { title: "Beveiliging", desc: "Veilige wachtwoorden en encryptie instellen" },
+    { title: "Test alle apparaten", desc: "We zorgen dat alles goed verbonden is" },
   ];
 
   const faqs = [
     {
-      q: "Moet ik nieuwe apparatuur kopen?",
-      a: "Vaak niet! Soms helpt een betere configuratie al. We adviseren eerlijk.",
+      q: "Waarom is mijn WiFi zo langzaam?",
+      a: "Kan aan je router, signaal, of veel apparaten tegelijk. We testen alles en optimaliseren.",
     },
     {
-      q: "Werken jullie met alle merken?",
-      a: "Ja – UniFi, TP-Link, Netgear, Google Nest, etc. We adviseren ook welk merk bij jou past.",
+      q: "Kan ik overal in huis WiFi krijgen?",
+      a: "Meestal wel! Met mesh, extenders of betere routerplaatsing. We kijken wat het best past.",
     },
     {
-      q: "Wat is het verschil tussen mesh en extender?",
-      a: "Mesh is één naadloos netwerk. Extenders zijn goedkoper maar je schakelt handmatig tussen netwerken.",
+      q: "Wat kost internet en WiFi hulp?",
+      a: "WiFi optimalisatie €149 (survey + plan). Installatie mesh/router €65/uur. Onderdelen apart.",
+    },
+    {
+      q: "Kunnen jullie alle internetproviders helpen?",
+      a: "Ja! KPN, Ziggo, T-Mobile, en alle andere. Router werkt met elke provider.",
+    },
+    {
+      q: "Hoe beveilig ik mijn WiFi netwerk?",
+      a: "Sterk wachtwoord (niet 'wachtwoord123'), WPA3 encryptie, admin panel beveiligen. Wij doen dit voor je.",
     },
   ];
 
@@ -58,10 +77,10 @@ export default function WiFiPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                WiFi & netwerk verbeteren
+                Internet & WiFi verbeteren
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Geen dode zones meer. Stabiel, snel en veilig internet in heel je huis of kantoor.
+                Een goede internetverbinding is belangrijk. Van router installatie tot netwerk optimalisatie – je internet gaat werken zoals het hoort.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
@@ -84,10 +103,27 @@ export default function WiFiPage() {
         </div>
       </section>
 
-      {/* Problems */}
+      {/* Services */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat lossen we op?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we voor u doen</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {services.map((service, index) => (
+              <Card key={index}>
+                <CardContent className="p-4 flex items-start gap-3">
+                  <Wifi className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">{service}</span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Problems */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veel voorkomende problemen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {problems.map((problem, index) => (
               <Card key={index}>
