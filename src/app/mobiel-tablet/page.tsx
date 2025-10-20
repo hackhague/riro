@@ -240,8 +240,6 @@ export default function MobileTabletPage() {
         </div>
       </section>
 
-      <HomepageServicesClient />
-
       {/* Case Study */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
