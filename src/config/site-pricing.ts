@@ -84,7 +84,7 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Hulp op afstand",
         location: "op afstand",
         tagline: "Op afstand • reactie binnen 10–30 minuten",
-        summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, vaste cap €99.",
+        summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
         bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 35,
