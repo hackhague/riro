@@ -436,9 +436,19 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </li>
                 <li className={`px-4 py-4 flex items-center justify-between ${step === 3 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
+                    <Timer className="h-5 w-5" />
+                    <div>
+                      <p className="text-sm opacity-80">Welke urgentie?</p>
+                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedUrgency || "Kies urgentie"}</p>
+                    </div>
+                  </div>
+                  {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                </li>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 4 ? "bg-primary" : "bg-primary/90"}`}>
+                  <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Opties & spoed</p>
+                      <p className="text-sm opacity-80">Opties & planning</p>
                       <p className="text-sm font-semibold truncate max-w-[160px]">
                         {booking.urgency === "spoed"
                           ? "Spoedslot"
@@ -450,7 +460,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   </div>
                   {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === 4 ? "bg-primary" : "bg-primary/90"}`}>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 5 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
@@ -460,7 +470,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                       </p>
                     </div>
                   </div>
-                  {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep5Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
                 <li className="px-4 py-4 text-sm bg-blue-100 text-blue-900 space-y-1">
                   <p className="opacity-100">Liever direct contact?</p>
@@ -750,7 +760,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                             Volledige besturingssysteem herinstallatie met back-up van gegevens.
                           </p>
                           <p className="text-sm font-semibold text-primary mt-2">
-                            €99 (Windows) of €119 (Mac)
+                            ��99 (Windows) of €119 (Mac)
                           </p>
                         </div>
                       </div>
