@@ -97,6 +97,9 @@ type Booking = {
   message: string;
   deliveryMethod?: string;
   addCyberApk?: boolean;
+  addWindowsMacReinstall?: boolean;
+  addFasterComputerSsd?: boolean;
+  addAntivirusSetup?: boolean;
 };
 
 const currency = new Intl.NumberFormat("nl-NL", {
