@@ -156,6 +156,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
   const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
+  const selectedServiceChannel = useMemo(() => SERVICE_CHANNELS.find((c) => c.id === booking.serviceChannel)?.label ?? "", [booking.serviceChannel]);
+  const selectedUrgency = useMemo(() => URGENCY_OPTIONS.find((o) => o.id === booking.urgency)?.label ?? "", [booking.urgency]);
 
   const deliveryOptions = useMemo(() => {
     const consumerPricing = priceConfig.pricing.consumer;
