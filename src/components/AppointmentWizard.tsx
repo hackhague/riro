@@ -96,6 +96,7 @@ type Booking = {
   city: string;
   message: string;
   deliveryMethod?: string;
+  addCyberApk?: boolean;
 };
 
 const currency = new Intl.NumberFormat("nl-NL", {
@@ -122,6 +123,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     postalCode: initialState?.postalCode || "",
     city: initialState?.city || "",
     message: initialState?.message || "",
+    addCyberApk: false,
   });
 
   useEffect(() => {
@@ -208,7 +210,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
   const pricingSummary = useMemo(() => {
     if (!booking.serviceChannel || !booking.urgency) {
-      return { basePrice: 0, surcharges: [], total: 0 };
+      return { basePrice: 0, surcharges: [], cyberApkPrice: 0, total: 0 };
     }
 
     const pricing = priceConfig.pricing;
@@ -250,10 +252,41 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       });
     }
 
-    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0);
+    const isEveningSlot = booking.timeSlot && (
+      booking.timeSlot.startsWith("18:") ||
+      booking.timeSlot.startsWith("19:") ||
+      booking.timeSlot.startsWith("20:")
+    );
 
-    return { basePrice, surcharges, total };
-  }, [booking.serviceChannel, booking.urgency, booking.serviceType, priceConfig]);
+    if (isEveningSlot && booking.serviceChannel === "onsite" && basePrice > 0) {
+      surcharges.push({
+        id: "evening",
+        label: "Avondtoeslag (na 18:00)",
+        amount: Math.round(basePrice * 0.25),
+      });
+    }
+
+    let cyberApkPrice = 0;
+    if (booking.addCyberApk) {
+      if (booking.serviceType === "consumer") {
+        if (booking.serviceChannel === "remote") {
+          cyberApkPrice = Math.round(99 * 0.5);
+        } else if (booking.serviceChannel === "onsite") {
+          cyberApkPrice = Math.round(149 * 0.5);
+        }
+      } else if (booking.serviceType === "business") {
+        if (booking.serviceChannel === "remote") {
+          cyberApkPrice = Math.round(199 * 0.5);
+        } else if (booking.serviceChannel === "onsite") {
+          cyberApkPrice = Math.round(249 * 0.5);
+        }
+      }
+    }
+
+    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice;
+
+    return { basePrice, surcharges, cyberApkPrice, total };
+  }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
 
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
