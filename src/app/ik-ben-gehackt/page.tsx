@@ -103,54 +103,26 @@ export default function IkBenGehackt(): JSX.Element {
     ],
   });
 
-  const serviceOfferLd = {
-    ...serviceOfferJsonLd({
-      name: "Directe hulp bij gehackt",
-      description: "Hulp bij gehackte accounts, ransomware en spoedbeveiliging.",
-      serviceType: "Directe hulp bij gehackt",
-      areaServed: "Haaglanden",
-      offers: [
-        {
-          name: PRICE_TIERS.hackedRemote.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedRemote.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedRemote.href}`,
-          description: PRICE_TIERS.hackedRemote.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedOnsite.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedOnsite.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedOnsite.href}`,
-          description: PRICE_TIERS.hackedOnsite.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedBusiness.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedBusiness.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedBusiness.href}`,
-          description: PRICE_TIERS.hackedBusiness.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedFirstResponse.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedFirstResponse.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedFirstResponse.href}`,
-          description: PRICE_TIERS.hackedFirstResponse.subline,
-        },
-      ],
-    }),
-    provider: {
-      "@type": "LocalBusiness",
-      name: "InstantIT",
-      telephone: "+31 70 211 9191",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Den Haag",
-        addressCountry: "NL",
+  const serviceOfferLd = serviceOfferJsonLd({
+    name: "Directe hulp bij gehackt",
+    description: "Hulp bij gehackte accounts, ransomware en spoedbeveiliging.",
+    serviceType: "Directe hulp bij gehackt",
+    areaServed: "Haaglanden",
+    offers: [
+      {
+        name: "Hack-incident remote",
+        price: "149.00",
+        priceCurrency: "EUR",
+        description: "Account recovery, malware-check en rapportage op afstand.",
       },
-    },
-  };
+      {
+        name: "Hack-incident op locatie",
+        price: "249.00",
+        priceCurrency: "EUR",
+        description: "Volledige herstelscan en verzekeringsrapport op locatie.",
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen">
