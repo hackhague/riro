@@ -44,11 +44,15 @@ export type SitePricingConfig = {
       onsite: ServiceOffering;
       emergency: ServiceOffering;
       diagnosis: ServiceOffering;
+      cyberApkRemote?: ServiceOffering;
+      cyberApkOnsite?: ServiceOffering;
     };
     business: {
       remote: ServiceOffering;
       onsite: ServiceOffering;
       emergency: ServiceOffering;
+      cyberApkRemote?: ServiceOffering;
+      cyberApkOnsite?: ServiceOffering;
     };
     security: {
       incident: ServiceOffering;
@@ -87,9 +91,9 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
         bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
         price: {
-          amount: 35,
+          amount: 39,
           currency: "EUR",
-          display: "€35",
+          display: "€39",
           unit: "Eerste 30 min",
           extra: "Daarna €15 per 15 min (max €99)",
         },
@@ -107,7 +111,7 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "€59",
           unit: "Eerste 45 min",
-          extra: "Daarna €17,25 per 15 min",
+          extra: "Daarna €17,25 per 15 min + avondtoeslag na 18:00",
         },
       },
       emergency: {
@@ -209,6 +213,40 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "Op aanvraag",
           unit: "24/7 beschikbaar",
+        },
+      },
+    },
+    cyberApk: {
+      remote: {
+        id: "consumer-cyber-apk-remote",
+        label: "Veiligheidscheck (Cyber-APK) remote",
+        shortLabel: "Cyber-APK remote",
+        location: "op afstand",
+        tagline: "Digitale veiligheidscheck op afstand",
+        summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst.",
+        bookingSummary: "Digitale veiligheidscheck op afstand – €99 (50% korting beschikbaar).",
+        price: {
+          amount: 99,
+          currency: "EUR",
+          display: "€99",
+          unit: "Vaste prijs",
+          extra: "50% korting: €49,50 bij boeking met ander service",
+        },
+      },
+      onsite: {
+        id: "consumer-cyber-apk-onsite",
+        label: "Veiligheidscheck (Cyber-APK) aan huis",
+        shortLabel: "Cyber-APK thuis",
+        location: "aan huis",
+        tagline: "Veiligheidscheck aan huis met netwerk en wifi check",
+        summary: "Netwerk, wifi en endpoint-check op locatie inclusief rapport. 50% korting bij boeking met andere dienst.",
+        bookingSummary: "Veiligheidscheck aan huis – €149 (50% korting beschikbaar).",
+        price: {
+          amount: 149,
+          currency: "EUR",
+          display: "€149",
+          unit: "Vaste prijs",
+          extra: "50% korting: €74,50 bij boeking met ander service",
         },
       },
     },
