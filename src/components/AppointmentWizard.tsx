@@ -41,7 +41,6 @@ const SERVICE_CHANNELS = [
 
 const URGENCY_OPTIONS = [
   { id: "standaard", label: "Standaard", description: "Binnen 2-3 werkdagen" },
-  { id: "snel", label: "Snel", description: "Morgen of volgende werkdag" },
   { id: "spoed", label: "Spoed", description: "Vandaag nog (alleen voor beveiligingsproblemen)" },
 ];
 
@@ -110,13 +109,13 @@ const currency = new Intl.NumberFormat("nl-NL", {
 
 export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
     serviceType: initialState?.serviceType || "consumer",
     serviceChannel: initialState?.serviceChannel || "",
-    urgency: "standaard",
+    urgency: initialState?.urgency || "",
     date: initialState?.date ? new Date(initialState.date) : undefined,
     timeSlot: initialState?.timeSlot || "",
     firstName: initialState?.firstName || "",
@@ -152,10 +151,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const isStep0Valid = booking.problemCategory !== "";
   const isStep1Valid = booking.serviceType !== "";
   const isStep2Valid = booking.serviceChannel !== "";
-  const requiresSchedule = true;
+  const isStep3Valid = booking.urgency !== "";
+  const requiresSchedule = booking.urgency !== "spoed";
   const hasSchedule = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
-  const isStep3Valid = requiresSchedule ? hasSchedule : true;
-  const isStep4Valid =
+  const isStep4Valid = requiresSchedule ? hasSchedule : true;
+  const isStep5Valid =
     booking.firstName.trim() !== "" &&
     booking.lastName.trim() !== "" &&
     booking.phone.trim() !== "" &&
