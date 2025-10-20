@@ -9,19 +9,13 @@ export default function Afspraak() {
   const normalize = (value: string | null) => {
     return value;
   };
-  const params = searchParams ?? {};
-  const normalize = (value: string | string[] | undefined) => {
-    if (Array.isArray(value)) return value[0];
-    return value;
-  };
-
   const initialState = {
-    problemCategory: normalize(params.category),
-    serviceType: normalize(params.type),
-    serviceChannel: normalize(params.channel),
-    urgency: normalize(params.speed),
-    date: normalize(params.date),
-    timeSlot: normalize(params.slot),
+    problemCategory: normalize(searchParams.get("category")),
+    serviceType: normalize(searchParams.get("type")),
+    serviceChannel: normalize(searchParams.get("channel")),
+    urgency: normalize(searchParams.get("speed")),
+    date: normalize(searchParams.get("date")),
+    timeSlot: normalize(searchParams.get("slot")),
   };
 
   return (
