@@ -1,0 +1,32 @@
+route,title,h1,category,prices,ctas,tels,emails
+/afspraak,Plan een afspraak,Plan een afspraak,Computerhulp,geen,geen,geen,geen
+/algemene-voorwaarden,Algemene Voorwaarden,Algemene Voorwaarden,Computerhulp,geen,geen,geen,geen
+/antivirus-setup,Antivirus & Beveiliging Installatie | ESET & meer,Antivirus & Beveiliging,Beveiliging & Veilig gebruik,"€60, €80, €65, €55, €70, €39, €59, €55, €39, €59, €60, €99, €5","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/computerhulp,Computerhulp in Den Haag & Regio | Snel & Betrouwbaar,Computerhulp in {city},Computerhulp,€49,"WhatsApp nu, Bel 070 211 9191, Bekijk alle locaties, Plan een afspraak, Bel nu",tel:+31702119191,geen
+/computerhulp-delft,"Computerhulp Delft | Binnenstad, Wippolder & Tech Startups",niet gevonden,Computerhulp,geen,geen,geen,geen
+/computerhulp-den-haag,"Computerhulp in Den Haag | Scheveningen, Centrum & Duinoord",niet gevonden,Computerhulp,geen,geen,geen,geen
+/computerhulp-leiden,"Computerhulp Leiden | Bos- en Gasthuisdistrict, Merenwijk & Meer",niet gevonden,Computerhulp,geen,geen,geen,geen
+/computerhulp-rijswijk,"Computerhulp Rijswijk | Oud-Rijswijk, Te Werve & Leeuwendaal",niet gevonden,Computerhulp,geen,geen,geen,geen
+/computerhulp-voorburg,"Computerhulp Voorburg | Geduldig, Rustig & Betrouwbaar",niet gevonden,Computerhulp,geen,geen,geen,geen
+/computerhulp-zoetermeer,"Computerhulp Zoetermeer | Rokkeveen, Oosterheem & Bedrijven",niet gevonden,Computerhulp,geen,geen,geen,geen
+/contact,Contact,Contact,Cyberhulp,geen,"070 211 9191, WhatsApp ons nu",tel:+31702119191,mailto:support@instantit.nl
+/cyber-apk,Cyber APK – Veiligheidscheck Computer & Netwerk,Cyber APK – veiligheidscheck thuis of op kantoor,Beveiliging & Veilig gebruik,"€65, €129","WhatsApp nu, Bel 070 211 9191, Plan nu",tel:+31702119191,geen
+/diensten,Diensten — Computerhulp & Cyberhulp in Den Haag,Onze diensten,Internet & E-mail,€149,"Meer info, Bel nu, WhatsApp ons, Bel 070 211 9191",tel:+31702119191,geen
+/email,"E-mail hulp | Outlook, Gmail, Hotmail instellen",E-mail problemen opgelost,Internet & E-mail,"€59, €39, €59","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/expat,IT Support for Expats,IT Support for Expats in The Hague,Computerhulp,"€39, €99, €65, €79, €149, €19","WhatsApp now, Call 070 211 9191, WhatsApp us now",tel:+31702119191,geen
+/faq,Veelgestelde vragen,Veelgestelde vragen,Beveiliging & Veilig gebruik,"€39, €99, €65, €79, €149, €199, €19, €129","WhatsApp ons, Bel 070 211 9191",tel:+31702119191,geen
+/hulp-op-afstand,Computerhulp op afstand | Snelle hulp via schermdeling,Computerhulp op afstand,Computerhulp,"€39, €99, €39, €99, €39, €99, €1, €39, €99","Start nu via WhatsApp, Bel 070 211 9191, Plan een afspraak, Bel nu",tel:+31702119191,geen
+/ik-ben-gehackt,Gehackt? Direct hulp in Den Haag | InstantIT,Gehackt? Direct hulp — Den Haag,Cyberhulp,"€149, €249, €30, €99, €149","WhatsApp direct, Bel 070 211 9191, WhatsApp nu",tel:+31702119191,geen
+/mac-support,"Mac Support | MacBook, iMac & Mac Mini Ondersteuning",Mac Support & Onderhoud,Computerhulp,"€59, €39, €59, €39, €89","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/mobiel-tablet,Smartphone & Tablet hulp | iOS en Android,Smartphone & Tablet hulp,Computerhulp,"€59, €39, €59","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/over-ons,Over InstantIT,Over ons,Computerhulp,geen,"WhatsApp ons, Bel 070 211 9191",tel:+31702119191,geen
+/,Computerhulp in Den Haag | Digitale Eerste Hulp,"Computerhulp nodig, of gehackt? Wij lossen het snel voor je op!",Computerhulp,€39,"Chat via WhatsApp, Computerstoring? Bel 070 211 9191, WhatsApp, Bel nu, Plan een afspraak, Bekijk alle Google reviews, Bekijk alle locaties, WhatsApp ons nu, Bel 070 211 9191",tel:+31702119191,geen
+/printer,"Printerhulp aan huis | HP, Canon, Epson & meer",Printerhulp aan huis,Computerhulp,"€59, €19, €59, €19, €59, €22","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/privacyverklaring,Privacyverklaring,Privacyverklaring,Computerhulp,geen,geen,geen,geen
+/reviews,Reviews & Resultaten,Wat klanten over ons zeggen,Beveiliging & Veilig gebruik,geen,"Bekijk alle Google reviews, Schrijf een review",geen,geen
+/tarieven,Tarieven,"Tarieven – vaste caps, geen verrassingen",Cyberhulp,"€35, €15, €59, €17,25, €89, €19,50, €79, €20, €35, €17,50, €89, €19,50","Plan een afspraak, Bel nu, WhatsApp, Bel 070 211 9191",tel:+31702119191,geen
+/uitleg-les,Computerlessen aan huis | 1-op-1 begeleiding,Persoonlijke computerles aan huis,Hulp & uitleg,"€59, €59, €270, €25, €270","WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/werkgebied,Werkgebied Zuid-Holland,Ons Werkgebied,Computerhulp,geen,"Vraag beschikbaarheid, Bel 070 211 9191",tel:+31702119191,geen
+/wifi,WiFi & Internet verbeteren | Stabiel thuis en op kantoor,Internet & WiFi verbeteren,Internet & E-mail,"€149, €65, €149, €65, €149, €179","Plan een afspraak, Bel nu, WhatsApp nu, Bel 070 211 9191",tel:+31702119191,geen
+/windows-support,Windows 10/11 Ondersteuning | Upgrades & Probleemoplossing,Windows 10 & 11 Ondersteuning,Computerhulp,"€149, €119, €39, €59, €119","WhatsApp nu, Bel 070 211 9191, Windows 11 Upgrade Boeken, Nu upgraden",tel:+31702119191,geen
+/zakelijk,"Zakelijke IT-support | MKB, Retail & Horeca","IT-support voor MKB, Retail & Horeca",Internet & E-mail,"€550, €650, €39, €99, €65, €199, €550, €650, €1.050, €1.300, €19","WhatsApp nu, Bel 070 211 9191, Vraag offerte aan",tel:+31702119191,geen

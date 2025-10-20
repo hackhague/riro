@@ -1,0 +1,12 @@
+from_route,to_route
+/computerhulp,/werkgebied
+/computerhulp,/afspraak
+/hulp-op-afstand,/afspraak
+/,/afspraak
+/,/reviews
+/,/werkgebied
+/,/tarieven
+/,/hulp-op-afstand
+/,/contact
+/tarieven,/afspraak
+/wifi,/afspraak

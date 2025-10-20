@@ -1,0 +1,103 @@
+route,price,snippet
+/antivirus-setup,€60,"""ESET Internet Security"", desc: ""Licht, snel, betrouwbaar"", price: ""€60/jaar"", badge: ""Partnership"", }, { name: ""ESET NOD32"","
+/antivirus-setup,€80,"name: ""ESET NOD32"", desc: ""Geavanceerde bescherming"", price: ""€80/jaar"", badge: ""Partnership"", }, { name: ""Windows Defender"","
+/antivirus-setup,€65,"{ name: ""Kaspersky"", desc: ""Krachtig en geavanceerd"", price: ""€65/jaar"", badge: ""Optioneel"", }, { name: ""Bitdefender"","
+/antivirus-setup,€55,"}, { name: ""Bitdefender"", desc: ""Licht en snel"", price: ""€55/jaar"", badge: ""Optioneel"", }, { name: ""Norton"", desc:"
+/antivirus-setup,€70,"}, { name: ""Norton"", desc: ""Volledig pakket"", price: ""€70/jaar"", badge: ""Optioneel"", }, ]; const setup_steps = [ { tit"
+/antivirus-setup,€39,"{ q: ""Hoe veel kost antivirus installatie?"", a: ""Installatie is €39 (30 min remote) of €59 (1 uur aan huis). De antivirus zelf kost €55-80 per jaar"
+/antivirus-setup,€59,"l kost antivirus installatie?"", a: ""Installatie is €39 (30 min remote) of €59 (1 uur aan huis). De antivirus zelf kost €55-80 per jaar."", }, {"
+/antivirus-setup,€55,"tallatie is €39 (30 min remote) of €59 (1 uur aan huis). De antivirus zelf kost €55-80 per jaar."", }, { q: ""Kan ik meerdere antivirus programma's teg"
+/antivirus-setup,€39,Remote €39 30 minuten
+/antivirus-setup,€59,n Huis €59 1 uur
+/antivirus-setup,€60,curity €60 per jaar
+/antivirus-setup,€99,"ter text-foreground/70 mt-6""> Antivirus installatie + ESET 1 jaar = €99 (kan ook per maand €5/maand)"
+/antivirus-setup,€5,"mt-6""> Antivirus installatie + ESET 1 jaar = €99 (kan ook per maand €5/maand) <HomepageServicesC"
+/computerhulp,€49,"em gestabiliseerd"", result: ""Werkdag voortgezet, alle data veilig, kosten €49"", location: ""Den Haag Centrum"", }, faqExtra: [ { q:"
+/cyber-apk,€65,""", a: ""Nee, we kunnen het ook voor je uitvoeren. Dat rekenen we apart af (€65/u)."", }, ]; return ( {/* Hero"
+/cyber-apk,€129,yber APK €129 60–90 min + kort advie
+/diensten,€149,"nt-medium"">Wanneer & prijs Remote meestal binnen 60 min (cap €149). On-site doorgaans binnen 24–48 uur (spoed mogelijk)."
+/email,€59,n huis €59 per uur
+/email,€39,ossing €39 30 minuten</
+/email,€59,"t-2""> ""Nu krijg je alle e-mails. Spam is veel minder. Kosten: €59 (1 uur)."" <p className="
+/expat,€39,"]; const pricing = [ { name: ""Remote Computer Help"", price: ""€39 / 30 min"", cap: ""capped at €99"", description: ""For software issues,"
+/expat,€99,"ame: ""Remote Computer Help"", price: ""€39 / 30 min"", cap: ""capped at €99"", description: ""For software issues, virus removal, configuration"", }"
+/expat,€65,"emoval, configuration"", }, { name: ""On-site Visit"", price: ""€65 / hour"", cap: ""no travel fees in The Hague area"", description: ""For"
+/expat,€79,"allation"", }, { name: ""Emergency Security Support"", price: ""€79 / 45 min"", cap: ""capped at €149 remote"", description: ""24/7 availab"
+/expat,€149,"Emergency Security Support"", price: ""€79 / 45 min"", cap: ""capped at €149 remote"", description: ""24/7 available for urgent security issues"", },"
+/expat,€19,"auto""> No hidden fees. If we can't solve your problem, you only pay €19 for the diagnosis. <div className=""grid md:grid-cols-3"
+/faq,€39,"t kost computerhulp in Den Haag?"", answer: ""Remote QuickFix vanaf €39 (cap €99), on-site €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor sp"
+/faq,€99,"mputerhulp in Den Haag?"", answer: ""Remote QuickFix vanaf €39 (cap €99), on-site €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp b"
+/faq,€65,"Den Haag?"", answer: ""Remote QuickFix vanaf €39 (cap €99), on-site €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 r"
+/faq,€79,"e €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 remote (cap €149) of €199 on-site (tot 2u)."", }, { question: ""Hoe"
+/faq,€149,"1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 remote (cap €149) of €199 on-site (tot 2u)."", }, { question: ""Hoe snel zijn jullie"
+/faq,€199,"voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 remote (cap €149) of €199 on-site (tot 2u)."", }, { question: ""Hoe snel zijn jullie ter plaa"
+/faq,€19,"ls het probleem niet wordt opgelost?"", answer: ""Je betaalt alleen €19 voor de diagnose, geen arbeidsloon. We zijn transparant over wat wel en niet ka"
+/faq,€129,"""Een uitgebreide veiligheidscheck van je computer of netwerk (60–90 min, €129). We controleren updates, antivirus, firewall, wachtwoorden, backup en geven ee"
+/hulp-op-afstand,€39,"hulp op afstand via veilige schermdeling. Meestal binnen 10–30 minuten reactie. €39–€99, geen voorrijkosten."", alternates: { canonical: ""https://www.instanti"
+/hulp-op-afstand,€99,"op afstand via veilige schermdeling. Meestal binnen 10–30 minuten reactie. €39–€99, geen voorrijkosten."", alternates: { canonical: ""https://www.instantit.nl"
+/hulp-op-afstand,€39,"g, jij geeft per stap toestemming"" }, { title: ""Transparante prijs"", desc: ""€39–€99, geen verrassingen. Je ziet de prijs vooraf"" }, { title: ""Geen bezoek n"
+/hulp-op-afstand,€99,"ij geeft per stap toestemming"" }, { title: ""Transparante prijs"", desc: ""€39–€99, geen verrassingen. Je ziet de prijs vooraf"" }, { title: ""Geen bezoek nodig"
+/hulp-op-afstand,€39,"Name=""p-8""> €39–€99 Meestal"
+/hulp-op-afstand,€99,"=""p-8""> €39–€99 Meestal binn"
+/hulp-op-afstand,€1,"Je betaalt €1 per minuut . Minimum 30 minuten (€39), maximum €99. Je ziet de prijs al"
+/hulp-op-afstand,€39,"Je betaalt €1 per minuut . Minimum 30 minuten (€39), maximum €99. Je ziet de prijs altijd vooraf voordat we starten."
+/hulp-op-afstand,€99,"Je betaalt €1 per minuut . Minimum 30 minuten (€39), maximum €99. Je ziet de prijs altijd vooraf voordat we starten."
+/ik-ben-gehackt,€149,remote) €149 Tot 2 uur •
+/ik-ben-gehackt,€249,huis) €249 Tot 2 uur •
+/ik-ben-gehackt,€30,Tot 2 uur • daarna €30 per 15 min
+/ik-ben-gehackt,€99,ntief) €99 Remote • upd
+/ik-ben-gehackt,€149,n-site €149 Ter plaatse
+/mac-support,€59,"ouw model."", }, { q: ""Hoeveel kost Mac ondersteuning?"", a: ""€59/uur aan huis, €39/30 min remote. Diagnose is altijd inbegrepen."", }, {"
+/mac-support,€39,", { q: ""Hoeveel kost Mac ondersteuning?"", a: ""€59/uur aan huis, €39/30 min remote. Diagnose is altijd inbegrepen."", }, { q: ""Heb ik A"
+/mac-support,€59,n huis €59 per uur
+/mac-support,€39,euning €39 30 minuten</
+/mac-support,€89,"""> ""MacBook voelt weer als nieuw! Supersnel. Dank je! Kosten: €89 (ongeveer 1,5 uur)."" <p"
+/mobiel-tablet,€59,s hulp €59 per uur
+/mobiel-tablet,€39,setup €39 30 minuten</
+/mobiel-tablet,€59,"n ik zelfstandig! Alle foto's er in. Kan videobellen met kleinkinderen. Kosten: €59 (1 uur)."" <p className="
+/,€39,"ound/80 space-y-3""> Computerhulp op afstand begint bij €39 voor 30 minuten. Je ziet altijd de prijs voordat we starten."
+/printer,€59,"erken."", }, { q: ""Hoe veel kost printerhulp?"", a: ""Aan huis €59 per uur. Diagnose is €19 als we niet kunnen helpen. Cartridges en onderdelen ap"
+/printer,€19,"q: ""Hoe veel kost printerhulp?"", a: ""Aan huis €59 per uur. Diagnose is €19 als we niet kunnen helpen. Cartridges en onderdelen apart."", }, {"
+/printer,€59,n huis €59 per uur
+/printer,€19,gelost €19 alleen diagn
+/printer,€59,"""> ""Nu werkt alles. Printen via WiFi gaat vlekkeloos. Kosten: €59 (2 uur) + €22 cartridge."""
+/printer,€22,"""Nu werkt alles. Printen via WiFi gaat vlekkeloos. Kosten: €59 (2 uur) + €22 cartridge."" <p classNam"
+/tarieven,€35,"() { const consumerPricing = [ { name: ""Computerhulp op afstand"", price: ""€35"", unit: ""Eerste 30 min"", extra: ""Daarna €15 per 15 min"", desc: ""Snelle remote h"
+/tarieven,€15,"""Computerhulp op afstand"", price: ""€35"", unit: ""Eerste 30 min"", extra: ""Daarna €15 per 15 min"", desc: ""Snelle remote hulp met lage instapkosten. Transparante per-"
+/tarieven,€59,"parante per-minuut afrekening."" }, { name: ""Computerhulp aan huis"", price: ""€59"", unit: ""Eerste 45 min"", extra: ""Daarna €17,25 per 15 min"", desc: ""Grondige dia"
+/tarieven,"€17,25","e: ""Computerhulp aan huis"", price: ""€59"", unit: ""Eerste 45 min"", extra: ""Daarna €17,25 per 15 min"", desc: ""Grondige diagnose en reparatie op jouw locatie in Haaglande"
+/tarieven,€89,"aaglanden. Geen voorrijkosten."" }, { name: ""IT Spoedhulp aan huis"", price: ""€89"", unit: ""Eerste uur"", extra: ""Daarna €19,50 per 15 min"", desc: ""Snel ter plaats"
+/tarieven,"€19,50","name: ""IT Spoedhulp aan huis"", price: ""€89"", unit: ""Eerste uur"", extra: ""Daarna €19,50 per 15 min"", desc: ""Snel ter plaatse voor acute problemen. Geen afspraak nodig."
+/tarieven,€79,"]; const businessPricing = [ { name: ""IT-support aan kantoor"", price: ""€79"", unit: ""Eerste uur (ex btw)"", extra: ""Daarna €20 per 15 min"", desc: ""Professio"
+/tarieven,€20,"support aan kantoor"", price: ""€79"", unit: ""Eerste uur (ex btw)"", extra: ""Daarna €20 per 15 min"", desc: ""Professionele IT-ondersteuning op uw kantoor in Haaglanden."
+/tarieven,€35,"aaglanden. Geen voorrijkosten."" }, { name: ""IT-support op afstand"", price: ""€35"", unit: ""Eerste 30 min (ex btw)"", extra: ""Daarna €17,50 per 15 min"", desc: ""Sne"
+/tarieven,"€17,50","pport op afstand"", price: ""€35"", unit: ""Eerste 30 min (ex btw)"", extra: ""Daarna €17,50 per 15 min"", desc: ""Snelle remote support voor zakelijke systemen. Consistent t"
+/tarieven,€89,"ke systemen. Consistent tarief."" }, { name: ""IT Spoedhulp kantoor"", price: ""€89"", unit: ""Eerste uur"", extra: ""Daarna €19,50 per 15 min"", desc: ""Snel ter plaats"
+/tarieven,"€19,50","name: ""IT Spoedhulp kantoor"", price: ""€89"", unit: ""Eerste uur"", extra: ""Daarna €19,50 per 15 min"", desc: ""Snel ter plaatse voor bedrijfskritische problemen. Geen afs"
+/uitleg-les,€59,"po."", }, { q: ""Hoeveel kost een computerles aan huis?"", a: ""€59 per uur. Je hoeft niet lang aan het stuk – een uur per week is perfect om rusti"
+/uitleg-les,€59,er les €59 per uur
+/uitleg-les,€270,Pakket €270 5 lessen
+/uitleg-les,€25,>5 lessen Bespaar €25 – vol flexibiliteit
+/uitleg-les,€270,"ijn dochter! Ik hoef mijn kleindochter te zien groeien. Superblij! Investering: €270."" <p className=""text-sm"
+/wifi,€149,"{ q: ""Wat kost internet en WiFi hulp?"", a: ""WiFi optimalisatie €149 (survey + plan). Installatie mesh/router €65/uur. Onderdelen apart."", },"
+/wifi,€65,"p?"", a: ""WiFi optimalisatie €149 (survey + plan). Installatie mesh/router €65/uur. Onderdelen apart."", }, { q: ""Kunnen jullie alle internetprov"
+/wifi,€149,isatie €149 survey + pla
+/wifi,€65,router €65 per uur
+/wifi,€149,"n huis goed internet. Ook op zolder en in de tuin. Geen vertraging meer. Prijs: €149 onderzoek/instellen + €179 voor apparaat."" <"
+/wifi,€179,"p zolder en in de tuin. Geen vertraging meer. Prijs: €149 onderzoek/instellen + €179 voor apparaat."" <p clas"
+/windows-support,€149,"oor virussen."", }, { q: ""Wat kost Windows 11 upgrade?"", a: ""€149 inclusief volledige backup, data transfer en setup. Voor december 2025 : 20% ko"
+/windows-support,€119,ervice €119* <li clas
+/windows-support,€39,euning €39 30 minuten
+/windows-support,€59,agnose €59 per uur
+/windows-support,€119,pgrade €119 Nu 20% korting!</
+/zakelijk,€550,"title: ""Strippenkaart & Contract"", description: ""10 uur support vanaf €550 (i.p.v. €650) of maandabonnement voor regelmatige hulp."", }, ]; const"
+/zakelijk,€650,"trippenkaart & Contract"", description: ""10 uur support vanaf €550 (i.p.v. €650) of maandabonnement voor regelmatige hulp."", }, ]; const caseStudies ="
+/zakelijk,€39,"-5 text-primary flex-shrink-0 mt-0.5"" /> Remote vanaf €39/30 min (cap €99) <li className"
+/zakelijk,€99,"flex-shrink-0 mt-0.5"" /> Remote vanaf €39/30 min (cap €99) <li className=""flex items-sta"
+/zakelijk,€65,"h-5 w-5 text-primary flex-shrink-0 mt-0.5"" /> On-site €65/uur (geen voorrijkosten Haaglanden)"
+/zakelijk,€199,"5 text-primary flex-shrink-0 mt-0.5"" /> Spoed on-site €199 (max 2u) </C"
+/zakelijk,€550,"text-primary flex-shrink-0 mt-0.5"" /> 10 uur support: €550 (i.p.v. €650) <li className=""f"
+/zakelijk,€650,"flex-shrink-0 mt-0.5"" /> 10 uur support: €550 (i.p.v. €650) <li className=""flex items-sta"
+/zakelijk,€1.050,"text-primary flex-shrink-0 mt-0.5"" /> 20 uur support: €1.050 (i.p.v. €1.300) <li className="
+/zakelijk,€1.300,"ex-shrink-0 mt-0.5"" /> 20 uur support: €1.050 (i.p.v. €1.300) <li className=""flex items-sta"
+/zakelijk,€19,Vaste tarieven met caps. Geen verborgen kosten. Niet opgelost? Alleen €19 diagnose.
