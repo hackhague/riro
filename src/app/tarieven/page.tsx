@@ -209,6 +209,104 @@ export default function Tarieven() {
         </div>
       </section>
 
+      {/* Cyber-APK Pricing */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-2">Veiligheidscheck (Cyber-APK)</h2>
+          <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
+            Preventieve digitale veiligheidscheck. 50% korting beschikbaar bij meeboeken met uw afspraak.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
+            {cyberApkPricing.map((item, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow border-accent/40">
+                <CardHeader>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <div className="flex items-baseline gap-3 mb-1">
+                      <p className="text-3xl font-bold text-primary">{item.price}</p>
+                      <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
+                    </div>
+                    <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
+                  </div>
+                  <p className="text-sm text-foreground/60">{item.unit}</p>
+                  <p className="text-sm text-foreground/70">{item.desc}</p>
+                  <p className="text-xs text-accent italic">{item.upsellDesc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="bg-secondary rounded-lg p-6 max-w-2xl mx-auto mb-8">
+            <h3 className="font-heading font-semibold text-lg mb-3">Zakelijk (Cyber-APK)</h3>
+            <div className="grid md:grid-cols-1 gap-4">
+              {cyberApkBusinessPricing.map((item, index) => (
+                <div key={index} className="border border-border rounded p-4">
+                  <p className="font-semibold mb-2">{item.name}</p>
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <p className="text-2xl font-bold text-primary">{item.price}</p>
+                    <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
+                  </div>
+                  <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
+                  <p className="text-xs text-foreground/60 mt-2">{item.unit}</p>
+                  <p className="text-sm text-foreground/70 mt-2">{item.desc}</p>
+                  <p className="text-xs text-accent italic mt-2">{item.upsellDesc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="accent" asChild>
+              <a href="/afspraak">Plan een afspraak</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="tel:+31702119191">Bel nu</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Extra Services */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-2">Extra diensten</h2>
+          <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
+            Aanvullende services die u kunt boeken naast uw reguliere afspraak.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {extraServices.map((item, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div>
+                    <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                    {item.altPrice && <p className="text-sm font-semibold text-foreground/70">{item.altPrice}</p>}
+                  </div>
+                  <p className="text-sm text-foreground/60">{item.unit}</p>
+                  {item.extra && <p className="text-sm font-semibold text-accent">{item.extra}</p>}
+                  <p className="text-sm text-foreground/70">{item.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="accent" asChild>
+              <a href="/afspraak">Plan een afspraak</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="tel:+31702119191">Bel nu</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Nazorg Disclaimer */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
