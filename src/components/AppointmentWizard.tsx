@@ -261,7 +261,6 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     }
   };
 
-  const today = startOfToday();
   const availableDeliveryMethods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
   const contactInfo = priceConfig.contact;
 
