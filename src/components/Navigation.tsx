@@ -33,8 +33,11 @@ export const Navigation = () => {
         path: "/computerhulp-den-haag",
         description: "Snelle hulp bij computerproblemen",
       },
-      { label: "Computerhulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
-      { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
+      { label: "Printerhulp", path: "/printer", description: "Papiertoringen, cartridges en meer" },
+      { label: "E-mail problemen", path: "/email", description: "Outlook, Gmail instellen" },
+      { label: "Internet & WiFi", path: "/wifi", description: "Betrouwbaar en snel internet" },
+      { label: "Smartphone & Tablet", path: "/mobiel-tablet", description: "WhatsApp, apps en meer" },
+      { label: "Computerlessen", path: "/uitleg-les", description: "Rustige les op eigen tempo" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
     spoedhulp: [
@@ -206,7 +209,7 @@ export const Navigation = () => {
                   />
                 </button>
                 {openSection === "particulier" && (
-                  <div className="mt-1">
+                  <div className="mt-1 space-y-1">
                     {menuSections.particulier.map((item) => (
                       <Link
                         key={`${item.path}-${item.label}`}
