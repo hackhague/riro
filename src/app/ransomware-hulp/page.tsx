@@ -201,7 +201,7 @@ export default function RansomwareHulp() {
       />
 
       {/* Final CTA */}
-      <section className="py-16 bg-destructive text-destructive-foreground">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">
             NIET betalen – Bel ons direct
@@ -210,10 +210,10 @@ export default function RansomwareHulp() {
             Ransomware is specialistwork. We hebben tools en ervaring om je bestanden mischien terug te krijgen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-destructive-foreground text-destructive-foreground hover:bg-destructive-foreground hover:text-destructive">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="/afspraak">Spoedafspraak</a>
             </Button>
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-destructive-foreground text-destructive-foreground hover:bg-destructive-foreground hover:text-destructive">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">Bel direct 070 211 9191</a>
             </Button>
           </div>
