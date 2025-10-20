@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, ArrowUpRight, Lock, Eye, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
