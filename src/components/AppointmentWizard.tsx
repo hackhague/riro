@@ -315,7 +315,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       setBooking({
         problemCategory: "",
         serviceType: "consumer",
-        deliveryMethod: "",
+        serviceChannel: "",
+        urgency: "",
         date: undefined,
         timeSlot: "",
         firstName: "",
