@@ -111,10 +111,10 @@ export default function RansomwareHulp() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {warningsSigns.map((sign, i) => (
-              <Card key={i} className="border-l-4 border-l-red-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-3">
-                    <AlertTriangle className="h-5 w-5 text-red-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                    <AlertTriangle className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{sign.title}</h3>
                   <p className="text-sm text-foreground/70">{sign.description}</p>
