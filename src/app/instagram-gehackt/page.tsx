@@ -70,11 +70,11 @@ export default function InstagramGehackt() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-pink-50 to-background py-16 md:py-20">
+      <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Smartphone className="h-8 w-8 text-pink-600" />
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Smartphone className="h-8 w-8 text-primary" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
               Instagram Account Gehackt?
