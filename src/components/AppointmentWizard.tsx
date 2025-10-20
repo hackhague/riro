@@ -842,10 +842,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
               </div>
             )}
 
-            {step === 4 && (
+            {step === 5 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -921,31 +921,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                       value={booking.message}
                       onChange={(event) => setBooking((b) => ({ ...b, message: event.target.value }))}
                     />
-                  </div>
-                </div>
-
-                <div className="border-2 border-accent/50 rounded-lg p-4 bg-accent/5">
-                  <div className="flex items-start gap-3">
-                    <input
-                      id="cyberApk"
-                      type="checkbox"
-                      checked={booking.addCyberApk}
-                      onChange={(e) => setBooking((b) => ({ ...b, addCyberApk: e.target.checked }))}
-                      className="mt-1"
-                    />
-                    <div className="flex-1">
-                      <Label htmlFor="cyberApk" className="cursor-pointer">
-                        <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
-                      </Label>
-                      <p className="text-sm text-foreground/70 mt-1">
-                        Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
-                      </p>
-                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
-                        <p className="text-sm font-semibold text-accent mt-2">
-                          +{currency.format(pricingSummary.cyberApkPrice)} (50% korting)
-                        </p>
-                      )}
-                    </div>
                   </div>
                 </div>
 
