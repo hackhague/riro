@@ -169,7 +169,7 @@ export default function HelpdeskFraude() {
       </section>
 
       {/* With Data */}
-      <section className="py-12 md:py-16 bg-destructive/5">
+      <section className="py-12 md:py-16 bg-primary/5">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
             Je hebt gevoelige gegevens gegeven
@@ -179,10 +179,10 @@ export default function HelpdeskFraude() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {stepsWithData.map((item, i) => (
-              <Card key={i} className="border-destructive/20">
+              <Card key={i} className="border-primary/20">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-xl font-bold text-destructive">{item.step}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-xl font-bold text-primary">{item.step}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-center mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/70 text-center">{item.description}</p>
