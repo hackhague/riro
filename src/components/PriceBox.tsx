@@ -5,10 +5,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PRICE_TIERS, type PriceTierId } from "@/data/pricing";
 
 interface PriceBoxProps {
-  tierIds: PriceTierId[];
+  tierIds?: PriceTierId[];
 }
 
 export function PriceBox({ tierIds }: PriceBoxProps) {
+  if (!tierIds || tierIds.length === 0) {
+    return null;
+  }
+
   const tiers = tierIds
     .map((id) => PRICE_TIERS[id])
     .filter((tier): tier is (typeof PRICE_TIERS)[keyof typeof PRICE_TIERS] => Boolean(tier));
