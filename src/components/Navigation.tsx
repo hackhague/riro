@@ -45,6 +45,7 @@ export const Navigation = () => {
       { label: "Computerlessen", path: "/uitleg-les", description: "Rustige les op eigen tempo" },
       { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
+    // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
       { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
       { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na klikken op verdachte link" },
