@@ -33,12 +33,12 @@ export default function IkBenGehackt(): JSX.Element {
   ];
 
   const signs = [
-    "Je kunt niet meer inloggen op je account",
-    "Je ziet vreemde uitgaven of onbekende betalingen",
-    "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen",
-    "De computer geeft steeds waarschuwingen over virussen",
-    "Vrienden zeggen dat ze rare berichten van jou krijgen",
-    "Je camera of microfoon doet dingen zonder dat je dat wilt",
+    { icon: Lock, text: "Je kunt niet meer inloggen op je account" },
+    { icon: AlertCircle, text: "Je ziet vreemde uitgaven of onbekende betalingen" },
+    { icon: Lock, text: "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen" },
+    { icon: AlertTriangle, text: "De computer geeft steeds waarschuwingen over virussen" },
+    { icon: MessageCircle, text: "Vrienden zeggen dat ze rare berichten van jou krijgen" },
+    { icon: Eye, text: "Je camera of microfoon doet dingen zonder dat je dat wilt" },
   ];
 
   const steps = [
