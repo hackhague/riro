@@ -1,14 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { usePrices } from "@/hooks/use-prices";
 
 export function FloatingCallButton() {
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const priceConfig = usePrices();
+  const { contact, floatingCallButton } = priceConfig;
+  const hiddenRoutes = useMemo(() => new Set(floatingCallButton.hideOnRoutes), [floatingCallButton.hideOnRoutes]);
+
   useEffect(() => setMounted(true), []);
   if (!mounted || typeof document === "undefined") return null;
+  if (hiddenRoutes.has(pathname)) return null;
 
   return createPortal(
     <div
@@ -24,10 +32,10 @@ export function FloatingCallButton() {
         size="lg"
         className="rounded-full shadow-lg md:shadow-xl focus-visible:ring-4"
       >
-        <a href="tel:+31702119191" aria-label="Computerstoring? Bel 070 211 9191">
+        <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
           <Phone className="mr-2" />
-          <span className="inline md:hidden">Bel nu</span>
-          <span className="hidden md:inline">Computerstoring? Bel 070 211 9191</span>
+          <span className="inline md:hidden">{contact.shortCallLabel}</span>
+          <span className="hidden md:inline">Direct hulp? {contact.phoneLabel}</span>
         </a>
       </Button>
     </div>,
