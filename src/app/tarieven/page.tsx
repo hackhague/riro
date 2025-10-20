@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Tarieven",
@@ -46,13 +49,32 @@ export default function Tarieven() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+      <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt="InstantIT tarieven voor computerhulp"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-16 md:py-20">
+          <div className="max-w-3xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Tarieven – vaste caps, geen verrassingen
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80">
+            <p className="text-lg md:text-xl text-white/90">
               Transparante prijzen voor particulieren en bedrijven. Wat niet opgelost wordt binnen de cap? Gratis
               herbeoordeling binnen 7 dagen.
             </p>

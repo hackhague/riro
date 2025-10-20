@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Phone, Shield, Users, ThumbsUp, Clock } from "lucide-react";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Over InstantIT",
@@ -22,34 +25,46 @@ export default function OverOns() {
 
   return (
     <div className="min-h-screen">
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">Over ons</h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                InstantIT is jouw Digitale Eerste Hulp. We helpen snel en veilig met computerproblemen, hacks en
-                netwerkstoringen – bij particulieren en bedrijven.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="whatsapp" size="lg" asChild>
-                  <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="mr-2" />
-                    WhatsApp ons
-                  </a>
-                </Button>
-                <Button variant="accent" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <div className="aspect-[16/10] bg-secondary/60 flex items-center justify-center">
-                <span className="text-secondary-foreground/80">Ons team – lokaal, snel en vakkundig</span>
-              </div>
+      <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt="InstantIT team over ons"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-16 md:py-20">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">Over ons</h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              InstantIT is jouw Digitale Eerste Hulp. We helpen snel en veilig met computerproblemen, hacks en
+              netwerkstoringen – bij particulieren en bedrijven.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="whatsapp" size="lg" asChild>
+                <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="mr-2" />
+                  WhatsApp ons
+                </a>
+              </Button>
+              <Button variant="accent" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
