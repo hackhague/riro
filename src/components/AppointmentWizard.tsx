@@ -524,8 +524,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     <ShieldAlert className="h-5 w-5" />
                     <AlertTitle>Spoed bij hack of beveiligingsincident?</AlertTitle>
                     <AlertDescription>
-                      We starten vrijwel altijd op afstand binnen 60 minuten. Is er fysieke toegang nodig? Kies dan voor een
-                      onsite afspraak; we koppelen je apparaat direct los van het netwerk.
+                      We streven ernaar om zo spoedig mogelijk te reageren. Is er fysieke toegang nodig? Kies dan voor een
+                      aan huis/op locatie afspraak; we koppelen je apparaat veilig direct los van het netwerk.
                     </AlertDescription>
                   </Alert>
                 )}
