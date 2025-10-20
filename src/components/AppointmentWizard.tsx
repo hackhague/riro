@@ -844,17 +844,17 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </div>
 
                 <div className="flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(2)}>
+                  <Button variant="outline" onClick={() => setStep(3)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>
+                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
                     Volgende stap
                   </Button>
                 </div>
               </div>
             )}
 
-            {step === 4 && (
+            {step === 5 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
