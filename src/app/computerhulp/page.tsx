@@ -12,6 +12,15 @@ import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-computer.jpg";
 
+export const metadata: Metadata = {
+  title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
+  description:
+    "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
+  alternates: {
+    canonical: "https://www.instantit.nl/computerhulp",
+  },
+};
+
 interface ComputerhulpProps {
   city?: string;
   cityUrl?: string;
