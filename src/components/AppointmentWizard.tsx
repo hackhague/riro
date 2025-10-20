@@ -109,7 +109,7 @@ const currency = new Intl.NumberFormat("nl-NL", {
 
 export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
@@ -127,6 +127,9 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     city: initialState?.city || "",
     message: initialState?.message || "",
     addCyberApk: false,
+    addWindowsMacReinstall: false,
+    addFasterComputerSsd: false,
+    addAntivirusSetup: false,
   });
 
   useEffect(() => {
