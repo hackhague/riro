@@ -436,16 +436,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </li>
                 <li className={`px-4 py-4 flex items-center justify-between ${step === 3 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
-                    <Timer className="h-5 w-5" />
-                    <div>
-                      <p className="text-sm opacity-80">Hoe snel?</p>
-                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedUrgency || "Kies snelheid"}</p>
-                    </div>
-                  </div>
-                  {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
-                </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === 4 ? "bg-primary" : "bg-primary/90"}`}>
-                  <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
                       <p className="text-sm opacity-80">Opties & spoed</p>
