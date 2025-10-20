@@ -11,7 +11,7 @@ export default function Afspraak() {
   const searchParams = useSearchParams();
 
   const normalize = (value: string | null) => {
-    return value;
+    return value || undefined;
   };
   const initialState = {
     problemCategory: normalize(searchParams.get("category")),
