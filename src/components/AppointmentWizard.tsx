@@ -9,6 +9,7 @@ import "react-day-picker/dist/style.css";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,8 +41,7 @@ const SERVICE_CHANNELS = [
 
 const URGENCY_OPTIONS = [
   { id: "standaard", label: "Standaard", description: "Binnen 2-3 werkdagen" },
-  { id: "snel", label: "Snel", description: "Morgen of volgende werkdag" },
-  { id: "spoed", label: "Spoed", description: "Vandaag nog (alleen voor beveiligingsproblemen)" },
+  { id: "spoed", label: "Spoed", description: "Vandaag of morgen" },
 ];
 
 const SPOED_SLOT_LABEL = "Spoedslot (ASAP)";
@@ -97,6 +97,9 @@ type Booking = {
   message: string;
   deliveryMethod?: string;
   addCyberApk?: boolean;
+  addWindowsMacReinstall?: boolean;
+  addFasterComputerSsd?: boolean;
+  addAntivirusSetup?: boolean;
 };
 
 const currency = new Intl.NumberFormat("nl-NL", {
@@ -106,7 +109,7 @@ const currency = new Intl.NumberFormat("nl-NL", {
 
 export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
@@ -124,6 +127,9 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     city: initialState?.city || "",
     message: initialState?.message || "",
     addCyberApk: false,
+    addWindowsMacReinstall: false,
+    addFasterComputerSsd: false,
+    addAntivirusSetup: false,
   });
 
   useEffect(() => {
@@ -222,8 +228,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         service = consumerPricing.remote;
       } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
         service = consumerPricing.onsite;
-      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
-        service = consumerPricing.onsite;
       } else if (booking.urgency === "spoed") {
         service = consumerPricing.emergency;
       }
@@ -233,8 +237,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         service = businessPricing.remote;
       } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
         service = businessPricing.onsite;
-      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
-        service = businessPricing.onsite;
       } else if (booking.urgency === "spoed") {
         service = businessPricing.emergency;
       }
@@ -242,15 +244,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
     const basePrice = service?.price.amount || 0;
     const surcharges: Array<{ id: string; label: string; amount: number }> = [];
-
-    if (booking.urgency === "snel" && basePrice > 0) {
-      const speedSurcharge = Math.round(basePrice * 0.25);
-      surcharges.push({
-        id: "speed",
-        label: "Snelheidsopslag",
-        amount: speedSurcharge,
-      });
-    }
 
     const isEveningSlot = booking.timeSlot && (
       booking.timeSlot.startsWith("18:") ||
@@ -268,17 +261,18 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
     let cyberApkPrice = 0;
     if (booking.addCyberApk) {
+      const cyberApkPricing = pricing.cyberApk;
       if (booking.serviceType === "consumer") {
-        if (booking.serviceChannel === "remote") {
-          cyberApkPrice = Math.round(99 * 0.5);
-        } else if (booking.serviceChannel === "onsite") {
-          cyberApkPrice = Math.round(149 * 0.5);
+        if (booking.serviceChannel === "remote" && cyberApkPricing.remote.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.remote.price.amount * 0.5 * 100) / 100;
+        } else if (booking.serviceChannel === "onsite" && cyberApkPricing.onsite.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.onsite.price.amount * 0.5 * 100) / 100;
         }
       } else if (booking.serviceType === "business") {
-        if (booking.serviceChannel === "remote") {
-          cyberApkPrice = Math.round(199 * 0.5);
-        } else if (booking.serviceChannel === "onsite") {
-          cyberApkPrice = Math.round(249 * 0.5);
+        if (booking.serviceChannel === "remote" && cyberApkPricing.businessRemote.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessRemote.price.amount * 0.5 * 100) / 100;
+        } else if (booking.serviceChannel === "onsite" && cyberApkPricing.businessOnsite.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessOnsite.price.amount * 0.5 * 100) / 100;
         }
       }
     }
@@ -289,7 +283,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
 
   const handleSubmit = async () => {
-    if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
+    if (!isStep5Valid || !isStep4Valid) return;
     setLoading(true);
     try {
       const serviceLabelParts = [selectedServiceType, selectedServiceChannel, selectedUrgency].filter(Boolean);
@@ -364,6 +358,9 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         city: "",
         message: "",
         addCyberApk: false,
+        addWindowsMacReinstall: false,
+        addFasterComputerSsd: false,
+        addAntivirusSetup: false,
       });
     } catch (error: any) {
       toast({
@@ -429,8 +426,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <div className="flex items-center gap-3">
                     <Timer className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Hoe snel?</p>
-                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedUrgency || "Kies snelheid"}</p>
+                      <p className="text-sm opacity-80">Welke urgentie?</p>
+                      <p className="text-sm font-semibold truncate max-w-[160px]">{selectedUrgency || "Kies urgentie"}</p>
                     </div>
                   </div>
                   {isStep3Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
@@ -439,7 +436,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Planning</p>
+                      <p className="text-sm opacity-80">Opties & planning</p>
                       <p className="text-sm font-semibold truncate max-w-[160px]">
                         {booking.urgency === "spoed"
                           ? "Spoedslot"
@@ -461,7 +458,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                       </p>
                     </div>
                   </div>
-                  {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep5Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
                 <li className="px-4 py-4 text-sm bg-blue-100 text-blue-900 space-y-1">
                   <p className="opacity-100">Liever direct contact?</p>
@@ -599,15 +596,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
               </div>
             )}
 
+
             {step === 3 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <Button variant="ghost" onClick={() => setStep(2)} className="px-2">
                     ←
                   </Button>
-                  <h3 className="font-heading font-semibold text-xl">Hoe snel moeten we schakelen?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Welke urgentie?</h3>
                 </div>
-    
+
                 <div className="grid gap-3 max-w-xl">
                   {URGENCY_OPTIONS.map((option) => (
                     <button
@@ -646,9 +644,216 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             )}
 
             {step === 4 && (
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
+                    ←
+                  </Button>
+                  <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
+                </div>
+
+                {requiresSchedule && (
+                  <div>
+                    <h4 className="font-semibold mb-4">Wanneer wilt u de afspraak?</h4>
+                    <div className="border rounded-lg p-4 bg-secondary/30">
+                      <DayPicker
+                        mode="single"
+                        selected={booking.date}
+                        onSelect={(date) => setBooking((b) => ({ ...b, date, timeSlot: "" }))}
+                        disabled={(date) => isWeekend(date) || date < today}
+                        className="flex justify-center"
+                      />
+                    </div>
+                    {booking.date && (
+                      <div className="mt-4">
+                        <p className="text-sm font-semibold mb-2">Beschikbare tijdsloten</p>
+                        <div className="grid grid-cols-2 gap-2">
+                          {getTimeSlotsForDate(booking.date).map((slot) => (
+                            <button
+                              key={slot}
+                              onClick={() => setBooking((b) => ({ ...b, timeSlot: slot }))}
+                              className={`p-2 rounded-md border text-sm transition-all ${
+                                booking.timeSlot === slot
+                                  ? "border-primary bg-primary/10"
+                                  : "border-border hover:border-primary/50"
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Extra opties</h4>
+
+                  {/* Cyber-APK - altijd voor hardware, security en rest */}
+                  <div className="border-2 border-accent/50 rounded-lg p-4 bg-accent/5">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="cyberApk"
+                        type="checkbox"
+                        checked={booking.addCyberApk}
+                        onChange={(e) => setBooking((b) => ({ ...b, addCyberApk: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="cyberApk" className="cursor-pointer">
+                          <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
+                        </p>
+                        <div className="text-sm mt-2 space-y-1">
+                          <p className="font-semibold text-accent">
+                            {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
+                              <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
+                            )}
+                            {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
+                              <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
+                            )}
+                            {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
+                              <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
+                            )}
+                            {booking.serviceType === "business" && booking.serviceChannel === "onsite" && (
+                              <>Normaal <span className="line-through">€449</span>, nu <span className="font-bold">€224,50</span> bij meeboeken (ex btw)</>
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Windows/Mac herinstallatie - alleen voor Hardware */}
+                  {booking.problemCategory === "hardware" && (
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="windowsMacReinstall"
+                          type="checkbox"
+                          checked={booking.addWindowsMacReinstall || false}
+                          onChange={(e) => setBooking((b) => ({ ...b, addWindowsMacReinstall: e.target.checked }))}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <Label htmlFor="windowsMacReinstall" className="cursor-pointer">
+                            <span className="font-semibold">Windows/Mac herinstallatie</span>
+                          </Label>
+                          <p className="text-sm text-foreground/70 mt-1">
+                            Volledige besturingssysteem herinstallatie met back-up van gegevens.
+                          </p>
+                          <p className="text-sm font-semibold text-primary mt-2">
+                            €99 (Windows) of €119 (Mac)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* SSD upgrade - alleen voor Hardware */}
+                  {booking.problemCategory === "hardware" && (
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="fasterComputerSsd"
+                          type="checkbox"
+                          checked={booking.addFasterComputerSsd || false}
+                          onChange={(e) => setBooking((b) => ({ ...b, addFasterComputerSsd: e.target.checked }))}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <Label htmlFor="fasterComputerSsd" className="cursor-pointer">
+                            <span className="font-semibold">Computer sneller maken met nieuwe schijf</span>
+                          </Label>
+                          <p className="text-sm text-foreground/70 mt-1">
+                            SSD upgrade met installatie en datamigratie. Inclusief back-up van gegevens.
+                          </p>
+                          <p className="text-sm font-semibold text-primary mt-2">
+                            €119 arbeidskosten + SSD onderdeel (€80–150)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Antivirus - altijd voor hardware, security en rest */}
+                  <div className="border rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="antivirusSetup"
+                        type="checkbox"
+                        checked={booking.addAntivirusSetup || false}
+                        onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="antivirusSetup" className="cursor-pointer">
+                          <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          Professionele antivirus installatie en basisbeveiliging setup.
+                        </p>
+                        <p className="text-sm font-semibold text-primary mt-2">
+                          Kosten worden met u besproken
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4 bg-secondary/30">
+                  <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
+                  {pricingSummary.basePrice ? (
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center justify-between">
+                        <span>Basis</span>
+                        <span>{currency.format(pricingSummary.basePrice)}</span>
+                      </div>
+                      {pricingSummary.surcharges.map((item) => (
+                        <div key={item.id} className="flex items-center justify-between">
+                          <span>{item.label}</span>
+                          <span>+{currency.format(item.amount)}</span>
+                        </div>
+                      ))}
+                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                        <div className="flex items-center justify-between">
+                          <span>Cyber-APK (50% korting)</span>
+                          <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
+                        </div>
+                      )}
+                      <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
+                        <span>Totaal indicatie</span>
+                        <span>{currency.format(pricingSummary.total)}</span>
+                      </div>
+                      <p className="text-muted-foreground text-xs">
+                        Definitieve prijzen stemmen we telefonisch af. Geen voorrijkosten binnen Haaglanden.
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Kies eerst een hulpvorm en snelheid om de prijsindicatie te zien.
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(3)}>
+                    Vorige
+                  </Button>
+                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
+                    Volgende stap
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {step === 5 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -724,31 +929,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                       value={booking.message}
                       onChange={(event) => setBooking((b) => ({ ...b, message: event.target.value }))}
                     />
-                  </div>
-                </div>
-
-                <div className="border-2 border-accent/50 rounded-lg p-4 bg-accent/5">
-                  <div className="flex items-start gap-3">
-                    <input
-                      id="cyberApk"
-                      type="checkbox"
-                      checked={booking.addCyberApk}
-                      onChange={(e) => setBooking((b) => ({ ...b, addCyberApk: e.target.checked }))}
-                      className="mt-1"
-                    />
-                    <div className="flex-1">
-                      <Label htmlFor="cyberApk" className="cursor-pointer">
-                        <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
-                      </Label>
-                      <p className="text-sm text-foreground/70 mt-1">
-                        Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
-                      </p>
-                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
-                        <p className="text-sm font-semibold text-accent mt-2">
-                          +{currency.format(pricingSummary.cyberApkPrice)} (50% korting)
-                        </p>
-                      )}
-                    </div>
                   </div>
                 </div>
 
