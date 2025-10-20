@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { usePrices } from "@/hooks/use-prices";
+import type { ServiceOffering } from "@/config/site-pricing";
 
 const PROBLEM_CATEGORIES = [
   { id: "hardware", title: "Computer/Laptop Problemen", description: "Trage computer, crash, Windows/Mac issues" },
