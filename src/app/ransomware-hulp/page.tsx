@@ -136,10 +136,10 @@ export default function RansomwareHulp() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {immediateSteps.map((item, i) => (
-              <Card key={i} className="border-destructive/30">
+              <Card key={i} className="border-primary/30">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-xl font-bold text-destructive">{item.step}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-xl font-bold text-primary">{item.step}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-center mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/70 text-center">{item.description}</p>
