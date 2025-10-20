@@ -110,7 +110,14 @@ export const Navigation = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-base">Diensten</NavigationMenuTrigger>
+                  <NavigationMenuLink asChild>
+                    <Link href="/diensten" className="text-base px-4 py-2 hover:text-primary transition-colors">
+                      Diensten
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-base">Alle diensten</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid gap-3 p-4 pt-2 w-[560px] grid-cols-[1fr_auto_1fr_auto_1fr] items-start">
                       <div>
