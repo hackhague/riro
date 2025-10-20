@@ -448,7 +448,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Planning</p>
+                      <p className="text-sm opacity-80">Opties & spoed</p>
                       <p className="text-sm font-semibold truncate max-w-[160px]">
                         {booking.urgency === "spoed"
                           ? "Spoedslot"
