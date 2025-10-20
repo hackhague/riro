@@ -20,8 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
-import { PriceBox } from "@/components/ui/PriceBox";
-import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -63,9 +61,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const { pricing } = SITE_PRICING;
-  const consumerPricing = pricing.consumer;
-
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
     { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.jpg" },
@@ -244,8 +239,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* ------------------- USPs ------------------- */}
       <section className="py-12 md:py-16">
