@@ -727,6 +727,31 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   </div>
                 </div>
 
+                <div className="border-2 border-accent/50 rounded-lg p-4 bg-accent/5">
+                  <div className="flex items-start gap-3">
+                    <input
+                      id="cyberApk"
+                      type="checkbox"
+                      checked={booking.addCyberApk}
+                      onChange={(e) => setBooking((b) => ({ ...b, addCyberApk: e.target.checked }))}
+                      className="mt-1"
+                    />
+                    <div className="flex-1">
+                      <Label htmlFor="cyberApk" className="cursor-pointer">
+                        <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
+                      </Label>
+                      <p className="text-sm text-foreground/70 mt-1">
+                        Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
+                      </p>
+                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                        <p className="text-sm font-semibold text-accent mt-2">
+                          +{currency.format(pricingSummary.cyberApkPrice)} (50% korting)
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
                 <div className="border rounded-lg p-4 bg-secondary/30">
                   <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
                   {pricingSummary.basePrice ? (
@@ -741,6 +766,12 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span>+{currency.format(item.amount)}</span>
                         </div>
                       ))}
+                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                        <div className="flex items-center justify-between">
+                          <span>Cyber-APK (50% korting)</span>
+                          <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
+                        </div>
+                      )}
                       <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
                         <span>Totaal indicatie</span>
                         <span>{currency.format(pricingSummary.total)}</span>
