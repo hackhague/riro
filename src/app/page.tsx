@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import dynamic from "next/dynamic";
 import {
   Star,
   Clock,
@@ -18,8 +18,21 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import AppointmentWizard from "@/components/AppointmentWizard";
-import PartnersSection from "@/components/PartnersSection";
+
+const HomepageServicesClient = dynamic(
+  () => import("@/components/HomepageServicesClient").then(mod => ({ default: mod.HomepageServicesClient })),
+  { loading: () => <div className="py-12 md:py-16 bg-secondary" /> }
+);
+
+const AppointmentWizard = dynamic(
+  () => import("@/components/AppointmentWizard"),
+  { loading: () => <div className="py-12 md:py-16" /> }
+);
+
+const PartnersSection = dynamic(
+  () => import("@/components/PartnersSection"),
+  { loading: () => <div className="py-8" /> }
+);
 
 const heroImage = "/images/hero-technician.jpg";
 
