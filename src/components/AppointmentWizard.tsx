@@ -370,6 +370,9 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         city: "",
         message: "",
         addCyberApk: false,
+        addWindowsMacReinstall: false,
+        addFasterComputerSsd: false,
+        addAntivirusSetup: false,
       });
     } catch (error: any) {
       toast({
