@@ -655,6 +655,194 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             )}
 
             {step === 4 && (
+              <div className="space-y-6">
+                <div className="flex items-center gap-3">
+                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
+                    ←
+                  </Button>
+                  <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
+                </div>
+
+                {requiresSchedule && (
+                  <div>
+                    <h4 className="font-semibold mb-4">Wanneer wilt u de afspraak?</h4>
+                    <div className="border rounded-lg p-4 bg-secondary/30">
+                      <DayPicker
+                        mode="single"
+                        selected={booking.date}
+                        onSelect={(date) => setBooking((b) => ({ ...b, date, timeSlot: "" }))}
+                        disabled={(date) => isWeekend(date) || date < today}
+                        className="flex justify-center"
+                      />
+                    </div>
+                    {booking.date && (
+                      <div className="mt-4">
+                        <p className="text-sm font-semibold mb-2">Beschikbare tijdsloten</p>
+                        <div className="grid grid-cols-2 gap-2">
+                          {getTimeSlotsForDate(booking.date).map((slot) => (
+                            <button
+                              key={slot}
+                              onClick={() => setBooking((b) => ({ ...b, timeSlot: slot }))}
+                              className={`p-2 rounded-md border text-sm transition-all ${
+                                booking.timeSlot === slot
+                                  ? "border-primary bg-primary/10"
+                                  : "border-border hover:border-primary/50"
+                              }`}
+                            >
+                              {slot}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Extra opties</h4>
+
+                  <div className="border-2 border-accent/50 rounded-lg p-4 bg-accent/5">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="cyberApk"
+                        type="checkbox"
+                        checked={booking.addCyberApk}
+                        onChange={(e) => setBooking((b) => ({ ...b, addCyberApk: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="cyberApk" className="cursor-pointer">
+                          <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij meeboeken.
+                        </p>
+                        {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                          <p className="text-sm font-semibold text-accent mt-2">
+                            +{currency.format(pricingSummary.cyberApkPrice)}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="windowsMacReinstall"
+                        type="checkbox"
+                        checked={booking.addWindowsMacReinstall || false}
+                        onChange={(e) => setBooking((b) => ({ ...b, addWindowsMacReinstall: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="windowsMacReinstall" className="cursor-pointer">
+                          <span className="font-semibold">Windows/Mac herinstallatie</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          Volledige besturingssysteem herinstallatie met back-up van gegevens.
+                        </p>
+                        <p className="text-sm font-semibold text-primary mt-2">
+                          €99 (Windows) of €119 (Mac)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="fasterComputerSsd"
+                        type="checkbox"
+                        checked={booking.addFasterComputerSsd || false}
+                        onChange={(e) => setBooking((b) => ({ ...b, addFasterComputerSsd: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="fasterComputerSsd" className="cursor-pointer">
+                          <span className="font-semibold">Computer sneller maken met nieuwe schijf</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          SSD upgrade met installatie en datamigratie. Inclusief back-up van gegevens.
+                        </p>
+                        <p className="text-sm font-semibold text-primary mt-2">
+                          €119 arbeidskosten + SSD onderdeel (€80–150)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="border rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <input
+                        id="antivirusSetup"
+                        type="checkbox"
+                        checked={booking.addAntivirusSetup || false}
+                        onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
+                        className="mt-1"
+                      />
+                      <div className="flex-1">
+                        <Label htmlFor="antivirusSetup" className="cursor-pointer">
+                          <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
+                        </Label>
+                        <p className="text-sm text-foreground/70 mt-1">
+                          Professionele antivirus installatie en basisbeveiliging setup.
+                        </p>
+                        <p className="text-sm font-semibold text-primary mt-2">
+                          €79 voor 2 apparaten (€15 per extra)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4 bg-secondary/30">
+                  <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
+                  {pricingSummary.basePrice ? (
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center justify-between">
+                        <span>Basis</span>
+                        <span>{currency.format(pricingSummary.basePrice)}</span>
+                      </div>
+                      {pricingSummary.surcharges.map((item) => (
+                        <div key={item.id} className="flex items-center justify-between">
+                          <span>{item.label}</span>
+                          <span>+{currency.format(item.amount)}</span>
+                        </div>
+                      ))}
+                      {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                        <div className="flex items-center justify-between">
+                          <span>Cyber-APK (50% korting)</span>
+                          <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
+                        </div>
+                      )}
+                      <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
+                        <span>Totaal indicatie</span>
+                        <span>{currency.format(pricingSummary.total)}</span>
+                      </div>
+                      <p className="text-muted-foreground text-xs">
+                        Definitieve prijzen stemmen we telefonisch af. Geen voorrijkosten binnen Haaglanden.
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      Kies eerst een hulpvorm en snelheid om de prijsindicatie te zien.
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex justify-between">
+                  <Button variant="outline" onClick={() => setStep(3)}>
+                    Vorige
+                  </Button>
+                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
+                    Volgende stap
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {step === 4 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
