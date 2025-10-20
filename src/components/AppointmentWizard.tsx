@@ -110,7 +110,7 @@ const currency = new Intl.NumberFormat("nl-NL", {
 
 export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
@@ -152,11 +152,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const isStep0Valid = booking.problemCategory !== "";
   const isStep1Valid = booking.serviceType !== "";
   const isStep2Valid = booking.serviceChannel !== "";
-  const isStep3Valid = booking.urgency !== "";
-  const requiresSchedule = booking.urgency !== "spoed";
+  const requiresSchedule = true;
   const hasSchedule = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
-  const isStep4Valid = requiresSchedule ? hasSchedule : true;
-  const isStep5Valid =
+  const isStep3Valid = requiresSchedule ? hasSchedule : true;
+  const isStep4Valid =
     booking.firstName.trim() !== "" &&
     booking.lastName.trim() !== "" &&
     booking.phone.trim() !== "" &&
@@ -609,56 +608,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
               </div>
             )}
 
+
             {step === 3 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <Button variant="ghost" onClick={() => setStep(2)} className="px-2">
-                    ←
-                  </Button>
-                  <h3 className="font-heading font-semibold text-xl">Hoe snel moeten we schakelen?</h3>
-                </div>
-    
-                <div className="grid gap-3 max-w-xl">
-                  {URGENCY_OPTIONS.map((option) => (
-                    <button
-                      key={option.id}
-                      onClick={() =>
-                        setBooking((b) => ({
-                          ...b,
-                          urgency: option.id,
-                        }))
-                      }
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
-                        booking.urgency === option.id
-                          ? "border-primary bg-primary/10"
-                          : "border-border hover:border-primary/50"
-                      }`}
-                    >
-                      <p className="font-semibold text-foreground">{option.label}</p>
-                      <p className="text-sm text-foreground/70 mt-1">{option.description}</p>
-                      {booking.serviceChannel && booking.urgency === option.id && pricingSummary.basePrice ? (
-                        <p className="text-sm font-semibold text-primary mt-2">
-                          Indicatie: {currency.format(pricingSummary.basePrice)}
-                        </p>
-                      ) : null}
-                    </button>
-                  ))}
-                </div>
-                <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(2)}>
-                    Vorige
-                  </Button>
-                  <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>
-                    Volgende stap
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            {step === 4 && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
                     ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
