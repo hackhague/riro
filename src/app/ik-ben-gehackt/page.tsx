@@ -231,14 +231,17 @@ export default function IkBenGehackt(): JSX.Element {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tekenen dat er iets mis is</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {signs.map((s, i) => (
-              <Card key={i}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{s}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {signs.map((sign, i) => {
+              const IconComponent = sign.icon;
+              return (
+                <Card key={i}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{sign.text}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
