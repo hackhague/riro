@@ -266,33 +266,53 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
       <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
 
+      {/* Neighborhoods */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
+            We serveren heel {city}
+          </h2>
+          <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
+            Met inbegrip van alle wijken en buurten. Of je in het centrum woont of in de buitenwijken, wij zijn snel ter plaatse.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
+            {neighborhoods.map((neighborhood) => (
+              <div
+                key={neighborhood}
+                className="px-4 py-2 bg-secondary rounded-full border border-border hover:border-primary transition-colors"
+              >
+                <p className="font-semibold text-sm">{neighborhood}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Case Study */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht uit {city}</h2>
           <Card className="max-w-3xl mx-auto">
             <CardContent className="p-8">
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Laptop van moeder crasht na Windows update. Moet morgen naar notaris voor belangrijke
-                  handtekening."
+                  "{currentCityData.caseStudy.problem}"
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  Remote diagnose in 15 min → driver conflict. Update teruggedraaid, systeem gestabiliseerd, preventief
-                  backup gemaakt.
+                  {currentCityData.caseStudy.solution}
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Binnen 45 min weer online. Moeder kon documenten printen en naar notaris. Kosten: €39."
+                  "{currentCityData.caseStudy.result}"
                 </p>
               </div>
-              <p className="text-sm text-foreground/60 mt-4">Wateringse Veld, Den Haag</p>
+              <p className="text-sm text-foreground/60 mt-4">{currentCityData.caseStudy.location}</p>
             </CardContent>
           </Card>
         </div>
