@@ -139,32 +139,32 @@ export default function AntivirusSetupPage() {
       </section>
 
       {/* Security Warning */}
-      <section className="py-12 md:py-16 bg-red-50 dark:bg-red-950/20 border-l-4 border-red-500">
+      <section className="py-12 md:py-16 bg-destructive/10 border-l-4 border-destructive">
         <div className="container mx-auto px-4">
           <div className="flex gap-4 max-w-3xl mx-auto">
-            <AlertTriangle className="h-8 w-8 text-red-600 flex-shrink-0 mt-1" />
+            <Shield className="h-8 w-8 text-destructive flex-shrink-0 mt-1" />
             <div>
               <h2 className="font-heading font-bold text-2xl text-foreground mb-4">
-                ⚠️ Computer zonder bescherming? Risico op virussen!
+                Computer zonder bescherming? Risico op virussen
               </h2>
               <p className="text-foreground/80 mb-4">
                 Elke dag worden miljoenen computers aangevallen door virussen en malware. Zonder goede bescherming ben je kwetsbaar voor:
               </p>
               <ul className="space-y-2 text-foreground/80">
                 <li className="flex items-start gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
                   <span>Diefstal van persoonlijke gegevens en wachtwoorden</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
                   <span>Ransomware die je bestanden gijzelt</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
                   <span>Langzame computer en systeemcrashes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
                   <span>Bankgegevens gestolen</span>
                 </li>
               </ul>

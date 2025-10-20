@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Voorburg | Snel & Betrouwbaar",
+  title: "Computerhulp Voorburg | Geduldig, Rustig & Betrouwbaar",
   description:
-    "Computerhulp aan huis in Voorburg en Leidschendam. Remote binnen 10–30 minuten, on-site meestal binnen 24 uur.",
+    "Computerhulp in Voorburg (Leidschendam-Voorburg) - alle wijken: Voorburg West, Midden, Noord, Bovenveen. Gespecialiseerd in hulp voor senioren, families en rustende huishoudens. Geduldig on-site support en remote.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-voorburg",
   },

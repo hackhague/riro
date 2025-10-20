@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Leiden | Snel & Betrouwbaar",
+  title: "Computerhulp Leiden | Bos- en Gasthuisdistrict, Merenwijk & Meer",
   description:
-    "Computerhulp en wifi optimalisatie in Leiden. Remote binnen 10–30 minuten, on-site meestal binnen 24 uur.",
+    "Computerhulp in Leiden voor huishoudens, medische praktijken en bedrijven. Alle wijken: Merenwijk, Boerhaavedistrict, Morsdistrict. GDPR-compliant, snel remote support, on-site beschikbaar. Remote 10-30 min reactie.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-leiden",
   },

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
@@ -25,6 +26,100 @@ interface ComputerhulpProps {
   cityUrl?: string;
 }
 
+// City-specific data with neighborhoods and case studies
+const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: string; solution: string; result: string; location: string }; faqExtra?: { q: string; a: string }[] }> = {
+  "Den Haag": {
+    neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
+    caseStudy: {
+      problem: "Kantoorlaptop crasht na Windows update in Centrum",
+      solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
+      result: "Werkdag voortgezet, alle data veilig, kosten €49",
+      location: "Den Haag Centrum",
+    },
+    faqExtra: [
+      {
+        q: "Helpen jullie ook bedrijven in Den Haag?",
+        a: "Ja! Veel kantoren in Den Haag gebruiken ons voor spoedservice en preventief onderhoud. Zakelijke contracten beschikbaar.",
+      },
+    ],
+  },
+  "Delft": {
+    neighborhoods: ["Binnenstad", "Wippolder", "Voorhof", "Tanthof", "Hof van Delft"],
+    caseStudy: {
+      problem: "Tech startup in Delft: alle computers ransomware geïnfecteerd",
+      solution: "Quarantaine, malware verwijdering, backup terugzet, 2FA en firewall geconfigureerd",
+      result: "Bedrijf veilig gesteld, geen gegevens verloren, rapport voor verzekering",
+      location: "Delft Binnenstad",
+    },
+    faqExtra: [
+      {
+        q: "Zijn jullie bekend met Delft's tech- en universiteitsomgeving?",
+        a: "Ja, veel studenten en ondernemers in Delft kiezen ons. We begrijpen de IT-behoeften van de tech community.",
+      },
+    ],
+  },
+  "Leiden": {
+    neighborhoods: ["Bos- en Gasthuisdistrict", "Morsdistrict", "Boerhaavedistrict", "Merenwijk", "Stevenshofdistrict"],
+    caseStudy: {
+      problem: "Huisarts aan Prins Clausplein: e-mailserver down",
+      solution: "Remote stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
+      result: "Alle patiëntgegevens veilig, praktijk online in 2 uur",
+      location: "Leiden Merenwijk",
+    },
+    faqExtra: [
+      {
+        q: "Hebben jullie ervaring met medische- of kantoorpraktijken?",
+        a: "Zeker! We hebben veel huisartsen en kantoren geholpen. GDPR-compliant en discreet.",
+      },
+    ],
+  },
+  "Rijswijk": {
+    neighborhoods: ["Oud-Rijswijk", "Leeuwendaal", "Te Werve", "Rembrandtkwartier", "Ministerbuurt"],
+    caseStudy: {
+      problem: "Winkel in Oud-Rijswijk: PIN niet werkend op vrijdag",
+      solution: "On-site diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
+      result: "PIN werkend in 1 uur, geen omzet verliest",
+      location: "Rijswijk Oud-Rijswijk",
+    },
+    faqExtra: [
+      {
+        q: "Kunnen jullie ook snelle kassasysteem ondersteuning geven?",
+        a: "Ja, we hebben veel winkels en restaurants geholpen met PIN-problemen en kassasystemen.",
+      },
+    ],
+  },
+  "Voorburg": {
+    neighborhoods: ["Voorburg West", "Voorburg Midden", "Bovenveen", "Essesteijn", "Voorburg Noord"],
+    caseStudy: {
+      problem: "Familie in Voorburg Midden: computer verergerd na update",
+      solution: "Op locatie diagnose, systeem herstellen, beveiligingsupdate, training voor groepsbeleid",
+      result: "Ouders weer zelfstandig, preventief advies gegeven",
+      location: "Voorburg Midden",
+    },
+    faqExtra: [
+      {
+        q: "Zijn jullie ook geschikt voor huishoudens met oudere bewoners?",
+        a: "Ja, veel families in Voorburg vertrouwen ons met hun oudercomputerhulp. We gaan rustig en geduldig te werk.",
+      },
+    ],
+  },
+  "Zoetermeer": {
+    neighborhoods: ["Rokkeveen", "Oosterheem", "Seghwaert", "Meerzicht", "Buytenwegh-de Leyens"],
+    caseStudy: {
+      problem: "Bedrijf in Rokkeveen: WiFi down, medewerkers kunnen niet werken",
+      solution: "Router reset, firmware update, WiFi hergebruikt, mesh-netwerk geadviseerd",
+      result: "Stabiele WiFi hersteld, 2 uur downtime voorkomen",
+      location: "Zoetermeer Rokkeveen",
+    },
+    faqExtra: [
+      {
+        q: "Helpen jullie bij netwerk-upgrades voor groeiende bedrijven?",
+        a: "Zeker, we hebben veel snelgroeiende bedrijven in Zoetermeer ondersteund met netwerkupgrades.",
+      },
+    ],
+  },
+};
+
 export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
@@ -34,6 +129,10 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
   ];
+
+  // Get city-specific data
+  const currentCityData = cityData[city] || cityData["Den Haag"];
+  const neighborhoods = currentCityData.neighborhoods;
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
@@ -64,17 +163,18 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
   const faqs = [
     {
-      q: "Hoe snel kunnen jullie helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
+      q: "Hoe snel kunnen jullie in " + city + " helpen?",
+      a: "Remote meestal binnen 10-30 min reactie. On-site in en rond " + city + " meestal binnen 2 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs. Remote tijd rekenen we af tegen on-site als we toch komen.",
+      a: "Dan komen we langs in " + city + ". Remote tijd rekenen we af tegen on-site als we toch komen.",
     },
     {
       q: "Is remote veilig?",
       a: "Ja! We gebruiken versleutelde tools en vragen altijd toestemming voordat we iets doen.",
     },
+    ...(currentCityData.faqExtra || []),
   ];
 
   return (
@@ -168,33 +268,53 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
       <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
 
+      {/* Neighborhoods */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
+            We serveren heel {city}
+          </h2>
+          <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
+            Met inbegrip van alle wijken en buurten. Of je in het centrum woont of in de buitenwijken, wij zijn snel ter plaatse.
+          </p>
+          <div className="flex flex-wrap gap-3 justify-center max-w-4xl mx-auto">
+            {neighborhoods.map((neighborhood) => (
+              <div
+                key={neighborhood}
+                className="px-4 py-2 bg-secondary rounded-full border border-border hover:border-primary transition-colors"
+              >
+                <p className="font-semibold text-sm">{neighborhood}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Case Study */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht uit {city}</h2>
           <Card className="max-w-3xl mx-auto">
             <CardContent className="p-8">
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Laptop van moeder crasht na Windows update. Moet morgen naar notaris voor belangrijke
-                  handtekening."
+                  "{currentCityData.caseStudy.problem}"
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  Remote diagnose in 15 min → driver conflict. Update teruggedraaid, systeem gestabiliseerd, preventief
-                  backup gemaakt.
+                  {currentCityData.caseStudy.solution}
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Binnen 45 min weer online. Moeder kon documenten printen en naar notaris. Kosten: €39."
+                  "{currentCityData.caseStudy.result}"
                 </p>
               </div>
-              <p className="text-sm text-foreground/60 mt-4">Wateringse Veld, Den Haag</p>
+              <p className="text-sm text-foreground/60 mt-4">{currentCityData.caseStudy.location}</p>
             </CardContent>
           </Card>
         </div>
