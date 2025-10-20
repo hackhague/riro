@@ -272,7 +272,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            We serveren heel {city}
+            We zijn actief in heel {city}
           </h2>
           <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
             Met inbegrip van alle wijken en buurten. Of je in het centrum woont of in de buitenwijken, wij zijn snel ter plaatse.

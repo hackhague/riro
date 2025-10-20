@@ -61,7 +61,7 @@ export default function Werkgebied() {
             </h1>
             <p className="text-lg md:text-xl text-foreground/80">
               InstantIT helpt particulieren en bedrijven in heel Zuid-Holland. Remote zijn we overal beschikbaar –
-              on-site vooral in Haaglanden (meestal binnen 2 uur).
+              op locatie binnen 24-48 uur in Haaglanden.
             </p>
           </div>
         </div>
@@ -138,9 +138,9 @@ export default function Werkgebied() {
             <Card>
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">On-site (Haaglanden)</h3>
-                <p className="text-3xl font-bold text-primary mb-2">Binnen 2u</p>
+                <p className="text-3xl font-bold text-primary mb-2">Op locatie binnen 24-48 uur</p>
                 <p className="text-foreground/70">
-                  In Haaglanden (Den Haag, Delft, Rijswijk, Voorburg, etc.) meestal binnen 2 uur ter plaatse.
+                  In Haaglanden (Den Haag, Delft, Rijswijk, Voorburg, etc.) op locatie binnen 24-48 uur.
                 </p>
               </CardContent>
             </Card>

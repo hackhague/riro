@@ -61,7 +61,7 @@ export function HomepageServicesClient() {
       id: "spoedhulp-aan-huis",
       icon: <Zap className="h-6 w-6 text-primary" />,
       title: "IT Spoedhulp aan huis",
-      subtitle: "Spoed • Meestal binnen 24 uur",
+      subtitle: "Op locatie • Binnen 24-48 uur",
       price: "€89",
       priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
       description:
@@ -161,7 +161,7 @@ export function HomepageServicesClient() {
       id: "spoedhulp-kantoor",
       icon: <Zap className="h-6 w-6 text-primary" />,
       title: "IT Spoedhulp kantoor",
-      subtitle: "Spoed • Meestal binnen 2 uur",
+      subtitle: "Op locatie • Binnen 24-48 uur",
       price: "€89",
       priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
       description:
