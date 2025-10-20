@@ -672,7 +672,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         <p className="text-sm text-foreground/70 mt-1">
                           Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
                         </p>
-                        {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
+                        {pricingSummary.cyberApkPrice > 0 && (
                           <div className="text-sm mt-2 space-y-1">
                             <p className="font-semibold text-accent">
                               {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
