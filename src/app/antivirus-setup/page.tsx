@@ -145,7 +145,7 @@ export default function AntivirusSetupPage() {
             <AlertTriangle className="h-8 w-8 text-red-600 flex-shrink-0 mt-1" />
             <div>
               <h2 className="font-heading font-bold text-2xl text-foreground mb-4">
-                ⚠️ Computer zonder bescherming? Risico op virussen!
+                Computer zonder bescherming? Risico op virussen
               </h2>
               <p className="text-foreground/80 mb-4">
                 Elke dag worden miljoenen computers aangevallen door virussen en malware. Zonder goede bescherming ben je kwetsbaar voor:
