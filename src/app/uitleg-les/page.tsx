@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
-import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-lessons.jpg";
@@ -210,8 +209,6 @@ export default function UitlegLesPage() {
           </div>
         </div>
       </section>
-
-      <HomepageServicesClient />
 
       {/* Case Study */}
       <section className="py-12 md:py-16">

@@ -18,12 +18,23 @@ import {
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? "" : section);
+  };
+
+  const toggleExpandedItem = (itemPath: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(itemPath)) {
+      newExpanded.delete(itemPath);
+    } else {
+      newExpanded.add(itemPath);
+    }
+    setExpandedItems(newExpanded);
   };
 
   const menuSections = {
@@ -36,14 +47,14 @@ export const Navigation = () => {
           { label: "Windows 10/11 Ondersteuning", path: "/windows-support" },
           { label: "Mac Support", path: "/mac-support" },
           { label: "Antivirus & Beveiliging", path: "/antivirus-setup" },
+          { label: "Printerhulp", path: "/printer" },
+          { label: "E-mail problemen", path: "/email" },
+          { label: "Internet & WiFi", path: "/wifi" },
+          { label: "Smartphone & Tablet", path: "/mobiel-tablet" },
+          { label: "Computerlessen", path: "/uitleg-les" },
+          { label: "Cyber APK", path: "/cyber-apk" },
         ],
       },
-      { label: "Printerhulp", path: "/printer", description: "Papiertoringen, cartridges en meer" },
-      { label: "E-mail problemen", path: "/email", description: "Outlook, Gmail instellen" },
-      { label: "Internet & WiFi", path: "/wifi", description: "Betrouwbaar en snel internet" },
-      { label: "Smartphone & Tablet", path: "/mobiel-tablet", description: "WhatsApp, apps en meer" },
-      { label: "Computerlessen", path: "/uitleg-les", description: "Rustige les op eigen tempo" },
-      { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
@@ -234,14 +245,28 @@ export const Navigation = () => {
                   <div className="mt-1 space-y-1">
                     {menuSections.particulier.map((item) => (
                       <div key={`${item.path}-${item.label}`}>
-                        <Link
-                          href={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                        >
-                          {item.label}
-                        </Link>
-                        {item.subitems && (
+                        {item.subitems ? (
+                          <button
+                            onClick={() => toggleExpandedItem(item.path)}
+                            className="flex items-center justify-between w-full px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                            <ChevronDown
+                              className={`h-4 w-4 transition-transform ${
+                                expandedItems.has(item.path) ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                          </Link>
+                        )}
+                        {item.subitems && expandedItems.has(item.path) && (
                           <div className="ml-4 space-y-1 border-l border-border pl-2 mt-1">
                             {item.subitems.map((subitem) => (
                               <Link

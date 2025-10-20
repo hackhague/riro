@@ -117,6 +117,7 @@ export function HomepageServicesClient() {
       title: "Hackservice & Cyberherstel",
       subtitle: "Spoed • 24/7 beschikbaar",
       price: "Neem contact op voor prijsopgave",
+      priceSubtitle: "Afhankelijk van schadeomvang",
       description:
         "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging. Schadeomvang bepaalt exacte tarief.",
       features: [
@@ -216,6 +217,7 @@ export function HomepageServicesClient() {
       title: "Cybersecurity & Incident Response",
       subtitle: "Spoed • 24/7 beschikbaar",
       price: "Neem contact op voor prijsopgave",
+      priceSubtitle: "Afhankelijk van schadeomvang",
       description:
         "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [
