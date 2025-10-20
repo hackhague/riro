@@ -295,7 +295,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
 
   const handleSubmit = async () => {
-    if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
+    if (!isStep4Valid || !isStep3Valid) return;
     setLoading(true);
     try {
       const serviceLabelParts = [selectedServiceType, selectedServiceChannel, selectedUrgency].filter(Boolean);
