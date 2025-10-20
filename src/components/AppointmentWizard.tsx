@@ -116,7 +116,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     problemCategory: initialState?.problemCategory || "",
     serviceType: initialState?.serviceType || "consumer",
     serviceChannel: initialState?.serviceChannel || "",
-    urgency: initialState?.urgency || "",
+    urgency: "standaard",
     date: initialState?.date ? new Date(initialState.date) : undefined,
     timeSlot: initialState?.timeSlot || "",
     firstName: initialState?.firstName || "",
