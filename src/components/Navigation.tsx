@@ -67,9 +67,19 @@ export const Navigation = () => {
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
-      { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
-      { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na klikken op verdachte link" },
-      { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
+      {
+        label: "Ik ben gehackt",
+        path: "/ik-ben-gehackt",
+        description: "Directe cyberhulp, snel opgelost",
+        subitems: [
+          { label: "Phishing & Verdachte E-mails", path: "/phishing-hulp" },
+          { label: "Instagram Account Gehackt", path: "/instagram-gehackt" },
+          { label: "E-mail Account Gehackt", path: "/email-gehackt" },
+          { label: "WhatsApp Fraude", path: "/whatsapp-fraude" },
+          { label: "Ransomware Hulp", path: "/ransomware-hulp" },
+          { label: "Helpdesk Fraude", path: "/helpdesk-fraude" },
+        ],
+      },
     ],
     zakelijkExpat: [
       { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
