@@ -37,7 +37,7 @@ export default function Zakelijk() {
     {
       icon: Zap,
       title: "Spoedondersteuning",
-      description: "PIN/kassa down? Internet weg? Vaak binnen 1-2 uur op locatie of direct remote.",
+      description: "PIN/kassa down? Internet weg? Op locatie binnen 24-48 uur of direct remote.",
     },
     {
       icon: Shield,
@@ -174,7 +174,7 @@ export default function Zakelijk() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Spoed on-site €199 (max 2u)</span>
+                    <span>Spoed on-site €199 (max 24-48u)</span>
                   </li>
                 </ul>
               </CardContent>
@@ -260,7 +260,7 @@ export default function Zakelijk() {
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">Snelle responstijd</h3>
                 <p className="text-foreground/70">
-                  Remote vaak binnen 10-30 min, on-site meestal binnen 2 uur. Bij spoed nog sneller.
+                  Remote vaak binnen 10-30 min, op locatie binnen 24-48 uur. Bij spoed nog sneller.
                 </p>
               </CardContent>
             </Card>

@@ -154,7 +154,7 @@ export default function Diensten() {
         },
         {
           "@type": "Offer",
-          "itemOffered": {"@type": "Service", "name": "Spoed on-site (tot 2 uur)"},
+          "itemOffered": {"@type": "Service", "name": "Spoed on-site (tot 24-48 uur)"},
           "price": "199.00",
           "priceCurrency": "EUR"
         }

@@ -156,7 +156,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
   const steps = [
     { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
-    { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 2u aan de deur" },
+    { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 24-48 uur aan de deur" },
     { title: "Fix & uitleg", desc: "We lossen het op én leggen uit wat er aan de hand was" },
     { title: "Nazorg", desc: "Gratis herbeoordeling binnen 7 dagen (max 30 min)" },
   ];
@@ -164,7 +164,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
   const faqs = [
     {
       q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. On-site in en rond " + city + " meestal binnen 2 uur.",
+      a: "Remote meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
@@ -272,7 +272,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-            We serveren heel {city}
+            We zijn actief in heel {city}
           </h2>
           <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
             Met inbegrip van alle wijken en buurten. Of je in het centrum woont of in de buitenwijken, wij zijn snel ter plaatse.

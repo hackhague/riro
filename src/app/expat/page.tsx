@@ -22,7 +22,7 @@ export default function Expat() {
     {
       icon: Clock,
       title: "Fast Response",
-      description: "Remote within 10-30 minutes, on-site usually within 24 hours in The Hague area.",
+      description: "Remote within 10-30 minutes, on-site within 24-48 hours in The Hague area.",
     },
     {
       icon: Shield,
@@ -337,7 +337,7 @@ export default function Expat() {
                   <div className="text-center p-4 bg-secondary rounded-lg">
                     <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
                     <p className="font-semibold mb-1">On-site Visit</p>
-                    <p className="text-sm text-foreground/70">Usually within 2 hours (Haaglanden)</p>
+                    <p className="text-sm text-foreground/70">Within 24-48 hours (Haaglanden)</p>
                   </div>
                 </div>
               </CardContent>
