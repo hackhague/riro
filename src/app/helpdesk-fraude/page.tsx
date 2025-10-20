@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone, AlertTriangle, Shield, Clock, CheckCircle } from "lucide-react";
+import { MessageCircle, Phone, AlertTriangle, Shield, Clock, CheckCircle, Flag, CreditCard, Monitor, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
@@ -19,22 +19,22 @@ export const metadata: Metadata = {
 export default function HelpdeskFraude() {
   const redFlags = [
     {
-      icon: "🚩",
+      icon: Flag,
       title: "Onverwachte bel",
       description: "Microsoft/Apple belt nooit zomaar – jij belt altijd hen",
     },
     {
-      icon: "💳",
+      icon: CreditCard,
       title: "Betaling gevraagd",
       description: "Echte support betaal je nooit per telefoon – alleen later op factuur",
     },
     {
-      icon: "🖥️",
+      icon: Monitor,
       title: "Remote controle",
       description: "Ze willen remote toegang tot je computer – groot gevaar",
     },
     {
-      icon: "😰",
+      icon: AlertCircle,
       title: "Urgentie en angst",
       description: "'Je computer is gehackt' – panic sells, dus wees voorzichtig",
     },
@@ -121,10 +121,10 @@ export default function HelpdeskFraude() {
             <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <AlertTriangle className="h-8 w-8 text-white" />
             </div>
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Helpdesk Fraude – De Vals Technici
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-8">
+            <p className="text-lg md:text-xl text-white/90 mb-8">
               Nep Microsoft-medewerkers die zeggen dat je computer 'problemen' heeft? Leer hoe je ze herkent en beschermt jezelf.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -152,15 +152,20 @@ export default function HelpdeskFraude() {
             Waarschuwingssignalen
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {redFlags.map((flag, i) => (
-              <Card key={i} className="border-l-4 border-l-primary">
-                <CardContent className="p-6">
-                  <div className="text-4xl mb-3">{flag.icon}</div>
-                  <h3 className="font-heading font-semibold text-lg mb-2">{flag.title}</h3>
-                  <p className="text-sm text-foreground/70">{flag.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {redFlags.map((flag, i) => {
+              const IconComponent = flag.icon;
+              return (
+                <Card key={i} className="border-l-4 border-l-primary">
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                      <IconComponent className="h-5 w-5 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-semibold text-lg mb-2">{flag.title}</h3>
+                    <p className="text-sm text-foreground/70">{flag.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

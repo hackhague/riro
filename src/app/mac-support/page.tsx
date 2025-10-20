@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Apple, CheckCircle2, MessageCircle } from "lucide-react";
+import { Phone, Apple, CheckCircle2, MessageCircle, Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cpu, Battery } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -103,14 +103,18 @@ export default function MacSupportPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we voor je doen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {mac_problems.map((problem, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Apple className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{problem}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {mac_problems.map((problem, index) => {
+              const icons = [Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cloud, Battery];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{problem}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -149,14 +153,18 @@ export default function MacSupportPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We werken met alle Mac modellen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {["MacBook Air", "MacBook Pro", "iMac", "Mac Mini", "Mac Studio", "Mac Pro", "M1/M2/M3/Intel", "Alle generaties"].map((model) => (
-              <Card key={model} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <Apple className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{model}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {["MacBook Air", "MacBook Pro", "iMac", "Mac Mini", "Mac Studio", "Mac Pro", "M1/M2/M3/Intel", "Alle generaties"].map((model, index) => {
+              const icons = [Cpu, Zap, Activity, HardDrive, Shield, Wifi, Battery, Apple];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={model} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{model}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

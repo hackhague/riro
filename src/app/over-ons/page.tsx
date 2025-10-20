@@ -53,7 +53,7 @@ export default function OverOns() {
               netwerkstoringen – bij particulieren en bedrijven.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Button variant="whatsapp" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="bg-transparent border-white text-white hover:bg-white hover:text-primary">
                 <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2" />
                   WhatsApp ons

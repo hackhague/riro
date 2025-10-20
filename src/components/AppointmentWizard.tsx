@@ -524,8 +524,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     <ShieldAlert className="h-5 w-5" />
                     <AlertTitle>Spoed bij hack of beveiligingsincident?</AlertTitle>
                     <AlertDescription>
-                      We starten vrijwel altijd op afstand binnen 60 minuten. Is er fysieke toegang nodig? Kies dan voor een
-                      onsite afspraak; we koppelen je apparaat direct los van het netwerk.
+                      We streven ernaar om zo spoedig mogelijk te reageren. Is er fysieke toegang nodig? Kies dan voor een
+                      aan huis/op locatie afspraak; we koppelen je apparaat veilig direct los van het netwerk.
                     </AlertDescription>
                   </Alert>
                 )}
@@ -570,15 +570,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Hoe snel moeten we schakelen?</h3>
                 </div>
-                {booking.serviceChannel === "onsite" && booking.problemCategory === "security" && (
-                  <Alert className="border-destructive/40 bg-destructive/10">
-                    <ShieldAlert className="h-5 w-5" />
-                    <AlertTitle>Disconnect apparaten bij spoed</AlertTitle>
-                    <AlertDescription>
-                      Trek netwerkstekkers los en schakel wifi uit totdat we er zijn. Zo voorkom je verdere schade of dataverlies.
-                    </AlertDescription>
-                  </Alert>
-                )}
+    
                 <div className="grid gap-3 max-w-xl">
                   {URGENCY_OPTIONS.map((option) => (
                     <button
