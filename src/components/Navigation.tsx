@@ -162,6 +162,22 @@ export const Navigation = () => {
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
                                 </Link>
                               </NavigationMenuLink>
+                              {item.subitems && (
+                                <ul className="mt-2 ml-3 space-y-1 border-l border-border pl-3">
+                                  {item.subitems.map((subitem) => (
+                                    <li key={`${subitem.path}-${subitem.label}`}>
+                                      <NavigationMenuLink asChild>
+                                        <Link
+                                          href={subitem.path}
+                                          className="block text-sm text-foreground/70 hover:text-primary transition-colors"
+                                        >
+                                          {subitem.label}
+                                        </Link>
+                                      </NavigationMenuLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </li>
                           ))}
                         </ul>
