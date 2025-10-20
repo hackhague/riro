@@ -19,7 +19,7 @@ import { usePrices } from "@/hooks/use-prices";
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["/computerhulp-den-haag"]));
   const pathname = usePathname();
   const priceConfig = usePrices();
   const { contact } = priceConfig;
@@ -58,6 +58,11 @@ export const Navigation = () => {
           { label: "Computerlessen", path: "/uitleg-les" },
           { label: "Cyber APK", path: "/cyber-apk" },
         ],
+      },
+      {
+        label: "Computerhulp op afstand",
+        path: "/hulp-op-afstand",
+        description: "Snelle remote hulp via schermdeling",
       },
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis

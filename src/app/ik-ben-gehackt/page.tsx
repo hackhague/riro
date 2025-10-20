@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { PriceBox } from "@/components/ui/PriceBox";
+import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
+import { PRICE_TIERS } from "@/data/pricing";
 
 const serviceImage = "/images/service-hack.jpg";
 
@@ -291,7 +293,7 @@ export default function IkBenGehackt(): JSX.Element {
       {/* Urgent CTA */}
       <section className="py-16 bg-destructive text-destructive-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel niet — bel of app direct</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Twijfel niet ��� bel of app direct</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
             Als je bent gehackt, telt elke minuut. Zeg nooit direct "ja" tegen losgeldvragen. Bel ons eerst.
           </p>

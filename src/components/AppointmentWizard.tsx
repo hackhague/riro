@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { usePrices } from "@/hooks/use-prices";
+import type { ServiceOffering } from "@/config/site-pricing";
 
 const PROBLEM_CATEGORIES = [
   { id: "hardware", title: "Computer/Laptop Problemen", description: "Trage computer, crash, Windows/Mac issues" },
@@ -32,6 +33,19 @@ const SERVICE_TYPES = [
   { id: "business", label: "Zakelijk (bedrijf of kantoor)" },
 ];
 
+const SERVICE_CHANNELS = [
+  { id: "remote", label: "Ondersteuning op afstand", description: "We helpen via TeamViewer of je scherm delen" },
+  { id: "onsite", label: "Bezoek ter plaatse", description: "We komen langs om je probleem ter plaatse op te lossen" },
+];
+
+const URGENCY_OPTIONS = [
+  { id: "standaard", label: "Standaard", description: "Binnen 2-3 werkdagen" },
+  { id: "snel", label: "Snel", description: "Morgen of volgende werkdag" },
+  { id: "spoed", label: "Spoed", description: "Vandaag nog (alleen voor beveiligingsproblemen)" },
+];
+
+const SPOED_SLOT_LABEL = "Spoedslot (ASAP)";
+
 // Default 2-uur (48-72 uur for standaard) tijdsloten
 const DEFAULT_SLOTS = [
   "09:00 – 11:00",
@@ -40,6 +54,11 @@ const DEFAULT_SLOTS = [
   "15:00 – 17:00",
   "18:00 – 20:00",
 ];
+
+function parseSlotStartHour(slot: string): number | null {
+  const match = slot.match(/^(\d+):/);
+  return match ? parseInt(match[1], 10) : null;
+}
 
 function getTimeSlotsForDate(date: Date) {
   const now = new Date();
@@ -76,26 +95,33 @@ type Booking = {
   postalCode: string;
   city: string;
   message: string;
+  deliveryMethod?: string;
 };
 
-export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
+const currency = new Intl.NumberFormat("nl-NL", {
+  style: "currency",
+  currency: "EUR",
+});
+
+export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
   const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
-    problemCategory: "",
-    serviceType: "consumer",
-    deliveryMethod: "",
-    date: undefined,
-    timeSlot: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    street: "",
-    postalCode: "",
-    city: "",
-    message: "",
+    problemCategory: initialState?.problemCategory || "",
+    serviceType: initialState?.serviceType || "consumer",
+    serviceChannel: initialState?.serviceChannel || "",
+    urgency: initialState?.urgency || "",
+    date: initialState?.date ? new Date(initialState.date) : undefined,
+    timeSlot: initialState?.timeSlot || "",
+    firstName: initialState?.firstName || "",
+    lastName: initialState?.lastName || "",
+    email: initialState?.email || "",
+    phone: initialState?.phone || "",
+    street: initialState?.street || "",
+    postalCode: initialState?.postalCode || "",
+    city: initialState?.city || "",
+    message: initialState?.message || "",
   });
 
   useEffect(() => {
@@ -131,6 +157,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
 
   const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
+  const selectedServiceChannel = useMemo(() => SERVICE_CHANNELS.find((c) => c.id === booking.serviceChannel)?.label ?? "", [booking.serviceChannel]);
+  const selectedUrgency = useMemo(() => URGENCY_OPTIONS.find((o) => o.id === booking.urgency)?.label ?? "", [booking.urgency]);
 
   const deliveryOptions = useMemo(() => {
     const consumerPricing = priceConfig.pricing.consumer;
@@ -177,6 +205,55 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
     const methods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
     return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
   }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
+
+  const pricingSummary = useMemo(() => {
+    if (!booking.serviceChannel || !booking.urgency) {
+      return { basePrice: 0, surcharges: [], total: 0 };
+    }
+
+    const pricing = priceConfig.pricing;
+    let service: ServiceOffering | null = null;
+
+    if (booking.serviceType === "consumer") {
+      const consumerPricing = pricing.consumer;
+      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
+        service = consumerPricing.remote;
+      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
+        service = consumerPricing.onsite;
+      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
+        service = consumerPricing.onsite;
+      } else if (booking.urgency === "spoed") {
+        service = consumerPricing.emergency;
+      }
+    } else if (booking.serviceType === "business") {
+      const businessPricing = pricing.business;
+      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
+        service = businessPricing.remote;
+      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
+        service = businessPricing.onsite;
+      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
+        service = businessPricing.onsite;
+      } else if (booking.urgency === "spoed") {
+        service = businessPricing.emergency;
+      }
+    }
+
+    const basePrice = service?.price.amount || 0;
+    const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+    if (booking.urgency === "snel" && basePrice > 0) {
+      const speedSurcharge = Math.round(basePrice * 0.25);
+      surcharges.push({
+        id: "speed",
+        label: "Snelheidsopslag",
+        amount: speedSurcharge,
+      });
+    }
+
+    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0);
+
+    return { basePrice, surcharges, total };
+  }, [booking.serviceChannel, booking.urgency, booking.serviceType, priceConfig]);
 
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
@@ -238,7 +315,8 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       setBooking({
         problemCategory: "",
         serviceType: "consumer",
-        deliveryMethod: "",
+        serviceChannel: "",
+        urgency: "",
         date: undefined,
         timeSlot: "",
         firstName: "",
@@ -348,7 +426,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   </div>
                   {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className="px-4 py-4 text-sm bg-primary/80 space-y-1">
+                <li className="px-4 py-4 text-sm bg-blue-100 text-blue-900 space-y-1">
                   <p className="opacity-100">Liever direct contact?</p>
                   <a className="block opacity-80 hover:opacity-100 transition-opacity" href={contactInfo.phoneHref}>
                     {contactInfo.phoneLabel}

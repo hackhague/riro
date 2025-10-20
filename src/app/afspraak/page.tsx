@@ -1,33 +1,21 @@
-import type { Metadata } from "next";
+'use client';
+
+import { useSearchParams } from "next/navigation";
 import AppointmentWizard from "@/components/AppointmentWizard";
 
-type AfspraakPageProps = {
-  searchParams?: Record<string, string | string[] | undefined>;
-};
+export default function Afspraak() {
+  const searchParams = useSearchParams();
 
-export const metadata: Metadata = {
-  title: "Plan een afspraak",
-  description:
-    "Plan vandaag nog een afspraak. Kies je dienst, selecteer datum en tijdslot en vul je gegevens in.",
-  alternates: {
-    canonical: "https://www.instantit.nl/afspraak",
-  },
-};
-
-export default function Afspraak({ searchParams }: AfspraakPageProps) {
-  const params = searchParams ?? {};
-  const normalize = (value: string | string[] | undefined) => {
-    if (Array.isArray(value)) return value[0];
+  const normalize = (value: string | null) => {
     return value;
   };
-
   const initialState = {
-    problemCategory: normalize(params.category),
-    serviceType: normalize(params.type),
-    serviceChannel: normalize(params.channel),
-    urgency: normalize(params.speed),
-    date: normalize(params.date),
-    timeSlot: normalize(params.slot),
+    problemCategory: normalize(searchParams.get("category")),
+    serviceType: normalize(searchParams.get("type")),
+    serviceChannel: normalize(searchParams.get("channel")),
+    urgency: normalize(searchParams.get("speed")),
+    date: normalize(searchParams.get("date")),
+    timeSlot: normalize(searchParams.get("slot")),
   };
 
   return (
