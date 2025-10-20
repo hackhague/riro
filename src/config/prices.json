@@ -1,0 +1,459 @@
+{
+  "currency": "EUR",
+  "updatedAt": "2024-12-01",
+  "services": [
+    {
+      "id": "remote_support",
+      "name": "Computerhulp op afstand",
+      "category": "support",
+      "description": "Veilige schermdeling voor snelle hulp op afstand.",
+      "consumer": {
+        "amount": 39,
+        "unit": "per 30 min",
+        "includesVat": true,
+        "minimumMinutes": 30,
+        "cap": 99,
+        "overage": {
+          "amount": 1,
+          "per": "minute",
+          "includesVat": true,
+          "notes": "Na de eerste 30 minuten rekentijd per minuut, met maximum €99."
+        },
+        "notes": "Minimum 30 minuten, daarna per minuut tot een maximum van €99."
+      },
+      "business": {
+        "amount": 35,
+        "unit": "per 30 min",
+        "includesVat": false,
+        "minimumMinutes": 30,
+        "cap": 99,
+        "overage": {
+          "amount": 17.5,
+          "per": "15 minutes",
+          "includesVat": false,
+          "notes": "Facturatie per kwartier na de eerste 30 minuten."
+        },
+        "notes": "Zakelijke remote support met vaste cap van €99 excl. btw."
+      },
+      "tags": ["remote", "core"]
+    },
+    {
+      "id": "on_site_support",
+      "name": "Computerhulp aan huis",
+      "category": "support",
+      "description": "Bezoek aan huis in Haaglanden, inclusief diagnose.",
+      "consumer": {
+        "amount": 59,
+        "unit": "per 45 min",
+        "includesVat": true,
+        "minimumMinutes": 45,
+        "overage": {
+          "amount": 17.25,
+          "per": "15 minutes",
+          "includesVat": true,
+          "notes": "Toeslag per kwartier na de eerste 45 minuten."
+        }
+      },
+      "business": {
+        "amount": 79,
+        "unit": "per 60 min",
+        "includesVat": false,
+        "minimumMinutes": 60,
+        "overage": {
+          "amount": 20,
+          "per": "15 minutes",
+          "includesVat": false,
+          "notes": "Zakelijke facturatie per kwartier na het eerste uur."
+        }
+      },
+      "tags": ["on-site", "core"]
+    },
+    {
+      "id": "on_site_spoed",
+      "name": "IT spoedhulp op locatie",
+      "category": "support",
+      "description": "Prioritaire interventie bij urgente storingen.",
+      "consumer": {
+        "amount": 89,
+        "unit": "per 60 min",
+        "includesVat": true,
+        "minimumMinutes": 60,
+        "overage": {
+          "amount": 19.5,
+          "per": "15 minutes",
+          "includesVat": true
+        },
+        "notes": "Spoedafspraak binnen 24 uur gegarandeerd."
+      },
+      "business": {
+        "amount": 89,
+        "unit": "per 60 min",
+        "includesVat": false,
+        "minimumMinutes": 60,
+        "overage": {
+          "amount": 19.5,
+          "per": "15 minutes",
+          "includesVat": false
+        },
+        "notes": "Tarief voor kantoorinterventies buiten reguliere planning."
+      },
+      "tags": ["on-site", "priority"]
+    },
+    {
+      "id": "hack_remote",
+      "name": "Hack-incident remote",
+      "category": "security",
+      "description": "Account recovery, malware-check en rapportage op afstand.",
+      "consumer": {
+        "amount": 149,
+        "unit": "tot 2 uur",
+        "includesVat": true,
+        "overage": {
+          "amount": 30,
+          "per": "15 minutes",
+          "includesVat": true
+        }
+      },
+      "business": {
+        "amount": 199,
+        "unit": "tot 2 uur",
+        "includesVat": false,
+        "overage": {
+          "amount": 30,
+          "per": "15 minutes",
+          "includesVat": false
+        },
+        "notes": "Zakelijke remote triage inclusief forensische triage light."
+      },
+      "tags": ["security", "remote"]
+    },
+    {
+      "id": "hack_on_site",
+      "name": "Hack-incident op locatie",
+      "category": "security",
+      "description": "Volledige herstelscan en verzekeringsrapport op locatie.",
+      "consumer": {
+        "amount": 249,
+        "unit": "tot 2 uur",
+        "includesVat": true,
+        "overage": {
+          "amount": 30,
+          "per": "15 minutes",
+          "includesVat": true
+        }
+      },
+      "business": {
+        "amount": 249,
+        "unit": "tot 2 uur",
+        "includesVat": false,
+        "overage": {
+          "amount": 30,
+          "per": "15 minutes",
+          "includesVat": false
+        },
+        "notes": "Uitgebreide incident response voor MKB, exclusief hardware."
+      },
+      "tags": ["security", "on-site"]
+    },
+    {
+      "id": "cyber_apk_remote",
+      "name": "Cyber-APK remote",
+      "category": "security",
+      "description": "Preventieve veiligheidscheck met updates, backup en 2FA.",
+      "consumer": {
+        "amount": 99,
+        "unit": "vaste prijs",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 149,
+        "unit": "vaste prijs",
+        "includesVat": false,
+        "notes": "Inclusief rapport voor auditlog en aanbevelingen."
+      },
+      "tags": ["security", "remote", "preventive"]
+    },
+    {
+      "id": "cyber_apk_on_site",
+      "name": "Cyber-APK on-site",
+      "category": "security",
+      "description": "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
+      "consumer": {
+        "amount": 149,
+        "unit": "vaste prijs",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 199,
+        "unit": "vaste prijs",
+        "includesVat": false,
+        "notes": "Inclusief netwerkdoormetingen en adviesgesprek."
+      },
+      "tags": ["security", "on-site", "preventive"]
+    },
+    {
+      "id": "antivirus_install_remote",
+      "name": "Antivirus installatie remote",
+      "category": "software",
+      "description": "Installatie of migratie van antivirus via schermdeling.",
+      "consumer": {
+        "amount": 39,
+        "unit": "per 30 min",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 39,
+        "unit": "per 30 min",
+        "includesVat": false,
+        "notes": "Zakelijke ondersteuning voor licentie-uitrol."
+      },
+      "tags": ["remote", "software"]
+    },
+    {
+      "id": "antivirus_install_on_site",
+      "name": "Antivirus installatie op locatie",
+      "category": "software",
+      "description": "On-site installatie inclusief check van bestaande endpoints.",
+      "consumer": {
+        "amount": 59,
+        "unit": "per 60 min",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 65,
+        "unit": "per 60 min",
+        "includesVat": false,
+        "notes": "Facturatie per uur voor grotere uitrol."
+      },
+      "tags": ["on-site", "software"]
+    },
+    {
+      "id": "antivirus_license_eset",
+      "name": "ESET Internet Security licentie",
+      "category": "subscription",
+      "description": "Jaarlicentie voor ESET Internet Security.",
+      "consumer": {
+        "amount": 60,
+        "unit": "per jaar",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 60,
+        "unit": "per jaar",
+        "includesVat": false,
+        "notes": "Licentieprijs exclusief implementatie."
+      },
+      "tags": ["subscription", "security"]
+    },
+    {
+      "id": "antivirus_license_bitdefender",
+      "name": "Bitdefender licentie",
+      "category": "subscription",
+      "description": "Jaarlicentie voor Bitdefender.",
+      "consumer": {
+        "amount": 55,
+        "unit": "per jaar",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 55,
+        "unit": "per jaar",
+        "includesVat": false
+      },
+      "tags": ["subscription", "security"]
+    },
+    {
+      "id": "wifi_optimization",
+      "name": "WiFi optimalisatie",
+      "category": "network",
+      "description": "WiFi-site survey, plan en optimalisatie van apparatuur.",
+      "consumer": {
+        "amount": 149,
+        "unit": "vaste prijs",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 149,
+        "unit": "vaste prijs",
+        "includesVat": false,
+        "notes": "Inclusief rapportage voor kantooromgevingen."
+      },
+      "tags": ["on-site", "network"]
+    },
+    {
+      "id": "wifi_installation_hourly",
+      "name": "WiFi installatie / mesh",
+      "category": "network",
+      "description": "Installatie van routers, access points en mesh-systemen.",
+      "consumer": {
+        "amount": 65,
+        "unit": "per 60 min",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 75,
+        "unit": "per 60 min",
+        "includesVat": false,
+        "notes": "Tarief voor zakelijke netwerkinstallaties."
+      },
+      "tags": ["on-site", "network"]
+    },
+    {
+      "id": "windows_upgrade",
+      "name": "Windows 11 upgrade",
+      "category": "software",
+      "description": "Volledige upgrade inclusief backup, data transfer en tuning.",
+      "consumer": {
+        "amount": 119,
+        "unit": "vaste prijs",
+        "includesVat": true,
+        "notes": "Actieprijs (20% korting t/m december 2025)."
+      },
+      "business": {
+        "amount": 149,
+        "unit": "vaste prijs",
+        "includesVat": false,
+        "notes": "Inclusief planning buiten kantoortijden mogelijk."
+      },
+      "tags": ["project", "software"]
+    },
+    {
+      "id": "training_hourly",
+      "name": "Computerles aan huis",
+      "category": "education",
+      "description": "Persoonlijke begeleiding voor computer, tablet of smartphone.",
+      "consumer": {
+        "amount": 59,
+        "unit": "per 60 min",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 69,
+        "unit": "per 60 min",
+        "includesVat": false,
+        "notes": "Workshops of incompany-training op maat."
+      },
+      "tags": ["education", "on-site"]
+    },
+    {
+      "id": "diagnosis_only",
+      "name": "Diagnose niet opgelost",
+      "category": "support",
+      "description": "Alleen diagnosekosten als het probleem niet kan worden opgelost.",
+      "consumer": {
+        "amount": 19,
+        "unit": "vaste prijs",
+        "includesVat": true
+      },
+      "business": {
+        "amount": 19,
+        "unit": "vaste prijs",
+        "includesVat": false
+      },
+      "tags": ["support", "guarantee"]
+    },
+    {
+      "id": "expat_remote_support",
+      "name": "Remote support (expat)",
+      "category": "support",
+      "description": "Engelstalige hulp op afstand, capped op €99.",
+      "consumer": {
+        "amount": 39,
+        "unit": "per 30 min",
+        "includesVat": true,
+        "cap": 99
+      },
+      "tags": ["remote", "expat"]
+    },
+    {
+      "id": "expat_on_site",
+      "name": "On-site support (expat)",
+      "category": "support",
+      "description": "Engelstalige hulp aan huis in de regio Haaglanden.",
+      "consumer": {
+        "amount": 65,
+        "unit": "per 60 min",
+        "includesVat": true
+      },
+      "tags": ["on-site", "expat"]
+    },
+    {
+      "id": "expat_emergency",
+      "name": "Emergency security (expat)",
+      "category": "security",
+      "description": "24/7 bereikbare spoedlijn, remote interventie binnen 45 min.",
+      "consumer": {
+        "amount": 79,
+        "unit": "per 45 min",
+        "includesVat": true,
+        "cap": 149
+      },
+      "tags": ["security", "expat", "priority"]
+    }
+  ],
+  "bundles": [
+    {
+      "id": "training_package",
+      "name": "Training pakket (5 lessen)",
+      "amount": 270,
+      "includesVat": true,
+      "description": "Vijf lessen aan huis, bespaar €25 t.o.v. losse lessen."
+    },
+    {
+      "id": "business_strip_10",
+      "name": "Strippenkaart 10 uur",
+      "amount": 550,
+      "includesVat": false,
+      "description": "10 uur support voor mkb-klanten (i.p.v. €650)."
+    },
+    {
+      "id": "business_strip_20",
+      "name": "Strippenkaart 20 uur",
+      "amount": 1050,
+      "includesVat": false,
+      "description": "20 uur support voor mkb-klanten (i.p.v. €1.300)."
+    }
+  ],
+  "spoedFees": [
+    {
+      "id": "consumer_on_site_spoed",
+      "audience": "consumer",
+      "amount": 30,
+      "includesVat": true,
+      "description": "Toeslag voor spoedafspraak aan huis binnen 24 uur.",
+      "appliesTo": ["on_site_support", "training_hourly", "wifi_installation_hourly"]
+    },
+    {
+      "id": "consumer_emergency_remote",
+      "audience": "consumer",
+      "amount": 40,
+      "includesVat": true,
+      "description": "Toeslag voor nacht/weekend remote ondersteuning.",
+      "appliesTo": ["remote_support", "hack_remote", "expat_remote_support"]
+    },
+    {
+      "id": "business_on_site_spoed",
+      "audience": "business",
+      "amount": 10,
+      "includesVat": false,
+      "description": "Toeslag voor spoedbezoek op kantoor binnen 24 uur.",
+      "appliesTo": ["on_site_support"]
+    },
+    {
+      "id": "business_emergency_on_site",
+      "audience": "business",
+      "amount": 120,
+      "includesVat": false,
+      "description": "Vast tarief voor spoedinterventie (max 2 uur) buiten kantoortijd.",
+      "appliesTo": ["on_site_support", "hack_on_site", "cyber_apk_on_site"]
+    },
+    {
+      "id": "business_first_response",
+      "audience": "business",
+      "amount": 499,
+      "includesVat": false,
+      "description": "First Response pakket (4 uur on-site + rapport).",
+      "appliesTo": ["hack_on_site", "cyber_apk_on_site"]
+    }
+  ]
+}

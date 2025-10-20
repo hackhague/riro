@@ -13,6 +13,7 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
+import { usePrices } from "@/hooks/use-prices";
 
 type ServiceType = "particulier" | "zakelijk";
 
@@ -36,51 +37,61 @@ interface ServiceCard {
 
 export function HomepageServicesClient() {
   const [serviceType, setServiceType] = useState<ServiceType>("particulier");
+  const priceConfig = usePrices();
+  const consumerPricing = priceConfig.pricing.consumer;
+  const businessPricing = priceConfig.pricing.business;
+  const incidentPricing = priceConfig.pricing.security.incident;
+  const contactInfo = priceConfig.contact;
+
+  const formatSubtitle = (offering: typeof consumerPricing.remote) => offering.tagline;
+
+  const formatPriceSubtitle = (offering: typeof consumerPricing.remote) => {
+    const parts = [offering.price.unit, offering.price.extra].filter(Boolean);
+    return parts.join(" • ");
+  };
 
   const particulierServices: ServiceCard[] = [
     {
-      id: "hulp-aan-huis",
+      id: consumerPricing.onsite.id,
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
-      title: "Computerhulp aan huis",
-      subtitle: "Met afspraak • 48–72 uur",
-      price: "€59",
-      priceSubtitle: "Eerste 45 min • daarna €17,25 per 15 min",
-      description:
-        "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten.",
+      title: consumerPricing.onsite.label,
+      subtitle: formatSubtitle(consumerPricing.onsite),
+      price: consumerPricing.onsite.price.display,
+      priceSubtitle: formatPriceSubtitle(consumerPricing.onsite),
+      description: consumerPricing.onsite.summary,
       features: [
-        "Expert diagnose & oplossing",
-        "Transparante per-minuut afrekening",
-        "Gratis 7 dagen nazorg",
+        "Expertdiagnose op locatie",
+        "Transparante opvolging en nazorg",
+        consumerPricing.diagnosis.bookingSummary,
       ],
       links: [
         { label: "Meer info", href: "/computerhulp", variant: "default" },
-        { label: "Maak afspraak", href: "/afspraak", variant: "outline" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
       ],
     },
     {
-      id: "spoedhulp-aan-huis",
+      id: consumerPricing.emergency.id,
       icon: <Zap className="h-6 w-6 text-primary" />,
-      title: "IT Spoedhulp aan huis",
-      subtitle: "Op locatie • Binnen 24-48 uur",
-      price: "€89",
-      priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
-      description:
-        "Snel ter plaatse voor acute problemen. Geen afspraak nodig – we bellen direct terug.",
+      title: consumerPricing.emergency.label,
+      subtitle: formatSubtitle(consumerPricing.emergency),
+      price: consumerPricing.emergency.price.display,
+      priceSubtitle: formatPriceSubtitle(consumerPricing.emergency),
+      description: consumerPricing.emergency.summary,
       features: [
-        "Spoedeisend ter plaatse",
-        "Geen afspraak nodig",
-        "Gratis 7 dagen nazorg",
+        "Prioriteit bij storingen",
+        "Telefonische triage binnen minuten",
+        "Nazorg van 7 dagen inbegrepen",
       ],
       links: [
         {
-          label: "Bel nu - 070 211 9191",
-          href: "tel:+31702119191",
+          label: contactInfo.phoneLabel,
+          href: contactInfo.phoneHref,
           variant: "default",
           icon: <Phone className="h-4 w-4" />,
         },
         {
-          label: "WhatsApp",
-          href: "https://wa.me/31702119191",
+          label: priceConfig.contact.whatsappLabel,
+          href: priceConfig.contact.whatsappHref,
           variant: "outline",
           icon: <MessageCircle className="h-4 w-4" />,
         },
@@ -88,48 +99,46 @@ export function HomepageServicesClient() {
       isPopular: true,
     },
     {
-      id: "hulp-op-afstand",
+      id: consumerPricing.remote.id,
       icon: <Laptop className="h-6 w-6 text-primary" />,
-      title: "Computerhulp op afstand",
-      subtitle: "Remote • 10–30 minuten reactie",
-      price: "€35",
-      priceSubtitle: "Eerste 30 min • daarna €15 per 15 min",
-      description:
-        "Snelle remote hulp met lage instapkosten. Veilige versleutelde verbinding.",
+      title: consumerPricing.remote.label,
+      subtitle: formatSubtitle(consumerPricing.remote),
+      price: consumerPricing.remote.price.display,
+      priceSubtitle: formatPriceSubtitle(consumerPricing.remote),
+      description: consumerPricing.remote.summary,
       features: [
-        "Snelle respons (meestal direct)",
-        "Lage instapprijs – geen drempel",
-        "Live uitleg & 7 dagen nazorg",
+        "Snelle respons, meestal direct",
+        "Cap €99 en altijd vooraf duidelijk",
+        "Live uitleg met beveiligde verbinding",
       ],
       links: [
         { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
         {
           label: "Start nu",
-          href: "https://wa.me/31702119191?text=Ik%20heb%20nu%20hulp%20nodig%20op%20afstand",
+          href: `${priceConfig.contact.whatsappHref}?text=Ik%20heb%20nu%20hulp%20op%20afstand%20nodig`,
           variant: "outline",
           icon: <MessageCircle className="h-4 w-4" />,
         },
       ],
     },
     {
-      id: "hackservice",
+      id: incidentPricing.id,
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: "Hackservice & Cyberherstel",
-      subtitle: "Spoed • 24/7 beschikbaar",
-      price: "Neem contact op voor prijsopgave",
-      priceSubtitle: "Afhankelijk van schadeomvang",
-      description:
-        "Gehackt? Virus, malware, ransomware? Wij helpen 24/7 met spoedreparatie & beveiging. Schadeomvang bepaalt exacte tarief.",
+      title: incidentPricing.label,
+      subtitle: incidentPricing.tagline,
+      price: incidentPricing.price.display,
+      priceSubtitle: incidentPricing.price.unit ?? "",
+      description: incidentPricing.summary,
       features: [
-        "24/7 cybersteun",
-        "Malware verwijdering & verharding",
-        "Rapport voor verzekering",
+        "24/7 bereikbare incidentlijn",
+        "Forensics, herstel en hardening",
+        "Rapportage voor verzekeraar of management",
       ],
       links: [
         { label: "Meer info", href: "/ik-ben-gehackt", variant: "default" },
         {
-          label: "Bel SPOED",
-          href: "tel:+31702119191",
+          label: contactInfo.phoneLabel,
+          href: contactInfo.phoneHref,
           variant: "outline",
           icon: <Phone className="h-4 w-4" />,
         },
@@ -139,48 +148,46 @@ export function HomepageServicesClient() {
 
   const zakelijkServices: ServiceCard[] = [
     {
-      id: "it-support-kantoor",
+      id: businessPricing.onsite.id,
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
-      title: "IT-support aan kantoor",
-      subtitle: "Met afspraak • 48–72 uur",
-      price: "€79",
-      priceSubtitle: "Eerste uur • daarna €20 per 15 min (ex btw)",
-      description:
-        "Professionele IT-ondersteuning op uw kantoorlocatie in Haaglanden. Geen voorrijkosten.",
+      title: businessPricing.onsite.label,
+      subtitle: formatSubtitle(businessPricing.onsite),
+      price: businessPricing.onsite.price.display,
+      priceSubtitle: formatPriceSubtitle(businessPricing.onsite),
+      description: businessPricing.onsite.summary,
       features: [
-        "Expert diagnose & zakelijke oplossingen",
-        "Realistische marge & professioneel tarief",
-        "Volledige transparantie & documentatie",
+        "Documentatie en kennisoverdracht",
+        "Vaste tarieven zonder voorrijkosten",
+        "Service op locatie in Haaglanden",
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },
-        { label: "Maak afspraak", href: "/afspraak", variant: "outline" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
       ],
     },
     {
-      id: "spoedhulp-kantoor",
+      id: businessPricing.emergency.id,
       icon: <Zap className="h-6 w-6 text-primary" />,
-      title: "IT Spoedhulp kantoor",
-      subtitle: "Op locatie • Binnen 24-48 uur",
-      price: "€89",
-      priceSubtitle: "Eerste uur • daarna €19,50 per 15 min",
-      description:
-        "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig – we bellen direct terug.",
+      title: businessPricing.emergency.label,
+      subtitle: formatSubtitle(businessPricing.emergency),
+      price: businessPricing.emergency.price.display,
+      priceSubtitle: formatPriceSubtitle(businessPricing.emergency),
+      description: businessPricing.emergency.summary,
       features: [
-        "Spoedeisend ter plaatse",
-        "Business-prioriteit",
-        "Gratis 7 dagen nazorg",
+        "Prioriteit voor bedrijfskritische storingen",
+        "Telefonische triage zonder wachttijd",
+        "Rapportage voor directie of verzekeraar",
       ],
       links: [
         {
-          label: "Bel nu - 070 211 9191",
-          href: "tel:+31702119191",
+          label: contactInfo.phoneLabel,
+          href: contactInfo.phoneHref,
           variant: "default",
           icon: <Phone className="h-4 w-4" />,
         },
         {
-          label: "WhatsApp",
-          href: "https://wa.me/31702119191?text=Zakelijke%20IT-spoed",
+          label: priceConfig.contact.whatsappLabel,
+          href: `${priceConfig.contact.whatsappHref}?text=Zakelijke%20IT-spoed`,
           variant: "outline",
           icon: <MessageCircle className="h-4 w-4" />,
         },
@@ -188,33 +195,32 @@ export function HomepageServicesClient() {
       isPopular: true,
     },
     {
-      id: "it-support-afstand",
+      id: businessPricing.remote.id,
       icon: <Laptop className="h-6 w-6 text-primary" />,
-      title: "IT-support op afstand",
-      subtitle: "Remote • 10–30 minuten reactie",
-      price: "€35",
-      priceSubtitle: "Eerste 30 min • daarna €17,50 per 15 min (ex btw)",
-      description:
-        "Snelle remote support voor zakelijke systemen. Veilige versleutelde verbinding.",
+      title: businessPricing.remote.label,
+      subtitle: formatSubtitle(businessPricing.remote),
+      price: businessPricing.remote.price.display,
+      priceSubtitle: formatPriceSubtitle(businessPricing.remote),
+      description: businessPricing.remote.summary,
       features: [
-        "Snelle respons (meestal direct)",
-        "Consistent met particuliere structuur",
-        "Live ondersteuning & zakelijke nazorg",
+        "Snelle remote toegang met logging",
+        "Rapportage per sessie",
+        "Documentatie voor uw team",
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },
         {
           label: "Start nu",
-          href: "https://wa.me/31702119191?text=Zakelijke%20IT-hulp%20nodig%20op%20afstand",
+          href: `${priceConfig.contact.whatsappHref}?text=Zakelijke%20remote%20support`,
           variant: "outline",
           icon: <MessageCircle className="h-4 w-4" />,
         },
       ],
     },
     {
-      id: "cybersecurity-zakelijk",
+      id: incidentPricing.id,
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: "Cybersecurity & Incident Response",
+      title: "Directe hulp bij gehackt (zakelijk)",
       subtitle: "Spoed • 24/7 beschikbaar",
       price: "Neem contact op voor prijsopgave",
       priceSubtitle: "Afhankelijk van schadeomvang",
@@ -222,14 +228,14 @@ export function HomepageServicesClient() {
         "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [
         "24/7 cybersteun",
-        "Incident response & forensics",
+        "Herstel bij hacks & forensics",
         "Beveiligingsaudit & rapportage",
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },
         {
-          label: "Bel SPOED",
-          href: "tel:+31702119191",
+          label: contactInfo.phoneLabel,
+          href: contactInfo.phoneHref,
           variant: "outline",
           icon: <Phone className="h-4 w-4" />,
         },
@@ -244,7 +250,7 @@ export function HomepageServicesClient() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">
-            Hoe kan InstantIT je helpen?
+            Hoe kan InstantIT u helpen?
           </h2>
 
           {/* Toggle Buttons */}
