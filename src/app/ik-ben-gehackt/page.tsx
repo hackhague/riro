@@ -167,14 +167,29 @@ export default function IkBenGehackt(): JSX.Element {
             <div>
               <div className="inline-flex items-center gap-2 bg-destructive/20 text-destructive px-4 py-2 rounded-full mb-4">
                 <Zap className="h-4 w-4" />
-                <span className="font-semibold text-sm">Spoedlijn</span>
+                <span className="font-semibold text-sm">Spoedlijn 24/7</span>
               </div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
                 Gehackt? Direct hulp — Den Haag
               </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                We starten meestal binnen <strong>60 minuten</strong> op afstand. Als nodig, op locatie binnen <strong>24–48 uur</strong>.
+              <p className="text-lg md:text-xl text-foreground/80 mb-6">
+                We starten meestal binnen <strong>60 minuten</strong> op afstand. Wachtwoorden herstellen, accounts beveiligen, virussen verwijderen.
               </p>
+
+              <ul className="space-y-2 mb-8">
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <Clock className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Binnen 60 minuten starten op afstand, meestal dezelfde dag aan huis</span>
+                </li>
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <Shield className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Vaste tarieven, geen verrassingen. Incidentrapport voor verzekering.</span>
+                </li>
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Betaal nooit losgeld. Bel ons eerst — wij weten wat je moet doen.</span>
+                </li>
+              </ul>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
@@ -194,11 +209,6 @@ export default function IkBenGehackt(): JSX.Element {
                   </a>
                 </Button>
               </div>
-
-              <p className="text-sm text-foreground/60 mt-4">
-                <AlertTriangle className="h-4 w-4 inline mr-1" />
-                Betaal <strong>nooit</strong> losgeld zonder eerst met ons te overleggen.
-              </p>
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-destructive/20">
