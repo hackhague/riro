@@ -18,12 +18,23 @@ import {
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? "" : section);
+  };
+
+  const toggleExpandedItem = (itemPath: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(itemPath)) {
+      newExpanded.delete(itemPath);
+    } else {
+      newExpanded.add(itemPath);
+    }
+    setExpandedItems(newExpanded);
   };
 
   const menuSections = {
@@ -234,14 +245,28 @@ export const Navigation = () => {
                   <div className="mt-1 space-y-1">
                     {menuSections.particulier.map((item) => (
                       <div key={`${item.path}-${item.label}`}>
-                        <Link
-                          href={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                        >
-                          {item.label}
-                        </Link>
-                        {item.subitems && (
+                        {item.subitems ? (
+                          <button
+                            onClick={() => toggleExpandedItem(item.path)}
+                            className="flex items-center justify-between w-full px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                            <ChevronDown
+                              className={`h-4 w-4 transition-transform ${
+                                expandedItems.has(item.path) ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                          </Link>
+                        )}
+                        {item.subitems && expandedItems.has(item.path) && (
                           <div className="ml-4 space-y-1 border-l border-border pl-2 mt-1">
                             {item.subitems.map((subitem) => (
                               <Link
