@@ -131,7 +131,7 @@ export default function HelpdeskFraude() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {redFlags.map((flag, i) => (
-              <Card key={i} className="border-l-4 border-l-red-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
                   <div className="text-4xl mb-3">{flag.icon}</div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{flag.title}</h3>
