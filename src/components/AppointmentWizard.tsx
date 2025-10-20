@@ -263,15 +263,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     if (booking.addCyberApk) {
       if (booking.serviceType === "consumer") {
         if (booking.serviceChannel === "remote") {
-          cyberApkPrice = Math.round(99 * 0.5);
+          cyberApkPrice = 3950;
         } else if (booking.serviceChannel === "onsite") {
-          cyberApkPrice = Math.round(149 * 0.5);
+          cyberApkPrice = 4950;
         }
       } else if (booking.serviceType === "business") {
         if (booking.serviceChannel === "remote") {
-          cyberApkPrice = Math.round(199 * 0.5);
+          cyberApkPrice = 14950;
         } else if (booking.serviceChannel === "onsite") {
-          cyberApkPrice = Math.round(249 * 0.5);
+          cyberApkPrice = 22450;
         }
       }
     }
