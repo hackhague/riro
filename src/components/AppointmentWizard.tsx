@@ -264,15 +264,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       const cyberApkPricing = pricing.cyberApk;
       if (booking.serviceType === "consumer") {
         if (booking.serviceChannel === "remote" && cyberApkPricing.remote.price.amount) {
-          cyberApkPrice = Math.round(cyberApkPricing.remote.price.amount * 0.5 * 100);
+          cyberApkPrice = Math.round(cyberApkPricing.remote.price.amount * 0.5 * 100) / 100;
         } else if (booking.serviceChannel === "onsite" && cyberApkPricing.onsite.price.amount) {
-          cyberApkPrice = Math.round(cyberApkPricing.onsite.price.amount * 0.5 * 100);
+          cyberApkPrice = Math.round(cyberApkPricing.onsite.price.amount * 0.5 * 100) / 100;
         }
       } else if (booking.serviceType === "business") {
         if (booking.serviceChannel === "remote" && cyberApkPricing.businessRemote.price.amount) {
-          cyberApkPrice = Math.round(cyberApkPricing.businessRemote.price.amount * 0.5 * 100);
+          cyberApkPrice = Math.round(cyberApkPricing.businessRemote.price.amount * 0.5 * 100) / 100;
         } else if (booking.serviceChannel === "onsite" && cyberApkPricing.businessOnsite.price.amount) {
-          cyberApkPrice = Math.round(cyberApkPricing.businessOnsite.price.amount * 0.5 * 100);
+          cyberApkPrice = Math.round(cyberApkPricing.businessOnsite.price.amount * 0.5 * 100) / 100;
         }
       }
     }
