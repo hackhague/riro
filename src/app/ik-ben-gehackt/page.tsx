@@ -24,12 +24,12 @@ export const metadata: Metadata = {
 
 export default function IkBenGehackt(): JSX.Element {
   const helpServiceBlocks = [
-    { title: "Phishing & Verdachte E-mails", href: "/phishing-hulp", image: "/images/services/phishing.jpg" },
-    { title: "Instagram Account Gehackt", href: "/instagram-gehackt", image: "/images/services/instagram.jpg" },
-    { title: "E-mail Account Gehackt", href: "/email-gehackt", image: "/images/services/email.jpg" },
-    { title: "WhatsApp Fraude & Nep-berichten", href: "/whatsapp-fraude", image: "/images/services/whatsapp.jpg" },
-    { title: "Ransomware & Versleutelde Bestanden", href: "/ransomware-hulp", image: "/images/services/ransomware.jpg" },
-    { title: "Helpdesk Fraude & Nep-Technici", href: "/helpdesk-fraude", image: "/images/services/helpdesk.jpg" },
+    { title: "Phishing & Verdachte E-mails", href: "/phishing-hulp", image: "/images/services/phishing.svg" },
+    { title: "Instagram Account Gehackt", href: "/instagram-gehackt", image: "/images/services/instagram.svg" },
+    { title: "E-mail Account Gehackt", href: "/email-gehackt", image: "/images/services/email.svg" },
+    { title: "WhatsApp Fraude & Nep-berichten", href: "/whatsapp-fraude", image: "/images/services/whatsapp.svg" },
+    { title: "Ransomware & Versleutelde Bestanden", href: "/ransomware-hulp", image: "/images/services/ransomware.svg" },
+    { title: "Helpdesk Fraude & Nep-Technici", href: "/helpdesk-fraude", image: "/images/services/helpdesk.svg" },
   ];
 
   const signs = [
