@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
+import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, ArrowUpRight, Lock, Eye, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-hack.jpg";
@@ -21,17 +23,22 @@ export const metadata: Metadata = {
 };
 
 export default function IkBenGehackt(): JSX.Element {
-  // --- META (zet in head)
-  // title: "Ik ben gehackt? Direct hulp in Den Haag | InstantIT"
-  // description: "Gehackt? We starten meestal binnen 60 min op afstand. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
+  const helpServiceBlocks = [
+    { title: "Phishing & Verdachte E-mails", href: "/phishing-hulp", image: "/images/services/phishing.jpg" },
+    { title: "Instagram Account Gehackt", href: "/instagram-gehackt", image: "/images/services/instagram.jpg" },
+    { title: "E-mail Account Gehackt", href: "/email-gehackt", image: "/images/services/email.jpg" },
+    { title: "WhatsApp Fraude & Nep-berichten", href: "/whatsapp-fraude", image: "/images/services/whatsapp.jpg" },
+    { title: "Ransomware & Versleutelde Bestanden", href: "/ransomware-hulp", image: "/images/services/ransomware.jpg" },
+    { title: "Helpdesk Fraude & Nep-Technici", href: "/helpdesk-fraude", image: "/images/services/helpdesk.jpg" },
+  ];
 
   const signs = [
-    "Je kunt niet meer inloggen op je account",
-    "Je ziet vreemde uitgaven of onbekende betalingen",
-    "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen",
-    "De computer geeft steeds waarschuwingen over virussen",
-    "Vrienden zeggen dat ze rare berichten van jou krijgen",
-    "Je camera of microfoon doet dingen zonder dat je dat wilt",
+    { icon: Lock, text: "Je kunt niet meer inloggen op je account" },
+    { icon: AlertCircle, text: "Je ziet vreemde uitgaven of onbekende betalingen" },
+    { icon: Lock, text: "Je bestanden zijn vergrendeld en je krijgt een boodschap over geld betalen" },
+    { icon: AlertTriangle, text: "De computer geeft steeds waarschuwingen over virussen" },
+    { icon: MessageCircle, text: "Vrienden zeggen dat ze rare berichten van jou krijgen" },
+    { icon: Eye, text: "Je camera of microfoon doet dingen zonder dat je dat wilt" },
   ];
 
   const steps = [
@@ -96,54 +103,26 @@ export default function IkBenGehackt(): JSX.Element {
     ],
   });
 
-  const serviceOfferLd = {
-    ...serviceOfferJsonLd({
-      name: "Directe hulp bij gehackt",
-      description: "Hulp bij gehackte accounts, ransomware en spoedbeveiliging.",
-      serviceType: "Directe hulp bij gehackt",
-      areaServed: "Haaglanden",
-      offers: [
-        {
-          name: PRICE_TIERS.hackedRemote.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedRemote.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedRemote.href}`,
-          description: PRICE_TIERS.hackedRemote.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedOnsite.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedOnsite.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedOnsite.href}`,
-          description: PRICE_TIERS.hackedOnsite.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedBusiness.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedBusiness.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedBusiness.href}`,
-          description: PRICE_TIERS.hackedBusiness.subline,
-        },
-        {
-          name: PRICE_TIERS.hackedFirstResponse.label,
-          price: toSchemaPrice(PRICE_TIERS.hackedFirstResponse.price),
-          priceCurrency: "EUR",
-          url: `https://www.instantit.nl${PRICE_TIERS.hackedFirstResponse.href}`,
-          description: PRICE_TIERS.hackedFirstResponse.subline,
-        },
-      ],
-    }),
-    provider: {
-      "@type": "LocalBusiness",
-      name: "InstantIT",
-      telephone: "+31 70 211 9191",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Den Haag",
-        addressCountry: "NL",
+  const serviceOfferLd = serviceOfferJsonLd({
+    name: "Directe hulp bij gehackt",
+    description: "Hulp bij gehackte accounts, ransomware en spoedbeveiliging.",
+    serviceType: "Directe hulp bij gehackt",
+    areaServed: "Haaglanden",
+    offers: [
+      {
+        name: "Hack-incident remote",
+        price: "149.00",
+        priceCurrency: "EUR",
+        description: "Account recovery, malware-check en rapportage op afstand.",
       },
-    },
-  };
+      {
+        name: "Hack-incident op locatie",
+        price: "249.00",
+        priceCurrency: "EUR",
+        description: "Volledige herstelscan en verzekeringsrapport op locatie.",
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen">
@@ -160,14 +139,29 @@ export default function IkBenGehackt(): JSX.Element {
             <div>
               <div className="inline-flex items-center gap-2 bg-destructive/20 text-destructive px-4 py-2 rounded-full mb-4">
                 <Zap className="h-4 w-4" />
-                <span className="font-semibold text-sm">Spoedlijn</span>
+                <span className="font-semibold text-sm">Spoedlijn 24/7</span>
               </div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
                 Gehackt? Direct hulp — Den Haag
               </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                We starten meestal binnen <strong>60 minuten</strong> op afstand. Als nodig, op locatie binnen <strong>24–48 uur</strong>.
+              <p className="text-lg md:text-xl text-foreground/80 mb-6">
+                We starten meestal binnen <strong>60 minuten</strong> op afstand. Wachtwoorden herstellen, accounts beveiligen, virussen verwijderen.
               </p>
+
+              <ul className="space-y-2 mb-8">
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <Clock className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Binnen 60 minuten starten op afstand, meestal dezelfde dag aan huis</span>
+                </li>
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <Shield className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Vaste tarieven, geen verrassingen. Incidentrapport voor verzekering.</span>
+                </li>
+                <li className="flex items-start gap-2 text-foreground/80">
+                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                  <span>Betaal nooit losgeld. Bel ons eerst — wij weten wat je moet doen.</span>
+                </li>
+              </ul>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
@@ -187,11 +181,6 @@ export default function IkBenGehackt(): JSX.Element {
                   </a>
                 </Button>
               </div>
-
-              <p className="text-sm text-foreground/60 mt-4">
-                <AlertTriangle className="h-4 w-4 inline mr-1" />
-                Betaal <strong>nooit</strong> losgeld zonder eerst met ons te overleggen.
-              </p>
             </div>
 
             <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-destructive/20">
@@ -208,33 +197,23 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
-      <PriceBox />
-
-      {/* LLM-answer card (zichtbaar en kort) */}
-      <section className="py-6">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="rounded-lg border p-4 bg-white">
-            <p className="font-medium">Kort & direct</p>
-            <p className="mb-2">Wie: Particulieren en kleine bedrijven in Haaglanden.</p>
-            <p className="mb-2">Wat: Account herstel, malware verwijderen en een kort rapport.</p>
-            <p>Wanneer: Op afstand meestal binnen 60 min. Op locatie binnen 24–48 uur als nodig.</p>
-          </div>
-        </div>
-      </section>
 
       {/* Signs */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tekenen dat er iets mis is</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {signs.map((s, i) => (
-              <Card key={i}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{s}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {signs.map((sign, i) => {
+              const IconComponent = sign.icon;
+              return (
+                <Card key={i}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{sign.text}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -261,6 +240,9 @@ export default function IkBenGehackt(): JSX.Element {
           </p>
         </div>
       </section>
+
+      {/* Specific Help Services */}
+      <OtherServicesGrid serviceBlocks={helpServiceBlocks} showCTA={true} />
 
       {/* FAQ (visual) */}
       <section className="py-12 md:py-16">

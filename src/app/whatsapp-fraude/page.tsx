@@ -89,11 +89,11 @@ export default function WhatsAppFraude() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-green-50 to-background py-16 md:py-20">
+      <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <MessageCircle className="h-8 w-8 text-green-600" />
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <MessageCircle className="h-8 w-8 text-primary" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
               WhatsApp Fraude – Nep-Berichten
@@ -127,10 +127,10 @@ export default function WhatsAppFraude() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {redFlags.map((flag, i) => (
-              <Card key={i} className="border-l-4 border-l-green-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
-                  <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-                    <AlertTriangle className="h-5 w-5 text-green-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                    <AlertTriangle className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{flag.title}</h3>
                   <p className="text-sm text-foreground/70">{flag.description}</p>

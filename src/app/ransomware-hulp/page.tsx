@@ -73,11 +73,11 @@ export default function RansomwareHulp() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-red-50 to-background py-16 md:py-20">
+      <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Lock className="h-8 w-8 text-red-600" />
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Lock className="h-8 w-8 text-primary" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
               Ransomware – Je Bestanden Zijn Vergrendeld
@@ -111,10 +111,10 @@ export default function RansomwareHulp() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {warningsSigns.map((sign, i) => (
-              <Card key={i} className="border-l-4 border-l-red-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-3">
-                    <AlertTriangle className="h-5 w-5 text-red-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-3">
+                    <AlertTriangle className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{sign.title}</h3>
                   <p className="text-sm text-foreground/70">{sign.description}</p>
@@ -136,10 +136,10 @@ export default function RansomwareHulp() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {immediateSteps.map((item, i) => (
-              <Card key={i} className="border-destructive/30">
+              <Card key={i} className="border-primary/30">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-xl font-bold text-destructive">{item.step}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-xl font-bold text-primary">{item.step}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-center mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/70 text-center">{item.description}</p>
@@ -201,7 +201,7 @@ export default function RansomwareHulp() {
       />
 
       {/* Final CTA */}
-      <section className="py-16 bg-destructive text-destructive-foreground">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">
             NIET betalen – Bel ons direct
@@ -210,10 +210,10 @@ export default function RansomwareHulp() {
             Ransomware is specialistwork. We hebben tools en ervaring om je bestanden mischien terug te krijgen.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-destructive-foreground text-destructive-foreground hover:bg-destructive-foreground hover:text-destructive">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="/afspraak">Spoedafspraak</a>
             </Button>
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-destructive-foreground text-destructive-foreground hover:bg-destructive-foreground hover:text-destructive">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">Bel direct 070 211 9191</a>
             </Button>
           </div>

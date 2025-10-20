@@ -93,11 +93,11 @@ export default function HelpdeskFraude() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-red-50 to-background py-16 md:py-20">
+      <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <AlertTriangle className="h-8 w-8 text-red-600" />
+            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <AlertTriangle className="h-8 w-8 text-primary" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
               Helpdesk Fraude – De Vals Technici
@@ -131,7 +131,7 @@ export default function HelpdeskFraude() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {redFlags.map((flag, i) => (
-              <Card key={i} className="border-l-4 border-l-red-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
                   <div className="text-4xl mb-3">{flag.icon}</div>
                   <h3 className="font-heading font-semibold text-lg mb-2">{flag.title}</h3>
@@ -169,7 +169,7 @@ export default function HelpdeskFraude() {
       </section>
 
       {/* With Data */}
-      <section className="py-12 md:py-16 bg-destructive/5">
+      <section className="py-12 md:py-16 bg-primary/5">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
             Je hebt gevoelige gegevens gegeven
@@ -179,10 +179,10 @@ export default function HelpdeskFraude() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {stepsWithData.map((item, i) => (
-              <Card key={i} className="border-destructive/20">
+              <Card key={i} className="border-primary/20">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-xl font-bold text-destructive">{item.step}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-xl font-bold text-primary">{item.step}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-center mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/70 text-center">{item.description}</p>
