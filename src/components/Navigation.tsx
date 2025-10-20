@@ -14,12 +14,16 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { usePrices } from "@/hooks/use-prices";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const pathname = usePathname();
+  const priceConfig = usePrices();
+  const { contact } = priceConfig;
+  const whatsappDefaultHref = `${contact.whatsappHref}?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met`;
 
   const isActive = (path: string) => pathname === path;
 
@@ -189,19 +193,19 @@ export const Navigation = () => {
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a href="tel:+31702119191">
+              <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
                 <Phone className="h-3.5 w-3.5 mr-1.5" />
-                070 211 9191
+                {contact.phoneNumber}
               </a>
             </Button>
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a
-                href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
+                href={whatsappDefaultHref}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                Whatsapp Ons
+                {contact.whatsappLabel}
               </a>
             </Button>
           </div>
@@ -357,19 +361,19 @@ export const Navigation = () => {
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href="tel:+31702119191">
+                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
                     <Phone className="h-3.5 w-3.5 mr-1.5" />
-                    070 211 9191
+                    {contact.phoneNumber}
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
                   <a
-                    href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
+                    href={whatsappDefaultHref}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                    Whatsapp Ons
+                    {contact.whatsappLabel}
                   </a>
                 </Button>
               </div>

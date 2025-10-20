@@ -13,9 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { getHolidayLabel, isDutchHoliday } from "@/lib/helpers/holidays";
-
-const currency = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
+import { usePrices } from "@/hooks/use-prices";
 
 const PROBLEM_CATEGORIES = [
   { id: "hardware", title: "Computer/Laptop Problemen", description: "Trage computer, crash, Windows/Mac issues" },
@@ -30,60 +28,18 @@ const PROBLEM_CATEGORIES = [
 const PROBLEM_IDS = new Set(PROBLEM_CATEGORIES.map((category) => category.id));
 
 const SERVICE_TYPES = [
-  { id: "particulier", label: "Voor mij thuis" },
-  { id: "zakelijk", label: "Voor mijn bedrijf/winkel" },
-] as const;
+  { id: "consumer", label: "Voor thuis (particulier)" },
+  { id: "business", label: "Zakelijk (bedrijf of kantoor)" },
+];
 
-const SERVICE_TYPE_IDS = new Set(SERVICE_TYPES.map((service) => service.id));
-
-const SERVICE_CHANNELS = [
-  {
-    id: "remote",
-    label: "Computerhulp op afstand",
-    description: "Direct via beveiligde schermdeling (30-60 min).",
-  },
-  {
-    id: "onsite",
-    label: "Technicus bij jou op locatie",
-    description: "Binnen Haaglanden, inclusief diagnose op locatie.",
-  },
-] as const;
-
-const SERVICE_CHANNEL_IDS = new Set(SERVICE_CHANNELS.map((channel) => channel.id));
-
-const URGENCY_OPTIONS = [
-  {
-    id: "standard",
-    label: "Standaard planning",
-    description: "Binnen 24–48 uur ingepland tijdens kantooruren.",
-  },
-  {
-    id: "priority",
-    label: "Vandaag of avond",
-    description: "We schuiven in waar mogelijk – vaak dezelfde dag.",
-  },
-  {
-    id: "spoed",
-    label: "Spoed (binnen 2 uur)",
-    description: "We bellen direct en starten binnen 10 minuten.",
-  },
-] as const;
-
-const URGENCY_IDS = new Set(URGENCY_OPTIONS.map((option) => option.id));
-
-const DEFAULT_SLOTS = ["09:00 – 11:00", "11:00 – 13:00", "13:00 – 15:00", "15:00 – 17:00", "18:00 – 20:00"];
-const SPOED_SLOT_LABEL = "Direct – spoedlijn binnen 10 minuten";
-
-const EVENING_SURCHARGE = 15;
-const WEEKEND_SURCHARGE = 25;
-const HOLIDAY_SURCHARGE = 40;
-
-function parseSlotStartHour(slot: string) {
-  const match = slot.match(/^(\d{2}):/);
-  if (!match) return null;
-  const hour = Number.parseInt(match[1], 10);
-  return Number.isNaN(hour) ? null : hour;
-}
+// Default 2-uur (48-72 uur for standaard) tijdsloten
+const DEFAULT_SLOTS = [
+  "09:00 – 11:00",
+  "11:00 – 13:00",
+  "13:00 – 15:00",
+  "15:00 – 17:00",
+  "18:00 – 20:00",
+];
 
 function getTimeSlotsForDate(date: Date) {
   const now = new Date();
@@ -122,185 +78,24 @@ type Booking = {
   message: string;
 };
 
-type InitialWizardState = Partial<{
-  problemCategory: string;
-  serviceType: string;
-  serviceChannel: string;
-  urgency: string;
-  date: string;
-  timeSlot: string;
-}>;
-
-const PRICE_MATRIX: Record<ServiceType, Record<ServiceChannel, Record<Urgency, number>>> = {
-  particulier: {
-    remote: {
-      standard: 39,
-      priority: 59,
-      spoed: 99,
-    },
-    onsite: {
-      standard: 59,
-      priority: 79,
-      spoed: 149,
-    },
-  },
-  zakelijk: {
-    remote: {
-      standard: 59,
-      priority: 79,
-      spoed: 139,
-    },
-    onsite: {
-      standard: 89,
-      priority: 119,
-      spoed: 219,
-    },
-  },
-};
-
-const SECURITY_PRICE_OVERRIDES: Record<ServiceChannel, Partial<Record<Urgency, number>>> = {
-  remote: {
-    standard: 79,
-    priority: 99,
-    spoed: 159,
-  },
-  onsite: {
-    standard: 129,
-    priority: 169,
-    spoed: 249,
-  },
-};
-
-function sanitizeInitialState(initial?: InitialWizardState) {
-  if (!initial) return {};
-  const safe: InitialWizardState = {};
-  if (typeof initial.problemCategory === "string" && PROBLEM_IDS.has(initial.problemCategory as ProblemCategory)) {
-    safe.problemCategory = initial.problemCategory;
-  }
-  if (typeof initial.serviceType === "string" && SERVICE_TYPE_IDS.has(initial.serviceType as ServiceType)) {
-    safe.serviceType = initial.serviceType;
-  }
-  if (typeof initial.serviceChannel === "string" && SERVICE_CHANNEL_IDS.has(initial.serviceChannel as ServiceChannel)) {
-    safe.serviceChannel = initial.serviceChannel;
-  }
-  if (typeof initial.urgency === "string" && URGENCY_IDS.has(initial.urgency as Urgency)) {
-    safe.urgency = initial.urgency;
-  }
-  if (typeof initial.date === "string") {
-    const parsed = new Date(initial.date);
-    if (!Number.isNaN(parsed.getTime())) {
-      safe.date = parsed.toISOString();
-    }
-  }
-  if (typeof initial.timeSlot === "string") {
-    safe.timeSlot = initial.timeSlot;
-  }
-  return safe;
-}
-
-function getProblemLabel(id: Booking["problemCategory"]) {
-  return PROBLEM_CATEGORIES.find((category) => category.id === id)?.title ?? "";
-}
-
-function getServiceTypeLabel(id: Booking["serviceType"]) {
-  return SERVICE_TYPES.find((service) => service.id === id)?.label ?? "";
-}
-
-function getServiceChannelLabel(id: Booking["serviceChannel"]) {
-  return SERVICE_CHANNELS.find((channel) => channel.id === id)?.label ?? "";
-}
-
-function getUrgencyLabel(id: Booking["urgency"]) {
-  return URGENCY_OPTIONS.find((option) => option.id === id)?.label ?? "";
-}
-
-function getBasePrice(booking: Booking) {
-  const { problemCategory, serviceType, serviceChannel, urgency } = booking;
-  if (!serviceChannel || !urgency) return 0;
-  const matrix = PRICE_MATRIX[serviceType]?.[serviceChannel];
-  const defaultPrice = matrix?.[urgency] ?? 0;
-  if (problemCategory === "security") {
-    const override = SECURITY_PRICE_OVERRIDES[serviceChannel]?.[urgency];
-    if (typeof override === "number") {
-      return override;
-    }
-  }
-  return defaultPrice;
-}
-
-type Surcharge = { id: string; label: string; amount: number };
-
-function getSurcharges(date: Date | undefined, timeSlot: string) {
-  if (!date || !timeSlot || timeSlot.includes("geen slots")) return [] as Surcharge[];
-  const hour = parseSlotStartHour(timeSlot);
-  const surcharges: Surcharge[] = [];
-
-  if (hour !== null && hour >= 18 && timeSlot !== SPOED_SLOT_LABEL) {
-    surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: EVENING_SURCHARGE });
-  }
-
-  if (isWeekend(date)) {
-    surcharges.push({ id: "weekend", label: "Weekendtoeslag", amount: WEEKEND_SURCHARGE });
-  }
-
-  if (isDutchHoliday(date)) {
-    const holidayLabel = getHolidayLabel(date);
-    surcharges.push({
-      id: "holiday",
-      label: holidayLabel ? `Feestdag (${holidayLabel})` : "Feestdag",
-      amount: HOLIDAY_SURCHARGE,
-    });
-  }
-
-  return surcharges;
-}
-
-function buildPricingSummary(booking: Booking) {
-  const basePrice = getBasePrice(booking);
-  if (!basePrice) {
-    return {
-      basePrice: 0,
-      surcharges: [] as Surcharge[],
-      total: 0,
-    };
-  }
-  const surcharges = getSurcharges(booking.date, booking.timeSlot);
-  const totalSurcharge = surcharges.reduce((sum, item) => sum + item.amount, 0);
-  return {
-    basePrice,
-    surcharges,
-    total: basePrice + totalSurcharge,
-  };
-}
-
-export type AppointmentWizardProps = {
-  compact?: boolean;
-  initialState?: InitialWizardState;
-};
-
-export function AppointmentWizard({ compact = false, initialState }: AppointmentWizardProps) {
-  const sanitizedInitial = useMemo(() => sanitizeInitialState(initialState), [initialState]);
-  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
+export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
+  const priceConfig = usePrices();
+  const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
-  const [booking, setBooking] = useState<Booking>(() => {
-    const today = startOfToday();
-    const initialDate = sanitizedInitial.date ? new Date(sanitizedInitial.date) : undefined;
-    return {
-      problemCategory: (sanitizedInitial.problemCategory as Booking["problemCategory"]) || "",
-      serviceType: (sanitizedInitial.serviceType as Booking["serviceType"]) || "particulier",
-      serviceChannel: (sanitizedInitial.serviceChannel as Booking["serviceChannel"]) || "",
-      urgency: (sanitizedInitial.urgency as Booking["urgency"]) || "",
-      date: initialDate,
-      timeSlot: sanitizedInitial.timeSlot || "",
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      street: "",
-      postalCode: "",
-      city: "",
-      message: "",
-    } satisfies Booking;
+  const [booking, setBooking] = useState<Booking>({
+    problemCategory: "",
+    serviceType: "consumer",
+    deliveryMethod: "",
+    date: undefined,
+    timeSlot: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    street: "",
+    postalCode: "",
+    city: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -334,15 +129,54 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
     booking.postalCode.trim() !== "" &&
     booking.city.trim() !== "";
 
-  const selectedProblem = useMemo(() => getProblemLabel(booking.problemCategory), [booking.problemCategory]);
-  const selectedServiceType = useMemo(() => getServiceTypeLabel(booking.serviceType), [booking.serviceType]);
-  const selectedServiceChannel = useMemo(
-    () => getServiceChannelLabel(booking.serviceChannel),
-    [booking.serviceChannel]
-  );
-  const selectedUrgency = useMemo(() => getUrgencyLabel(booking.urgency), [booking.urgency]);
+  const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
+  const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
 
-  const pricingSummary = useMemo(() => buildPricingSummary(booking), [booking]);
+  const deliveryOptions = useMemo(() => {
+    const consumerPricing = priceConfig.pricing.consumer;
+    const businessPricing = priceConfig.pricing.business;
+    return {
+      consumer: [
+        {
+          id: consumerPricing.remote.id,
+          label: `${consumerPricing.remote.label} (${consumerPricing.remote.price.display})`,
+          description: consumerPricing.remote.bookingSummary,
+        },
+        {
+          id: consumerPricing.onsite.id,
+          label: `${consumerPricing.onsite.label} (${consumerPricing.onsite.price.display})`,
+          description: consumerPricing.onsite.bookingSummary,
+        },
+        {
+          id: consumerPricing.emergency.id,
+          label: `${consumerPricing.emergency.label} (${consumerPricing.emergency.price.display})`,
+          description: consumerPricing.emergency.bookingSummary,
+        },
+      ],
+      business: [
+        {
+          id: businessPricing.remote.id,
+          label: `${businessPricing.remote.label} (${businessPricing.remote.price.display})`,
+          description: businessPricing.remote.bookingSummary,
+        },
+        {
+          id: businessPricing.onsite.id,
+          label: `${businessPricing.onsite.label} (${businessPricing.onsite.price.display})`,
+          description: businessPricing.onsite.bookingSummary,
+        },
+        {
+          id: businessPricing.emergency.id,
+          label: `${businessPricing.emergency.label} (${businessPricing.emergency.price.display})`,
+          description: businessPricing.emergency.bookingSummary,
+        },
+      ],
+    };
+  }, [priceConfig]);
+
+  const selectedDeliveryMethod = useMemo(() => {
+    const methods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
+    return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
+  }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
@@ -403,9 +237,8 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
       setStep(0);
       setBooking({
         problemCategory: "",
-        serviceType: "particulier",
-        serviceChannel: "",
-        urgency: "",
+        serviceType: "consumer",
+        deliveryMethod: "",
         date: undefined,
         timeSlot: "",
         firstName: "",
@@ -428,14 +261,17 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
     }
   };
 
+  const today = startOfToday();
+  const availableDeliveryMethods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
+  const contactInfo = priceConfig.contact;
+
   return (
     <div className="w-full">
       {!compact && (
         <div className="text-center mb-8">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak!</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak</h2>
           <p className="text-foreground/80 mt-2">
-            Vertel ons wat er speelt, kies hoe snel we moeten schakelen en hoe we kunnen helpen. We bevestigen telefonisch of per
-            WhatsApp.
+            Vertel ons waarmee we u kunnen helpen, kies hoe u hulp wilt ontvangen en wij plannen de afspraak in. We bevestigen altijd per telefoon of e-mail.
           </p>
         </div>
       )}
@@ -505,15 +341,27 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Jouw informatie</p>
+                      <p className="text-sm opacity-80">Uw gegevens</p>
                       <p className="text-sm font-semibold truncate max-w-[160px]">
-                        {booking.firstName && booking.lastName
-                          ? `${booking.firstName} ${booking.lastName}`
-                          : "Vul je gegevens in"}
+                        {booking.firstName && booking.lastName ? `${booking.firstName} ${booking.lastName}` : "Vul uw gegevens in"}
                       </p>
                     </div>
                   </div>
-                  {isStep5Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                </li>
+                <li className="px-4 py-4 text-sm bg-primary/80 space-y-1">
+                  <p className="opacity-100">Liever direct contact?</p>
+                  <a className="block opacity-80 hover:opacity-100 transition-opacity" href={contactInfo.phoneHref}>
+                    {contactInfo.phoneLabel}
+                  </a>
+                  <a
+                    className="block opacity-80 hover:opacity-100 transition-opacity"
+                    href={contactInfo.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {contactInfo.whatsappCta}
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -524,8 +372,8 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
           <CardContent className="p-6 md:p-8 space-y-6">
             {step === 0 && (
               <div>
-                <h3 className="font-heading font-semibold text-xl mb-6">Wat is jouw probleem?</h3>
-                <div className="grid gap-3 max-w-xl">
+                <h3 className="font-heading font-semibold text-xl mb-6">Wat is uw vraag?</h3>
+                <div className="grid gap-3 max-w-lg">
                   {PROBLEM_CATEGORIES.map((category) => (
                     <button
                       key={category.id}
@@ -552,10 +400,8 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
             {step === 1 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">
-                    ←
-                  </Button>
-                  <h3 className="font-heading font-semibold text-xl">Is dit voor jezelf of voor je bedrijf?</h3>
+                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
+                  <h3 className="font-heading font-semibold text-xl">Is dit voor thuis of voor uw bedrijf?</h3>
                 </div>
                 <div className="grid gap-3 max-w-xl">
                   {SERVICE_TYPES.map((type) => (
@@ -591,12 +437,10 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
             )}
 
             {step === 2 && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">
-                    ←
-                  </Button>
-                  <h3 className="font-heading font-semibold text-xl">Hoe wil je dat we helpen?</h3>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
+                  <h3 className="font-heading font-semibold text-xl">Hoe wilt u hulp ontvangen?</h3>
                 </div>
                 {booking.problemCategory === "security" && (
                   <Alert className="border-destructive/40 bg-destructive/10">
@@ -696,74 +540,10 @@ export function AppointmentWizard({ compact = false, initialState }: Appointment
             )}
 
             {step === 4 && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
-                    ←
-                  </Button>
-                  <h3 className="font-heading font-semibold text-xl">Wanneer past het?</h3>
-                </div>
-                {booking.urgency === "spoed" ? (
-                  <Alert className="border-primary/40 bg-primary/10">
-                    <Timer className="h-5 w-5" />
-                    <AlertTitle>Spoed geselecteerd</AlertTitle>
-                    <AlertDescription>
-                      We bellen je direct na het versturen. Houd je telefoon bij de hand; we plannen samen het exacte tijdstip.
-                    </AlertDescription>
-                  </Alert>
-                ) : (
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <DayPicker
-                        mode="single"
-                        selected={booking.date}
-                        onSelect={(date) => setBooking((b) => ({ ...b, date: date ?? undefined, timeSlot: "" }))}
-                        disabled={{ before: today }}
-                        weekStartsOn={1}
-                        captionLayout="dropdown"
-                        fromYear={new Date().getFullYear()}
-                        toYear={new Date().getFullYear() + 1}
-                        className="border rounded-md p-2"
-                      />
-                    </div>
-                    <div>
-                      <Label>Tijdslot</Label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
-                        {(booking.date ? getTimeSlotsForDate(booking.date) : DEFAULT_SLOTS).map((slot) => (
-                          <button
-                            key={slot}
-                            type="button"
-                            onClick={() => setBooking((b) => ({ ...b, timeSlot: slot }))}
-                            className={`px-3 py-2 rounded-md border text-sm text-left ${
-                              booking.timeSlot === slot ? "bg-primary text-primary-foreground" : "hover:bg-secondary"
-                            } ${slot.includes("geen slots") ? "opacity-60 cursor-not-allowed" : ""}`}
-                            disabled={slot.includes("geen slots")}
-                          >
-                            {slot}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(3)}>
-                    Vorige
-                  </Button>
-                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
-                    Volgende stap
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            {step === 5 && (
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">
-                    ←
-                  </Button>
-                  <h3 className="font-heading font-semibold text-xl">Jouw gegevens</h3>
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
+                  <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
