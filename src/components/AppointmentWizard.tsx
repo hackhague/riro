@@ -301,6 +301,9 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             summaryLines.push(`${item.label}: +${currency.format(item.amount)}`);
           });
         }
+        if (booking.addCyberApk && pricingSummary.cyberApkPrice > 0) {
+          summaryLines.push(`Cyber-APK upsell (50% korting): +${currency.format(pricingSummary.cyberApkPrice)}`);
+        }
         summaryLines.push(`Totaal indicatie: ${currency.format(pricingSummary.total)}`);
       }
 
@@ -360,6 +363,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         postalCode: "",
         city: "",
         message: "",
+        addCyberApk: false,
       });
     } catch (error: any) {
       toast({
