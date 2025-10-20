@@ -53,6 +53,17 @@ export type SitePricingConfig = {
     security: {
       incident: ServiceOffering;
     };
+    cyberApk: {
+      remote: ServiceOffering;
+      onsite: ServiceOffering;
+      businessRemote: ServiceOffering;
+      businessOnsite: ServiceOffering;
+    };
+    extraServices: {
+      windowsMacReinstall: ServiceOffering;
+      fasterComputer: ServiceOffering;
+      antivirusSetup: ServiceOffering;
+    };
   };
 };
 
@@ -84,14 +95,14 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Hulp op afstand",
         location: "op afstand",
         tagline: "Op afstand • reactie binnen 10–30 minuten",
-        summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, vaste cap €99.",
+        summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
         bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 39,
           currency: "EUR",
           display: "€39",
           unit: "Eerste 30 min",
-          extra: "Daarna €15 per 15 min (cap €99)",
+          extra: "Daarna €15 per 15 min (max €99)",
         },
       },
       onsite: {
@@ -107,12 +118,12 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "€59",
           unit: "Eerste 45 min",
-          extra: "Daarna €17,25 per 15 min",
+          extra: "Daarna €17,25 per 15 min + avondtoeslag na 18:00",
         },
       },
       emergency: {
         id: "consumer-emergency",
-        label: "IT-spoedhulp aan huis",
+        label: "Computer-spoedhulp aan huis",
         shortLabel: "Spoed aan huis",
         location: "aan huis",
         tagline: "Aan huis • spoed binnen 24–48 uur",
@@ -209,6 +220,124 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "Op aanvraag",
           unit: "24/7 beschikbaar",
+        },
+      },
+    },
+    cyberApk: {
+      remote: {
+        id: "consumer-cyber-apk-remote",
+        label: "Veiligheidscheck (Cyber-APK) op afstand",
+        shortLabel: "Cyber-APK remote",
+        location: "op afstand",
+        tagline: "Digitale veiligheidscheck op afstand",
+        summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst.",
+        bookingSummary: "Digitale veiligheidscheck op afstand – Normaal €79, nu €39,50 bij meeboeken.",
+        price: {
+          amount: 79,
+          currency: "EUR",
+          display: "€79",
+          unit: "Vaste prijs",
+          extra: "50% korting bij meeboeken: €39,50",
+        },
+      },
+      onsite: {
+        id: "consumer-cyber-apk-onsite",
+        label: "Veiligheidscheck (Cyber-APK) aan huis",
+        shortLabel: "Cyber-APK thuis",
+        location: "aan huis",
+        tagline: "Veiligheidscheck aan huis met netwerk en wifi check",
+        summary: "Netwerk, wifi en endpoint-check op locatie inclusief rapport. 50% korting bij boeking met andere dienst.",
+        bookingSummary: "Veiligheidscheck aan huis – Normaal €99, nu €49,50 bij meeboeken.",
+        price: {
+          amount: 99,
+          currency: "EUR",
+          display: "€99",
+          unit: "Vaste prijs",
+          extra: "50% korting bij meeboeken: €49,50",
+        },
+      },
+      businessRemote: {
+        id: "business-cyber-apk-remote",
+        label: "Veiligheidscheck (Cyber-APK) op afstand zakelijk",
+        shortLabel: "Cyber-APK zakelijk remote",
+        location: "op afstand",
+        tagline: "Digitale veiligheidscheck op afstand voor bedrijven",
+        summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst (ex btw).",
+        bookingSummary: "Digitale veiligheidscheck op afstand – Normaal €299 ex btw, nu €149,50 bij meeboeken.",
+        price: {
+          amount: 299,
+          currency: "EUR",
+          display: "€299",
+          unit: "Vaste prijs",
+          extra: "50% korting bij meeboeken: €149,50 (ex btw)",
+          exVat: true,
+        },
+      },
+      businessOnsite: {
+        id: "business-cyber-apk-onsite",
+        label: "Veiligheidscheck (Cyber-APK) op kantoor zakelijk",
+        shortLabel: "Cyber-APK zakelijk kantoor",
+        location: "op kantoor",
+        tagline: "Veiligheidscheck op kantoor voor bedrijven",
+        summary: "Netwerk, wifi en endpoint-check op locatie inclusief rapport (ex btw). 50% korting bij boeking met andere dienst.",
+        bookingSummary: "Veiligheidscheck op kantoor – Normaal €449 ex btw, nu €224,50 bij meeboeken.",
+        price: {
+          amount: 449,
+          currency: "EUR",
+          display: "€449",
+          unit: "Vaste prijs",
+          extra: "50% korting bij meeboeken: €224,50 (ex btw)",
+          exVat: true,
+        },
+      },
+    },
+    extraServices: {
+      windowsMacReinstall: {
+        id: "windows-mac-reinstall",
+        label: "Windows/Mac herinstallatie",
+        shortLabel: "OS herinstallatie",
+        location: "aan huis",
+        tagline: "Volledige besturingssysteem herinstallatie",
+        summary: "Professionele herinstallatie van Windows of macOS met back-up van gegevens en updates.",
+        bookingSummary: "Windows: €99 | Mac: €119 (indien eerder gebruikt).",
+        price: {
+          amount: 99,
+          currency: "EUR",
+          display: "€99",
+          unit: "Windows of Mac",
+          extra: "Mac €119 indien eerder gebruikt",
+        },
+      },
+      fasterComputer: {
+        id: "faster-computer",
+        label: "Computer sneller maken met nieuwe schijf",
+        shortLabel: "SSD upgrade",
+        location: "aan huis",
+        tagline: "Snelheidsupgrade met nieuwe schijf en onderdelen",
+        summary: "Vervang oude mechanische schijf door snelle SSD. Inclusief installatie en datamigr atie.",
+        bookingSummary: "Installatie v.a. €119 + onderdeel (SSD €80–150 afhankelijk van capaciteit).",
+        price: {
+          amount: 119,
+          currency: "EUR",
+          display: "€119",
+          unit: "v.a. arbeidskosten",
+          extra: "+ onderdeel (SSD €80–150)",
+        },
+      },
+      antivirusSetup: {
+        id: "antivirus-setup",
+        label: "Antivirus + basisbeveiliging (2 apparaten)",
+        shortLabel: "Antivirus setup",
+        location: "hybride",
+        tagline: "Antivirus en basisbeveiliging setup",
+        summary: "Professionele antivirus installatie en basisbeveiliging voor 2 apparaten. Extra apparaten +€15 per stuk.",
+        bookingSummary: "€79 voor 2 apparaten | +€15 per extra apparaat.",
+        price: {
+          amount: 79,
+          currency: "EUR",
+          display: "€79",
+          unit: "2 apparaten",
+          extra: "+€15 per extra apparaat",
         },
       },
     },

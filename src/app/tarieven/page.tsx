@@ -28,8 +28,7 @@ export default function Tarieven() {
       name: "Directe hulp bij gehackt",
       price: "Vanaf €149",
       unit: "Remote of op locatie",
-      extra: "Remote cap €149 • on-site tot 2 uur",
-      desc: "Gehackt of ransomware? Remote triage binnen 60 min, on-site herstel binnen 24–48 uur.",
+      desc: "Gehackt of ransomware? Remote triage binnen 60 min, op locatie herstel binnen 24–48 uur.",
     },
   ];
 
@@ -39,7 +38,7 @@ export default function Tarieven() {
     { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
     {
       name: "Directe hulp bij gehackt (zakelijk)",
-      price: "Vanaf €199",
+      price: "Vanaf €599",
       unit: "24/7 beschikbaar",
       extra: "Spoed op locatie of First Response",
       desc: "Spoedhulp bij hacks, forensics en herstelrapportage voor bedrijven.",

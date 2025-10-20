@@ -108,7 +108,7 @@ export function HomepageServicesClient() {
       description: consumerPricing.remote.summary,
       features: [
         "Snelle respons, meestal direct",
-        "Cap €99 en altijd vooraf duidelijk",
+        "Maximum van €99 en altijd vooraf duidelijk",
         "Live uitleg met beveiligde verbinding",
       ],
       links: [
