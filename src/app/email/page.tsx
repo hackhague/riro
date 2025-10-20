@@ -1,80 +1,71 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Wifi, CheckCircle2, Signal, MessageCircle } from "lucide-react";
+import { Phone, Mail, CheckCircle2, Shield, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
-const serviceImage = "/images/service-wifi.jpg";
+const serviceImage = "/images/service-email.jpg";
 
 export const metadata: Metadata = {
-  title: "WiFi & Internet verbeteren | Stabiel thuis en op kantoor",
+  title: "E-mail hulp | Outlook, Gmail, Hotmail instellen",
   description:
-    "WiFi traag of dode zones? We helpen je router beter in te stellen. Geen dode zones meer, sneller internet.",
+    "E-mail werkt niet? Problemen met Outlook, Gmail of Hotmail? We helpen je alles in te stellen en spam te bestrijden.",
   alternates: {
-    canonical: "https://www.instantit.nl/wifi",
+    canonical: "https://www.instantit.nl/email",
   },
 };
 
-export default function WiFiPage() {
+export default function EmailPage() {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
     { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
     { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
   ];
 
-  const services = [
-    "Nieuwe router installatie en setup",
-    "WiFi installatie en verbetering",
-    "Internet snelheid optimaliseren",
-    "Router configuratie",
-    "Veilig internetten instellen",
-    "Smart TV aansluiten",
-    "WiFi bereik uitbreiden",
-    "Mesh netwerk instellingen",
-  ];
-
   const problems = [
-    "Internet valt steeds weg",
-    "WiFi bereik is te klein (dode zones)",
-    "Trage internetsnelheid",
-    "Smart TV heeft geen internet",
-    "WiFi wachtwoord vergeten",
-    "Nieuwe router installeren",
+    "E-mail wordt niet verzonden",
+    "Berichten komen niet aan",
+    "E-mail werkt niet op telefoon",
+    "Kan niet inloggen op e-mail",
+    "Teveel spam berichten",
+    "E-mail account gehackt",
+    "Oude e-mails weggegooid",
+    "Synchronisatie problemen",
   ];
 
   const steps = [
-    { title: "Netwerk analyse", desc: "We testen je internetverbinding en WiFi signaal" },
-    { title: "Optimalisatie", desc: "We optimaliseren instellingen voor beste prestaties" },
-    { title: "Beveiliging", desc: "Veilige wachtwoorden en encryptie instellen" },
-    { title: "Test alle apparaten", desc: "We zorgen dat alles goed verbonden is" },
+    { title: "E-mail diagnose", desc: "We controleren je instellingen en problemen" },
+    { title: "Account configuratie", desc: "We stellen alles correct in op je apparaten" },
+    { title: "Veiligheid instellen", desc: "Bescherming tegen spam en phishing" },
+    { title: "Test en uitleg", desc: "Alles werkt – uitleg hoe het goed te doen" },
   ];
 
   const faqs = [
     {
-      q: "Waarom is mijn WiFi zo langzaam?",
-      a: "Kan aan je router, signaal, of veel apparaten tegelijk. We testen alles en optimaliseren.",
+      q: "Ik kan geen e-mails meer ontvangen, wat nu?",
+      a: "Eerst checken we je e-mail instellingen en de server. Daarna stellen we alles goed in zodat je weer e-mails ontvangt.",
     },
     {
-      q: "Kan ik overal in huis WiFi krijgen?",
-      a: "Meestal wel! Met mesh, extenders of betere routerplaatsing. We kijken wat het best past.",
+      q: "Hoe stel ik mijn e-mail in op een nieuwe computer?",
+      a: "We helpen je stap voor stap. Je hoeft alleen je e-mailadres en wachtwoord. Wij doen de rest.",
     },
     {
-      q: "Wat kost internet en WiFi hulp?",
-      a: "WiFi optimalisatie €149 (survey + plan). Installatie mesh/router €65/uur. Onderdelen apart.",
+      q: "Kunnen jullie spam en phishing e-mails blokkeren?",
+      a: "Ja! We stellen spam-filters in en leggen uit hoe je gevaarlijke e-mails herkent.",
     },
     {
-      q: "Kunnen jullie alle internetproviders helpen?",
-      a: "Ja! KPN, Ziggo, T-Mobile, en alle andere. Router werkt met elke provider.",
+      q: "Wat als ik mijn e-mail wachtwoord ben vergeten?",
+      a: "We helpen je het wachtwoord terug te zetten via de e-mailprovider. Meestal lukt dat snel.",
     },
     {
-      q: "Hoe beveilig ik mijn WiFi netwerk?",
-      a: "Sterk wachtwoord (niet 'wachtwoord123'), WPA3 encryptie, admin panel beveiligen. Wij doen dit voor je.",
+      q: "Kunnen jullie mijn oude e-mails overzetten?",
+      a: "Zeker! Van oude naar nieuwe provider of computer – we helpen je niets te verliezen.",
     },
   ];
 
@@ -86,58 +77,46 @@ export default function WiFiPage() {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Internet & WiFi verbeteren
+                E-mail problemen opgelost
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Een goede internetverbinding is belangrijk. Van router installatie tot netwerk optimalisatie – je internet gaat werken zoals het hoort.
+                E-mail werkt niet? Spam overload? We helpen je Outlook, Gmail en Hotmail correct in te stellen. Veilig en betrouwbaar.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
-                  <a href="/afspraak">
-                    Plan een afspraak
+                  <a
+                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20e-mail"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="mr-2" />
+                    WhatsApp nu
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
                     <Phone className="mr-2" />
-                    Bel nu
+                    Bel 070 211 9191
                   </a>
                 </Button>
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="WiFi optimalisatie in Den Haag" className="w-full h-auto" />
+              <img src={serviceImage} alt="E-mail hulp" className="w-full h-auto" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services */}
+      {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we voor u doen</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat lossen we op?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {services.map((service, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Wifi className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{service}</span>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Problems */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veel voorkomende problemen</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {problems.map((problem, index) => (
               <Card key={index}>
                 <CardContent className="p-4 flex items-start gap-3">
-                  <Wifi className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-sm">{problem}</span>
                 </CardContent>
               </Card>
@@ -175,38 +154,48 @@ export default function WiFiPage() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Supported Providers */}
       <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We helpen met alle providers</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {["Gmail", "Outlook/Hotmail", "Yahoo Mail", "ProtonMail", "KPN Mail", "Vodafone Mail", "Bedrijfs-e-mail", "Eigen domein"].map((provider) => (
+              <Card key={provider} className="border-2">
+                <CardContent className="p-6 text-center">
+                  <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <p className="font-semibold text-lg">{provider}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <Card className="border-2 border-primary">
               <CardContent className="p-6 text-center">
-                <Signal className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">WiFi optimalisatie</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€149</p>
-                <p className="text-sm text-foreground/60 mb-4">survey + plan + basic config</p>
-                <p className="text-xs text-foreground/70">Excl. hardware (indien nodig)</p>
+                <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">E-mail hulp aan huis</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€59</p>
+                <p className="text-sm text-foreground/60 mb-4">per uur</p>
+                <p className="text-xs text-foreground/70">Alle apparaten ingesteld</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Installatie mesh/router</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€65</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Bij aanschaf via ons vaak korting op hardware</p>
+                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">Remote oplossing</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€39</p>
+                <p className="text-sm text-foreground/60 mb-4">30 minuten</p>
+                <p className="text-xs text-foreground/70">Voor kleine problemen</p>
               </CardContent>
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Other Services */}
-      <section>
-        <div className="container mx-auto px-4 py-12 md:py-16">
-          <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
 
@@ -219,24 +208,33 @@ export default function WiFiPage() {
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Ouwe router van provider. WiFi op zolder en in tuin werkt niet goed. Kinderen kunnen niet gamen, thuiswerken is moeilijk."
+                  "E-mail werkt niet meer op mijn computer. Krijg steeds foutmeldingen. Ook veel spam."
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  We hebben eerst gekeken hoe sterk het signaal is in je huis. Daarna hebben we een betere router gekozen en die goed ingesteld.
+                  We hebben de e-mail uit Outlook verwijderd en opnieuw ingesteld. Spam-filters aangezet en je wachtwoord gecontroleerd voor veiligheid.
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Nu heb je overal in huis goed internet. Ook op zolder en in de tuin. Geen vertraging meer. Prijs: €149 onderzoek/instellen + €179 voor apparaat."
+                  "Nu krijg je alle e-mails. Spam is veel minder. Kosten: €59 (1 uur)."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Delft</p>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      <PartnersSection />
+
+      {/* Other Services */}
+      <section>
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
 
@@ -257,8 +255,6 @@ export default function WiFiPage() {
         </div>
       </section>
 
-      <PartnersSection />
-
       {/* Appointment Wizard */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
@@ -269,11 +265,11 @@ export default function WiFiPage() {
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar voor beter WiFi?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar om je e-mail werkend te krijgen?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=WiFi%20probleem%3A%20[beschrijf%20je%20situatie]"
+                href="https://wa.me/31702119191?text=E-mail%20hulp%20nodig"
                 target="_blank"
                 rel="noopener noreferrer"
               >

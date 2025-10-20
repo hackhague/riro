@@ -18,6 +18,7 @@ import {
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
@@ -26,17 +27,36 @@ export const Navigation = () => {
     setOpenSection(openSection === section ? "" : section);
   };
 
+  const toggleExpandedItem = (itemPath: string) => {
+    const newExpanded = new Set(expandedItems);
+    if (newExpanded.has(itemPath)) {
+      newExpanded.delete(itemPath);
+    } else {
+      newExpanded.add(itemPath);
+    }
+    setExpandedItems(newExpanded);
+  };
+
   const menuSections = {
     particulier: [
       {
         label: "Computerhulp aan huis",
         path: "/computerhulp-den-haag",
         description: "Snelle hulp bij computerproblemen",
+        subitems: [
+          { label: "Windows 10/11 Ondersteuning", path: "/windows-support" },
+          { label: "Mac Support", path: "/mac-support" },
+          { label: "Antivirus & Beveiliging", path: "/antivirus-setup" },
+          { label: "Printerhulp", path: "/printer" },
+          { label: "E-mail problemen", path: "/email" },
+          { label: "Internet & WiFi", path: "/wifi" },
+          { label: "Smartphone & Tablet", path: "/mobiel-tablet" },
+          { label: "Computerlessen", path: "/uitleg-les" },
+          { label: "Cyber APK", path: "/cyber-apk" },
+        ],
       },
-      { label: "Computerhulp op afstand", path: "/hulp-op-afstand", description: "Veilig en snel via schermdeling" },
-      { label: "Wifi verbeteren", path: "/wifi", description: "Betrouwbaar en snel internet" },
-      { label: "Cyber APK", path: "/cyber-apk", description: "Veilig opslaan, snel terugzetten" },
     ],
+    // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
       { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
       { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na klikken op verdachte link" },
@@ -88,6 +108,22 @@ export const Navigation = () => {
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
                                 </Link>
                               </NavigationMenuLink>
+                              {item.subitems && (
+                                <ul className="mt-2 ml-3 space-y-1 border-l border-border pl-3">
+                                  {item.subitems.map((subitem) => (
+                                    <li key={`${subitem.path}-${subitem.label}`}>
+                                      <NavigationMenuLink asChild>
+                                        <Link
+                                          href={subitem.path}
+                                          className="block text-sm text-foreground/70 hover:text-primary transition-colors"
+                                        >
+                                          {subitem.label}
+                                        </Link>
+                                      </NavigationMenuLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -206,16 +242,45 @@ export const Navigation = () => {
                   />
                 </button>
                 {openSection === "particulier" && (
-                  <div className="mt-1">
+                  <div className="mt-1 space-y-1">
                     {menuSections.particulier.map((item) => (
-                      <Link
-                        key={`${item.path}-${item.label}`}
-                        href={item.path}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                      <div key={`${item.path}-${item.label}`}>
+                        {item.subitems ? (
+                          <button
+                            onClick={() => toggleExpandedItem(item.path)}
+                            className="flex items-center justify-between w-full px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                            <ChevronDown
+                              className={`h-4 w-4 transition-transform ${
+                                expandedItems.has(item.path) ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                          >
+                            {item.label}
+                          </Link>
+                        )}
+                        {item.subitems && expandedItems.has(item.path) && (
+                          <div className="ml-4 space-y-1 border-l border-border pl-2 mt-1">
+                            {item.subitems.map((subitem) => (
+                              <Link
+                                key={`${subitem.path}-${subitem.label}`}
+                                href={subitem.path}
+                                onClick={() => setIsOpen(false)}
+                                className="block px-2 py-1 text-xs text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                              >
+                                {subitem.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 )}

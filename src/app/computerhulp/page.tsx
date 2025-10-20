@@ -27,12 +27,12 @@ interface ComputerhulpProps {
 
 export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
   const serviceBlocks = [
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
-    { title: "Tablet & Smartphone", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
-    { title: "Uitleg & Les", href: "/uitleg-les", image: "/images/services/uitleg-les.jpg" },
-    { title: "Zakelijk IT Support", href: "/zakelijk", image: "/images/services/zakelijk.jpg" },
   ];
 
   const problems = [
