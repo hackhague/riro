@@ -19,7 +19,7 @@ import { usePrices } from "@/hooks/use-prices";
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
-  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+  const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["/computerhulp-den-haag"]));
   const pathname = usePathname();
   const priceConfig = usePrices();
   const { contact } = priceConfig;
