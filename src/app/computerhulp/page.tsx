@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
