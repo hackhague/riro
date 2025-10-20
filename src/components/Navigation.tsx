@@ -48,6 +48,7 @@ export const Navigation = () => {
         path: "/computerhulp-den-haag",
         description: "Snelle hulp bij computerproblemen",
         subitems: [
+          { label: "Computerhulp op afstand", path: "/hulp-op-afstand" },
           { label: "Windows 10/11 Ondersteuning", path: "/windows-support" },
           { label: "Mac Support", path: "/mac-support" },
           { label: "Antivirus & Beveiliging", path: "/antivirus-setup" },
