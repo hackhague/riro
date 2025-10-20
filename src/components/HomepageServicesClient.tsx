@@ -214,7 +214,7 @@ export function HomepageServicesClient() {
     {
       id: "cybersecurity-zakelijk",
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: "Cybersecurity & Incident Response",
+      title: "Directe hulp bij gehackt (zakelijk)",
       subtitle: "Spoed • 24/7 beschikbaar",
       price: "Neem contact op voor prijsopgave",
       priceSubtitle: "Afhankelijk van schadeomvang",
@@ -222,7 +222,7 @@ export function HomepageServicesClient() {
         "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [
         "24/7 cybersteun",
-        "Incident response & forensics",
+        "Herstel bij hacks & forensics",
         "Beveiligingsaudit & rapportage",
       ],
       links: [

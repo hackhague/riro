@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/PriceBox";
+import { PRICE_TIERS } from "@/data/pricing";
+import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -18,16 +20,37 @@ export const metadata: Metadata = {
     "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp",
+    },
   },
 };
 
 interface ComputerhulpProps {
   city?: string;
-  cityUrl?: string;
 }
 
-// City-specific data with neighborhoods and case studies
-const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: string; solution: string; result: string; location: string }; faqExtra?: { q: string; a: string }[] }> = {
+type CityContent = {
+  neighborhoods: string[];
+  caseStudy: {
+    problem: string;
+    solution: string;
+    result: string;
+    location: string;
+  };
+  faqExtra?: { q: string; a: string }[];
+  hero: {
+    headline: string;
+    intro: string;
+    highlights: string[];
+    links: { label: string; href: string }[];
+    priceTierIds: (keyof typeof PRICE_TIERS)[];
+    imageAlt: string;
+  };
+};
+
+// City-specific data with neighborhoods, hero copy and case studies
+const cityData: Record<string, CityContent> = {
   "Den Haag": {
     neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
     caseStudy: {
@@ -42,6 +65,23 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Ja! Veel kantoren in Den Haag gebruiken ons voor spoedservice en preventief onderhoud. Zakelijke contracten beschikbaar.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Den Haag – direct opgelost in jouw wijk",
+      intro:
+        "Van Scheveningen tot Loosduinen: we lossen storingen, hacks en traag internet razendsnel op. Binnen Haaglanden rekenen we geen voorrijkosten en je ziet vooraf wat het kost.",
+      highlights: [
+        "Binnen 10–30 minuten reactie via WhatsApp of telefoon",
+        "Aan huis in de hele regio Den Haag, zonder voorrijkosten",
+        "Specialisten in directe hulp bij gehackt & preventieve Cyber-APK",
+      ],
+      links: [
+        { label: "Bekijk tarieven", href: "/tarieven" },
+        { label: "Directe hulp bij gehackt", href: "/ik-ben-gehackt" },
+        { label: "Cyber-APK", href: "/cyber-apk" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT computerhulp aan huis in Den Haag",
+    },
   },
   "Delft": {
     neighborhoods: ["Binnenstad", "Wippolder", "Voorhof", "Tanthof", "Hof van Delft"],
@@ -57,6 +97,23 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Ja, veel studenten en ondernemers in Delft kiezen ons. We begrijpen de IT-behoeften van de tech community.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Delft voor studenten, gezinnen & bedrijven",
+      intro:
+        "Snel hulp bij vastlopers, netwerkproblemen of cyberincidenten in alle Delftse wijken. Ideaal voor TU Delft-studenten, scale-ups en bewoners.",
+      highlights: [
+        "Remote fix meestal binnen 30 minuten",
+        "Aan huis in Delft en omliggende dorpen",
+        "Ervaring met campusnetwerken en startup-omgevingen",
+      ],
+      links: [
+        { label: "Bekijk WiFi optimalisatie", href: "/wifi" },
+        { label: "Mac & Windows support", href: "/diensten" },
+        { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT ondersteunt een ondernemer in Delft",
+    },
   },
   "Leiden": {
     neighborhoods: ["Bos- en Gasthuisdistrict", "Morsdistrict", "Boerhaavedistrict", "Merenwijk", "Stevenshofdistrict"],
@@ -72,6 +129,23 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Zeker! We hebben veel huisartsen en kantoren geholpen. GDPR-compliant en discreet.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Leiden – snel weer zorgeloos online",
+      intro:
+        "Van Merenwijk tot binnenstad: wij stabiliseren pc's, zorgen voor veilige backups en lossen e-mailstoringen direct op.",
+      highlights: [
+        "GDPR-proof ondersteuning voor praktijken & kantoren",
+        "Remote triage binnen 30 minuten, aan huis dezelfde dag",
+        "Ook beschikbaar voor Cyber-APK en directe hulp bij gehackt",
+      ],
+      links: [
+        { label: "Zakelijke IT in Leiden", href: "/zakelijk" },
+        { label: "Cyber-APK", href: "/cyber-apk" },
+        { label: "Bekijk alle prijzen", href: "/tarieven" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT helpt een huisartsenpraktijk in Leiden",
+    },
   },
   "Rijswijk": {
     neighborhoods: ["Oud-Rijswijk", "Leeuwendaal", "Te Werve", "Rembrandtkwartier", "Ministerbuurt"],
@@ -87,6 +161,23 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Ja, we hebben veel winkels en restaurants geholpen met PIN-problemen en kassasystemen.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Rijswijk – support voor winkels & gezinnen",
+      intro:
+        "Problemen met PIN, WiFi of kassasystemen? We lossen het op voor ondernemers en huishoudens in heel Rijswijk.",
+      highlights: [
+        "Snelle hulp voor retail en horeca",
+        "Geen voorrijkosten binnen Rijswijk en Haaglanden",
+        "Remote diagnose beschikbaar buiten openingstijden",
+      ],
+      links: [
+        { label: "Plan directe hulp", href: "/afspraak" },
+        { label: "Bekijk zakelijke diensten", href: "/zakelijk" },
+        { label: "Cyber-APK", href: "/cyber-apk" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT monteurs herstellen kassasysteem in Rijswijk",
+    },
   },
   "Voorburg": {
     neighborhoods: ["Voorburg West", "Voorburg Midden", "Bovenveen", "Essesteijn", "Voorburg Noord"],
@@ -102,6 +193,23 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Ja, veel families in Voorburg vertrouwen ons met hun oudercomputerhulp. We gaan rustig en geduldig te werk.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Voorburg – geduldig en duidelijk",
+      intro:
+        "Rustige uitleg, hulp op afstand of aan huis in Voorburg en Leidschendam. Ideaal voor gezinnen en senioren.",
+      highlights: [
+        "Aan huis binnen 24–48 uur, vaak dezelfde dag",
+        "Geduldige begeleiding bij updates en nieuwe apparaten",
+        "Ook beschikbaar voor lessen en digitale veiligheid",
+      ],
+      links: [
+        { label: "Plan computerles", href: "/uitleg-les" },
+        { label: "Bekijk tarieven", href: "/tarieven" },
+        { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT geeft computerles in Voorburg",
+    },
   },
   "Zoetermeer": {
     neighborhoods: ["Rokkeveen", "Oosterheem", "Seghwaert", "Meerzicht", "Buytenwegh-de Leyens"],
@@ -117,10 +225,27 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
         a: "Zeker, we hebben veel snelgroeiende bedrijven in Zoetermeer ondersteund met netwerkupgrades.",
       },
     ],
+    hero: {
+      headline: "Computerhulp Zoetermeer – klaar voor groei",
+      intro:
+        "Voor scale-ups, winkels en huishoudens: wij optimaliseren netwerk, lossen storingen op en bieden directe hulp bij gehackt.",
+      highlights: [
+        "Mesh- en glasvezelnetwerken zonder downtime",
+        "Remote diagnose en monitoring mogelijk",
+        "Aan huis of kantoor binnen Haaglanden zonder voorrijkosten",
+      ],
+      links: [
+        { label: "Internet & WiFi diensten", href: "/wifi" },
+        { label: "Zakelijke pakketten", href: "/zakelijk" },
+        { label: "Direct gehackt-hulp", href: "/ik-ben-gehackt" },
+      ],
+      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+      imageAlt: "InstantIT optimaliseert netwerk bij bedrijf in Zoetermeer",
+    },
   },
 };
 
-export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
+export default function Computerhulp({ city = "Den Haag & regio" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
@@ -133,6 +258,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
   // Get city-specific data
   const currentCityData = cityData[city] || cityData["Den Haag"];
   const neighborhoods = currentCityData.neighborhoods;
+  const hero = currentCityData.hero;
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
@@ -177,19 +303,78 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
     ...(currentCityData.faqExtra || []),
   ];
 
+  const localBusinessSchema = localBusinessJsonLd({
+    name: "instantIT",
+    url: "https://www.instantit.nl",
+    phone: "+31702119191",
+    email: "hallo@instantit.nl",
+    image: "https://www.instantit.nl/images/service-computer.jpg",
+    logo: "https://www.instantit.nl/android-chrome-512x512.png",
+    address: {
+      streetAddress: "Laan van NOI 88",
+      addressLocality: city,
+      postalCode: "2593 BP",
+      addressCountry: "NL",
+    },
+    areaServed: city,
+    sameAs: [
+      "https://www.instagram.com/instantit.nl",
+      "https://www.facebook.com/instantit.nl",
+      "https://www.linkedin.com/company/instantit-nl",
+      "https://maps.app.goo.gl/9eQ2TUtQfem57CCw8",
+    ],
+  });
+
+  const serviceSchema = serviceOfferJsonLd({
+    name: `Computerhulp ${city}`,
+    description: hero.intro,
+    serviceType: "Computerhulp",
+    areaServed: city,
+    offers: hero.priceTierIds.map((tierId) => {
+      const tier = PRICE_TIERS[tierId];
+      return {
+        name: tier.label,
+        price: tier.price,
+        priceCurrency: "EUR",
+        url: `https://www.instantit.nl${tier.href}`,
+        description: tier.subline,
+      };
+    }),
+  });
+
+  const faqSchema = faqPageJsonLd(
+    faqs.map((faq) => ({
+      question: faq.q,
+      answer: faq.a,
+    }))
+  );
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([localBusinessSchema, serviceSchema, faqSchema]),
+        }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Computerhulp in {city}
+                {hero.headline}
               </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
-              </p>
+              <p className="text-lg md:text-xl text-foreground/80 mb-6">{hero.intro}</p>
+              <ul className="space-y-2 mb-8">
+                {hero.highlights.map((highlight) => (
+                  <li key={highlight} className="flex items-start gap-2 text-foreground/80">
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
                   <a
@@ -208,9 +393,31 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
                   </a>
                 </Button>
               </div>
+              <div className="mt-6">
+                <PriceBox tierIds={hero.priceTierIds} />
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {hero.links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Computerhulp in Den Haag" className="w-full h-auto" />
+              <Image
+                src={serviceImage}
+                alt={hero.imageAlt}
+                className="w-full h-auto"
+                width={800}
+                height={600}
+                priority={false}
+              />
             </div>
           </div>
         </div>

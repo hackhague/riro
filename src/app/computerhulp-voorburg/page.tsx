@@ -4,9 +4,12 @@ import Computerhulp from "../computerhulp/page";
 export const metadata: Metadata = {
   title: "Computerhulp Voorburg | Geduldig, Rustig & Betrouwbaar",
   description:
-    "Computerhulp in Voorburg (Leidschendam-Voorburg) - alle wijken: Voorburg West, Midden, Noord, Bovenveen. Gespecialiseerd in hulp voor senioren, families en rustende huishoudens. Geduldig on-site support en remote.",
+    "Computerhulp in Voorburg en Leidschendam met geduldige uitleg. Hulp aan huis binnen 24–48 uur en ondersteuning voor senioren en gezinnen.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-voorburg",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp-voorburg",
+    },
   },
 };
 

@@ -4,9 +4,12 @@ import Computerhulp from "../computerhulp/page";
 export const metadata: Metadata = {
   title: "Computerhulp Delft | Binnenstad, Wippolder & Tech Startups",
   description:
-    "Computerhulp in Delft voor particulieren, studenten en tech startups. Snel remote support, cybersecurity, WiFi-optimalisatie. Alle wijken: Binnenstad, Voorhof, Tanthof. Remote 10-30 min, on-site snel beschikbaar.",
+    "Computerhulp in Delft voor studenten, gezinnen en startups. Remote fix binnen 30 minuten en aan huis in alle Delftse wijken.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-delft",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp-delft",
+    },
   },
 };
 

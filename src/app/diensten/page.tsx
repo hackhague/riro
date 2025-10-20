@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PRICE_TIERS } from "@/data/pricing";
+import { localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Diensten — Computerhulp & Cyberhulp in Den Haag",
@@ -10,6 +12,9 @@ export const metadata: Metadata = {
     "Computerhulp aan huis & remote, hacklijn, WiFi-verbetering en Cyber-APK voor particulieren en kleine bedrijven in Haaglanden. Transparante prijzen.",
   alternates: {
     canonical: "https://www.instantit.nl/diensten",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/diensten",
+    },
   },
 };
 
@@ -85,7 +90,7 @@ export default function Diensten() {
     },
     {
       icon: Shield,
-      title: "Incident hulp voor praktijk of winkel",
+      title: "Directe hulp bij gehackt voor praktijk of winkel",
       description: "Phishing, gehackte e-mail of vergrendelde systemen? We helpen direct en praktisch.",
       link: "/ik-ben-gehackt",
       features: [
@@ -121,53 +126,69 @@ export default function Diensten() {
     },
   ];
 
-  // JSON-LD: LocalBusiness + OfferCatalog (zorg dat url en phone kloppen)
-  const localBusinessLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "InstantIT - Digitale Eerste Hulp",
-    "url": "https://instantit.nl",
-    "telephone": "+31-70-2119191",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Den Haag",
-      "addressCountry": "NL"
-    },
-    "serviceArea": [
-      {"@type":"Place","name":"Den Haag"},
-      {"@type":"Place","name":"Delft"},
-      {"@type":"Place","name":"Zoetermeer"},
-      {"@type":"Place","name":"Rijswijk"},
-      {"@type":"Place","name":"Voorburg"},
-      {"@type":"Place","name":"Leiden"}
-    ],
-    "openingHours": "Mo-Su 08:00-21:00",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "InstantIT diensten",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type": "Service", "name": "Remote triage (hacklijn)"},
-          "price": "149.00",
-          "priceCurrency": "EUR"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {"@type": "Service", "name": "Spoed on-site (tot 24-48 uur)"},
-          "price": "199.00",
-          "priceCurrency": "EUR"
-        }
-      ]
-    }
+  const toSchemaPrice = (price: string) => {
+    const normalized = price.replace(/[^0-9,]/g, "").replace(",", ".");
+    return normalized.includes(".") ? normalized : `${normalized}.00`;
   };
+
+  const localBusinessLd = localBusinessJsonLd({
+    name: "InstantIT - Digitale Eerste Hulp",
+    url: "https://www.instantit.nl",
+    phone: "+31 70 211 9191",
+    email: "hallo@instantit.nl",
+    image: "https://www.instantit.nl/images/service-computer.jpg",
+    logo: "https://www.instantit.nl/android-chrome-512x512.png",
+    address: {
+      streetAddress: "Laan van NOI 88",
+      addressLocality: "Den Haag",
+      postalCode: "2593 BP",
+      addressCountry: "NL",
+    },
+    areaServed: "Haaglanden",
+    sameAs: [
+      "https://www.facebook.com/instantit.nl",
+      "https://www.instagram.com/instantit.nl",
+      "https://www.linkedin.com/company/instantit-nl",
+      "https://maps.app.goo.gl/9eQ2TUtQfem57CCw8",
+    ],
+  });
+
+  const serviceOffersLd = serviceOfferJsonLd({
+    name: "IT- en cyberhulp diensten",
+    description: "Computerhulp, directe hulp bij gehackt en WiFi-optimalisatie voor Haaglanden.",
+    serviceType: "IT-support",
+    areaServed: "Haaglanden",
+    offers: [
+      {
+        name: PRICE_TIERS.remoteQuickFix.label,
+        price: toSchemaPrice(PRICE_TIERS.remoteQuickFix.price),
+        priceCurrency: "EUR",
+        url: `https://www.instantit.nl${PRICE_TIERS.remoteQuickFix.href}`,
+        description: PRICE_TIERS.remoteQuickFix.subline,
+      },
+      {
+        name: PRICE_TIERS.homeVisit.label,
+        price: toSchemaPrice(PRICE_TIERS.homeVisit.price),
+        priceCurrency: "EUR",
+        url: `https://www.instantit.nl${PRICE_TIERS.homeVisit.href}`,
+        description: PRICE_TIERS.homeVisit.subline,
+      },
+      {
+        name: PRICE_TIERS.emergencyHacked.label,
+        price: toSchemaPrice(PRICE_TIERS.emergencyHacked.price),
+        priceCurrency: "EUR",
+        url: `https://www.instantit.nl${PRICE_TIERS.emergencyHacked.href}`,
+        description: PRICE_TIERS.emergencyHacked.subline,
+      },
+    ],
+  });
 
   return (
     <div className="min-h-screen">
       {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([localBusinessLd, serviceOffersLd]) }}
       />
 
       {/* Header */}

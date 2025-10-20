@@ -4,9 +4,12 @@ import Computerhulp from "../computerhulp/page";
 export const metadata: Metadata = {
   title: "Computerhulp Rijswijk | Oud-Rijswijk, Te Werve & Leeuwendaal",
   description:
-    "Computerhulp in Rijswijk - winkels, restaurants en huishoudens. Alle wijken: Oud-Rijswijk, Rembrandtkwartier, Te Werve. Kassasystemen, PIN-problemen, netwerk-optimalisatie. Remote support en on-site beschikbaar.",
+    "Computerhulp in Rijswijk voor winkels, horeca en gezinnen. Snelle PIN- en kassasysteem support, directe hulp bij gehackt en geen voorrijkosten.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-rijswijk",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp-rijswijk",
+    },
   },
 };
 
