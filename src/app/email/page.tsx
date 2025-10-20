@@ -1,79 +1,72 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Image from "next/image";
+import { Phone, Mail, CheckCircle2, Shield, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
-const serviceImage = "/images/service-computer.jpg";
+const serviceImage = "/images/service-email.jpg";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
+  title: "E-mail hulp | Outlook, Gmail, Hotmail instellen",
   description:
-    "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
+    "E-mail werkt niet? Problemen met Outlook, Gmail of Hotmail? We helpen je alles in te stellen en spam te bestrijden.",
   alternates: {
-    canonical: "https://www.instantit.nl/computerhulp",
+    canonical: "https://www.instantit.nl/email",
   },
 };
 
-interface ComputerhulpProps {
-  city?: string;
-  cityUrl?: string;
-}
-
-export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/computerhulp" }: ComputerhulpProps) {
+export default function EmailPage() {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
     { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
+    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
   ];
 
   const problems = [
-    "Computer werkt te langzaam of sluit zomaar af",
-    "Virus of schadelijke software op je apparaat",
-    "Programma's die niet willen installeren",
-    "Updates die misgaan",
-    "Computer geeft rare foutmeldingen",
-    "Je bestanden back-uppen",
-    "Apparaat reparatie en onderhoud",
-    "Printers en apparaten instellen",
-  ];
-
-  const serviceAreas = [
-    { name: "Den Haag", link: "/computerhulp-den-haag" },
-    { name: "Delft", link: "/computerhulp-delft" },
-    { name: "Zoetermeer", link: "/computerhulp-zoetermeer" },
-    { name: "Rijswijk", link: "/computerhulp-rijswijk" },
-    { name: "Voorburg", link: "/computerhulp-voorburg" },
-    { name: "Leiden", link: "/computerhulp-leiden" },
+    "E-mail wordt niet verzonden",
+    "Berichten komen niet aan",
+    "E-mail werkt niet op telefoon",
+    "Kan niet inloggen op e-mail",
+    "Teveel spam berichten",
+    "E-mail account gehackt",
+    "Oude e-mails weggegooid",
+    "Synchronisatie problemen",
   ];
 
   const steps = [
-    { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
-    { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 2u aan de deur" },
-    { title: "Fix & uitleg", desc: "We lossen het op én leggen uit wat er aan de hand was" },
-    { title: "Nazorg", desc: "Gratis herbeoordeling binnen 7 dagen (max 30 min)" },
+    { title: "E-mail diagnose", desc: "We controleren je instellingen en problemen" },
+    { title: "Account configuratie", desc: "We stellen alles correct in op je apparaten" },
+    { title: "Veiligheid instellen", desc: "Bescherming tegen spam en phishing" },
+    { title: "Test en uitleg", desc: "Alles werkt – uitleg hoe het goed te doen" },
   ];
 
   const faqs = [
     {
-      q: "Hoe snel kunnen jullie helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. On-site in Haaglanden meestal binnen 2 uur.",
+      q: "Ik kan geen e-mails meer ontvangen, wat nu?",
+      a: "Eerst checken we je e-mail instellingen en de server. Daarna stellen we alles goed in zodat je weer e-mails ontvangt.",
     },
     {
-      q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs. Remote tijd rekenen we af tegen on-site als we toch komen.",
+      q: "Hoe stel ik mijn e-mail in op een nieuwe computer?",
+      a: "We helpen je stap voor stap. Je hoeft alleen je e-mailadres en wachtwoord. Wij doen de rest.",
     },
     {
-      q: "Is remote veilig?",
-      a: "Ja! We gebruiken versleutelde tools en vragen altijd toestemming voordat we iets doen.",
+      q: "Kunnen jullie spam en phishing e-mails blokkeren?",
+      a: "Ja! We stellen spam-filters in en leggen uit hoe je gevaarlijke e-mails herkent.",
+    },
+    {
+      q: "Wat als ik mijn e-mail wachtwoord ben vergeten?",
+      a: "We helpen je het wachtwoord terug te zetten via de e-mailprovider. Meestal lukt dat snel.",
+    },
+    {
+      q: "Kunnen jullie mijn oude e-mails overzetten?",
+      a: "Zeker! Van oude naar nieuwe provider of computer – we helpen je niets te verliezen.",
     },
   ];
 
@@ -85,15 +78,15 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Computerhulp in {city}
+                E-mail problemen opgelost
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Je computer loopt vast? Gaat niet meer aan? Of je bent bang voor virussen? We helpen je snel — via je scherm of langs bij je thuis.
+                E-mail werkt niet? Spam overload? We helpen je Outlook, Gmail en Hotmail correct in te stellen. Veilig en betrouwbaar.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
                   <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
+                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20e-mail"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -110,7 +103,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
               </div>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Computerhulp in Den Haag" className="w-full h-auto" />
+              <img src={serviceImage} alt="E-mail hulp" className="w-full h-auto" />
             </div>
           </div>
         </div>
@@ -124,7 +117,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
             {problems.map((problem, index) => (
               <Card key={index}>
                 <CardContent className="p-4 flex items-start gap-3">
-                  <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-sm">{problem}</span>
                 </CardContent>
               </Card>
@@ -136,7 +129,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
       {/* How We Work */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Hoe we werken</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onze aanpak</h2>
           <div className="relative grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto overflow-visible">
             {steps.map((step, index) => (
               <div
@@ -162,14 +155,55 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
         </div>
       </section>
 
-      <PartnersSection />
+      {/* Supported Providers */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We helpen met alle providers</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {["Gmail", "Outlook/Hotmail", "Yahoo Mail", "ProtonMail", "KPN Mail", "Vodafone Mail", "Bedrijfs-e-mail", "Eigen domein"].map((provider) => (
+              <Card key={provider} className="border-2">
+                <CardContent className="p-6 text-center">
+                  <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <p className="font-semibold text-lg">{provider}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <Card className="border-2 border-primary">
+              <CardContent className="p-6 text-center">
+                <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">E-mail hulp aan huis</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€59</p>
+                <p className="text-sm text-foreground/60 mb-4">per uur</p>
+                <p className="text-xs text-foreground/70">Alle apparaten ingesteld</p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6 text-center">
+                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h3 className="font-heading font-semibold text-xl mb-2">Remote oplossing</h3>
+                <p className="text-3xl font-bold text-primary mb-1">€39</p>
+                <p className="text-sm text-foreground/60 mb-4">30 minuten</p>
+                <p className="text-xs text-foreground/70">Voor kleine problemen</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
 
       <HomepageServicesClient />
 
-      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
-
       {/* Case Study */}
-      <section className="py-12 md:py-16 bg-secondary">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Voorbeeld opdracht</h2>
           <Card className="max-w-3xl mx-auto">
@@ -177,54 +211,38 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
               <div className="mb-6">
                 <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
                 <p className="text-lg mt-2">
-                  "Laptop van moeder crasht na Windows update. Moet morgen naar notaris voor belangrijke
-                  handtekening."
+                  "E-mail werkt niet meer op mijn computer. Krijg steeds foutmeldingen. Ook veel spam."
                 </p>
               </div>
               <div className="mb-6">
                 <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
                 <p className="text-lg mt-2">
-                  Remote diagnose in 15 min → driver conflict. Update teruggedraaid, systeem gestabiliseerd, preventief
-                  backup gemaakt.
+                  We hebben de e-mail uit Outlook verwijderd en opnieuw ingesteld. Spam-filters aangezet en je wachtwoord gecontroleerd voor veiligheid.
                 </p>
               </div>
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Binnen 45 min weer online. Moeder kon documenten printen en naar notaris. Kosten: €39."
+                  "Nu krijg je alle e-mails. Spam is veel minder. Kosten: €59 (1 uur)."
                 </p>
               </div>
-              <p className="text-sm text-foreground/60 mt-4">Wateringse Veld, Den Haag</p>
+              <p className="text-sm text-foreground/60 mt-4">Delft</p>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* Service Areas */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            {serviceAreas.map((area, index) => (
-              <Link
-                key={index}
-                href={area.link}
-                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
-              >
-                {area.name}
-              </Link>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button variant="ghost" asChild>
-              <Link href="/werkgebied">Bekijk alle locaties</Link>
-            </Button>
-          </div>
+      <PartnersSection />
+
+      {/* Other Services */}
+      <section>
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-16">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veelgestelde vragen</h2>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -250,22 +268,27 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar om hulp te krijgen?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar om je e-mail werkend te krijgen?</h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <a
+                href="https://wa.me/31702119191?text=E-mail%20hulp%20nodig"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="mr-2" />
+                WhatsApp nu
+              </a>
+            </Button>
             <Button
               variant="outline"
               size="xl"
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <Link href="/afspraak">
-                Plan een afspraak
-              </Link>
-            </Button>
-            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">
                 <Phone className="mr-2" />
-                Bel nu
+                Bel 070 211 9191
               </a>
             </Button>
           </div>
