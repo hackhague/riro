@@ -244,12 +244,12 @@ const cityData: Record<string, CityContent> = {
 
 export default function Computerhulp({ city = "Den Haag & regio" }: ComputerhulpProps) {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
   ];
 
   // Get city-specific data
@@ -347,62 +347,54 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
         }}
       />
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                {hero.headline}
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-6">{hero.intro}</p>
-              <ul className="space-y-2 mb-8">
-                {hero.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2 text-foreground/80">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {hero.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                ))}
-              </div>
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              {hero.headline}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-6">{hero.intro}</p>
+            <ul className="space-y-2 mb-8">
+              {hero.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-2 text-white/90">
+                  <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src={serviceImage}
-                alt={hero.imageAlt}
-                className="w-full h-auto"
-                width={800}
-                height={600}
-                priority={false}
-              />
+            <div className="mt-8 flex flex-wrap gap-3">
+              {hero.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-white hover:text-white/80"
+                >
+                  {link.label}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -458,7 +450,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
 
       <HomepageServicesClient />
 
-      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
+      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} title="Wij kunnen helpen met" />
 
       {/* Neighborhoods */}
       <section className="py-12 md:py-16">

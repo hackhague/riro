@@ -7,7 +7,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
-const serviceImage = "/images/service-antivirus.jpg";
+const serviceImage = "/images/service-antivirus.svg";
 
 export const metadata: Metadata = {
   title: "Antivirus & Beveiliging Installatie | ESET & meer",
@@ -102,37 +102,36 @@ export default function AntivirusSetupPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Antivirus & Beveiliging
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Bescherm je computer tegen virussen, malware en hackers. We helpen je de juiste antivirus te kiezen en professioneel in te stellen.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Antivirus%20installatie%20nodig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Antivirus installatie" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Antivirus & Beveiliging
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Bescherm je computer tegen virussen, malware en hackers. We helpen je de juiste antivirus te kiezen en professioneel in te stellen.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Antivirus%20installatie%20nodig"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
