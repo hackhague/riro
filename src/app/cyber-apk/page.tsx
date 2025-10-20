@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MessageCircle, Phone, Shield, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Cyber APK – Veiligheidscheck Computer & Netwerk",

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MessageCircle, Phone, Mail, Shield, AlertTriangle, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Phishing & Nep E-mails Herkennen | Veilige Stappen",
