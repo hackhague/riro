@@ -230,13 +230,8 @@ export const Navigation = () => {
               </a>
             </Button>
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a
-                href={whatsappDefaultHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                {contact.whatsappLabel}
+              <a href="/afspraak">
+                Afspraak maken
               </a>
             </Button>
           </div>
@@ -427,13 +422,8 @@ export const Navigation = () => {
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a
-                    href={whatsappDefaultHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                    {contact.whatsappLabel}
+                  <a href="/afspraak">
+                    Afspraak maken
                   </a>
                 </Button>
               </div>
