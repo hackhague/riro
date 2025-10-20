@@ -23,9 +23,14 @@ export const metadata: Metadata = {
 };
 
 export default function IkBenGehackt(): JSX.Element {
-  // --- META (zet in head)
-  // title: "Ik ben gehackt? Direct hulp in Den Haag | InstantIT"
-  // description: "Gehackt? We starten meestal binnen 60 min op afstand. Account herstel (Instagram/Gmail), ransomware check en rapport voor verzekering. Bel of app 070 211 9191."
+  const helpServiceBlocks = [
+    { title: "Phishing & Verdachte E-mails", href: "/phishing-hulp", image: "/images/services/phishing.jpg" },
+    { title: "Instagram Account Gehackt", href: "/instagram-gehackt", image: "/images/services/instagram.jpg" },
+    { title: "E-mail Account Gehackt", href: "/email-gehackt", image: "/images/services/email.jpg" },
+    { title: "WhatsApp Fraude & Nep-berichten", href: "/whatsapp-fraude", image: "/images/services/whatsapp.jpg" },
+    { title: "Ransomware & Versleutelde Bestanden", href: "/ransomware-hulp", image: "/images/services/ransomware.jpg" },
+    { title: "Helpdesk Fraude & Nep-Technici", href: "/helpdesk-fraude", image: "/images/services/helpdesk.jpg" },
+  ];
 
   const signs = [
     "Je kunt niet meer inloggen op je account",
