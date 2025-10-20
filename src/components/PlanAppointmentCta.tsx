@@ -63,7 +63,7 @@ export function PlanAppointmentCta({
                   Bel 070 211 9191
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full">
+              <Button asChild variant="whatsapp" size="lg" className="w-full">
                 <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   WhatsApp
