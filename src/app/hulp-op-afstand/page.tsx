@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-computer.jpg";
@@ -152,12 +152,11 @@ export default function HulpOpAfstand() {
         </div>
       </section>
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          channel: "remote",
+        }}
+      />
 
       {/* Final CTA */}
       <section className="py-16 bg-primary text-primary-foreground">

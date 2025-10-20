@@ -3,7 +3,7 @@ import { MessageCircle, Phone, Shield, CheckCircle2, FileText } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 
 export const metadata: Metadata = {
   title: "Cyber APK – Veiligheidscheck Computer & Netwerk",
@@ -219,12 +219,14 @@ export default function CyberAPK() {
 
       <PartnersSection />
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          category: "security",
+          channel: "onsite",
+          type: "zakelijk",
+        }}
+        description="Plan een Cyber APK in wanneer het jou uitkomt. We controleren kantoor- of winkelnetwerken op locatie."
+      />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">

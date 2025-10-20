@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Building2, Store, Coffee, CheckCircle, Shield, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 export const metadata: Metadata = {
@@ -294,12 +294,11 @@ export default function Zakelijk() {
 
       <HomepageServicesClient />
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          type: "zakelijk",
+        }}
+      />
 
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
