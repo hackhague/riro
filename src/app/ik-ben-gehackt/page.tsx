@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
+import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-hack.jpg";
