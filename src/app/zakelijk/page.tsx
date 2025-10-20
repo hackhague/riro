@@ -174,7 +174,7 @@ export default function Zakelijk() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>Spoed on-site €199 (max 2u)</span>
+                    <span>Spoed on-site €199 (max 24-48u)</span>
                   </li>
                 </ul>
               </CardContent>

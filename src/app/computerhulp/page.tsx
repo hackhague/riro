@@ -156,7 +156,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
 
   const steps = [
     { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
-    { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 2u aan de deur" },
+    { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 24-48 uur aan de deur" },
     { title: "Fix & uitleg", desc: "We lossen het op én leggen uit wat er aan de hand was" },
     { title: "Nazorg", desc: "Gratis herbeoordeling binnen 7 dagen (max 30 min)" },
   ];
@@ -164,7 +164,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
   const faqs = [
     {
       q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. On-site in en rond " + city + " meestal binnen 2 uur.",
+      a: "Remote meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
