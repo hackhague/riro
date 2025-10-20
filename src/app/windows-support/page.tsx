@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-windows.jpg";
 
@@ -53,7 +54,7 @@ export default function WindowsSupportPage() {
     },
     {
       q: "Wat kost Windows 11 upgrade?",
-      a: "€149 inclusief volledige backup, data transfer en setup. Voor december 2025 : 20% korting!",
+      a: "We gebruiken onze vaste tarieven voor hulp op afstand en aan huis. Voor een upgrade stemmen we vooraf af wat er nodig is, inclusief backup, data-overdracht en nazorg.",
     },
     {
       q: "Gaan mijn bestanden verloren bij upgrade?",
@@ -80,7 +81,7 @@ export default function WindowsSupportPage() {
                 Windows 10 & 11 Ondersteuning
               </h1>
               <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Update-problemen, langzame computer, hardware-issues? We diagnosticeren snel en fixen je Windows-problemen. Plus: Windows 11 upgrade service met 20% korting!
+                Update-problemen, langzame computer, hardware-issues? We diagnosticeren snel en fixen je Windows-problemen. Plus: Windows 11 upgrade service inclusief backup en nazorg.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
@@ -107,6 +108,8 @@ export default function WindowsSupportPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* Windows 10 End of Life Warning */}
       <section className="py-12 md:py-16 bg-accent/10 border-l-4 border-accent">
@@ -136,7 +139,7 @@ export default function WindowsSupportPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="font-medium">Upgrade nu = 20% korting</span>
+                    <span className="font-medium">Upgrade nu = alles geregeld met vaste tarieven</span>
                   </div>
                 </div>
                 <div className="flex gap-3">
@@ -231,7 +234,9 @@ export default function WindowsSupportPage() {
             <Card className="border-2 border-primary">
               <CardContent className="p-8">
                 <h3 className="font-heading font-bold text-3xl mb-2">Upgrade Service</h3>
-                <p className="text-4xl font-bold text-primary mb-6">€119*</p>
+                <p className="text-lg font-semibold text-primary mb-6">
+                  Inclusief compatibiliteitscheck, volledige backup en nazorg
+                </p>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -254,11 +259,8 @@ export default function WindowsSupportPage() {
                     <span>Gratis nazorg 30 dagen</span>
                   </li>
                 </ul>
-                <p className="text-xs text-foreground/60 mb-4">*Boek voor eind december 2025 en ontvang 20% korting!</p>
                 <Button variant="default" size="lg" className="w-full" asChild>
-                  <a href="https://wa.me/31702119191?text=Windows%2011%20upgrade" target="_blank" rel="noopener noreferrer">
-                    Nu upgraden
-                  </a>
+                  <Link href="/afspraak">Afspraak maken</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -296,40 +298,6 @@ export default function WindowsSupportPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we aanbieden</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card className="border-2">
-              <CardContent className="p-6 text-center">
-                <Monitor className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Remote ondersteuning</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€39</p>
-                <p className="text-sm text-foreground/60">30 minuten</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2">
-              <CardContent className="p-6 text-center">
-                <Monitor className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Aan huis diagnose</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60">per uur</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Windows 11 Upgrade</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€119</p>
-                <p className="text-sm text-foreground/60">Nu 20% korting!</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       <HomepageServicesClient />
 
       {/* FAQ */}

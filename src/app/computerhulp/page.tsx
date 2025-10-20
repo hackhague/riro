@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle, Phone, CheckCircle2, Clock } from "lucide-react";
@@ -9,6 +8,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -33,7 +33,7 @@ const cityData: Record<string, { neighborhoods: string[]; caseStudy: { problem: 
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
       solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
-      result: "Werkdag voortgezet, alle data veilig, kosten €49",
+      result: "Werkdag voortgezet, alle data veilig, heldere tarieven",
       location: "Den Haag Centrum",
     },
     faqExtra: [
@@ -216,6 +216,8 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
         </div>
       </section>
 
+      <PriceBox />
+
       {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -379,7 +381,7 @@ export default function Computerhulp({ city = "Den Haag & regio", cityUrl = "/co
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
               <Link href="/afspraak">
-                Plan een afspraak
+                Afspraak maken
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">

@@ -20,6 +20,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
+import { PriceBox } from "@/components/ui/PriceBox";
+import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -61,6 +63,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const { pricing } = SITE_PRICING;
+  const consumerPricing = pricing.consumer;
+
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
     { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.jpg" },
@@ -240,6 +245,8 @@ export default function Home() {
         </div>
       </section>
 
+      <PriceBox />
+
       {/* ------------------- USPs ------------------- */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -296,7 +303,7 @@ export default function Home() {
         </div>
         <div className="mt-8 flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak">Plan een afspraak</Link>
+            <Link href="/afspraak">Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
@@ -408,7 +415,17 @@ export default function Home() {
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
-                      <p>Computerhulp op afstand begint bij €39 voor 30 minuten. Je ziet altijd de prijs voordat we starten.</p>
+                      <p>
+                        Computerhulp op afstand begint bij {consumerPricing.remote.price.display}
+                        {consumerPricing.remote.price.unit
+                          ? ` voor ${consumerPricing.remote.price.unit.toLowerCase()}`
+                          : ""}
+                        .{" "}
+                        {consumerPricing.remote.price.extra
+                          ? `${consumerPricing.remote.price.extra}. `
+                          : ""}
+                        Je ziet altijd de prijs voordat we starten.
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/tarieven">Bekijk prijzen</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start hulp</a>

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Mail, CheckCircle2, Shield, MessageCircle } from "lucide-react";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-email.jpg";
 
@@ -108,6 +109,8 @@ export default function EmailPage() {
         </div>
       </section>
 
+      <PriceBox />
+
       {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -171,34 +174,6 @@ export default function EmailPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Mail className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">E-mail hulp aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Alle apparaten ingesteld</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Remote oplossing</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€39</p>
-                <p className="text-sm text-foreground/60 mb-4">30 minuten</p>
-                <p className="text-xs text-foreground/70">Voor kleine problemen</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Case Study */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -220,7 +195,7 @@ export default function EmailPage() {
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Nu krijg je alle e-mails. Spam is veel minder. Kosten: €59 (1 uur)."
+                  "Nu krijg je alle e-mails. Spam is veel minder. Alles vooraf afgestemd, geen verrassingen."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Delft</p>

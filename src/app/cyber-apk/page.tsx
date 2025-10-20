@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { MessageCircle, Phone, Shield, CheckCircle2, FileText } from "lucide-react";
+import { MessageCircle, Phone, Shield, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "Cyber APK – Veiligheidscheck Computer & Netwerk",
@@ -42,7 +43,7 @@ export default function CyberAPK() {
     },
     {
       q: "Moet ik alles zelf doen?",
-      a: "Nee, we kunnen het ook voor je uitvoeren. Dat rekenen we apart af (€65/u).",
+      a: "Nee, we kunnen het ook voor je uitvoeren. We stemmen vooraf af wat er nodig is en werken met onze vaste tarieven.",
     },
   ];
 
@@ -82,6 +83,8 @@ export default function CyberAPK() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* What We Check */}
       <section className="py-12 md:py-16">
@@ -128,96 +131,6 @@ export default function CyberAPK() {
           </div>
         </div>
       </section>
-
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Investering</h2>
-          <Card className="max-w-md mx-auto border-2 border-primary">
-            <CardContent className="p-8 text-center">
-              <FileText className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-heading font-semibold text-2xl mb-2">Cyber APK</h3>
-              <p className="text-4xl font-bold text-primary mb-2">€129</p>
-              <p className="text-foreground/60 mb-6">60–90 min + kort adviesrapport</p>
-              <ul className="text-left space-y-2 text-sm mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Volledige scan van apparaten & netwerk</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Adviesrapport met prioriteiten</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Gratis korte nazorg binnen 7 dagen</span>
-                </li>
-              </ul>
-              <Button variant="default" size="lg" asChild className="w-full">
-                <a
-                  href="https://wa.me/31702119191?text=Ik%20wil%20een%20Cyber%20APK%20inplannen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Plan nu
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Why APK */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Waarom een Cyber APK?</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Preventie</h3>
-                <p className="text-foreground/70">
-                  Voorkomen is beter (en goedkoper) dan genezen. Veel hacks zijn te voorkomen met simpele maatregelen.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Gemoedsrust</h3>
-                <p className="text-foreground/70">
-                  Weet dat je router, wachtwoorden en backup op orde zijn. Slaap beter.
-                </p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Verzekering</h3>
-                <p className="text-foreground/70">
-                  Sommige cyberverzekeringen geven korting als je aantoonbaar preventieve checks doet.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veelgestelde vragen</h2>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-lg mb-2">{faq.q}</h3>
-                  <p className="text-foreground/70">{faq.a}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <PartnersSection />
 
       <PlanAppointmentCta
         preselect={{

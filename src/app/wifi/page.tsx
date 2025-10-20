@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Wifi, CheckCircle2, Signal, MessageCircle } from "lucide-react";
+import { Phone, Wifi, CheckCircle2, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-wifi.jpg";
 
@@ -66,7 +67,7 @@ export default function WiFiPage() {
     },
     {
       q: "Wat kost internet en WiFi hulp?",
-      a: "WiFi optimalisatie €149 (survey + plan). Installatie mesh/router €65/uur. Onderdelen apart.",
+      a: "We hanteren onze vaste tarieven. Voor WiFi-optimalisatie maken we een survey en plan en stemmen we de investering vooraf af. Hardware en installaties rekenen we op uurbasis, onderdelen apart.",
     },
     {
       q: "Kunnen jullie alle internetproviders helpen?",
@@ -93,9 +94,7 @@ export default function WiFiPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button variant="accent" size="lg" asChild>
-                  <a href="/afspraak">
-                    Plan een afspraak
-                  </a>
+                  <a href="/afspraak">Afspraak maken</a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <a href="tel:+31702119191">
@@ -111,6 +110,8 @@ export default function WiFiPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* Services */}
       <section className="py-12 md:py-16">
@@ -175,34 +176,6 @@ export default function WiFiPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Signal className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">WiFi optimalisatie</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€149</p>
-                <p className="text-sm text-foreground/60 mb-4">survey + plan + basic config</p>
-                <p className="text-xs text-foreground/70">Excl. hardware (indien nodig)</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Installatie mesh/router</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€65</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Bij aanschaf via ons vaak korting op hardware</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Other Services */}
       <section>
         <div className="container mx-auto px-4 py-12 md:py-16">
@@ -231,7 +204,7 @@ export default function WiFiPage() {
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Nu heb je overal in huis goed internet. Ook op zolder en in de tuin. Geen vertraging meer. Prijs: €149 onderzoek/instellen + €179 voor apparaat."
+                  "Nu heb je overal in huis goed internet. Ook op zolder en in de tuin. Geen vertraging meer en alle kosten vooraf afgestemd."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Delft</p>
