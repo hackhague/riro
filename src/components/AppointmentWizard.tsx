@@ -41,7 +41,7 @@ const SERVICE_CHANNELS = [
 
 const URGENCY_OPTIONS = [
   { id: "standaard", label: "Standaard", description: "Binnen 2-3 werkdagen" },
-  { id: "spoed", label: "Spoed", description: "Vandaag nog (alleen voor beveiligingsproblemen)" },
+  { id: "spoed", label: "Spoed", description: "Vandaag of morgen" },
 ];
 
 const SPOED_SLOT_LABEL = "Spoedslot (ASAP)";
