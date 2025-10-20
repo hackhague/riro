@@ -3,7 +3,7 @@
 
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import AppointmentWizard, { type Booking } from "@/components/AppointmentWizard";
 
 const heroImage = "/images/hero-technician.jpg";
 
