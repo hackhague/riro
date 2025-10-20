@@ -10,14 +10,14 @@ const heroImage = "/images/hero-technician.jpg";
 export default function Afspraak() {
   const searchParams = useSearchParams();
 
-  const normalize = (value: string | null) => {
+  const normalize = (value: string | null): string | undefined => {
     return value || undefined;
   };
-  const initialState = {
-    problemCategory: normalize(searchParams.get("category")),
-    serviceType: normalize(searchParams.get("type")),
-    serviceChannel: normalize(searchParams.get("channel")),
-    urgency: normalize(searchParams.get("speed")),
+  const initialState: Partial<Booking> = {
+    problemCategory: normalize(searchParams.get("category")) as any,
+    serviceType: normalize(searchParams.get("type")) as any,
+    serviceChannel: normalize(searchParams.get("channel")) as any,
+    urgency: normalize(searchParams.get("speed")) as any,
     date: normalize(searchParams.get("date")),
     timeSlot: normalize(searchParams.get("slot")),
   };
