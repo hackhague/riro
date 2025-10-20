@@ -6,7 +6,6 @@ import PartnersSection from "@/components/PartnersSection";
 import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -74,8 +73,6 @@ export default function HulpOpAfstand() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Benefits */}
       <section className="py-12 md:py-16">

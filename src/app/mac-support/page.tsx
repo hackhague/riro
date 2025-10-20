@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-mac.jpg";
 
@@ -99,8 +98,6 @@ export default function MacSupportPage() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
