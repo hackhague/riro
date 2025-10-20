@@ -45,6 +45,74 @@ export default function Tarieven() {
     },
   ];
 
+  const cyberApkPricing = [
+    {
+      name: "Veiligheidscheck (Cyber-APK) op afstand",
+      price: "€79",
+      originalPrice: "€79",
+      upsellPrice: "€39,50",
+      unit: "Vaste prijs",
+      desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
+      upsellDesc: "50% korting bij meeboeken met andere dienst",
+    },
+    {
+      name: "Veiligheidscheck (Cyber-APK) aan huis",
+      price: "€99",
+      originalPrice: "€99",
+      upsellPrice: "€49,50",
+      unit: "Vaste prijs",
+      desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
+      upsellDesc: "50% korting bij meeboeken met andere dienst",
+    },
+  ];
+
+  const cyberApkBusinessPricing = [
+    {
+      name: "Veiligheidscheck (Cyber-APK) op afstand (zakelijk)",
+      price: "€299",
+      originalPrice: "€299",
+      upsellPrice: "€149,50",
+      unit: "Vaste prijs (ex btw)",
+      desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
+      upsellDesc: "50% korting bij meeboeken met andere dienst",
+      exVat: true,
+    },
+    {
+      name: "Veiligheidscheck (Cyber-APK) op kantoor (zakelijk)",
+      price: "€449",
+      originalPrice: "€449",
+      upsellPrice: "€224,50",
+      unit: "Vaste prijs (ex btw)",
+      desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
+      upsellDesc: "50% korting bij meeboeken met andere dienst",
+      exVat: true,
+    },
+  ];
+
+  const extraServices = [
+    {
+      name: "Windows/Mac herinstallatie",
+      price: "€99",
+      altPrice: "€119 (Mac)",
+      unit: "Vaste prijs",
+      desc: "Volledige besturingssysteem herinstallatie met back-up van gegevens en updates.",
+    },
+    {
+      name: "Computer sneller maken met nieuwe schijf",
+      price: "€119",
+      extra: "+ SSD €80–150",
+      unit: "Arbeidskosten",
+      desc: "SSD upgrade met installatie en datamigratie. Snelheidstoename tot 3x.",
+    },
+    {
+      name: "Antivirus + basisbeveiliging (2 apparaten)",
+      price: "€79",
+      extra: "+€15 per extra apparaat",
+      unit: "Vaste prijs",
+      desc: "Professionele antivirus installatie en basisbeveiliging setup.",
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Header */}
