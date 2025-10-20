@@ -716,12 +716,25 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span className="font-semibold">Veiligheidscheck (Cyber-APK) erbij boeken?</span>
                         </Label>
                         <p className="text-sm text-foreground/70 mt-1">
-                          Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij meeboeken.
+                          Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
                         </p>
                         {booking.addCyberApk && pricingSummary.cyberApkPrice > 0 && (
-                          <p className="text-sm font-semibold text-accent mt-2">
-                            +{currency.format(pricingSummary.cyberApkPrice)}
-                          </p>
+                          <div className="text-sm mt-2 space-y-1">
+                            <p className="font-semibold text-accent">
+                              {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
+                                <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
+                              )}
+                              {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
+                                <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
+                              )}
+                              {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
+                                <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
+                              )}
+                              {booking.serviceType === "business" && booking.serviceChannel === "onsite" && (
+                                <>Normaal <span className="line-through">€449</span>, nu <span className="font-bold">€224,50</span> bij meeboeken (ex btw)</>
+                              )}
+                            </p>
+                          </div>
                         )}
                       </div>
                     </div>
