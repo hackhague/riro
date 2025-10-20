@@ -80,7 +80,7 @@ type ServiceType = (typeof SERVICE_TYPES)[number]["id"];
 type ServiceChannel = (typeof SERVICE_CHANNELS)[number]["id"];
 type Urgency = (typeof URGENCY_OPTIONS)[number]["id"];
 
-type Booking = {
+export type Booking = {
   problemCategory: ProblemCategory | "";
   serviceType: ServiceType;
   serviceChannel: ServiceChannel | "";
