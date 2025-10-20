@@ -11,6 +11,7 @@ import { DayPicker } from "react-day-picker";
 import { format, startOfToday } from "date-fns";
 import "react-day-picker/dist/style.css";
 import { toast } from "@/hooks/use-toast";
+import { usePrices } from "@/hooks/use-prices";
 
 // Problem categories (shown first)
 const PROBLEM_CATEGORIES = [
@@ -23,25 +24,10 @@ const PROBLEM_CATEGORIES = [
   { id: "other", title: "Iets anders", description: "Niet zeker? Bel ons even" },
 ];
 
-// Service type (particulier vs zakelijk) - shown second
 const SERVICE_TYPES = [
-  { id: "particulier", label: "Voor mij thuis" },
-  { id: "zakelijk", label: "Voor mijn bedrijf/winkel" },
+  { id: "consumer", label: "Voor thuis (particulier)" },
+  { id: "business", label: "Zakelijk (bedrijf of kantoor)" },
 ];
-
-// Delivery methods based on service type
-const DELIVERY_METHODS = {
-  particulier: [
-    { id: "remote", label: "Computerhulp op afstand (€35)", description: "Remote via scherm - snel en voordelig" },
-    { id: "onsite", label: "Computerhulp aan huis (€59)", description: "Bij jou thuis - volledige diagnose" },
-    { id: "spoed", label: "IT Spoedhulp aan huis (€89)", description: "Urgentie? Op afspraak of direct" },
-  ],
-  zakelijk: [
-    { id: "remote", label: "IT-support op afstand (€35)", description: "Remote hulp voor jouw bedrijf" },
-    { id: "onsite", label: "IT-support aan kantoor (€79)", description: "Bij jou ter plaatse - volledige fix" },
-    { id: "spoed", label: "IT Spoedhulp kantoor (€89)", description: "Kassa down? PIN weg? Spoed beschikbaar" },
-  ],
-};
 
 // Default 2-uur (48-72 uur for standaard) tijdsloten
 const DEFAULT_SLOTS = [
@@ -82,11 +68,12 @@ type Booking = {
 };
 
 export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
+  const priceConfig = usePrices();
   const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
     problemCategory: "",
-    serviceType: "particulier",
+    serviceType: "consumer",
     deliveryMethod: "",
     date: undefined,
     timeSlot: "",
@@ -115,10 +102,52 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
 
   const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
+
+  const deliveryOptions = useMemo(() => {
+    const consumerPricing = priceConfig.pricing.consumer;
+    const businessPricing = priceConfig.pricing.business;
+    return {
+      consumer: [
+        {
+          id: consumerPricing.remote.id,
+          label: `${consumerPricing.remote.label} (${consumerPricing.remote.price.display})`,
+          description: consumerPricing.remote.bookingSummary,
+        },
+        {
+          id: consumerPricing.onsite.id,
+          label: `${consumerPricing.onsite.label} (${consumerPricing.onsite.price.display})`,
+          description: consumerPricing.onsite.bookingSummary,
+        },
+        {
+          id: consumerPricing.emergency.id,
+          label: `${consumerPricing.emergency.label} (${consumerPricing.emergency.price.display})`,
+          description: consumerPricing.emergency.bookingSummary,
+        },
+      ],
+      business: [
+        {
+          id: businessPricing.remote.id,
+          label: `${businessPricing.remote.label} (${businessPricing.remote.price.display})`,
+          description: businessPricing.remote.bookingSummary,
+        },
+        {
+          id: businessPricing.onsite.id,
+          label: `${businessPricing.onsite.label} (${businessPricing.onsite.price.display})`,
+          description: businessPricing.onsite.bookingSummary,
+        },
+        {
+          id: businessPricing.emergency.id,
+          label: `${businessPricing.emergency.label} (${businessPricing.emergency.price.display})`,
+          description: businessPricing.emergency.bookingSummary,
+        },
+      ],
+    };
+  }, [priceConfig]);
+
   const selectedDeliveryMethod = useMemo(() => {
-    const methods = DELIVERY_METHODS[booking.serviceType as keyof typeof DELIVERY_METHODS] || [];
+    const methods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
     return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
-  }, [booking.serviceType, booking.deliveryMethod]);
+  }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep3Valid) return;
@@ -165,7 +194,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
       setStep(0);
       setBooking({
         problemCategory: "",
-        serviceType: "particulier",
+        serviceType: "consumer",
         deliveryMethod: "",
         date: undefined,
         timeSlot: "",
@@ -186,15 +215,16 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
   };
 
   const today = startOfToday();
-  const availableDeliveryMethods = DELIVERY_METHODS[booking.serviceType as keyof typeof DELIVERY_METHODS] || [];
+  const availableDeliveryMethods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
+  const contactInfo = priceConfig.contact;
 
   return (
     <div className="w-full">
       {!compact && (
         <div className="text-center mb-8">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak!</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak</h2>
           <p className="text-foreground/80 mt-2">
-            Vertel ons wat je probleem is, kies hoe je hulp wilt ontvangen, en we plannen je in. We bevestigen je afspraak per telefoon of e-mail.
+            Vertel ons waarmee we u kunnen helpen, kies hoe u hulp wilt ontvangen en wij plannen de afspraak in. We bevestigen altijd per telefoon of e-mail.
           </p>
         </div>
       )}
@@ -251,18 +281,27 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
-                      <p className="text-sm opacity-80">Jouw informatie</p>
+                      <p className="text-sm opacity-80">Uw gegevens</p>
                       <p className="text-sm font-semibold truncate max-w-[160px]">
-                        {booking.firstName && booking.lastName ? `${booking.firstName} ${booking.lastName}` : "Vul je gegevens in"}
+                        {booking.firstName && booking.lastName ? `${booking.firstName} ${booking.lastName}` : "Vul uw gegevens in"}
                       </p>
                     </div>
                   </div>
                   {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className="px-4 py-4 text-sm bg-primary/80">
-                  <p className="opacity-100">Kom in contact:</p>
-                  <p className="opacity-60">070 211 9191</p>
-                  <p className="opacity-60">info@instantit.nl</p>
+                <li className="px-4 py-4 text-sm bg-primary/80 space-y-1">
+                  <p className="opacity-100">Liever direct contact?</p>
+                  <a className="block opacity-80 hover:opacity-100 transition-opacity" href={contactInfo.phoneHref}>
+                    {contactInfo.phoneLabel}
+                  </a>
+                  <a
+                    className="block opacity-80 hover:opacity-100 transition-opacity"
+                    href={contactInfo.whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {contactInfo.whatsappCta}
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -274,7 +313,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
           <CardContent className="p-6 md:p-8">
             {step === 0 && (
               <div>
-                <h3 className="font-heading font-semibold text-xl mb-6">Wat is jouw probleem?</h3>
+                <h3 className="font-heading font-semibold text-xl mb-6">Wat is uw vraag?</h3>
                 <div className="grid gap-3 max-w-lg">
                   {PROBLEM_CATEGORIES.map((category) => (
                     <button
@@ -303,7 +342,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Is dit voor jezelf of je bedrijf?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Is dit voor thuis of voor uw bedrijf?</h3>
                 </div>
                 <div className="grid gap-3 max-w-lg">
                   {SERVICE_TYPES.map((type) => (
@@ -331,7 +370,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Hoe wil je hulp ontvangen?</h3>
+                  <h3 className="font-heading font-semibold text-xl">Hoe wilt u hulp ontvangen?</h3>
                 </div>
                 <div className="grid gap-3 max-w-lg">
                   {availableDeliveryMethods.map((method) => (
@@ -406,7 +445,7 @@ export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
-                  <h3 className="font-heading font-semibold text-xl">Jouw informatie</h3>
+                  <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>

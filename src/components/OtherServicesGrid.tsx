@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { usePrices } from "@/hooks/use-prices";
 
 interface ServiceBlock {
   title: string;
@@ -15,6 +18,8 @@ interface OtherServicesGridProps {
 }
 
 export function OtherServicesGrid({ serviceBlocks, showCTA = true }: OtherServicesGridProps) {
+  const priceConfig = usePrices();
+  const { ctas, contact } = priceConfig;
   return (
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4">
@@ -69,10 +74,10 @@ export function OtherServicesGrid({ serviceBlocks, showCTA = true }: OtherServic
         {showCTA && (
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <Link href="/afspraak">Plan een afspraak</Link>
+              <Link href="/afspraak">{ctas.planAppointment}</Link>
             </Button>
             <Button variant="outline" asChild>
-              <a href="tel:+31702119191">Bel nu</a>
+              <a href={contact.phoneHref}>{contact.phoneLabel}</a>
             </Button>
           </div>
         )}
