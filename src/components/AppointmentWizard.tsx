@@ -939,7 +939,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <Button variant="outline" onClick={() => setStep(4)}>
                     Vorige
                   </Button>
-                  <Button onClick={handleSubmit} disabled={!isStep5Valid || !isStep4Valid || loading}>
+                  <Button onClick={handleSubmit} disabled={!isStep4Valid || !isStep3Valid || loading}>
                     {loading ? "Versturen..." : "Afspraak versturen"}
                   </Button>
                 </div>
