@@ -205,6 +205,55 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
   }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
+  const pricingSummary = useMemo(() => {
+    if (!booking.serviceChannel || !booking.urgency) {
+      return { basePrice: 0, surcharges: [], total: 0 };
+    }
+
+    const pricing = priceConfig.pricing;
+    let service: ServiceOffering | null = null;
+
+    if (booking.serviceType === "consumer") {
+      const consumerPricing = pricing.consumer;
+      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
+        service = consumerPricing.remote;
+      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
+        service = consumerPricing.onsite;
+      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
+        service = consumerPricing.onsite;
+      } else if (booking.urgency === "spoed") {
+        service = consumerPricing.emergency;
+      }
+    } else if (booking.serviceType === "business") {
+      const businessPricing = pricing.business;
+      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
+        service = businessPricing.remote;
+      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
+        service = businessPricing.onsite;
+      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
+        service = businessPricing.onsite;
+      } else if (booking.urgency === "spoed") {
+        service = businessPricing.emergency;
+      }
+    }
+
+    const basePrice = service?.price.amount || 0;
+    const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+    if (booking.urgency === "snel" && basePrice > 0) {
+      const speedSurcharge = Math.round(basePrice * 0.25);
+      surcharges.push({
+        id: "speed",
+        label: "Snelheidsopslag",
+        amount: speedSurcharge,
+      });
+    }
+
+    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0);
+
+    return { basePrice, surcharges, total };
+  }, [booking.serviceChannel, booking.urgency, booking.serviceType, priceConfig]);
+
   const handleSubmit = async () => {
     if (!isStep4Valid || !isStep5Valid || !isStep3Valid) return;
     setLoading(true);
