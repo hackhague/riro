@@ -706,24 +706,22 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         <p className="text-sm text-foreground/70 mt-1">
                           Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.
                         </p>
-                        {pricingSummary.cyberApkPrice > 0 && (
-                          <div className="text-sm mt-2 space-y-1">
-                            <p className="font-semibold text-accent">
-                              {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
-                                <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
-                              )}
-                              {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
-                                <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
-                              )}
-                              {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
-                                <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
-                              )}
-                              {booking.serviceType === "business" && booking.serviceChannel === "onsite" && (
-                                <>Normaal <span className="line-through">€449</span>, nu <span className="font-bold">€224,50</span> bij meeboeken (ex btw)</>
-                              )}
-                            </p>
-                          </div>
-                        )}
+                        <div className="text-sm mt-2 space-y-1">
+                          <p className="font-semibold text-accent">
+                            {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
+                              <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
+                            )}
+                            {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
+                              <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
+                            )}
+                            {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
+                              <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
+                            )}
+                            {booking.serviceType === "business" && booking.serviceChannel === "onsite" && (
+                              <>Normaal <span className="line-through">€449</span>, nu <span className="font-bold">€224,50</span> bij meeboeken (ex btw)</>
+                            )}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
