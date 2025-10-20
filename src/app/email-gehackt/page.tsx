@@ -111,10 +111,10 @@ export default function EmailGehackt() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {stepsWithAccess.map((item, i) => (
-              <Card key={i} className="border-l-4 border-l-blue-500">
+              <Card key={i} className="border-l-4 border-l-primary">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-xl font-bold text-blue-600">{item.step}</span>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <span className="text-xl font-bold text-primary">{item.step}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-lg text-center mb-2">{item.title}</h3>
                   <p className="text-sm text-foreground/70 text-center">{item.description}</p>
