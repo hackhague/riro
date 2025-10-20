@@ -54,6 +54,11 @@ const DEFAULT_SLOTS = [
   "18:00 – 20:00",
 ];
 
+function parseSlotStartHour(slot: string): number | null {
+  const match = slot.match(/^(\d+):/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
 function getTimeSlotsForDate(date: Date) {
   const now = new Date();
   if (date.toDateString() !== now.toDateString()) return DEFAULT_SLOTS;
