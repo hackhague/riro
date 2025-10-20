@@ -97,24 +97,30 @@ type Booking = {
   deliveryMethod?: string;
 };
 
-export function AppointmentWizard({ compact = false }: { compact?: boolean }) {
+const currency = new Intl.NumberFormat("nl-NL", {
+  style: "currency",
+  currency: "EUR",
+});
+
+export function AppointmentWizard({ compact = false, initialState }: { compact?: boolean; initialState?: Partial<Booking> }) {
   const priceConfig = usePrices();
   const [step, setStep] = useState<0 | 1 | 2 | 3 | 4>(0);
   const [loading, setLoading] = useState(false);
   const [booking, setBooking] = useState<Booking>({
-    problemCategory: "",
-    serviceType: "consumer",
-    deliveryMethod: "",
-    date: undefined,
-    timeSlot: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    street: "",
-    postalCode: "",
-    city: "",
-    message: "",
+    problemCategory: initialState?.problemCategory || "",
+    serviceType: initialState?.serviceType || "consumer",
+    serviceChannel: initialState?.serviceChannel || "",
+    urgency: initialState?.urgency || "",
+    date: initialState?.date ? new Date(initialState.date) : undefined,
+    timeSlot: initialState?.timeSlot || "",
+    firstName: initialState?.firstName || "",
+    lastName: initialState?.lastName || "",
+    email: initialState?.email || "",
+    phone: initialState?.phone || "",
+    street: initialState?.street || "",
+    postalCode: initialState?.postalCode || "",
+    city: initialState?.city || "",
+    message: initialState?.message || "",
   });
 
   useEffect(() => {
