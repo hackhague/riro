@@ -813,7 +813,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 4 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
