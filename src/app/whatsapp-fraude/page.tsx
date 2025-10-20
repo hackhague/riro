@@ -120,7 +120,7 @@ export default function WhatsAppFraude() {
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               WhatsApp Fraude – Nep-Berichten
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-8">
+            <p className="text-lg md:text-xl text-white/90 mb-8">
               'Mama, ik heb €750 nodig!' – maar je zoon/dochter zit naast je? Dat is fraude. Leer hoe je het herkent.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
