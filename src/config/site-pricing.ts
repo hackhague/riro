@@ -87,9 +87,9 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, vaste cap €99.",
         bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
         price: {
-          amount: 39,
+          amount: 35,
           currency: "EUR",
-          display: "€39",
+          display: "€35",
           unit: "Eerste 30 min",
           extra: "Daarna €15 per 15 min (cap €99)",
         },
