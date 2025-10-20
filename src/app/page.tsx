@@ -75,7 +75,7 @@ export default function Home() {
     {
       icon: Clock,
       title: "Snel & lokaal",
-      description: "Reactie binnen 10–30 min; op locatie meestal binnen 24 uur in Haaglanden.",
+      description: "Reactie binnen 10–30 min; op locatie binnen 24-48 uur in Haaglanden.",
     },
     {
       icon: Shield,
