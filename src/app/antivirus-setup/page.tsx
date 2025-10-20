@@ -4,7 +4,7 @@ import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle } from 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
 const serviceImage = "/images/service-antivirus.jpg";
@@ -398,12 +398,12 @@ export default function AntivirusSetupPage() {
         </div>
       </section>
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          category: "security",
+          channel: "remote",
+        }}
+      />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">

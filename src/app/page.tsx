@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -304,12 +304,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------- APPOINTMENT WIZARD ------------------- */}
-      <section className="py-12 md:py-16">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard />
-        </div>
-      </section>
+      <PlanAppointmentCta />
 
       {/* ------------------- REVIEWS / CASES ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">

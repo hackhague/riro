@@ -3,9 +3,7 @@ import Image from "next/image";
 import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import AppointmentWizard from "@/components/AppointmentWizard";
-import { PRICE_TIERS } from "@/data/pricing";
-import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 
 const serviceImage = "/images/service-hack.jpg";
 
@@ -357,12 +355,14 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          category: "security",
+          channel: "remote",
+          speed: "priority",
+        }}
+        description="Binnen 60 minuten starten we meestal op afstand. Vul je gegevens in en we bellen je direct terug."
+      />
 
       {/* Urgent CTA */}
       <section className="py-16 bg-destructive text-destructive-foreground">
