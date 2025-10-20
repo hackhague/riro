@@ -32,6 +32,11 @@ export const Navigation = () => {
         label: "Computerhulp aan huis",
         path: "/computerhulp-den-haag",
         description: "Snelle hulp bij computerproblemen",
+        subitems: [
+          { label: "Windows 10/11 Ondersteuning", path: "/windows-support" },
+          { label: "Mac Support", path: "/mac-support" },
+          { label: "Antivirus & Beveiliging", path: "/antivirus-setup" },
+        ],
       },
       { label: "Printerhulp", path: "/printer", description: "Papiertoringen, cartridges en meer" },
       { label: "E-mail problemen", path: "/email", description: "Outlook, Gmail instellen" },
