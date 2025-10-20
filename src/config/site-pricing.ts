@@ -112,7 +112,7 @@ export const SITE_PRICING: SitePricingConfig = {
       },
       emergency: {
         id: "consumer-emergency",
-        label: "IT-spoedhulp aan huis",
+        label: "Computer-spoedhulp aan huis",
         shortLabel: "Spoed aan huis",
         location: "aan huis",
         tagline: "Aan huis • spoed binnen 24–48 uur",
