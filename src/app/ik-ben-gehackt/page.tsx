@@ -225,19 +225,6 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
-      <PriceBox />
-
-      {/* LLM-answer card (zichtbaar en kort) */}
-      <section className="py-6">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="rounded-lg border p-4 bg-white">
-            <p className="font-medium">Kort & direct</p>
-            <p className="mb-2">Wie: Particulieren en kleine bedrijven in Haaglanden.</p>
-            <p className="mb-2">Wat: Account herstel, malware verwijderen en een kort rapport.</p>
-            <p>Wanneer: Op afstand meestal binnen 60 min. Op locatie binnen 24–48 uur als nodig.</p>
-          </div>
-        </div>
-      </section>
 
       {/* Signs */}
       <section className="py-12 md:py-16 bg-secondary">
