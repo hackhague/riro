@@ -4,9 +4,12 @@ import Computerhulp from "../computerhulp/page";
 export const metadata: Metadata = {
   title: "Computerhulp Leiden | Bos- en Gasthuisdistrict, Merenwijk & Meer",
   description:
-    "Computerhulp in Leiden voor huishoudens, medische praktijken en bedrijven. Alle wijken: Merenwijk, Boerhaavedistrict, Morsdistrict. GDPR-compliant, snel remote support, on-site beschikbaar. Remote 10-30 min reactie.",
+    "Computerhulp in Leiden voor praktijken, kantoren en huishoudens. Remote triage binnen 30 minuten en aan huis dezelfde dag in veel wijken.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-leiden",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp-leiden",
+    },
   },
 };
 

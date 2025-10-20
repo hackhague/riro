@@ -220,15 +220,16 @@ export function HomepageServicesClient() {
     {
       id: incidentPricing.id,
       icon: <Shield className="h-6 w-6 text-primary" />,
-      title: incidentPricing.label,
-      subtitle: incidentPricing.tagline,
-      price: incidentPricing.price.display,
-      priceSubtitle: incidentPricing.price.unit ?? "",
-      description: incidentPricing.summary,
+      title: "Directe hulp bij gehackt (zakelijk)",
+      subtitle: "Spoed • 24/7 beschikbaar",
+      price: "Neem contact op voor prijsopgave",
+      priceSubtitle: "Afhankelijk van schadeomvang",
+      description:
+        "Cyberincidenten, beveiligingscontroles en bedrijfsmatige hardening voor uw systemen.",
       features: [
-        "Security-audits & beleidsadvies",
-        "Hardening van Microsoft 365 en endpoints",
-        "Incident response binnen SLA",
+        "24/7 cybersteun",
+        "Herstel bij hacks & forensics",
+        "Beveiligingsaudit & rapportage",
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },

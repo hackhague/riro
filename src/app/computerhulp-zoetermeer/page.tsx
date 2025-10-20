@@ -4,9 +4,12 @@ import Computerhulp from "../computerhulp/page";
 export const metadata: Metadata = {
   title: "Computerhulp Zoetermeer | Rokkeveen, Oosterheem & Bedrijven",
   description:
-    "Computerhulp in Zoetermeer voor particulieren en bedrijven. Alle wijken: Rokkeveen, Oosterheem, Seghwaert, Meerzicht. Netwerk-upgrades, WiFi-optimalisatie, cybersecurity. Remote support en on-site snel beschikbaar.",
+    "Computerhulp in Zoetermeer voor huishoudens, winkels en scale-ups. Directe hulp bij gehackt, netwerkoptimalisatie en on-site support zonder voorrijkosten.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-zoetermeer",
+    languages: {
+      "nl-NL": "https://www.instantit.nl/computerhulp-zoetermeer",
+    },
   },
 };
 
