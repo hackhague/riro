@@ -450,7 +450,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   </div>
                   {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
-                <li className={`px-4 py-4 flex items-center justify-between ${step === 5 ? "bg-primary" : "bg-primary/90"}`}>
+                <li className={`px-4 py-4 flex items-center justify-between ${step === 4 ? "bg-primary" : "bg-primary/90"}`}>
                   <div className="flex items-center gap-3">
                     <UserIcon className="h-5 w-5" />
                     <div>
@@ -460,7 +460,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                       </p>
                     </div>
                   </div>
-                  {isStep5Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
+                  {isStep4Valid && <CheckCircle2 className="h-5 w-5 opacity-80" />}
                 </li>
                 <li className="px-4 py-4 text-sm bg-blue-100 text-blue-900 space-y-1">
                   <p className="opacity-100">Liever direct contact?</p>
