@@ -245,15 +245,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     const basePrice = service?.price.amount || 0;
     const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
-    if (booking.urgency === "snel" && basePrice > 0) {
-      const speedSurcharge = Math.round(basePrice * 0.25);
-      surcharges.push({
-        id: "speed",
-        label: "Snelheidsopslag",
-        amount: speedSurcharge,
-      });
-    }
-
     const isEveningSlot = booking.timeSlot && (
       booking.timeSlot.startsWith("18:") ||
       booking.timeSlot.startsWith("19:") ||
