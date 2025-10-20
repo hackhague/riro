@@ -32,6 +32,19 @@ const SERVICE_TYPES = [
   { id: "business", label: "Zakelijk (bedrijf of kantoor)" },
 ];
 
+const SERVICE_CHANNELS = [
+  { id: "remote", label: "Ondersteuning op afstand", description: "We helpen via TeamViewer of je scherm delen" },
+  { id: "onsite", label: "Bezoek ter plaatse", description: "We komen langs om je probleem ter plaatse op te lossen" },
+];
+
+const URGENCY_OPTIONS = [
+  { id: "standaard", label: "Standaard", description: "Binnen 2-3 werkdagen" },
+  { id: "snel", label: "Snel", description: "Morgen of volgende werkdag" },
+  { id: "spoed", label: "Spoed", description: "Vandaag nog (alleen voor beveiligingsproblemen)" },
+];
+
+const SPOED_SLOT_LABEL = "Spoedslot (ASAP)";
+
 // Default 2-uur (48-72 uur for standaard) tijdsloten
 const DEFAULT_SLOTS = [
   "09:00 – 11:00",
