@@ -28,7 +28,7 @@ export default function Tarieven() {
       name: "Directe hulp bij gehackt",
       price: "Vanaf €149",
       unit: "Remote of op locatie",
-      desc: "Gehackt of ransomware? Remote triage binnen 60 min, on-site herstel binnen 24–48 uur.",
+      desc: "Gehackt of ransomware? Remote triage binnen 60 min, op locatie herstel binnen 24–48 uur.",
     },
   ];
 
