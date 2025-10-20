@@ -57,7 +57,7 @@ export function PlanAppointmentCta({
               <Button asChild size="lg" className="w-full">
                 <Link href={href}>{ctaLabel}</Link>
               </Button>
-              <Button asChild variant="secondary" size="lg" className="w-full">
+              <Button asChild variant="accent" size="lg" className="w-full">
                 <a href="tel:+31702119191">
                   <Phone className="mr-2 h-4 w-4" />
                   Bel 070 211 9191
