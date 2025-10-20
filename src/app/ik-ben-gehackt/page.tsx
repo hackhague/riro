@@ -4,9 +4,7 @@ import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
-import { PriceBox } from "@/components/ui/PriceBox";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
-import { PRICE_TIERS } from "@/data/pricing";
 
 const serviceImage = "/images/service-hack.jpg";
 

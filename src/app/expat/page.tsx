@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Globe, CheckCircle, Clock, Shield, Zap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "IT Support for Expats",
@@ -88,8 +87,6 @@ export default function Expat() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Why Choose Us */}
       <section className="py-12 md:py-16">

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
-import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "Cyber APK – Veiligheidscheck Computer & Netwerk",
@@ -83,8 +82,6 @@ export default function CyberAPK() {
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Check */}
       <section className="py-12 md:py-16">
