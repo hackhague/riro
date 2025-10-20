@@ -7,7 +7,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 
-const serviceImage = "/images/service-antivirus.jpg";
+const serviceImage = "/images/service-antivirus.svg";
 
 export const metadata: Metadata = {
   title: "Antivirus & Beveiliging Installatie | ESET & meer",

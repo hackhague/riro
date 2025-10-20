@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 
 export default function EmailPage() {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
-    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
+    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.svg" },
   ];
 
   const problems = [
