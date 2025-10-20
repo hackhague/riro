@@ -56,7 +56,7 @@ const cityData: Record<string, CityContent> = {
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
       solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
-      result: "Werkdag voortgezet, alle data veilig, kosten €49",
+      result: "Werkdag voortgezet, alle data veilig, heldere tarieven",
       location: "Den Haag Centrum",
     },
     faqExtra: [
@@ -423,6 +423,8 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
         </div>
       </section>
 
+      <PriceBox />
+
       {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -586,7 +588,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
               <Link href="/afspraak">
-                Plan een afspraak
+                Afspraak maken
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">

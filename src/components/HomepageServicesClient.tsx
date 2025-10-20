@@ -357,7 +357,7 @@ export function HomepageServicesClient() {
         {/* Bottom CTA buttons */}
         <div className="flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak">Plan een afspraak</Link>
+            <Link href="/afspraak">Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="tel:+31702119191">

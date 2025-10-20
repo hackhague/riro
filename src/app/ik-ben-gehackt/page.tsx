@@ -4,6 +4,7 @@ import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle } from "lucide-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-hack.jpg";
 
@@ -207,6 +208,8 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
+      <PriceBox />
+
       {/* LLM-answer card (zichtbaar en kort) */}
       <section className="py-6">
         <div className="container mx-auto px-4 max-w-3xl">
@@ -255,85 +258,6 @@ export default function IkBenGehackt(): JSX.Element {
           </div>
           <p className="text-sm text-foreground/70 max-w-3xl mx-auto text-center mt-6">
             We werken stap voor stap en leggen alles in gewone taal uit. Je krijgt een kort verslag met wat we hebben gedaan.
-          </p>
-        </div>
-      </section>
-
-      {/* Pricing (aangepast, zonder vakjargon) */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Tarieven</h2>
-          <p className="text-center text-foreground/70 max-w-3xl mx-auto mb-8">
-            We starten meestal <strong>binnen 60 minuten op afstand</strong>. Als het nodig is komen we <strong>binnen 24–48 uur</strong> langs.
-            Duidelijke prijzen, geen verrassingen.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {/* Particulier – op afstand */}
-            <Card className="border-2 border-accent">
-              <CardContent className="p-6 text-center">
-                <Zap className="h-8 w-8 text-accent mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-lg mb-2">Hack-incident (remote)</h3>
-                <p className="text-3xl font-bold text-accent mb-1">€149</p>
-                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • account recovery + scan + rapport</p>
-                <p className="text-xs text-foreground/70">
-                  Wachtwoorden resetten, 2-stapsverificatie, vreemde toegang verwijderen, malware controle.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Particulier – aan huis */}
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-lg mb-2">Hack-incident (aan huis)</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€249</p>
-                <p className="text-sm text-foreground/60 mb-4">Tot 2 uur • daarna €30 per 15 min</p>
-                <p className="text-xs text-foreground/70">
-                  Volledige ransomware/network-check, apparaat opnieuw beveiligd, rapport voor verzekering.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Cyber APK */}
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-lg mb-2">Cyber-APK (preventief)</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€99</p>
-                <p className="text-sm text-foreground/60 mb-4">Remote • updates + backup + advies</p>
-                <p className="text-xs text-foreground/70">
-                  Preventieve veiligheidscheck: OS updates, kritieke patches, backup & 2FA setup.
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Cyber APK On-site */}
-            <Card>
-              <CardContent className="p-6 text-center">
-                <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-lg mb-2">Cyber-APK on-site</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€149</p>
-                <p className="text-sm text-foreground/60 mb-4">Ter plaatse • wifi + antivirus + scan</p>
-                <p className="text-xs text-foreground/70">
-                  Volledige check: hardware, wireless, antivirus, adviesgesprek + rapportage.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mt-10 bg-primary/5 border border-primary/20 rounded-lg p-6 max-w-3xl mx-auto text-center">
-            <h3 className="font-heading font-semibold text-lg mb-2">Voor bedrijven & zakelijk</h3>
-            <p className="text-foreground/70 mb-2">
-              Cyberincidenten met grotere impact? Wij bieden maatwerk.
-            </p>
-            <p className="text-sm text-foreground/60">
-              Bel voor een deskundig advies: <strong>070 211 9191</strong>
-            </p>
-          </div>
-
-          <p className="text-center text-foreground/60 text-sm mt-8">
-            Remote: vooraf betalen via betaallink. Ter plaatse: pinnen mogelijk. Gratis herbeoordeling binnen 7 dagen (30 min remote).
           </p>
         </div>
       </section>

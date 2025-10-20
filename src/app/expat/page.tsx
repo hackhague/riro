@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { MessageCircle, Phone, Globe, CheckCircle, Clock, Shield, Zap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 export const metadata: Metadata = {
   title: "IT Support for Expats",
@@ -49,27 +50,6 @@ export default function Expat() {
     },
   ];
 
-  const pricing = [
-    {
-      name: "Remote Computer Help",
-      price: "€39 / 30 min",
-      cap: "capped at €99",
-      description: "For software issues, virus removal, configuration",
-    },
-    {
-      name: "On-site Visit",
-      price: "€65 / hour",
-      cap: "no travel fees in The Hague area",
-      description: "For hardware, network setup, home office installation",
-    },
-    {
-      name: "Emergency Security Support",
-      price: "€79 / 45 min",
-      cap: "capped at €149 remote",
-      description: "24/7 available for urgent security issues",
-    },
-  ];
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -108,6 +88,8 @@ export default function Expat() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* Why Choose Us */}
       <section className="py-12 md:py-16">
@@ -281,35 +263,6 @@ export default function Expat() {
                 </ul>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-4">
-            Transparent pricing
-          </h2>
-          <p className="text-center text-foreground/70 mb-10 max-w-2xl mx-auto">
-            No hidden fees. If we can't solve your problem, you only pay €19 for the diagnosis.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {pricing.map((item, index) => (
-              <Card key={index} className="border-2">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold text-xl mb-2">{item.name}</h3>
-                  <p className="text-3xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-4">{item.cap}</p>
-                  <p className="text-foreground/70 text-sm">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <p className="text-foreground/70 mb-4">
-              <strong>Aftercare guarantee:</strong> Free follow-up for the same issue within 7 days (max 30 min remote)
-            </p>
           </div>
         </div>
       </section>

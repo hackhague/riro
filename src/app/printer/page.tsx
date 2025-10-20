@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Printer, CheckCircle2, Zap, MessageCircle } from "lucide-react";
+import { Phone, Printer, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { PriceBox } from "@/components/ui/PriceBox";
 
 const serviceImage = "/images/service-printer.jpg";
 
@@ -57,7 +58,7 @@ export default function PrinterPage() {
     },
     {
       q: "Hoe veel kost printerhulp?",
-      a: "Aan huis €59 per uur. Diagnose is €19 als we niet kunnen helpen. Cartridges en onderdelen apart.",
+      a: "We hanteren onze vaste tarieven uit de prijstabel. Diagnosekosten rekenen we alleen wanneer we het niet kunnen oplossen. Cartridges en onderdelen rekenen we apart.",
     },
     {
       q: "Kunnen jullie een nieuwe printer installeren?",
@@ -107,6 +108,8 @@ export default function PrinterPage() {
           </div>
         </div>
       </section>
+
+      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
@@ -171,34 +174,6 @@ export default function PrinterPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat het kost</h2>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            <Card className="border-2 border-primary">
-              <CardContent className="p-6 text-center">
-                <Printer className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Printerhulp aan huis</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€59</p>
-                <p className="text-sm text-foreground/60 mb-4">per uur</p>
-                <p className="text-xs text-foreground/70">Onderdelen en cartridges apart</p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <CheckCircle2 className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-heading font-semibold text-xl mb-2">Diagnose onopgelost</h3>
-                <p className="text-3xl font-bold text-primary mb-1">€19</p>
-                <p className="text-sm text-foreground/60 mb-4">alleen diagnose</p>
-                <p className="text-xs text-foreground/70">Verrekenbaar als u toch verder gaat</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* Case Study */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -220,7 +195,7 @@ export default function PrinterPage() {
               <div>
                 <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
                 <p className="text-lg font-semibold mt-2">
-                  "Nu werkt alles. Printen via WiFi gaat vlekkeloos. Kosten: €59 (2 uur) + €22 cartridge."
+                  "Nu werkt alles. Printen via WiFi gaat vlekkeloos. Investering vooraf afgestemd, geen verrassingen."
                 </p>
               </div>
               <p className="text-sm text-foreground/60 mt-4">Voorburg</p>
