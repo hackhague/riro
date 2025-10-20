@@ -15,9 +15,10 @@ interface ServiceBlock {
 interface OtherServicesGridProps {
   serviceBlocks: ServiceBlock[];
   showCTA?: boolean;
+  title?: string;
 }
 
-export function OtherServicesGrid({ serviceBlocks, showCTA = true }: OtherServicesGridProps) {
+export function OtherServicesGrid({ serviceBlocks, showCTA = true, title = "Andere diensten" }: OtherServicesGridProps) {
   const priceConfig = usePrices();
   const { ctas, contact } = priceConfig;
   return (
