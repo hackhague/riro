@@ -73,16 +73,16 @@ export default function RansomwareHulp() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-primary/10 to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-destructive/30 to-destructive/10">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Lock className="h-8 w-8 text-primary" />
+            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Lock className="h-8 w-8 text-white" />
             </div>
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Ransomware – Je Bestanden Zijn Vergrendeld
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80 mb-8">
+            <p className="text-lg md:text-xl text-white/90 mb-8">
               Dit is ernstig, maar panikeren helpt niet. Hier is wat je nu moet doen (spoiler: niet betalen).
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
