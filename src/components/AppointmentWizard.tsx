@@ -228,8 +228,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         service = consumerPricing.remote;
       } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
         service = consumerPricing.onsite;
-      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
-        service = consumerPricing.onsite;
       } else if (booking.urgency === "spoed") {
         service = consumerPricing.emergency;
       }
@@ -238,8 +236,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
         service = businessPricing.remote;
       } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
-        service = businessPricing.onsite;
-      } else if (booking.urgency === "snel" && booking.serviceChannel === "onsite") {
         service = businessPricing.onsite;
       } else if (booking.urgency === "spoed") {
         service = businessPricing.emergency;
