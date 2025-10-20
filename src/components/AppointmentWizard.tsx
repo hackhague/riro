@@ -796,7 +796,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           Professionele antivirus installatie en basisbeveiliging setup.
                         </p>
                         <p className="text-sm font-semibold text-primary mt-2">
-                          €79 voor 2 apparaten (€15 per extra)
+                          Kosten worden met u besproken
                         </p>
                       </div>
                     </div>
