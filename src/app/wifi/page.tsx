@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-wifi.jpg";
 
@@ -195,6 +196,13 @@ export default function WiFiPage() {
       </section>
 
       <HomepageServicesClient />
+
+      {/* Other Services */}
+      <section>
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
+        </div>
+      </section>
 
       {/* Case Study */}
       <section className="py-12 md:py-16">

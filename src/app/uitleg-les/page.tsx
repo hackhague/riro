@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-lessons.jpg";
 
@@ -19,6 +20,15 @@ export const metadata: Metadata = {
 };
 
 export default function UitlegLesPage() {
+  const serviceBlocks = [
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
+    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
+  ];
+
   const lessons = [
     "Basis computergebruik leren",
     "E-mail leren gebruiken",
@@ -234,6 +244,13 @@ export default function UitlegLesPage() {
       </section>
 
       <PartnersSection />
+
+      {/* Other Services */}
+      <section>
+        <div className="container mx-auto px-4 py-12 md:py-16">
+          <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
+        </div>
+      </section>
 
       {/* Why Choose Us */}
       <section className="py-12 md:py-16 bg-secondary">
