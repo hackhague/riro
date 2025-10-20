@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Zoetermeer | Snel & Betrouwbaar",
+  title: "Computerhulp Zoetermeer | Rokkeveen, Oosterheem & Bedrijven",
   description:
-    "InstantIT helpt Zoetermeer met snelle computerhulp, wifi en cybersecurity. Remote binnen 10–30 minuten, on-site meestal binnen 24 uur.",
+    "Computerhulp in Zoetermeer voor particulieren en bedrijven. Alle wijken: Rokkeveen, Oosterheem, Seghwaert, Meerzicht. Netwerk-upgrades, WiFi-optimalisatie, cybersecurity. Remote support en on-site snel beschikbaar.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-zoetermeer",
   },

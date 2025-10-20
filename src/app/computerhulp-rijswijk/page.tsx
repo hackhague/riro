@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
-  title: "Computerhulp in Rijswijk | Snel & Betrouwbaar",
+  title: "Computerhulp Rijswijk | Oud-Rijswijk, Te Werve & Leeuwendaal",
   description:
-    "Snelle computerhulp en wifi-ondersteuning in Rijswijk. Remote binnen 10–30 minuten, on-site meestal binnen 24 uur.",
+    "Computerhulp in Rijswijk - winkels, restaurants en huishoudens. Alle wijken: Oud-Rijswijk, Rembrandtkwartier, Te Werve. Kassasystemen, PIN-problemen, netwerk-optimalisatie. Remote support en on-site beschikbaar.",
   alternates: {
     canonical: "https://www.instantit.nl/computerhulp-rijswijk",
   },
