@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import AppointmentWizard from "@/components/AppointmentWizard";
 
+type AfspraakPageProps = {
+  searchParams?: Record<string, string | string[] | undefined>;
+};
+
 export const metadata: Metadata = {
   title: "Plan een afspraak",
   description:
@@ -10,7 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Afspraak() {
+export default function Afspraak({ searchParams }: AfspraakPageProps) {
+  const params = searchParams ?? {};
+  const normalize = (value: string | string[] | undefined) => {
+    if (Array.isArray(value)) return value[0];
+    return value;
+  };
+
+  const initialState = {
+    problemCategory: normalize(params.category),
+    serviceType: normalize(params.type),
+    serviceChannel: normalize(params.channel),
+    urgency: normalize(params.speed),
+    date: normalize(params.date),
+    timeSlot: normalize(params.slot),
+  };
+
   return (
     <div className="min-h-screen">
       <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
@@ -26,7 +45,7 @@ export default function Afspraak() {
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <AppointmentWizard />
+          <AppointmentWizard initialState={initialState} />
         </div>
       </section>
     </div>

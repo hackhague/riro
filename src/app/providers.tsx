@@ -6,10 +6,15 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
+import { CtaAnalyticsListener } from "@/components/CtaAnalyticsListener";
+
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <>
-      <TooltipProvider delayDuration={150}>{children}</TooltipProvider>
+      <TooltipProvider delayDuration={150}>
+        <CtaAnalyticsListener />
+        {children}
+      </TooltipProvider>
       <Toaster />
       <Sonner />
     </>

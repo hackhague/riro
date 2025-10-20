@@ -4,7 +4,7 @@ import { Phone, Smartphone, CheckCircle2, Lock, MessageCircle } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import AppointmentWizard from "@/components/AppointmentWizard";
+import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
 
 const serviceImage = "/images/service-mobile.jpg";
@@ -296,12 +296,12 @@ export default function MobileTabletPage() {
         </div>
       </section>
 
-      {/* Appointment Wizard */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <AppointmentWizard compact={false} />
-        </div>
-      </section>
+      <PlanAppointmentCta
+        preselect={{
+          category: "mobile",
+          channel: "remote",
+        }}
+      />
 
       {/* CTA */}
       <section className="py-16 bg-primary text-primary-foreground">
