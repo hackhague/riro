@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
-
 export default function Tarieven() {
   const consumerPricing = [
     { name: "Computerhulp op afstand", price: "€35", unit: "Eerste 30 min", extra: "Daarna €15 per 15 min", desc: "Snelle remote hulp met lage instapkosten. Transparante per-minuut afrekening." },

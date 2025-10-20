@@ -20,8 +20,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
-
 interface ComputerhulpProps {
   city?: string;
   cityUrl?: string;

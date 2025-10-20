@@ -10,8 +10,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
-
 export default function Afspraak() {
   return (
     <div className="min-h-screen">

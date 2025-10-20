@@ -15,8 +15,6 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = 3600;
-
 export default function IkBenGehackt(): JSX.Element {
   // --- META (zet in head)
   // title: "Ik ben gehackt? Direct hulp in Den Haag | InstantIT"
