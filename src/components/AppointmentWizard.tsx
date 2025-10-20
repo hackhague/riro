@@ -745,7 +745,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                             Volledige besturingssysteem herinstallatie met back-up van gegevens.
                           </p>
                           <p className="text-sm font-semibold text-primary mt-2">
-                            ��99 (Windows) of €119 (Mac)
+                            €99 (Windows) of €119 (Mac)
                           </p>
                         </div>
                       </div>
