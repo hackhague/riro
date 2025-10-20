@@ -109,41 +109,41 @@ export default function WindowsSupportPage() {
       </section>
 
       {/* Windows 10 End of Life Warning */}
-      <section className="py-12 md:py-16 bg-yellow-50 dark:bg-yellow-950/20 border-l-4 border-yellow-500">
+      <section className="py-12 md:py-16 bg-accent/10 border-l-4 border-accent">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="flex gap-4">
-              <AlertTriangle className="h-8 w-8 text-yellow-600 flex-shrink-0 mt-1" />
+              <Shield className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
               <div>
                 <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-4">
-                Windows 10 Einde ondersteuning: 14 oktober 2025
-              </h2>
+                  Windows 10 Einde ondersteuning: 14 oktober 2025
+                </h2>
                 <p className="text-foreground/80 mb-6 text-lg">
                   Microsoft stopt binnenkort met beveiligingsupdates voor Windows 10. Na deze datum wordt je computer kwetsbaar voor virussen en cyberaanvallen.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-start gap-3">
-                    <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="font-medium">Geen beveiligingsupdates</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="font-medium">Kwetsbaar voor virussen</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <AlertTriangle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
+                    <AlertTriangle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                     <span className="font-medium">Beperkte compatibiliteit</span>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Shield className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-                    <span className="font-medium">Nu upgraden = 20% korting!</span>
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="font-medium">Upgrade nu = 20% korting</span>
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <Button variant="default" size="lg" asChild className="bg-yellow-600 hover:bg-yellow-700">
+                  <Button variant="default" size="lg" asChild>
                     <a href="https://wa.me/31702119191?text=Ik%20wil%20naar%20Windows%2011%20upgraden" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2" />
-                      Windows 11 Upgrade Boeken (20% korting!)
+                      Windows 11 Upgrade Boeken
                     </a>
                   </Button>
                 </div>
