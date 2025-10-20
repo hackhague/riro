@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle } from "lucide-react";
+import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap, Barcode, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -177,14 +177,18 @@ export default function AntivirusSetupPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat je nodig hebt</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {protection_elements.map((element, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{element}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {protection_elements.map((element, index) => {
+              const icons = [Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{element}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -235,25 +239,29 @@ export default function AntivirusSetupPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Keuze aan beveiligingsoplossingen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {antivirus_options.map((option, index) => (
-              <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>
-                <CardContent className="p-6">
-                  {option.badge && (
-                    <div className={`text-xs font-semibold px-2 py-1 rounded-full w-fit mb-3 ${
-                      option.badge === "Partnership" 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-secondary text-foreground"
-                    }`}>
-                      {option.badge}
-                    </div>
-                  )}
-                  <Lock className="h-6 w-6 text-primary mb-3" />
-                  <h3 className="font-heading font-semibold text-lg mb-2">{option.name}</h3>
-                  <p className="text-foreground/70 text-sm mb-4">{option.desc}</p>
-                  <p className="text-2xl font-bold text-primary">{option.price}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {antivirus_options.map((option, index) => {
+              const icons = [Lock, Shield, Virus, Flame, Eye, Filter];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>
+                  <CardContent className="p-6">
+                    {option.badge && (
+                      <div className={`text-xs font-semibold px-2 py-1 rounded-full w-fit mb-3 ${
+                        option.badge === "Partnership"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-foreground"
+                      }`}>
+                        {option.badge}
+                      </div>
+                    )}
+                    <IconComponent className="h-6 w-6 text-primary mb-3" />
+                    <h3 className="font-heading font-semibold text-lg mb-2">{option.name}</h3>
+                    <p className="text-foreground/70 text-sm mb-4">{option.desc}</p>
+                    <p className="text-2xl font-bold text-primary">{option.price}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

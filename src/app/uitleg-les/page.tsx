@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, BookOpen, CheckCircle2, Heart, MessageCircle } from "lucide-react";
+import { Phone, BookOpen, CheckCircle2, Heart, MessageCircle, Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile, Keyboard, Globe, Lightbulb, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -123,14 +123,18 @@ export default function UitlegLesPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat u leert</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {lessons.map((lesson, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <BookOpen className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{lesson}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {lessons.map((lesson, index) => {
+              const icons = [Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{lesson}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -169,14 +173,18 @@ export default function UitlegLesPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onderwerpen die we behandelen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {topics.map((topic) => (
-              <Card key={topic} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <BookOpen className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{topic}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {topics.map((topic, index) => {
+              const icons = [Keyboard, Globe, Mail, Video, Lock, Users, Lightbulb, Award];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={topic} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{topic}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Printer, MessageCircle } from "lucide-react";
+import { Phone, Printer, MessageCircle, AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings, Barcode, Radio, Layers3, Grid3x3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -112,14 +112,18 @@ export default function PrinterPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat lossen we op?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {problems.map((problem, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Printer className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{problem}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {problems.map((problem, index) => {
+              const icons = [AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{problem}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -158,14 +162,18 @@ export default function PrinterPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We ondersteunen alle merken</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {["HP", "Canon", "Epson", "Brother", "Lexmark", "Ricoh", "Kyocera", "Xerox"].map((brand) => (
-              <Card key={brand} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <Printer className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{brand}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {["HP", "Canon", "Epson", "Brother", "Lexmark", "Ricoh", "Kyocera", "Xerox"].map((brand, index) => {
+              const icons = [Barcode, Radio, Layers3, Grid3x3, Layers, Copy, Settings, AlertTriangle];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={brand} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{brand}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
