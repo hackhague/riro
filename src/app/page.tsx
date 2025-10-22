@@ -15,6 +15,7 @@ import {
   ZapOff,
   Home as HomeIcon,
   Laptop,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
