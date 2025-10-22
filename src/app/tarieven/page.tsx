@@ -68,7 +68,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) remote - zakelijk (thuis of kantoor)",
       price: "€299",
-      originalPrice: "€299",
       upsellPrice: "€149,50",
       unit: "Vaste prijs (ex btw)",
       desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
@@ -78,7 +77,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) ter plaatse - zakelijk",
       price: "€449",
-      originalPrice: "€449",
       upsellPrice: "€224,50",
       unit: "Vaste prijs (ex btw)",
       desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
