@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
+import { ReviewSection } from "@/components/ReviewSection";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -176,7 +177,7 @@ export default function Home() {
             <div className="hidden md:block">
               <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
                 <li className="flex items-start gap-2">
-                  <span className="mt-0.5 text-accent">•</span>
+                  <span className="mt-0.5 text-accent">���</span>
                   <span><strong>InstantIT</strong> — lokale IT-professional voor computerstoringen, hackondersteuning en WiFi-verbetering.</span>
                 </li>
                 <li className="flex items-start gap-2">
