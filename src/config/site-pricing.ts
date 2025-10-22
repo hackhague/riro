@@ -228,7 +228,7 @@ export const SITE_PRICING: SitePricingConfig = {
         id: "consumer-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand",
         shortLabel: "Cyber-APK remote",
-        location: "op afstand",
+        location: "op afstand", "aan huis"
         tagline: "Digitale veiligheidscheck op afstand",
         summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst.",
         bookingSummary: "Digitale veiligheidscheck op afstand – Normaal €79, nu €39,50 bij meeboeken.",
@@ -239,23 +239,6 @@ export const SITE_PRICING: SitePricingConfig = {
           unit: "Vaste prijs",
           extra: "50% korting bij meeboeken: €39,50",
         },
-      },
-      onsite: {
-        id: "consumer-cyber-apk-onsite",
-        label: "Veiligheidscheck (Cyber-APK) aan huis",
-        shortLabel: "Cyber-APK thuis",
-        location: "aan huis",
-        tagline: "Veiligheidscheck aan huis met netwerk en wifi check",
-        summary: "Netwerk, wifi en endpoint-check op locatie inclusief rapport. 50% korting bij boeking met andere dienst.",
-        bookingSummary: "Veiligheidscheck aan huis – Normaal €79, nu €39,50 bij meeboeken.",
-        price: {
-          amount: 79,
-          currency: "EUR",
-          display: "€79",
-          unit: "Vaste prijs",
-          extra: "50% korting bij meeboeken: €39,50",
-        },
-      },
       businessRemote: {
         id: "business-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand zakelijk",
