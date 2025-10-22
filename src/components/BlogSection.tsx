@@ -120,8 +120,8 @@ export function BlogSection() {
                 {/* Image Container */}
                 <div className="relative h-48 w-full bg-secondary overflow-hidden">
                   <Image
-                    src={currentSection.posts[currentPostIndex].image}
-                    alt={currentSection.posts[currentPostIndex].title}
+                    src={currentSection.posts[0].image}
+                    alt={currentSection.posts[0].title}
                     fill
                     className="object-cover transition-transform duration-300"
                   />
@@ -131,24 +131,24 @@ export function BlogSection() {
                   {/* Category & Read Time */}
                   <div className="flex items-center justify-between mb-2 text-xs">
                     <span className="font-semibold text-primary uppercase tracking-wide">
-                      {currentSection.posts[currentPostIndex].category}
+                      {currentSection.posts[0].category}
                     </span>
-                    <span className="text-foreground/60">{currentSection.posts[currentPostIndex].readTime}</span>
+                    <span className="text-foreground/60">{currentSection.posts[0].readTime}</span>
                   </div>
 
                   {/* Title */}
                   <h3 className="font-heading font-semibold text-base mb-2 line-clamp-2 text-foreground">
-                    {currentSection.posts[currentPostIndex].title}
+                    {currentSection.posts[0].title}
                   </h3>
 
                   {/* Description */}
                   <p className="text-foreground/70 text-xs mb-4 line-clamp-2 flex-grow">
-                    {currentSection.posts[currentPostIndex].description}
+                    {currentSection.posts[0].description}
                   </p>
 
                   {/* Link */}
                   <Link
-                    href={`/blog/${currentSection.posts[currentPostIndex].slug}`}
+                    href={`/blog/${currentSection.posts[0].slug}`}
                     className="inline-flex items-center text-xs font-semibold text-accent hover:text-accent/80 transition-colors"
                   >
                     Lees verder
@@ -156,22 +156,6 @@ export function BlogSection() {
                   </Link>
                 </CardContent>
               </Card>
-
-              {/* Mobile Post Indicators */}
-              <div className="flex items-center justify-center gap-2 mt-4">
-                {currentSection.posts.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentPostIndex(index)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      index === currentPostIndex
-                        ? 'bg-primary w-8'
-                        : 'bg-primary/30 hover:bg-primary/50 w-2'
-                    }`}
-                    aria-label={`Go to post ${index + 1}`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         )}
