@@ -333,9 +333,9 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Professionele antivirus installatie en basisbeveiliging voor 2 apparaten. Extra apparaten +€15 per stuk.",
         bookingSummary: "€79 voor 2 apparaten | +€15 per extra apparaat.",
         price: {
-          amount: 79,
+          amount: 50,
           currency: "EUR",
-          display: "€79",
+          display: "€50",
           unit: "2 apparaten",
           extra: "+€15 per extra apparaat",
         },
