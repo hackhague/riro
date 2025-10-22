@@ -163,7 +163,7 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Versleutelde remote sessies voor werkplekken en servers. Excl. btw.",
         bookingSummary: "Remote ondersteuning (ex btw) – snelle triage via beveiligde verbinding.",
         price: {
-          amount: 37,5,
+          amount: 37.5,
           currency: "EUR",
           display: "€37,50",
           unit: "Eerste 30 min",
