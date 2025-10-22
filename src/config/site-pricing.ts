@@ -160,8 +160,8 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Zakelijk op afstand",
         location: "op afstand",
         tagline: "Op afstand • SLA-respons binnen 10–30 minuten",
-        summary: "Versleutelde remote sessies voor werkplekken en servers. Excl. btw.",
-        bookingSummary: "Remote ondersteuning (ex btw) – snelle triage via beveiligde verbinding.",
+        summary: "Versleutelde op afstand sessies voor werkplekken en servers. Excl. btw.",
+        bookingSummary: "Op afstand ondersteuning (ex btw) – snelle triage via beveiligde verbinding.",
         price: {
           amount: 35,
           currency: "EUR",
