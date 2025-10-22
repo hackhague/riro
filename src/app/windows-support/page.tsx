@@ -219,7 +219,7 @@ export default function WindowsSupportPage() {
             Klaar voor Windows 11? Wij helpen je met een zorgeloze upgrade. Volledige backup, professionele installatie en alles opnieuw geconfigureerd.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
             <div>
               <h3 className="font-heading font-semibold text-2xl mb-6">Voordelen Windows 11</h3>
               <div className="space-y-3">
