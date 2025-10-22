@@ -72,12 +72,9 @@ export function ReviewSection({
 
         {showLink && (
           <div className="text-center">
-            <a
-              href="/reviews"
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Bekijk alle reviews
-            </a>
+            <Button variant="default" asChild>
+              <a href="/reviews">Bekijk alle reviews</a>
+            </Button>
           </div>
         )}
       </div>
