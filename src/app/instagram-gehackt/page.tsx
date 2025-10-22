@@ -4,6 +4,7 @@ import { MessageCircle, Phone, Smartphone, Shield, Lock, CheckCircle } from "luc
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -193,6 +194,8 @@ export default function InstagramGehackt() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/instagram-gehackt" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{
