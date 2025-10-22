@@ -102,7 +102,7 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "€35",
           unit: "Eerste 30 min",
-          extra: "Daarna €15 per 15 min (max €99)",
+          extra: "Daarna €15 per 15 min (max €129)",
         },
       },
       onsite: {
