@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Calendar, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
 import {
@@ -224,14 +224,15 @@ export const Navigation = () => {
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
-                <Phone className="h-3.5 w-3.5 mr-1.5" />
-                {contact.phoneNumber}
+              <a href="/afspraak">
+                <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                Afspraak maken
               </a>
             </Button>
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a href="/afspraak">
-                Afspraak maken
+              <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
+                <Phone className="h-3.5 w-3.5 mr-1.5" />
+                {contact.phoneNumber}
               </a>
             </Button>
           </div>
@@ -434,14 +435,15 @@ export const Navigation = () => {
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
-                    <Phone className="h-3.5 w-3.5 mr-1.5" />
-                    {contact.phoneNumber}
+                  <a href="/afspraak">
+                    <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                    Afspraak maken
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href="/afspraak">
-                    Afspraak maken
+                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
+                    <Phone className="h-3.5 w-3.5 mr-1.5" />
+                    {contact.phoneNumber}
                   </a>
                 </Button>
               </div>

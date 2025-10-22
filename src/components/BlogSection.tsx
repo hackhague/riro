@@ -6,18 +6,35 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { getRotatingBlogSections } from '@/data/blog';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function BlogSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const sections = getRotatingBlogSections() || [];
+  const isMobile = useIsMobile();
 
+  // Desktop: rotate sections every 10 seconds
   useEffect(() => {
+    if (isMobile || sections.length === 0) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % sections.length);
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [sections.length]);
+  }, [sections.length, isMobile]);
+
+  // Mobile: rotate sections every 15 seconds
+  useEffect(() => {
+    if (!isMobile || sections.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % sections.length);
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, sections.length]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
@@ -46,8 +63,8 @@ export function BlogSection() {
           </p>
         </div>
 
-        {/* Blog Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
+        {/* Blog Cards Grid - Desktop */}
+        <div className="hidden md:grid md:grid-cols-3 gap-5 mb-10">
           {currentSection.posts.map((post) => (
             <Card
               key={post.id}
@@ -95,9 +112,57 @@ export function BlogSection() {
           ))}
         </div>
 
+        {/* Blog Card Carousel - Mobile */}
+        {isMobile && currentSection.posts.length > 0 && (
+          <div className="md:hidden mb-10">
+            <div className="relative">
+              <Card className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
+                {/* Image Container */}
+                <div className="relative h-48 w-full bg-secondary overflow-hidden">
+                  <Image
+                    src={currentSection.posts[0].image}
+                    alt={currentSection.posts[0].title}
+                    fill
+                    className="object-cover transition-transform duration-300"
+                  />
+                </div>
+
+                <CardContent className="p-4 flex flex-col flex-grow">
+                  {/* Category & Read Time */}
+                  <div className="flex items-center justify-between mb-2 text-xs">
+                    <span className="font-semibold text-primary uppercase tracking-wide">
+                      {currentSection.posts[0].category}
+                    </span>
+                    <span className="text-foreground/60">{currentSection.posts[0].readTime}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-semibold text-base mb-2 line-clamp-2 text-foreground">
+                    {currentSection.posts[0].title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-foreground/70 text-xs mb-4 line-clamp-2 flex-grow">
+                    {currentSection.posts[0].description}
+                  </p>
+
+                  {/* Link */}
+                  <Link
+                    href={`/blog/${currentSection.posts[0].slug}`}
+                    className="inline-flex items-center text-xs font-semibold text-accent hover:text-accent/80 transition-colors"
+                  >
+                    Lees verder
+                    <span className="ml-1">→</span>
+                  </Link>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        )}
+
         {/* Navigation Controls */}
         <div className="flex items-center justify-between">
-          {/* Section Indicators */}
+          {/* Section Indicators - Both Mobile and Desktop */}
           <div className="flex items-center gap-2">
             {sections.map((_, index) => (
               <button

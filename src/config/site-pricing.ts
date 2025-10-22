@@ -94,15 +94,15 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computerhulp op afstand",
         shortLabel: "Hulp op afstand",
         location: "op afstand",
-        tagline: "Op afstand • reactie binnen 10–30 minuten",
-        summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
+        tagline: "Op afstand • Reactie binnen 10–30 minuten",
+        summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €129.",
         bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 35,
           currency: "EUR",
           display: "€35",
           unit: "Eerste 30 min",
-          extra: "Daarna €15 per 15 min (max €99)",
+          extra: "Daarna €15 per 15 min (max €129)",
         },
       },
       onsite: {
@@ -110,7 +110,7 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computerhulp aan huis",
         shortLabel: "Hulp aan huis",
         location: "aan huis",
-        tagline: "Aan huis • afspraak binnen 48–72 uur",
+        tagline: "Aan huis • Afspraak binnen 48–72 uur",
         summary: "Grondige diagnose en herstel op uw locatie in Haaglanden. Geen voorrijkosten.",
         bookingSummary: "Bij u aan huis – eerste 45 minuten inbegrepen.",
         price: {
@@ -126,7 +126,7 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computer-spoedhulp aan huis",
         shortLabel: "Spoed aan huis",
         location: "aan huis",
-        tagline: "Aan huis • spoed binnen 24–48 uur",
+        tagline: "Aan huis • Spoed binnen 24 uur",
         summary: "Prioritaire inzet voor urgente storingen. Wij bellen direct voor triage.",
         bookingSummary: "Spoed op locatie – eerste uur inclusief, daarna tarief per kwartier.",
         price: {
@@ -144,7 +144,7 @@ export const SITE_PRICING: SitePricingConfig = {
         location: "hybride",
         tagline: "Alleen bij niet-opgeloste storingen",
         summary: "Wanneer we een probleem niet kunnen oplossen binnen de afgesproken tijd, betaal je alleen €19 diagnosevergoeding.",
-        bookingSummary: "Niet opgelost? Diagnosevergoeding: €19.",
+        bookingSummary: "Niet opgelost? Enkel diagnosevergoeding: €19.",
         price: {
           amount: 19,
           currency: "EUR",
