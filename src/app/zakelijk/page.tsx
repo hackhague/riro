@@ -314,7 +314,7 @@ export default function Zakelijk() {
         </div>
       </section>
 
-      <HomepageServicesClient />
+      <HomepageServicesClient defaultType="zakelijk" />
 
       <PlanAppointmentCta
         preselect={{
