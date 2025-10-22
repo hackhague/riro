@@ -320,6 +320,8 @@ export default function WindowsSupportPage() {
 
       <PartnersSection />
 
+      <ReviewSection servicePath="/windows-support" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "hardware",
