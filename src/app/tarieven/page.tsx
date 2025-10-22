@@ -49,7 +49,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) op afstand - thuis of op kantoor",
       price: "€79",
-      originalPrice: "€79",
       upsellPrice: "€39,50",
       unit: "Vaste prijs",
       desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
@@ -57,9 +56,8 @@ export default function Tarieven() {
     },
     {
       name: "Veiligheidscheck (Cyber-APK) aan huis of op kantoor",
-      price: "€99",
-      originalPrice: "€99",
-      upsellPrice: "€49,50",
+      price: "€79",
+      upsellPrice: "€39,50",
       unit: "Vaste prijs",
       desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
       upsellDesc: "50% korting bij meeboeken met andere dienst",
@@ -70,7 +68,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) remote - zakelijk (thuis of kantoor)",
       price: "€299",
-      originalPrice: "€299",
       upsellPrice: "€149,50",
       unit: "Vaste prijs (ex btw)",
       desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
@@ -80,7 +77,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) ter plaatse - zakelijk",
       price: "€449",
-      originalPrice: "€449",
       upsellPrice: "€224,50",
       unit: "Vaste prijs (ex btw)",
       desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
@@ -249,10 +245,7 @@ export default function Tarieven() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div>
-                    <div className="flex items-baseline gap-3 mb-1">
-                      <p className="text-3xl font-bold text-primary">{item.price}</p>
-                      <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
-                    </div>
+                    <p className="text-3xl font-bold text-primary mb-1">{item.price}</p>
                     <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
                   </div>
                   <p className="text-sm text-foreground/60">{item.unit}</p>
@@ -269,10 +262,7 @@ export default function Tarieven() {
               {cyberApkBusinessPricing.map((item, index) => (
                 <div key={index} className="border border-border rounded p-4">
                   <p className="font-semibold mb-2">{item.name}</p>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <p className="text-2xl font-bold text-primary">{item.price}</p>
-                    <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
-                  </div>
+                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
                   <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
                   <p className="text-xs text-foreground/60 mt-2">{item.unit}</p>
                   <p className="text-sm text-foreground/70 mt-2">{item.desc}</p>

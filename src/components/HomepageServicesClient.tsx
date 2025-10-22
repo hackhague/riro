@@ -35,8 +35,12 @@ interface ServiceCard {
   isPopular?: boolean;
 }
 
-export function HomepageServicesClient() {
-  const [serviceType, setServiceType] = useState<ServiceType>("particulier");
+interface HomepageServicesClientProps {
+  defaultType?: ServiceType;
+}
+
+export function HomepageServicesClient({ defaultType = "particulier" }: HomepageServicesClientProps = {}) {
+  const [serviceType, setServiceType] = useState<ServiceType>(defaultType);
   const priceConfig = usePrices();
   const consumerPricing = priceConfig.pricing.consumer;
   const businessPricing = priceConfig.pricing.business;
@@ -256,18 +260,18 @@ export function HomepageServicesClient() {
           {/* Toggle Buttons */}
           <div className="flex justify-center gap-3 mb-8">
             <Button
-              variant={serviceType === "particulier" ? "default" : "outline"}
-              onClick={() => setServiceType("particulier")}
-              size="lg"
-            >
-              Voor particulieren
-            </Button>
-            <Button
               variant={serviceType === "zakelijk" ? "default" : "outline"}
               onClick={() => setServiceType("zakelijk")}
               size="lg"
             >
               Voor zakelijk
+            </Button>
+            <Button
+              variant={serviceType === "particulier" ? "default" : "outline"}
+              onClick={() => setServiceType("particulier")}
+              size="lg"
+            >
+              Voor particulieren
             </Button>
           </div>
         </div>

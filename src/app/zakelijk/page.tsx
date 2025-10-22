@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone, Building2, Store, Coffee, CheckCircle, Shield, Clock, Zap } from "lucide-react";
+import { MessageCircle, Phone, Building2, Store, Coffee, Shield, Clock, Zap, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
@@ -290,7 +290,7 @@ export default function Zakelijk() {
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">Transparante prijzen</h3>
                 <p className="text-foreground/70">
-                  Vaste tarieven met caps. Geen verborgen kosten. Niet opgelost? Alleen een vooraf afgesproken diagnosevergoeding.
+                  Vaste tarieven met caps. Geen verborgen kosten. Mocht iets niet opgelost zijn, betaal je alleen €19 diagnosevergoeding.
                 </p>
               </CardContent>
             </Card>
@@ -314,7 +314,7 @@ export default function Zakelijk() {
         </div>
       </section>
 
-      <HomepageServicesClient />
+      <HomepageServicesClient defaultType="zakelijk" />
 
       <PlanAppointmentCta
         preselect={{
