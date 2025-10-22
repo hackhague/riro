@@ -57,6 +57,11 @@ export const Footer = () => {
                   Tarieven
                 </Link>
               </li>
+              <li>
+                <Link href="/blog" className="text-background/80 hover:text-background transition-colors">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
