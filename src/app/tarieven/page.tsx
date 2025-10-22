@@ -154,19 +154,31 @@ export default function Tarieven() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Particulieren</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {consumerPricing.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
-                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
-                  <p className="text-sm text-foreground/70">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {consumerPricing.map((item, index) => {
+              const serviceLinks = [
+                "/hulp-op-afstand",
+                "/computerhulp",
+                "/computerhulp",
+                "/ik-ben-gehackt"
+              ];
+              const serviceLink = serviceLinks[index];
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                    <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
+                    {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
+                    <p className="text-sm text-foreground/70 mb-4 flex-1">{item.desc}</p>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={serviceLink}>Meer info</a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
