@@ -110,7 +110,7 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computerhulp aan huis",
         shortLabel: "Hulp aan huis",
         location: "aan huis",
-        tagline: "Aan huis • afspraak binnen 48–72 uur",
+        tagline: "Aan huis • Afspraak binnen 48–72 uur",
         summary: "Grondige diagnose en herstel op uw locatie in Haaglanden. Geen voorrijkosten.",
         bookingSummary: "Bij u aan huis – eerste 45 minuten inbegrepen.",
         price: {
