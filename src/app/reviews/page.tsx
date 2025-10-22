@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { reviews } from "@/data/reviews";
+import { reviews, type Review } from "@/data/reviews";
 
 const heroImage = "/images/hero-technician.jpg";
 
