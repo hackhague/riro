@@ -304,7 +304,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-3",
-    author: "Simone Mercurio",
+    author: "S. Mercurio",
     location: "Zoetermeer",
     problem: "Printer gaf foutmeldingen",
     solution: "Probleem opgelost, alles hersteld",
@@ -313,7 +313,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-4",
-    author: "Greta Philips",
+    author: "G. Philips",
     location: "Den Haag",
     problem: "Print was bleek, slecht zichtbaar",
     solution: "Inkt vervangen, printkoppen schoon",
@@ -322,7 +322,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-5",
-    author: "Hans Groot",
+    author: "H. Groot",
     location: "Leiden",
     problem: "Printer papier zat vast",
     solution: "Papier verwijderd, alles schoongemaakt",
@@ -333,7 +333,7 @@ export const reviews: Review[] = [
   // ==================== EMAIL ====================
   {
     id: "review-email-1",
-    author: "Simone Mercurio",
+    author: "S. Mercurio",
     location: "Voorburg",
     problem: "Outlook synchronisatie werkte niet",
     solution: "Outlook opnieuw ingesteld, alles hersteld",
@@ -342,7 +342,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-2",
-    author: "Petra Veldt",
+    author: "P. Veldt",
     location: "Den Haag",
     problem: "Gmail account bleef spam ontvangen",
     solution: "Filters ingesteld, beveiliging verbeterd",
@@ -351,7 +351,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-3",
-    author: "Kurt Schneider",
+    author: "K. Schneider",
     location: "Leiden",
     problem: "E-mails openen was heel traag",
     solution: "Mailbox opgeruimd, alles schoongemaakt",
@@ -360,7 +360,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-4",
-    author: "Fabienne Bonnet",
+    author: "F. Bonnet",
     location: "Delft",
     problem: "E-mails verzenden werkte niet",
     solution: "Instellingen gecorrigeerd, getest",
@@ -369,7 +369,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-5",
-    author: "Daniel Kirsch",
+    author: "D. Kirsch",
     location: "Rijswijk",
     problem: "Veel phishing-mails in inbox",
     solution: "Filters ingesteld, account beveiligd",
@@ -378,7 +378,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-6",
-    author: "Monica Wagner",
+    author: "M. Wagner",
     location: "Zoetermeer",
     problem: "Kan niet meer inloggen op e-mail",
     solution: "Wachtwoord reset, account hersteld",
@@ -389,7 +389,7 @@ export const reviews: Review[] = [
   // ==================== SMARTPHONE & TABLET ====================
   {
     id: "review-smartphone-1",
-    author: "Mirjam Kok",
+    author: "M. Kok",
     location: "Scheveningen",
     problem: "Smartphone werd langzaam en traag",
     solution: "Opgeruimd, ongewenste dingen verwijderd",
