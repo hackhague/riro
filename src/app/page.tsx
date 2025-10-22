@@ -22,6 +22,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
 import { ReviewSection } from "@/components/ReviewSection";
+import { BlogSection } from "@/components/BlogSection";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -291,6 +292,9 @@ export default function Home() {
       </section>
 
       <PlanAppointmentCta />
+
+      {/* ------------------- BLOG SECTION ------------------- */}
+      <BlogSection />
 
       {/* ------------------- REVIEWS / CASES ------------------- */}
       <ReviewSection servicePath="/" title="Wat klanten zeggen" showLink={true} />
