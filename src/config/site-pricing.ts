@@ -118,7 +118,7 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "€52",
           unit: "Eerste 45 min",
-          extra: "Daarna €15,00 per 15 min + avondtoeslag na 18:00",
+          extra: "Daarna €15,00 per 15 min",
         },
       },
       emergency: {
