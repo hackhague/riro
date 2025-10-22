@@ -253,6 +253,8 @@ export default function IkBenGehackt(): JSX.Element {
         </div>
       </section>
 
+      <ReviewSection servicePath="/ik-ben-gehackt" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "security",
