@@ -14,7 +14,7 @@ export const reviews: Review[] = [
   // ==================== COMPUTERHULP AAN HUIS (SLOW & GENERAL) ====================
   {
     id: "review-computer-1",
-    author: "Johan de Vries",
+    author: "J. de Vries",
     location: "Den Haag",
     problem: "Computer werkte heel erg traag, kon niet meer normaal werken",
     solution: "Schijf opgeruimd, oude bestanden verwijderd, Windows geoptimaliseerd",
@@ -24,7 +24,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-2",
-    author: "Petra Jansen",
+    author: "P. Jansen",
     location: "Zoetermeer",
     problem: "Computer startte helemaal niet meer op",
     solution: "Windows hersteld, hard drive gecontroleerd, alles gerepareerd",
@@ -33,7 +33,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-3",
-    author: "Thomas Bakker",
+    author: "T. Bakker",
     location: "Delft",
     problem: "Computer veel veel langzamer geworden, veel spyware",
     solution: "Spyware verwijderd, schijf schoongemaakt, beveiligd",
@@ -42,7 +42,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-4",
-    author: "Anita Muller",
+    author: "A. Muller",
     location: "Leiden",
     problem: "Computer crashte willekeurig terwijl ik eraan werkte",
     solution: "Geheugen (RAM) getest en vervangen, alles bijgewerkt",
@@ -51,7 +51,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-5",
-    author: "Hans Vermeulen",
+    author: "H. Vermeulen",
     location: "Rijswijk",
     problem: "Computer voelde oud en traag, alles duurde lang",
     solution: "SSD geïnstalleerd, meer geheugen toegevoegd, schoongemaakt",
@@ -60,7 +60,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-6",
-    author: "Marieke Hendriks",
+    author: "M. Hendriks",
     location: "Voorburg",
     problem: "Schijf was helemaal vol, computer werkte nauwelijks",
     solution: "Opgeruimd, oude dingen weg, goed georganiseerd",
@@ -69,7 +69,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-7",
-    author: "Robert de Wit",
+    author: "R. de Wit",
     location: "Scheveningen",
     problem: "Geluid was heel slecht en scherm flikkerde soms",
     solution: "Drivers bijgewerkt, instellingen aangepast, alles afgesteld",
@@ -78,7 +78,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-8",
-    author: "Lisa van de Berg",
+    author: "L. van de Berg",
     location: "Den Haag",
     problem: "Computer voelde onveilig, veel waarschuwingen",
     solution: "Antivirus geïnstalleerd, beveiligd, alle dreigingen verwijderd",
@@ -87,7 +87,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-9",
-    author: "Dirk Jansen",
+    author: "D. Jansen",
     location: "Zoetermeer",
     problem: "Enkele programma's deden rare dingen, kon niet goed werken",
     solution: "Programma's hersteld, alles opnieuw geïnstalleerd",
@@ -96,7 +96,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-10",
-    author: "Yvonne Smit",
+    author: "Y. Smit",
     location: "Den Haag",
     problem: "Muis en toetsenbord werkten soms niet goed",
     solution: "Drivers bijgewerkt, verbindingen gecontroleerd",
@@ -107,7 +107,7 @@ export const reviews: Review[] = [
   // ==================== WINDOWS SUPPORT ====================
   {
     id: "review-windows-1",
-    author: "Sandra Jansen",
+    author: "S. Jansen",
     location: "Delft",
     problem: "Printer werkte na Windows update niet meer",
     solution: "Printer drivers geupdate, alles opnieuw geïnstalleerd",
@@ -116,7 +116,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-2",
-    author: "Marco de Wit",
+    author: "M. de Wit",
     location: "Leiden",
     problem: "Internet was veel langzamer na update",
     solution: "WiFi drivers geupdate, alles geoptimaliseerd",
@@ -125,7 +125,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-3",
-    author: "Ilse Vermeulen",
+    author: "I. Vermeulen",
     location: "Rijswijk",
     problem: "Computer liep veel vast na update",
     solution: "Update problemen opgelost, alles gerepareerd",
@@ -134,7 +134,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-4",
-    author: "Dirk Jansen",
+    author: "D. Jansen",
     location: "Zoetermeer",
     problem: "Update installatie bleef hangen",
     solution: "Update probleem opgelost, alles afgemaakt",
@@ -143,7 +143,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-5",
-    author: "Yvonne Smit",
+    author: "Y. Smit",
     location: "Den Haag",
     problem: "Scherm resolutie was niet goed",
     solution: "Scherm instellingen aangepast, alles gecalibreerd",
@@ -152,7 +152,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-6",
-    author: "Erik Boswinkel",
+    author: "E. Boswinkel",
     location: "Voorburg",
     problem: "Veel fouten na Windows update",
     solution: "Alles opgelost, systeem hersteld",
@@ -163,7 +163,7 @@ export const reviews: Review[] = [
   // ==================== MAC SUPPORT ====================
   {
     id: "review-mac-1",
-    author: "Ahmed Hassan",
+    author: "A. Hassan",
     location: "Rotterdam",
     problem: "Mac werd langzaam en crashes telkens",
     solution: "Opgeruimd, ongewenste dingen verwijderd, alles hersteld",
@@ -173,7 +173,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-2",
-    author: "Nicole van Dijk",
+    author: "N. van Dijk",
     location: "Den Haag",
     problem: "MacBook opslagruimte was vol",
     solution: "Opgeruimd, oude bestanden verwijderd",
@@ -182,7 +182,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-3",
-    author: "Sophia Krause",
+    author: "S. Krause",
     location: "Leiden",
     problem: "Mac kon niet meer verbinden met internet",
     solution: "WiFi hersteld, alles opnieuw ingesteld",
@@ -191,7 +191,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-4",
-    author: "Felix Mueller",
+    author: "F. Mueller",
     location: "Delft",
     problem: "MacBook batterij ging snel leeg",
     solution: "Instellingen aangepast, ongewenste programma's uitgeschakeld",
@@ -200,7 +200,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-5",
-    author: "Kristina Lindgren",
+    author: "K. Lindgren",
     location: "Zoetermeer",
     problem: "Externe schijf werd niet herkend",
     solution: "Schijf hersteld, alles gecontroleerd",
@@ -211,7 +211,7 @@ export const reviews: Review[] = [
   // ==================== WIFI & INTERNET ====================
   {
     id: "review-wifi-1",
-    author: "Thomas Bakker",
+    author: "T. Bakker",
     location: "Zoetermeer",
     problem: "WiFi bereik slecht, niet overal in huis",
     solution: "Mesh netwerk geïnstalleerd, alles geoptimaliseerd",
@@ -221,7 +221,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-2",
-    author: "Henk Poot",
+    author: "H. Poot",
     location: "Zoetermeer",
     problem: "Internet langzaam voor videobellen",
     solution: "Internet getest, WiFi geoptimaliseerd",
@@ -230,7 +230,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-3",
-    author: "Patricia de Jong",
+    author: "P. de Jong",
     location: "Scheveningen",
     problem: "WiFi viel steeds weg",
     solution: "Router hersteld, alles bijgewerkt",
@@ -239,7 +239,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-4",
-    author: "Wouter Jansen",
+    author: "W. Jansen",
     location: "Rijswijk",
     problem: "Wachtwoord vergeten voor WiFi",
     solution: "Router reset, nieuw wachtwoord ingesteld",
@@ -248,7 +248,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-5",
-    author: "Inge Maas",
+    author: "I. Maas",
     location: "Den Haag",
     problem: "Internet was veel langzamer dan betaald",
     solution: "Netwerk geoptimaliseerd, alles gecontroleerd",
@@ -257,7 +257,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-6",
-    author: "Dieter Klein",
+    author: "D. Klein",
     location: "Voorburg",
     problem: "Veel apparaten waren langzaam op WiFi",
     solution: "Instellingen aangepast, alles geoptimaliseerd",
@@ -266,7 +266,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-7",
-    author: "Carla Hoffman",
+    author: "C. Hoffman",
     location: "Delft",
     problem: "WiFi signaal onderbroken veel te vaak",
     solution: "Kanaal aangepast, alles hersteld",
@@ -275,7 +275,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-8",
-    author: "Jan Smits",
+    author: "J. Smits",
     location: "Den Haag",
     problem: "Nieuwe router maar kon niet goed instellen",
     solution: "Router correct ingesteld, beveiligd",
@@ -286,7 +286,7 @@ export const reviews: Review[] = [
   // ==================== PRINTER ====================
   {
     id: "review-printer-1",
-    author: "Mirjam Kok",
+    author: "M. Kok",
     location: "Scheveningen",
     problem: "Printer weigerde te printen",
     solution: "Drivers geupdate, alles gerepareerd",
@@ -295,7 +295,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-2",
-    author: "Robert van der Berg",
+    author: "R. van der Berg",
     location: "Rijswijk",
     problem: "WiFi printer gaf veel printfouten",
     solution: "Printer opnieuw ingesteld, getest",
@@ -304,7 +304,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-3",
-    author: "Simone Mercurio",
+    author: "S. Mercurio",
     location: "Zoetermeer",
     problem: "Printer gaf foutmeldingen",
     solution: "Probleem opgelost, alles hersteld",
@@ -313,7 +313,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-4",
-    author: "Greta Philips",
+    author: "G. Philips",
     location: "Den Haag",
     problem: "Print was bleek, slecht zichtbaar",
     solution: "Inkt vervangen, printkoppen schoon",
@@ -322,7 +322,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-5",
-    author: "Hans Groot",
+    author: "H. Groot",
     location: "Leiden",
     problem: "Printer papier zat vast",
     solution: "Papier verwijderd, alles schoongemaakt",
@@ -333,7 +333,7 @@ export const reviews: Review[] = [
   // ==================== EMAIL ====================
   {
     id: "review-email-1",
-    author: "Simone Mercurio",
+    author: "S. Mercurio",
     location: "Voorburg",
     problem: "Outlook synchronisatie werkte niet",
     solution: "Outlook opnieuw ingesteld, alles hersteld",
@@ -342,7 +342,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-2",
-    author: "Petra Veldt",
+    author: "P. Veldt",
     location: "Den Haag",
     problem: "Gmail account bleef spam ontvangen",
     solution: "Filters ingesteld, beveiliging verbeterd",
@@ -351,7 +351,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-3",
-    author: "Kurt Schneider",
+    author: "K. Schneider",
     location: "Leiden",
     problem: "E-mails openen was heel traag",
     solution: "Mailbox opgeruimd, alles schoongemaakt",
@@ -360,7 +360,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-4",
-    author: "Fabienne Bonnet",
+    author: "F. Bonnet",
     location: "Delft",
     problem: "E-mails verzenden werkte niet",
     solution: "Instellingen gecorrigeerd, getest",
@@ -369,7 +369,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-5",
-    author: "Daniel Kirsch",
+    author: "D. Kirsch",
     location: "Rijswijk",
     problem: "Veel phishing-mails in inbox",
     solution: "Filters ingesteld, account beveiligd",
@@ -378,7 +378,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-6",
-    author: "Monica Wagner",
+    author: "M. Wagner",
     location: "Zoetermeer",
     problem: "Kan niet meer inloggen op e-mail",
     solution: "Wachtwoord reset, account hersteld",
@@ -389,7 +389,7 @@ export const reviews: Review[] = [
   // ==================== SMARTPHONE & TABLET ====================
   {
     id: "review-smartphone-1",
-    author: "Mirjam Kok",
+    author: "M. Kok",
     location: "Scheveningen",
     problem: "Smartphone werd langzaam en traag",
     solution: "Opgeruimd, ongewenste dingen verwijderd",
