@@ -45,7 +45,7 @@ export default function HelpdeskFraude() {
     {
       step: "1",
       title: "Hang op",
-      description: "Beëindig het gesprek en verbreek elke remote verbinding",
+      description: "Beëindig het gesprek en verbreek elke op afstand verbinding",
     },
     {
       step: "2",
