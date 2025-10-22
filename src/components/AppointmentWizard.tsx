@@ -514,6 +514,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Is dit voor thuis of voor uw bedrijf?</h3>
                 </div>
+                {booking.serviceType === "business" && (
+                  <Alert className="mb-6 border-primary/40 bg-primary/5">
+                    <Building2 className="h-5 w-5" />
+                    <AlertTitle>Hoe kan InstantIT helpen?</AlertTitle>
+                    <AlertDescription>
+                      We bieden zakelijke IT-ondersteuning met vaste tarieven, geen verborgen kosten, en snelle respons. Kies hieronder of u hulp op afstand of ter plaatse nodig hebt.
+                    </AlertDescription>
+                  </Alert>
+                )}
                 <div className="grid gap-3 max-w-xl">
                   {SERVICE_TYPES.map((type) => (
                     <button
