@@ -317,6 +317,8 @@ export default function Zakelijk() {
 
       <HomepageServicesClient defaultType="zakelijk" />
 
+      <ReviewSection servicePath="/zakelijk" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           type: "zakelijk",
