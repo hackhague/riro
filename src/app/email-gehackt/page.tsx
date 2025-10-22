@@ -192,6 +192,8 @@ export default function EmailGehackt() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/email-gehackt" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "security",
