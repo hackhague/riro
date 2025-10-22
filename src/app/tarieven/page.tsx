@@ -245,10 +245,7 @@ export default function Tarieven() {
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div>
-                    <div className="flex items-baseline gap-3 mb-1">
-                      <p className="text-3xl font-bold text-primary">{item.price}</p>
-                      <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
-                    </div>
+                    <p className="text-3xl font-bold text-primary mb-1">{item.price}</p>
                     <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
                   </div>
                   <p className="text-sm text-foreground/60">{item.unit}</p>
