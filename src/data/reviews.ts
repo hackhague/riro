@@ -116,7 +116,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-2",
-    author: "Marco de Wit",
+    author: "M. de Wit",
     location: "Leiden",
     problem: "Internet was veel langzamer na update",
     solution: "WiFi drivers geupdate, alles geoptimaliseerd",
@@ -125,7 +125,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-3",
-    author: "Ilse Vermeulen",
+    author: "I. Vermeulen",
     location: "Rijswijk",
     problem: "Computer liep veel vast na update",
     solution: "Update problemen opgelost, alles gerepareerd",
@@ -134,7 +134,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-4",
-    author: "Dirk Jansen",
+    author: "D. Jansen",
     location: "Zoetermeer",
     problem: "Update installatie bleef hangen",
     solution: "Update probleem opgelost, alles afgemaakt",
@@ -143,7 +143,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-5",
-    author: "Yvonne Smit",
+    author: "Y. Smit",
     location: "Den Haag",
     problem: "Scherm resolutie was niet goed",
     solution: "Scherm instellingen aangepast, alles gecalibreerd",
@@ -152,7 +152,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-windows-6",
-    author: "Erik Boswinkel",
+    author: "E. Boswinkel",
     location: "Voorburg",
     problem: "Veel fouten na Windows update",
     solution: "Alles opgelost, systeem hersteld",
@@ -163,7 +163,7 @@ export const reviews: Review[] = [
   // ==================== MAC SUPPORT ====================
   {
     id: "review-mac-1",
-    author: "Ahmed Hassan",
+    author: "A. Hassan",
     location: "Rotterdam",
     problem: "Mac werd langzaam en crashes telkens",
     solution: "Opgeruimd, ongewenste dingen verwijderd, alles hersteld",
@@ -173,7 +173,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-2",
-    author: "Nicole van Dijk",
+    author: "N. van Dijk",
     location: "Den Haag",
     problem: "MacBook opslagruimte was vol",
     solution: "Opgeruimd, oude bestanden verwijderd",
@@ -182,7 +182,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-3",
-    author: "Sophia Krause",
+    author: "S. Krause",
     location: "Leiden",
     problem: "Mac kon niet meer verbinden met internet",
     solution: "WiFi hersteld, alles opnieuw ingesteld",
@@ -191,7 +191,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-4",
-    author: "Felix Mueller",
+    author: "F. Mueller",
     location: "Delft",
     problem: "MacBook batterij ging snel leeg",
     solution: "Instellingen aangepast, ongewenste programma's uitgeschakeld",
@@ -200,7 +200,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-mac-5",
-    author: "Kristina Lindgren",
+    author: "K. Lindgren",
     location: "Zoetermeer",
     problem: "Externe schijf werd niet herkend",
     solution: "Schijf hersteld, alles gecontroleerd",
