@@ -290,7 +290,7 @@ export default function Zakelijk() {
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold text-xl mb-3">Transparante prijzen</h3>
                 <p className="text-foreground/70">
-                  Vaste tarieven met caps. Geen verborgen kosten. Niet opgelost? Alleen een vooraf afgesproken diagnosevergoeding.
+                  Vaste tarieven met caps. Geen verborgen kosten. Mocht iets niet opgelost zijn, betaal je alleen €19 diagnosevergoeding.
                 </p>
               </CardContent>
             </Card>
