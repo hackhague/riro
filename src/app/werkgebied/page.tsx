@@ -95,21 +95,17 @@ export default function Werkgebied() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Belangrijkste steden</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {locations.map((location, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-bold text-2xl mb-2 flex items-center gap-2">
-                    <MapPin className="h-6 w-6 text-primary" />
-                    {location.name}
-                  </h3>
-                  <p className="text-foreground/70 text-sm mb-4">{location.desc}</p>
-                  <Button variant="ghost" asChild className="group/btn p-0">
-                    <Link href={location.link} className="flex items-center gap-2">
-                      Computerhulp in {location.name}
-                      <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <Link key={index} href={location.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-8 flex flex-col items-center justify-center text-center">
+                    <div className="mb-4 p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-2xl mb-2">{location.name}</h3>
+                    <p className="text-foreground/70 text-sm font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
