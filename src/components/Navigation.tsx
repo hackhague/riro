@@ -62,7 +62,7 @@ export const Navigation = () => {
       {
         label: "Computerhulp op afstand",
         path: "/hulp-op-afstand",
-        description: "Snelle remote hulp via schermdeling",
+        description: "Snelle op afstand hulp via schermdeling",
       },
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
