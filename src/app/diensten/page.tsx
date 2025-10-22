@@ -253,7 +253,7 @@ export default function Diensten() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {consumerServices.map((service, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
                 <CardContent className="p-8">
@@ -306,7 +306,7 @@ export default function Diensten() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {businessServices.map((service, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
                 <CardContent className="p-8">
