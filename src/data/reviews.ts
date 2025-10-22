@@ -138,8 +138,12 @@ export function getFeaturedReviews(): Review[] {
 }
 
 export function getReviewsByService(servicePath: string): Review[] {
+  // Homepage uses featured reviews
+  if (servicePath === "/") {
+    return getFeaturedReviews();
+  }
+
   const tagMap: Record<string, string[]> = {
-    "/": ["featured"], // Homepage - use featured only
     "/diensten": ["particulier", "zakelijk", "spoedhulp"],
     "/computerhulp": ["aan huis", "particulier"],
     "/windows-support": ["windows", "aan huis", "particulier"],
