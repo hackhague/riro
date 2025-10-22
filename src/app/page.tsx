@@ -22,6 +22,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
 import { ReviewSection } from "@/components/ReviewSection";
+import { BlogSection } from "@/components/BlogSection";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -434,7 +435,8 @@ export default function Home() {
         </div>
       </section>
 
-
+      {/* ------------------- BLOG SECTION ------------------- */}
+      <BlogSection />
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
