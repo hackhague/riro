@@ -122,10 +122,10 @@ export default function HelpdeskFraude() {
               <AlertTriangle className="h-8 w-8 text-white" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-              Helpdesk Fraude – De Vals Technici
+              Helpdesk Fraude – Vals Technici die je willen Oplichten
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
-              Nep Microsoft-medewerkers die zeggen dat je computer 'problemen' heeft? Leer hoe je ze herkent en beschermt jezelf.
+              Oplichters bellen je voor als Microsoft/Apple support ("vals technici") en claimen dat je computer gehackt is. Leer hoe je ze herkent en beschermt jezelf tegen deze fraude.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="accent" size="lg" asChild>
@@ -258,7 +258,7 @@ export default function HelpdeskFraude() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="/afspraak">Afspraak inplannen</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">Bel direct</a>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap, Barcode, Radio } from "lucide-react";
+import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap, Barcode, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -26,7 +26,7 @@ export default function AntivirusSetupPage() {
     "Firewall",
     "Quarantine & removal",
     "Automatische updates",
-    "VPN optioneel",
+    "Network optioneel",
     "Minimal CPU impact",
   ];
 
@@ -178,7 +178,7 @@ export default function AntivirusSetupPage() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat je nodig hebt</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {protection_elements.map((element, index) => {
-              const icons = [Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap];
+              const icons = [Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap];
               const IconComponent = icons[index % icons.length];
               return (
                 <Card key={index}>
@@ -240,7 +240,7 @@ export default function AntivirusSetupPage() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Keuze aan beveiligingsoplossingen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {antivirus_options.map((option, index) => {
-              const icons = [Lock, Shield, Virus, Flame, Eye, Filter];
+              const icons = [Lock, Shield, Bug, Flame, Eye, Filter];
               const IconComponent = icons[index % icons.length];
               return (
                 <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>

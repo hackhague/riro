@@ -13,11 +13,11 @@ export default function Afspraak() {
   const normalize = (value: string | null) => {
     return value || undefined;
   };
-  const initialState = {
-    problemCategory: normalize(searchParams.get("category")),
-    serviceType: normalize(searchParams.get("type")),
-    serviceChannel: normalize(searchParams.get("channel")),
-    urgency: normalize(searchParams.get("speed")),
+  const initialState: React.ComponentProps<typeof AppointmentWizard>["initialState"] = {
+    problemCategory: normalize(searchParams.get("category")) as "" | "security" | "other" | "network" | "hardware" | "mobile" | "hardware_other" | "training" | undefined,
+    serviceType: normalize(searchParams.get("type")) as "consumer" | "business" | undefined,
+    serviceChannel: normalize(searchParams.get("channel")) as "remote" | "onsite" | "" | undefined,
+    urgency: normalize(searchParams.get("speed")) as "standaard" | "spoed" | "" | undefined,
     date: normalize(searchParams.get("date")),
     timeSlot: normalize(searchParams.get("slot")),
   };

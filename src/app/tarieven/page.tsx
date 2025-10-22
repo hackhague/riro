@@ -47,7 +47,7 @@ export default function Tarieven() {
 
   const cyberApkPricing = [
     {
-      name: "Veiligheidscheck (Cyber-APK) op afstand",
+      name: "Veiligheidscheck (Cyber-APK) op afstand - thuis of op kantoor",
       price: "€79",
       originalPrice: "€79",
       upsellPrice: "€39,50",
@@ -56,7 +56,7 @@ export default function Tarieven() {
       upsellDesc: "50% korting bij meeboeken met andere dienst",
     },
     {
-      name: "Veiligheidscheck (Cyber-APK) aan huis",
+      name: "Veiligheidscheck (Cyber-APK) aan huis of op kantoor",
       price: "€99",
       originalPrice: "€99",
       upsellPrice: "€49,50",
@@ -68,7 +68,7 @@ export default function Tarieven() {
 
   const cyberApkBusinessPricing = [
     {
-      name: "Veiligheidscheck (Cyber-APK) op afstand (zakelijk)",
+      name: "Veiligheidscheck (Cyber-APK) remote - zakelijk (thuis of kantoor)",
       price: "€299",
       originalPrice: "€299",
       upsellPrice: "€149,50",
@@ -78,7 +78,7 @@ export default function Tarieven() {
       exVat: true,
     },
     {
-      name: "Veiligheidscheck (Cyber-APK) op kantoor (zakelijk)",
+      name: "Veiligheidscheck (Cyber-APK) ter plaatse - zakelijk",
       price: "€449",
       originalPrice: "€449",
       upsellPrice: "€224,50",
@@ -154,23 +154,35 @@ export default function Tarieven() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Particulieren</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {consumerPricing.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
-                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
-                  <p className="text-sm text-foreground/70">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {consumerPricing.map((item, index) => {
+              const serviceLinks = [
+                "/hulp-op-afstand",
+                "/computerhulp",
+                "/computerhulp",
+                "/ik-ben-gehackt"
+              ];
+              const serviceLink = serviceLinks[index];
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                    <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
+                    {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
+                    <p className="text-sm text-foreground/70 mb-4 flex-1">{item.desc}</p>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={serviceLink}>Meer info</a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -184,23 +196,35 @@ export default function Tarieven() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Zakelijk (MKB)</h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {businessPricing.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
-                  <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
-                  {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
-                  <p className="text-sm text-foreground/70">{item.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {businessPricing.map((item, index) => {
+              const serviceLinks = [
+                "/computerhulp",
+                "/hulp-op-afstand",
+                "/computerhulp",
+                "/ik-ben-gehackt"
+              ];
+              const serviceLink = serviceLinks[index];
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow flex flex-col">
+                  <CardHeader>
+                    <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
+                    <p className="text-sm text-foreground/60 mb-1">{item.unit}</p>
+                    {item.extra && <p className="text-sm font-semibold text-accent mb-4">{item.extra}</p>}
+                    <p className="text-sm text-foreground/70 mb-4 flex-1">{item.desc}</p>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={serviceLink}>Meer info</a>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -260,7 +284,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -298,7 +322,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
