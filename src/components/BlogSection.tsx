@@ -183,14 +183,14 @@ export function BlogSection() {
             <button
               onClick={handlePrevious}
               className="p-2 rounded-lg border border-primary/30 text-primary hover:border-primary hover:bg-primary/5 transition-colors"
-              aria-label={isMobile ? "Previous post" : "Previous section"}
+              aria-label="Previous section"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={handleNext}
               className="p-2 rounded-lg border border-primary/30 text-primary hover:border-primary hover:bg-primary/5 transition-colors"
-              aria-label={isMobile ? "Next post" : "Next section"}
+              aria-label="Next section"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
