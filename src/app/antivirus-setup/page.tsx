@@ -26,7 +26,7 @@ export default function AntivirusSetupPage() {
     "Firewall",
     "Quarantine & removal",
     "Automatische updates",
-    "VPN optioneel",
+    "Network optioneel",
     "Minimal CPU impact",
   ];
 
