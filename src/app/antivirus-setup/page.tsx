@@ -178,7 +178,7 @@ export default function AntivirusSetupPage() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat je nodig hebt</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {protection_elements.map((element, index) => {
-              const icons = [Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap];
+              const icons = [Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap];
               const IconComponent = icons[index % icons.length];
               return (
                 <Card key={index}>
