@@ -451,6 +451,8 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
 
       <HomepageServicesClient />
 
+      <ReviewSection servicePath="/computerhulp" title="Wat klanten zeggen" showLink={false} />
+
       <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} title="Wij kunnen helpen met" />
 
       {/* Neighborhoods */}
