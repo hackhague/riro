@@ -35,8 +35,12 @@ interface ServiceCard {
   isPopular?: boolean;
 }
 
-export function HomepageServicesClient() {
-  const [serviceType, setServiceType] = useState<ServiceType>("particulier");
+interface HomepageServicesClientProps {
+  defaultType?: ServiceType;
+}
+
+export function HomepageServicesClient({ defaultType = "particulier" }: HomepageServicesClientProps = {}) {
+  const [serviceType, setServiceType] = useState<ServiceType>(defaultType);
   const priceConfig = usePrices();
   const consumerPricing = priceConfig.pricing.consumer;
   const businessPricing = priceConfig.pricing.business;
