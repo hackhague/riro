@@ -85,7 +85,7 @@ type Booking = {
   serviceType: ServiceType;
   serviceChannel: ServiceChannel | "";
   urgency: Urgency | "";
-  date: Date | string | undefined;
+  date: Date | undefined;
   timeSlot: string;
   firstName: string;
   lastName: string;
