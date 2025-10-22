@@ -314,6 +314,78 @@ export default function Zakelijk() {
         </div>
       </section>
 
+      {/* Remote vs On-site Clarity */}
+      <section className="py-12 md:py-16 bg-secondary">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
+            Ondersteuning op afstand vs. ter plaatse
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <Card className="border-2">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="font-heading font-bold text-2xl mb-4">Op afstand (Remote)</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Snelle respons: 10-30 minuten</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Beveiligde verbinding via TeamViewer</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>€35 eerste 30 min, daarna €17,50 per 15 min (ex btw)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Ideaal voor software issues en snelle fixes</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span>Beschikbaar tijdens kantooruren</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-2 border-accent">
+              <CardContent className="p-8">
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                  <Building2 className="h-6 w-6 text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-2xl mb-4">Ter plaatse (On-site)</h3>
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span>Afspraak binnen 48-72 uur (of spoedafspraak)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span>Geen voorrijkosten in Haaglanden</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span>€79 eerste uur, daarna €20 per 15 min (ex btw)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span>Ideaal voor hardware, netwerk en fysieke installaties</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span>Spoed mogelijk: 24-48 uur voor bedrijfskritieke issues</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <HomepageServicesClient />
 
       <PlanAppointmentCta
