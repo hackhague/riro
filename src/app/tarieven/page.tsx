@@ -182,7 +182,7 @@ export default function Tarieven() {
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -224,7 +224,7 @@ export default function Tarieven() {
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -284,7 +284,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -322,7 +322,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Plan een afspraak</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
