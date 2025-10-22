@@ -225,6 +225,7 @@ export const Navigation = () => {
           <div className="hidden lg:flex items-center gap-2">
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
               <a href="/afspraak">
+                <Calendar className="h-3.5 w-3.5 mr-1.5" />
                 Afspraak maken
               </a>
             </Button>
