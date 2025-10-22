@@ -74,7 +74,7 @@ export default function Reviews() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {reviews.map((review) => (
+            {reviews.slice(0, 5).map((review) => (
               <Card key={review.id} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="mb-4">
