@@ -197,7 +197,7 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Bedrijfskritische storingen met prioriteit. Direct telefonisch contact.",
         bookingSummary: "Spoed op kantoor – eerste uur inbegrepen, exclusief btw.",
         price: {
-          amount: 89,
+          amount: 129,
           currency: "EUR",
           display: "€89",
           unit: "Eerste uur",
