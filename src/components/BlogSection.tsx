@@ -40,11 +40,21 @@ export function BlogSection() {
   }, [isMobile, currentIndex, sections]);
 
   const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
+    if (isMobile) {
+      const currentSection = sections[currentIndex];
+      setCurrentPostIndex((prev) => (prev - 1 + currentSection.posts.length) % currentSection.posts.length);
+    } else {
+      setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
+    }
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % sections.length);
+    if (isMobile) {
+      const currentSection = sections[currentIndex];
+      setCurrentPostIndex((prev) => (prev + 1) % currentSection.posts.length);
+    } else {
+      setCurrentIndex((prev) => (prev + 1) % sections.length);
+    }
   };
 
   if (sections.length === 0) {
