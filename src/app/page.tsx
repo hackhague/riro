@@ -293,9 +293,6 @@ export default function Home() {
 
       <PlanAppointmentCta />
 
-      {/* ------------------- BLOG SECTION ------------------- */}
-      <BlogSection />
-
       {/* ------------------- REVIEWS / CASES ------------------- */}
       <ReviewSection servicePath="/" title="Wat klanten zeggen" showLink={true} />
 
@@ -438,7 +435,8 @@ export default function Home() {
         </div>
       </section>
 
-
+      {/* ------------------- BLOG SECTION ------------------- */}
+      <BlogSection />
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
