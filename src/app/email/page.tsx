@@ -227,6 +227,8 @@ export default function EmailPage() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/email" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "other",
