@@ -211,6 +211,8 @@ export default function PhishingHulp() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/phishing-hulp" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "security",
