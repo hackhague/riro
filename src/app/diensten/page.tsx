@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PRICE_TIERS } from "@/data/pricing";
 import { localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
