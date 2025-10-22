@@ -199,9 +199,9 @@ export const SITE_PRICING: SitePricingConfig = {
         price: {
           amount: 129,
           currency: "EUR",
-          display: "€89",
+          display: "€129",
           unit: "Eerste uur",
-          extra: "Daarna €19,50 per 15 min",
+          extra: "Daarna €25 per 15 min",
           exVat: true,
         },
       },
