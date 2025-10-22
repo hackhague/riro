@@ -26,7 +26,7 @@ export function ReviewSection({
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {reviews.map((review) => (
+          {reviewList.map((review) => (
             <Card key={review.id} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="mb-4">
