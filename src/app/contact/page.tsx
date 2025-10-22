@@ -53,7 +53,7 @@ export default function Contact() {
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <Card>
               <CardContent className="p-8">
                 <Phone className="h-10 w-10 text-primary mb-4" />
