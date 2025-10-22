@@ -8,6 +8,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
