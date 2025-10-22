@@ -17,50 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function Reviews() {
-  const cases = [
-    {
-      problem: "PIN en kassa down op vrijdagavond",
-      solution: "4G-failover + noodplan binnen 1 uur",
-      result: "Binnen 1 uur weer online, weekend gered",
-      location: "Scheveningen",
-      industry: "Horeca",
-    },
-    {
-      problem: "Ransomware op laptop, belangrijk dossier versleuteld",
-      solution: "Containment + herstel + 2FA setup",
-      result: "Alles veilig, rapport voor verzekering geleverd",
-      location: "Ypenburg",
-      industry: "ZZP",
-    },
-    {
-      problem: "WiFi dode zones in studentenhuis",
-      solution: "Mesh netwerk + router-hardening",
-      result: "Volle snelheid op alle kamers, stabiel",
-      location: "Delft",
-      industry: "Particulier",
-    },
-    {
-      problem: "Computer extreem traag, dagelijks crashes",
-      solution: "SSD upgrade + clean Windows installatie",
-      result: "Als een nieuwe laptop, alles werkt perfect",
-      location: "Zoetermeer",
-      industry: "Particulier",
-    },
-    {
-      problem: "Phishing mail geopend, accounts gehackt",
-      solution: "Wachtwoord reset + security audit + 2FA",
-      result: "Accounts beveiligd, preventie ingesteld",
-      location: "Den Haag",
-      industry: "Particulier",
-    },
-    {
-      problem: "Netwerk down, 10 werkplekken offline",
-      solution: "Switch vervanging + bekabeling check",
-      result: "Binnen 3 uur alles weer operationeel",
-      location: "Rijswijk",
-      industry: "MKB",
-    },
-  ];
 
   return (
     <div className="min-h-screen">
