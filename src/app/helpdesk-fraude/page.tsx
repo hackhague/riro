@@ -31,8 +31,8 @@ export default function HelpdeskFraude() {
     },
     {
       icon: Monitor,
-      title: "Remote controle",
-      description: "Ze willen remote toegang tot je computer – groot gevaar",
+      title: "Op afstand controle",
+      description: "Ze willen op afstand toegang tot je computer – groot gevaar",
     },
     {
       icon: AlertCircle,
