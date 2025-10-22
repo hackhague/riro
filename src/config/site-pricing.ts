@@ -96,7 +96,7 @@ export const SITE_PRICING: SitePricingConfig = {
         location: "op afstand",
         tagline: "Op afstand • reactie binnen 10–30 minuten",
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
-        bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
+        bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 39,
           currency: "EUR",
@@ -160,8 +160,8 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Zakelijk op afstand",
         location: "op afstand",
         tagline: "Op afstand • SLA-respons binnen 10–30 minuten",
-        summary: "Versleutelde remote sessies voor werkplekken en servers. Excl. btw.",
-        bookingSummary: "Remote ondersteuning (ex btw) – snelle triage via beveiligde verbinding.",
+        summary: "Versleutelde op afstand sessies voor werkplekken en servers. Excl. btw.",
+        bookingSummary: "Op afstand ondersteuning (ex btw) – snelle triage via beveiligde verbinding.",
         price: {
           amount: 35,
           currency: "EUR",
@@ -227,7 +227,7 @@ export const SITE_PRICING: SitePricingConfig = {
       remote: {
         id: "consumer-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand",
-        shortLabel: "Cyber-APK remote",
+        shortLabel: "Cyber-APK op afstand",
         location: "op afstand",
         tagline: "Digitale veiligheidscheck op afstand",
         summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst.",
@@ -259,7 +259,7 @@ export const SITE_PRICING: SitePricingConfig = {
       businessRemote: {
         id: "business-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand zakelijk",
-        shortLabel: "Cyber-APK zakelijk remote",
+        shortLabel: "Cyber-APK zakelijk op afstand",
         location: "op afstand",
         tagline: "Digitale veiligheidscheck op afstand voor bedrijven",
         summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst (ex btw).",

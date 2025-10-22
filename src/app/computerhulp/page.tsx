@@ -53,7 +53,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
-      solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
+      solution: "Op afstand diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
       result: "Werkdag voortgezet, alle data veilig, heldere tarieven",
       location: "Den Haag Centrum",
     },
@@ -100,7 +100,7 @@ const cityData: Record<string, CityContent> = {
       intro:
         "Snel hulp bij vastlopers, netwerkproblemen of cyberincidenten in alle Delftse wijken. Ideaal voor TU Delft-studenten, scale-ups en bewoners.",
       highlights: [
-        "Remote fix meestal binnen 30 minuten",
+        "Op afstand fix meestal binnen 30 minuten",
         "Aan huis in Delft en omliggende dorpen",
         "Ervaring met campusnetwerken en startup-omgevingen",
       ],
@@ -117,7 +117,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Bos- en Gasthuisdistrict", "Morsdistrict", "Boerhaavedistrict", "Merenwijk", "Stevenshofdistrict"],
     caseStudy: {
       problem: "Huisarts aan Prins Clausplein: e-mailserver down",
-      solution: "Remote stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
+      solution: "Op afstand stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
       result: "Alle patiëntgegevens veilig, praktijk online in 2 uur",
       location: "Leiden Merenwijk",
     },
@@ -133,7 +133,7 @@ const cityData: Record<string, CityContent> = {
         "Van Merenwijk tot binnenstad: wij stabiliseren pc's, zorgen voor veilige backups en lossen e-mailstoringen direct op.",
       highlights: [
         "GDPR-proof ondersteuning voor praktijken & kantoren",
-        "Remote triage binnen 30 minuten, aan huis dezelfde dag",
+        "Op afstand triage binnen 30 minuten, aan huis dezelfde dag",
         "Ook beschikbaar voor Cyber-APK en directe hulp bij gehackt",
       ],
       links: [
@@ -149,7 +149,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Oud-Rijswijk", "Leeuwendaal", "Te Werve", "Rembrandtkwartier", "Ministerbuurt"],
     caseStudy: {
       problem: "Winkel in Oud-Rijswijk: PIN niet werkend op vrijdag",
-      solution: "On-site diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
+      solution: "Op locatie diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
       result: "PIN werkend in 1 uur, geen omzet verliest",
       location: "Rijswijk Oud-Rijswijk",
     },
@@ -166,7 +166,7 @@ const cityData: Record<string, CityContent> = {
       highlights: [
         "Snelle hulp voor retail en horeca",
         "Geen voorrijkosten binnen Rijswijk en Haaglanden",
-        "Remote diagnose beschikbaar buiten openingstijden",
+        "Op afstand diagnose beschikbaar buiten openingstijden",
       ],
       links: [
         { label: "Plan directe hulp", href: "/afspraak" },
@@ -229,7 +229,7 @@ const cityData: Record<string, CityContent> = {
         "Voor scale-ups, winkels en huishoudens: wij optimaliseren netwerk, lossen storingen op en bieden directe hulp bij gehackt.",
       highlights: [
         "Mesh- en glasvezelnetwerken zonder downtime",
-        "Remote diagnose en monitoring mogelijk",
+        "Op afstand diagnose en monitoring mogelijk",
         "Aan huis of kantoor binnen Haaglanden zonder voorrijkosten",
       ],
       links: [
@@ -288,14 +288,14 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
   const faqs = [
     {
       q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
+      a: "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs in " + city + ". Remote tijd rekenen we af tegen on-site als we toch komen.",
+      a: "Dan komen we langs in " + city + ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
     },
     {
-      q: "Is remote veilig?",
+      q: "Is op afstand hulp veilig?",
       a: "Ja! We gebruiken versleutelde tools en vragen altijd toestemming voordat we iets doen.",
     },
     ...(currentCityData.faqExtra || []),

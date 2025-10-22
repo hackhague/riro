@@ -146,7 +146,7 @@ export default function Werkgebied() {
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Remote</h3>
+                <h3 className="font-heading font-semibold text-xl mb-3">Op afstand</h3>
                 <p className="text-3xl font-bold text-primary mb-2">10–30 min</p>
                 <p className="text-foreground/70">
                   Meestal binnen een half uur aan de slag – ongeacht waar je bent in Nederland.
@@ -155,7 +155,7 @@ export default function Werkgebied() {
             </Card>
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">On-site (Haaglanden)</h3>
+                <h3 className="font-heading font-semibold text-xl mb-3">Op locatie (Haaglanden)</h3>
                 <p className="text-3xl font-bold text-primary mb-2">Op locatie binnen 24-48 uur</p>
                 <p className="text-foreground/70">
                   In Haaglanden (Den Haag, Delft, Rijswijk, Voorburg, etc.) op locatie binnen 24-48 uur.

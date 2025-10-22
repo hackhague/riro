@@ -354,7 +354,7 @@ export default function Home() {
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
-                      <p>We reageren meestal binnen 10–30 minuten via remote. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
+                      <p>We reageren meestal binnen 10–30 minuten op afstand. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
@@ -388,14 +388,14 @@ export default function Home() {
 
                   <details>
                     <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
-                      <span>Is remote toegang veilig?</span>
+                      <span>Is op afstand toegang veilig?</span>
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Ja — we gebruiken versleutelde tools en vragen altijd jouw toestemming voordat we meekijken. We delen je gegevens niet met derden.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/hulp-op-afstand">Lees meer over veiligheid</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start op afstand</a>
                       </div>
                     </div>
                   </details>

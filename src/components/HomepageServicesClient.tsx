@@ -56,6 +56,29 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
 
   const particulierServices: ServiceCard[] = [
     {
+      id: consumerPricing.remote.id,
+      icon: <Laptop className="h-6 w-6 text-primary" />,
+      title: consumerPricing.remote.label,
+      subtitle: formatSubtitle(consumerPricing.remote),
+      price: consumerPricing.remote.price.display,
+      priceSubtitle: formatPriceSubtitle(consumerPricing.remote),
+      description: consumerPricing.remote.summary,
+      features: [
+        "Snelle respons, meestal direct",
+        "Maximum van €99 en altijd vooraf duidelijk",
+        "Live uitleg met beveiligde verbinding",
+      ],
+      links: [
+        { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
+        {
+          label: "Start nu",
+          href: `${priceConfig.contact.whatsappHref}?text=Ik%20heb%20nu%20hulp%20op%20afstand%20nodig`,
+          variant: "outline",
+          icon: <MessageCircle className="h-4 w-4" />,
+        },
+      ],
+    },
+    {
       id: consumerPricing.onsite.id,
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
       title: consumerPricing.onsite.label,
@@ -103,29 +126,6 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
       isPopular: true,
     },
     {
-      id: consumerPricing.remote.id,
-      icon: <Laptop className="h-6 w-6 text-primary" />,
-      title: consumerPricing.remote.label,
-      subtitle: formatSubtitle(consumerPricing.remote),
-      price: consumerPricing.remote.price.display,
-      priceSubtitle: formatPriceSubtitle(consumerPricing.remote),
-      description: consumerPricing.remote.summary,
-      features: [
-        "Snelle respons, meestal direct",
-        "Maximum van €99 en altijd vooraf duidelijk",
-        "Live uitleg met beveiligde verbinding",
-      ],
-      links: [
-        { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
-        {
-          label: "Start nu",
-          href: `${priceConfig.contact.whatsappHref}?text=Ik%20heb%20nu%20hulp%20op%20afstand%20nodig`,
-          variant: "outline",
-          icon: <MessageCircle className="h-4 w-4" />,
-        },
-      ],
-    },
-    {
       id: incidentPricing.id,
       icon: <Shield className="h-6 w-6 text-primary" />,
       title: incidentPricing.label,
@@ -151,6 +151,29 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
   ];
 
   const zakelijkServices: ServiceCard[] = [
+    {
+      id: businessPricing.remote.id,
+      icon: <Laptop className="h-6 w-6 text-primary" />,
+      title: businessPricing.remote.label,
+      subtitle: formatSubtitle(businessPricing.remote),
+      price: businessPricing.remote.price.display,
+      priceSubtitle: formatPriceSubtitle(businessPricing.remote),
+      description: businessPricing.remote.summary,
+      features: [
+        "Snelle remote toegang met logging",
+        "Rapportage per sessie",
+        "Documentatie voor uw team",
+      ],
+      links: [
+        { label: "Meer info", href: "/zakelijk", variant: "default" },
+        {
+          label: "Start nu",
+          href: `${priceConfig.contact.whatsappHref}?text=Zakelijke%20remote%20support`,
+          variant: "outline",
+          icon: <MessageCircle className="h-4 w-4" />,
+        },
+      ],
+    },
     {
       id: businessPricing.onsite.id,
       icon: <HomeIcon className="h-6 w-6 text-primary" />,
@@ -197,29 +220,6 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         },
       ],
       isPopular: true,
-    },
-    {
-      id: businessPricing.remote.id,
-      icon: <Laptop className="h-6 w-6 text-primary" />,
-      title: businessPricing.remote.label,
-      subtitle: formatSubtitle(businessPricing.remote),
-      price: businessPricing.remote.price.display,
-      priceSubtitle: formatPriceSubtitle(businessPricing.remote),
-      description: businessPricing.remote.summary,
-      features: [
-        "Snelle remote toegang met logging",
-        "Rapportage per sessie",
-        "Documentatie voor uw team",
-      ],
-      links: [
-        { label: "Meer info", href: "/zakelijk", variant: "default" },
-        {
-          label: "Start nu",
-          href: `${priceConfig.contact.whatsappHref}?text=Zakelijke%20remote%20support`,
-          variant: "outline",
-          icon: <MessageCircle className="h-4 w-4" />,
-        },
-      ],
     },
     {
       id: incidentPricing.id,

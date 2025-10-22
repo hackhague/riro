@@ -31,8 +31,8 @@ export default function HelpdeskFraude() {
     },
     {
       icon: Monitor,
-      title: "Remote controle",
-      description: "Ze willen remote toegang tot je computer – groot gevaar",
+      title: "Op afstand controle",
+      description: "Ze willen op afstand toegang tot je computer – groot gevaar",
     },
     {
       icon: AlertCircle,
@@ -45,7 +45,7 @@ export default function HelpdeskFraude() {
     {
       step: "1",
       title: "Hang op",
-      description: "Beëindig het gesprek en verbreek elke remote verbinding",
+      description: "Beëindig het gesprek en verbreek elke op afstand verbinding",
     },
     {
       step: "2",
@@ -68,7 +68,7 @@ export default function HelpdeskFraude() {
     {
       step: "1",
       title: "Beëindig contact",
-      description: "Hang op en sluit elke remote verbinding onmiddellijk",
+      description: "Hang op en sluit elke op afstand verbinding onmiddellijk",
     },
     {
       step: "2",

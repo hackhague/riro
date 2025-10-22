@@ -26,20 +26,20 @@ export default function FAQ() {
     {
       question: "Wat kost computerhulp in Den Haag?",
       answer:
-        "Remote QuickFix vanaf €39 (cap €99), on-site €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 remote (cap €149) of €199 on-site (tot 2u).",
+        "QuickFix op afstand vanaf €39 (cap €99), op locatie €65/uur (min. 1u). Geen voorrijkosten in Haaglanden. Voor spoedhulp bij hacks €79 op afstand (cap €149) of €199 op locatie (tot 2u).",
     },
     {
       question: "Hoe snel zijn jullie ter plaatse?",
       answer:
-        "Remote ondersteuning meestal binnen 10–30 minuten. On-site in Haaglanden (Den Haag, Delft, Rijswijk, etc.) meestal binnen 2 uur. Voor spoedgevallen bij hacks nog sneller.",
+        "Op afstand ondersteuning meestal binnen 10–30 minuten. Op locatie in Haaglanden (Den Haag, Delft, Rijswijk, etc.) meestal binnen 2 uur. Voor spoedgevallen bij hacks nog sneller.",
     },
     {
       question: "Wat houdt nazorg in?",
       answer:
-        "Gratis herbeoordeling van hetzelfde probleem binnen 7 dagen (max 30 min remote). Als het probleem terugkomt, kijken we opnieuw zonder extra kosten voor diagnose.",
+        "Gratis herbeoordeling van hetzelfde probleem binnen 7 dagen (max 30 min op afstand). Als het probleem terugkomt, kijken we opnieuw zonder extra kosten voor diagnose.",
     },
     {
-      question: "Is remote support veilig?",
+      question: "Is op afstand ondersteuning veilig?",
       answer:
         "Ja, we gebruiken professionele, versleutelde verbindingen. Je moet altijd zelf toestemming geven voordat we toegang krijgen. Na afloop wordt de verbinding automatisch verbroken. VOG-gecertificeerd.",
     },
