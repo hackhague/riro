@@ -126,7 +126,7 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computer-spoedhulp aan huis",
         shortLabel: "Spoed aan huis",
         location: "aan huis",
-        tagline: "Aan huis • spoed binnen 24–48 uur",
+        tagline: "Aan huis • spoed binnen 24 uur",
         summary: "Prioritaire inzet voor urgente storingen. Wij bellen direct voor triage.",
         bookingSummary: "Spoed op locatie – eerste uur inclusief, daarna tarief per kwartier.",
         price: {
