@@ -240,7 +240,7 @@ export default function AntivirusSetupPage() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Keuze aan beveiligingsoplossingen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {antivirus_options.map((option, index) => {
-              const icons = [Lock, Shield, Virus, Flame, Eye, Filter];
+              const icons = [Lock, Shield, Bug, Flame, Eye, Filter];
               const IconComponent = icons[index % icons.length];
               return (
                 <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>
