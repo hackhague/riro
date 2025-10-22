@@ -262,10 +262,7 @@ export default function Tarieven() {
               {cyberApkBusinessPricing.map((item, index) => (
                 <div key={index} className="border border-border rounded p-4">
                   <p className="font-semibold mb-2">{item.name}</p>
-                  <div className="flex items-baseline gap-3 mb-2">
-                    <p className="text-2xl font-bold text-primary">{item.price}</p>
-                    <p className="text-sm text-foreground/50 line-through">{item.originalPrice}</p>
-                  </div>
+                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
                   <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
                   <p className="text-xs text-foreground/60 mt-2">{item.unit}</p>
                   <p className="text-sm text-foreground/70 mt-2">{item.desc}</p>
