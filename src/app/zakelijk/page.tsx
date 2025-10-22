@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone, Building2, Store, Coffee, CheckCircle, Shield, Clock, Zap } from "lucide-react";
+import { MessageCircle, Phone, Store, Coffee, Shield, Clock, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
