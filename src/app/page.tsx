@@ -111,26 +111,6 @@ export default function Home() {
     { number: "4", text: "Nazorg - 7 dagen gratis nazorg (30 min, op afstand)" },
   ];
 
-  const reviews = [
-    {
-      problem: "PIN en kassa down op vrijdagavond",
-      solution: "4G-failover + noodplan",
-      result: "Binnen 1 uur weer online",
-      location: "Scheveningen",
-    },
-    {
-      problem: "Ransomware op laptop",
-      solution: "Herstel + 2FA",
-      result: "Alles veilig, rapport voor verzekering",
-      location: "Ypenburg",
-    },
-    {
-      problem: "WiFi dode zones",
-      solution: "Mesh + router-hardening",
-      result: "Volle snelheid op alle kamers",
-      location: "Delft",
-    },
-  ];
 
   const serviceAreas = [
     { name: "Den Haag", link: "/computerhulp-den-haag" },
@@ -177,7 +157,7 @@ export default function Home() {
             <div className="hidden md:block">
               <ul className="space-y-2 text-xs md:text-sm text-white/85 mb-4 md:mb-6">
                 <li className="flex items-start gap-2">
-                  <span className="mt-0.5 text-accent">���</span>
+                  <span className="mt-0.5 text-accent">•</span>
                   <span><strong>InstantIT</strong> — lokale IT-professional voor computerstoringen, hackondersteuning en WiFi-verbetering.</span>
                 </li>
                 <li className="flex items-start gap-2">
