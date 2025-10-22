@@ -9,7 +9,7 @@ import { getRotatingBlogSections } from '@/data/blog';
 
 export function BlogSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sections = getRotatingBlogSections();
+  const sections = getRotatingBlogSections() || [];
 
   useEffect(() => {
     const interval = setInterval(() => {
