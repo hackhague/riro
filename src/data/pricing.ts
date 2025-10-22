@@ -9,7 +9,7 @@ export type PriceTier = {
 export const PRICE_TIERS = {
   remoteQuickFix: {
     id: "remoteQuickFix",
-    label: "Remote QuickFix",
+    label: "QuickFix op afstand",
     price: "€39",
     subline: "Eerste 30 min • daarna €15 per 15 min (cap €99)",
     href: "/hulp-op-afstand",
@@ -30,16 +30,16 @@ export const PRICE_TIERS = {
   },
   hackedRemote: {
     id: "hackedRemote",
-    label: "Remote directe hulp bij gehackt",
+    label: "Op afstand directe hulp bij gehackt",
     price: "€149",
-    subline: "Tot 60 min remote triage",
+    subline: "Tot 60 min op afstand triage",
     href: "/ik-ben-gehackt",
   },
   hackedOnsite: {
     id: "hackedOnsite",
     label: "Spoed op locatie (particulier)",
     price: "€199",
-    subline: "Tot 2 uur on-site herstel",
+    subline: "Tot 2 uur op locatie herstel",
     href: "/ik-ben-gehackt",
   },
   hackedBusiness: {
