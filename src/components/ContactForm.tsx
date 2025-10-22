@@ -93,17 +93,9 @@ export function ContactForm() {
           className="w-full border rounded-md px-3 py-2 min-h-[120px]"
         />
       </div>
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex">
         <Button type="submit" variant="accent" disabled={status === "loading"}>
-          {status === "loading" ? "Versturen..." : status === "success" ? "Bericht verstuurd" : "Verstuur bericht"}
-        </Button>
-        <Button variant="whatsapp" asChild>
-          <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
-            Verstuur via WhatsApp
-          </a>
-        </Button>
-        <Button variant="outline" asChild>
-          <a href="mailto:support@instantit.nl">Of stuur per e-mail</a>
+          {status === "loading" ? "Versturen..." : status === "success" ? "Bericht verstuurd" : "Verstuur"}
         </Button>
       </div>
       {status === "error" && error ? (
