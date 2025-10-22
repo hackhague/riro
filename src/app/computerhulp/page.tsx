@@ -515,12 +515,12 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
             {serviceAreas.map((area, index) => (
               <Link key={index} href={area.link}>
                 <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
-                  <CardContent className="p-8 flex flex-col items-center justify-center text-center">
-                    <div className="mb-4 p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                      <MapPin className="h-8 w-8 text-primary" />
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
                     </div>
-                    <h3 className="font-heading font-bold text-2xl mb-2">{area.name}</h3>
-                    <p className="text-foreground/70 text-sm font-medium">Computerhulp</p>
+                    <h3 className="font-heading font-bold text-xl mb-1">{area.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
                   </CardContent>
                 </Card>
               </Link>
