@@ -14,7 +14,7 @@ export const reviews: Review[] = [
   // ==================== COMPUTERHULP AAN HUIS (SLOW & GENERAL) ====================
   {
     id: "review-computer-1",
-    author: "Johan de Vries",
+    author: "J. de Vries",
     location: "Den Haag",
     problem: "Computer werkte heel erg traag, kon niet meer normaal werken",
     solution: "Schijf opgeruimd, oude bestanden verwijderd, Windows geoptimaliseerd",
