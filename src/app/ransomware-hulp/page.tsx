@@ -214,6 +214,8 @@ export default function RansomwareHulp() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/ransomware-hulp" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "security",
