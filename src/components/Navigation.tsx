@@ -276,22 +276,30 @@ export const Navigation = () => {
                     {menuSections.particulier.map((item) => (
                       <div key={`${item.path}-${item.label}`}>
                         {item.subitems ? (
-                          <button
-                            onClick={() => toggleExpandedItem(item.path)}
-                            className="flex items-center justify-between w-full px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                          >
-                            {item.label}
-                            <ChevronDown
-                              className={`h-4 w-4 transition-transform ${
-                                expandedItems.has(item.path) ? "rotate-180" : ""
-                              }`}
-                            />
-                          </button>
+                          <div className="flex items-center justify-between w-full rounded-md transition-colors hover:bg-secondary group">
+                            <Link
+                              href={item.path}
+                              onClick={() => setIsOpen(false)}
+                              className="flex-1 px-2 py-1.5 text-base text-foreground/80 group-hover:text-foreground"
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              onClick={() => toggleExpandedItem(item.path)}
+                              className="px-2 py-1.5 text-foreground/80 group-hover:text-foreground flex-shrink-0"
+                            >
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform ${
+                                  expandedItems.has(item.path) ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
                         ) : (
                           <Link
                             href={item.path}
                             onClick={() => setIsOpen(false)}
-                            className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                            className="block px-2 py-1.5 text-base text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                           >
                             {item.label}
                           </Link>
@@ -303,7 +311,7 @@ export const Navigation = () => {
                                 key={`${subitem.path}-${subitem.label}`}
                                 href={subitem.path}
                                 onClick={() => setIsOpen(false)}
-                                className="block px-2 py-1 text-xs text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                                className="block px-2 py-1.5 text-sm text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                               >
                                 {subitem.label}
                               </Link>
