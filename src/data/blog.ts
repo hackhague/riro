@@ -133,3 +133,15 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
 export function getRotatingBlogSections(): RotatingBlogSection[] {
   return rotatingBlogSections;
 }
+
+export function getAllBlogPosts(): BlogPost[] {
+  return rotatingBlogSections.flatMap(section => section.posts);
+}
+
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return getAllBlogPosts().find(post => post.slug === slug);
+}
+
+export function getAllBlogPostSlugs(): string[] {
+  return getAllBlogPosts().map(post => post.slug);
+}
