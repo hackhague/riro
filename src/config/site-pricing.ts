@@ -96,7 +96,7 @@ export const SITE_PRICING: SitePricingConfig = {
         location: "op afstand",
         tagline: "Op afstand • reactie binnen 10–30 minuten",
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
-        bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
+        bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 39,
           currency: "EUR",
