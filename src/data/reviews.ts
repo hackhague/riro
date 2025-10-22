@@ -398,7 +398,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-smartphone-2",
-    author: "Lucas van Dorp",
+    author: "L. van Dorp",
     location: "Delft",
     problem: "iPad opslagruimte vol",
     solution: "Opgeruimd, alles geoptimaliseerd",
@@ -407,7 +407,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-smartphone-3",
-    author: "Valerie Roux",
+    author: "V. Roux",
     location: "Voorburg",
     problem: "Telefoon scherm kapot, niet te lezen",
     solution: "Scherm gerepareerd, getest",
@@ -416,7 +416,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-smartphone-4",
-    author: "Olaf Andersen",
+    author: "O. Andersen",
     location: "Zoetermeer",
     problem: "Android-telefoon heel erg traag",
     solution: "Opgeruimd, apps geoptimaliseerd, updated",
@@ -425,7 +425,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-smartphone-5",
-    author: "Petra Claes",
+    author: "P. Claes",
     location: "Leiden",
     problem: "iPad laadde niet meer op",
     solution: "Oplaadkabel vervangen, getest",
@@ -436,7 +436,7 @@ export const reviews: Review[] = [
   // ==================== PHISHING & VERDACHTE E-MAILS ====================
   {
     id: "review-phishing-1",
-    author: "Linda Verstegen",
+    author: "L. Verstegen",
     location: "Scheveningen",
     problem: "Verdachte e-mail geopend, account probleem",
     solution: "Wachtwoord reset, account beveiligd",
@@ -446,7 +446,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-phishing-2",
-    author: "Hans Groot",
+    author: "H. Groot",
     location: "Zoetermeer",
     problem: "Nep-mail van bank, bijna op geloven",
     solution: "E-mail geanalyseerd, advies gegeven",
@@ -455,7 +455,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-phishing-3",
-    author: "Kathleen Larson",
+    author: "K. Larson",
     location: "Den Haag",
     problem: "Amazon nep-mail, erg realistisch",
     solution: "E-mail gecontroleerd, echte afzender gevonden",
@@ -464,7 +464,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-phishing-4",
-    author: "Michael Schmidt",
+    author: "M. Schmidt",
     location: "Leiden",
     problem: "PayPal nep-mail, bang voor hack",
     solution: "Account gecontroleerd, beveiligd, wachtwoord reset",
@@ -475,7 +475,7 @@ export const reviews: Review[] = [
   // ==================== IK BEN GEHACKT ====================
   {
     id: "review-hack-1",
-    author: "Petra Jansen",
+    author: "P. Jansen",
     location: "Leiden",
     problem: "Computer versleuteld, dreigbericht om te betalen",
     solution: "Backup herstel, systeem schoongemaakt, beveiligd",
@@ -485,7 +485,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-2",
-    author: "Nicole van Dijk",
+    author: "N. van Dijk",
     location: "Den Haag",
     problem: "E-mail account gehackt, verdachte activiteiten",
     solution: "Account hersteld, wachtwoord reset, beveiligd",
@@ -494,7 +494,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-3",
-    author: "Erik Vermeulen",
+    author: "E. Vermeulen",
     location: "Delft",
     problem: "Computer traag, veel verdachte activiteiten",
     solution: "Malware verwijderd, systeem schoongemaakt",
@@ -503,7 +503,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-4",
-    author: "Robert de Bruijn",
+    author: "R. de Bruijn",
     location: "Rijswijk",
     problem: "Ransomware aanval, alles vergrendeld",
     solution: "Backup hersteld, systeem beveiligd",
@@ -512,7 +512,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-5",
-    author: "Gabriella Moretti",
+    author: "G. Moretti",
     location: "Voorburg",
     problem: "Camera werd gebruikt door hackers",
     solution: "Camera uitgeschakeld, systeem beveiligd",
@@ -521,7 +521,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-6",
-    author: "Fernando Garcia",
+    author: "F. Garcia",
     location: "Zoetermeer",
     problem: "Verdachte betalingen, account gehackt",
     solution: "Alle wachtwoorden reset, account beveiligd",
@@ -530,7 +530,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-7",
-    author: "Julia Schneider",
+    author: "J. Schneider",
     location: "Scheveningen",
     problem: "Instagram account volledig overgenomen",
     solution: "Account hersteld, beveiligd",
@@ -539,7 +539,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-8",
-    author: "Klaus Mueller",
+    author: "K. Mueller",
     location: "Den Haag",
     problem: "Facebook account gehackt, verdachte berichten",
     solution: "Account hersteld, wachtwoord reset",
@@ -548,7 +548,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-hack-9",
-    author: "Simone Bianchi",
+    author: "S. Bianchi",
     location: "Leiden",
     problem: "Computer traag, veel nare dingen aan de hand",
     solution: "Grondige scan, alles verwijderd",
@@ -559,7 +559,7 @@ export const reviews: Review[] = [
   // ==================== RANSOMWARE ====================
   {
     id: "review-ransomware-1",
-    author: "Simone Mercurio",
+    author: "S. Mercurio",
     location: "Zoetermeer",
     problem: "Ransomware alles vergrendeld",
     solution: "Backup herstel, systeem hersteld",
@@ -568,7 +568,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-ransomware-2",
-    author: "Vincent Lefevre",
+    author: "V. Lefevre",
     location: "Leiden",
     problem: "Ransomware aanval, alles vergrendeld",
     solution: "Malware verwijderd, systeem hersteld",
@@ -577,7 +577,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-ransomware-3",
-    author: "Hector Ramirez",
+    author: "H. Ramirez",
     location: "Delft",
     problem: "Ransomware, werkbestanden ontoegankelijk",
     solution: "Backup hersteld, systeem beveiligd",
@@ -588,7 +588,7 @@ export const reviews: Review[] = [
   // ==================== EMAIL GEHACKT ====================
   {
     id: "review-email-hack-1",
-    author: "Henk Peters",
+    author: "H. Peters",
     location: "Zoetermeer",
     problem: "Gmail account gehackt, spam naar contacten",
     solution: "Account hersteld, wachtwoord reset, beveiligd",
@@ -597,7 +597,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-hack-2",
-    author: "Ingrid Paulsson",
+    author: "I. Paulsson",
     location: "Den Haag",
     problem: "Outlook account gehackt, nep-facturen verstuurd",
     solution: "Account hersteld, 2FA ingesteld",
@@ -606,7 +606,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-hack-3",
-    author: "Jens Muller",
+    author: "J. Muller",
     location: "Rijswijk",
     problem: "Yahoo account gehackt, kon niet inloggen",
     solution: "Account recovery, wachtwoord reset",
@@ -615,7 +615,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-email-hack-4",
-    author: "Sofia Bergstrom",
+    author: "S. Bergstrom",
     location: "Zoetermeer",
     problem: "E-mail account gehackt, veel verdachte activiteiten",
     solution: "Account beveiligd, wachtwoord reset",
@@ -626,7 +626,7 @@ export const reviews: Review[] = [
   // ==================== ZAKELIJK ====================
   {
     id: "review-zakelijk-1",
-    author: "Maria Hendrix",
+    author: "M. Hendrix",
     location: "Delft",
     company: "Restaurant De Gracht",
     problem: "PIN-automaat en kassa down op vrijdagavond",
@@ -637,7 +637,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-2",
-    author: "Erik Vermeulen",
+    author: "E. Vermeulen",
     location: "Delft",
     company: "Webwinkel Delft",
     problem: "Netwerk down, werknemers kunnen niet werken",
@@ -647,7 +647,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-3",
-    author: "Robert van der Berg",
+    author: "R. van der Berg",
     location: "Rijswijk",
     company: "Advocatenkantoor Juridisch",
     problem: "Cyberincident, veiligheid twijfelachtig",
@@ -657,7 +657,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-4",
-    author: "Petra Claes",
+    author: "P. Claes",
     location: "Voorburg",
     company: "Tandartspraktijk Smile",
     problem: "Server kapot, praktijk kon niet open",
@@ -667,7 +667,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-5",
-    author: "Marco Russo",
+    author: "M. Russo",
     location: "Zoetermeer",
     company: "Marketing Bureau Boost",
     problem: "Internet bottleneck, werknemers traag",
@@ -677,7 +677,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-6",
-    author: "Sandra Kools",
+    author: "S. Kools",
     location: "Leiden",
     company: "Accountantsbureau Netto",
     problem: "Systeem niet compliant, audit waarschuwing",
@@ -687,7 +687,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-7",
-    author: "Jan Bakker",
+    author: "J. Bakker",
     location: "Den Haag",
     company: "Adviesbureau Consulting",
     problem: "Computer delen traag, veel wachten",
@@ -697,7 +697,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-zakelijk-8",
-    author: "Anita Hendriksen",
+    author: "A. Hendriksen",
     location: "Delft",
     company: "Design Studio Creatie",
     problem: "Grote bestanden traag om te versturen",

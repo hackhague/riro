@@ -244,7 +244,7 @@ export default function Diensten() {
       </section>
 
       {/* Particulier */}
-      <section className="py-10 md:py-14">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <h2 className="font-heading font-bold text-3xl md:text-4xl">Voor particulieren</h2>
@@ -253,7 +253,7 @@ export default function Diensten() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {consumerServices.map((service, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
                 <CardContent className="p-8">
@@ -297,7 +297,7 @@ export default function Diensten() {
       </section>
 
       {/* Zakelijk */}
-      <section className="py-10 md:py-14 bg-secondary">
+      <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
           <div className="mb-8 text-center">
             <h2 className="font-heading font-bold text-3xl md:text-4xl">Voor kleine bedrijven</h2>
@@ -306,7 +306,7 @@ export default function Diensten() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {businessServices.map((service, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
                 <CardContent className="p-8">
@@ -358,7 +358,7 @@ export default function Diensten() {
       <ReviewSection servicePath="/diensten" title="Wat klanten zeggen" showLink={true} />
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Weet je niet zeker wat je nodig hebt?</h2>
           <p className="text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">

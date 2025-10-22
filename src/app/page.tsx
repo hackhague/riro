@@ -15,6 +15,7 @@ import {
   ZapOff,
   Home as HomeIcon,
   Laptop,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -298,14 +299,18 @@ export default function Home() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
             {serviceAreas.map((area, index) => (
-              <Link
-                key={index}
-                href={area.link}
-                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
-              >
-                {area.name}
+              <Link key={index} href={area.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-1">{area.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
@@ -320,7 +325,7 @@ export default function Home() {
       {/* ------------------- FAQ ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
             <div>
               <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
               <p className="text-foreground/80">
