@@ -6,6 +6,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -199,6 +200,8 @@ export default function HulpOpAfstand() {
       <PartnersSection />
 
       <HomepageServicesClient />
+
+      <ReviewSection servicePath="/hulp-op-afstand" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{
