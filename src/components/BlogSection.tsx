@@ -16,7 +16,7 @@ export function BlogSection() {
 
   // Desktop: rotate sections every 10 seconds
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile || sections.length === 0) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % sections.length);
@@ -25,11 +25,14 @@ export function BlogSection() {
     return () => clearInterval(interval);
   }, [sections.length, isMobile]);
 
-  // Mobile: rotate posts within a section every 15 seconds
+  // Mobile: rotate posts within a section every 15 seconds (only on first section)
   useEffect(() => {
     if (!isMobile || sections.length === 0) return;
 
-    const currentSection = sections[currentIndex];
+    // Always use the first section on mobile
+    setCurrentIndex(0);
+
+    const currentSection = sections[0];
     if (!currentSection || currentSection.posts.length === 0) return;
 
     const interval = setInterval(() => {
@@ -37,11 +40,11 @@ export function BlogSection() {
     }, 15000);
 
     return () => clearInterval(interval);
-  }, [isMobile, currentIndex, sections]);
+  }, [isMobile, sections]);
 
   const handlePrevious = () => {
     if (isMobile) {
-      const currentSection = sections[currentIndex];
+      const currentSection = sections[0];
       setCurrentPostIndex((prev) => (prev - 1 + currentSection.posts.length) % currentSection.posts.length);
     } else {
       setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
@@ -50,7 +53,7 @@ export function BlogSection() {
 
   const handleNext = () => {
     if (isMobile) {
-      const currentSection = sections[currentIndex];
+      const currentSection = sections[0];
       setCurrentPostIndex((prev) => (prev + 1) % currentSection.posts.length);
     } else {
       setCurrentIndex((prev) => (prev + 1) % sections.length);
