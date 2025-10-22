@@ -93,7 +93,7 @@ export function buildAdminEmail(
   overrides?: ResendEmailOverrides
 ): ResendEmailOptions {
   const from = overrides?.from ?? defaultFromAddress;
-  const to = overrides?.to ?? requireEnv(getFirstEnv(adminEmailEnvKeys), "CONTACT_NOTIFICATION_ADMIN_EMAIL");
+  const to = overrides?.to ?? getFirstEnv(adminEmailEnvKeys) ?? "info@instantit.nl";
   const subject = overrides?.subject ?? `Nieuw contactbericht van ${input.name}`;
   const replyToOverride = overrides?.replyTo ?? overrides?.reply_to;
   const replyTo = replyToOverride ?? input.customerEmail ?? undefined;
