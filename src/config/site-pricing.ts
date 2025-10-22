@@ -259,7 +259,7 @@ export const SITE_PRICING: SitePricingConfig = {
       businessRemote: {
         id: "business-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand zakelijk",
-        shortLabel: "Cyber-APK zakelijk remote",
+        shortLabel: "Cyber-APK zakelijk op afstand",
         location: "op afstand",
         tagline: "Digitale veiligheidscheck op afstand voor bedrijven",
         summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst (ex btw).",
