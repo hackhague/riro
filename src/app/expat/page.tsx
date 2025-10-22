@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MessageCircle, Phone, Globe, CheckCircle, Clock, Shield, Zap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
