@@ -355,6 +355,8 @@ export default function Diensten() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/diensten" title="Wat klanten zeggen" showLink={true} />
+
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 text-center">
