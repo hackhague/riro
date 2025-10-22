@@ -25,39 +25,23 @@ export function BlogSection() {
     return () => clearInterval(interval);
   }, [sections.length, isMobile]);
 
-  // Mobile: rotate posts within a section every 15 seconds (only on first section)
+  // Mobile: rotate sections every 15 seconds
   useEffect(() => {
     if (!isMobile || sections.length === 0) return;
 
-    // Always use the first section on mobile
-    setCurrentIndex(0);
-
-    const currentSection = sections[0];
-    if (!currentSection || currentSection.posts.length === 0) return;
-
     const interval = setInterval(() => {
-      setCurrentPostIndex((prev) => (prev + 1) % currentSection.posts.length);
+      setCurrentIndex((prev) => (prev + 1) % sections.length);
     }, 15000);
 
     return () => clearInterval(interval);
-  }, [isMobile, sections]);
+  }, [isMobile, sections.length]);
 
   const handlePrevious = () => {
-    if (isMobile) {
-      const currentSection = sections[0];
-      setCurrentPostIndex((prev) => (prev - 1 + currentSection.posts.length) % currentSection.posts.length);
-    } else {
-      setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
-    }
+    setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
   };
 
   const handleNext = () => {
-    if (isMobile) {
-      const currentSection = sections[0];
-      setCurrentPostIndex((prev) => (prev + 1) % currentSection.posts.length);
-    } else {
-      setCurrentIndex((prev) => (prev + 1) % sections.length);
-    }
+    setCurrentIndex((prev) => (prev + 1) % sections.length);
   };
 
   if (sections.length === 0) {
