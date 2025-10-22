@@ -68,7 +68,7 @@ export default function Tarieven() {
 
   const cyberApkBusinessPricing = [
     {
-      name: "Veiligheidscheck (Cyber-APK) op afstand (zakelijk)",
+      name: "Veiligheidscheck (Cyber-APK) remote - zakelijk (thuis of kantoor)",
       price: "€299",
       originalPrice: "€299",
       upsellPrice: "€149,50",
@@ -78,7 +78,7 @@ export default function Tarieven() {
       exVat: true,
     },
     {
-      name: "Veiligheidscheck (Cyber-APK) op kantoor (zakelijk)",
+      name: "Veiligheidscheck (Cyber-APK) ter plaatse - zakelijk",
       price: "€449",
       originalPrice: "€449",
       upsellPrice: "€224,50",
