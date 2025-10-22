@@ -6,18 +6,38 @@ import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { getRotatingBlogSections } from '@/data/blog';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function BlogSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const sections = getRotatingBlogSections() || [];
+  const isMobile = useIsMobile();
 
+  // Desktop: rotate sections every 10 seconds
   useEffect(() => {
+    if (isMobile) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % sections.length);
     }, 10000);
 
     return () => clearInterval(interval);
-  }, [sections.length]);
+  }, [sections.length, isMobile]);
+
+  // Mobile: rotate posts within a section every 15 seconds
+  useEffect(() => {
+    if (!isMobile || sections.length === 0) return;
+
+    const currentSection = sections[currentIndex];
+    if (!currentSection || currentSection.posts.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentPostIndex((prev) => (prev + 1) % currentSection.posts.length);
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, currentIndex, sections]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + sections.length) % sections.length);
