@@ -4,6 +4,7 @@ import { MessageCircle, Phone, Mail, Shield, Lock, CheckCircle } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -190,6 +191,8 @@ export default function EmailGehackt() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/email-gehackt" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

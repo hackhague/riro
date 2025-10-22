@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
+import { ReviewSection } from "@/components/ReviewSection";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -110,26 +111,6 @@ export default function Home() {
     { number: "4", text: "Nazorg - 7 dagen gratis nazorg (30 min, op afstand)" },
   ];
 
-  const reviews = [
-    {
-      problem: "PIN en kassa down op vrijdagavond",
-      solution: "4G-failover + noodplan",
-      result: "Binnen 1 uur weer online",
-      location: "Scheveningen",
-    },
-    {
-      problem: "Ransomware op laptop",
-      solution: "Herstel + 2FA",
-      result: "Alles veilig, rapport voor verzekering",
-      location: "Ypenburg",
-    },
-    {
-      problem: "WiFi dode zones",
-      solution: "Mesh + router-hardening",
-      result: "Volle snelheid op alle kamers",
-      location: "Delft",
-    },
-  ];
 
   const serviceAreas = [
     { name: "Den Haag", link: "/computerhulp-den-haag" },
@@ -311,37 +292,7 @@ export default function Home() {
       <PlanAppointmentCta />
 
       {/* ------------------- REVIEWS / CASES ------------------- */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat klanten zeggen</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {reviews.map((review, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
-                    <p className="text-foreground/80 mt-1">{review.problem}</p>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
-                    <p className="text-foreground/80 mt-1">{review.solution}</p>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
-                    <p className="font-semibold mt-1">"{review.result}"</p>
-                  </div>
-                  <p className="text-sm text-foreground/60">{review.location}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button variant="default" size="lg" asChild>
-              <Link href="/reviews">Bekijk alle Google reviews</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <ReviewSection servicePath="/" title="Wat klanten zeggen" showLink={true} />
 
       {/* ------------------- SERVICE AREAS ------------------- */}
       <section className="py-12 md:py-16">

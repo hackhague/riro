@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-hack.jpg";
@@ -251,6 +252,8 @@ export default function IkBenGehackt(): JSX.Element {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/ik-ben-gehackt" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

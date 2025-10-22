@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -315,6 +316,8 @@ export default function Zakelijk() {
       </section>
 
       <HomepageServicesClient defaultType="zakelijk" />
+
+      <ReviewSection servicePath="/zakelijk" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

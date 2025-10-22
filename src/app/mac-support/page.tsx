@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-mac.jpg";
 
@@ -219,6 +220,8 @@ export default function MacSupportPage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/mac-support" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

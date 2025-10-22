@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PRICE_TIERS } from "@/data/pricing";
 import { localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -353,6 +354,8 @@ export default function Diensten() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/diensten" title="Wat klanten zeggen" showLink={true} />
 
       {/* CTA Section */}
       <section className="py-16">

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { reviews, type Review } from "@/data/reviews";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -16,50 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function Reviews() {
-  const cases = [
-    {
-      problem: "PIN en kassa down op vrijdagavond",
-      solution: "4G-failover + noodplan binnen 1 uur",
-      result: "Binnen 1 uur weer online, weekend gered",
-      location: "Scheveningen",
-      industry: "Horeca",
-    },
-    {
-      problem: "Ransomware op laptop, belangrijk dossier versleuteld",
-      solution: "Containment + herstel + 2FA setup",
-      result: "Alles veilig, rapport voor verzekering geleverd",
-      location: "Ypenburg",
-      industry: "ZZP",
-    },
-    {
-      problem: "WiFi dode zones in studentenhuis",
-      solution: "Mesh netwerk + router-hardening",
-      result: "Volle snelheid op alle kamers, stabiel",
-      location: "Delft",
-      industry: "Particulier",
-    },
-    {
-      problem: "Computer extreem traag, dagelijks crashes",
-      solution: "SSD upgrade + clean Windows installatie",
-      result: "Als een nieuwe laptop, alles werkt perfect",
-      location: "Zoetermeer",
-      industry: "Particulier",
-    },
-    {
-      problem: "Phishing mail geopend, accounts gehackt",
-      solution: "Wachtwoord reset + security audit + 2FA",
-      result: "Accounts beveiligd, preventie ingesteld",
-      location: "Den Haag",
-      industry: "Particulier",
-    },
-    {
-      problem: "Netwerk down, 10 werkplekken offline",
-      solution: "Switch vervanging + bekabeling check",
-      result: "Binnen 3 uur alles weer operationeel",
-      location: "Rijswijk",
-      industry: "MKB",
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -117,24 +74,45 @@ export default function Reviews() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {cases.map((caseItem, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+            {reviews.map((review) => (
+              <Card key={review.id} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="mb-4">
                     <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
-                    <p className="text-foreground/80 mt-1">{caseItem.problem}</p>
+                    <p className="text-foreground/80 mt-1">{review.problem}</p>
                   </div>
                   <div className="mb-4">
                     <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
-                    <p className="text-foreground/80 mt-1">{caseItem.solution}</p>
+                    <p className="text-foreground/80 mt-1">{review.solution}</p>
                   </div>
                   <div className="mb-4">
                     <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
-                    <p className="font-semibold mt-1">"{caseItem.result}"</p>
+                    <p className="font-semibold mt-1">"{review.result}"</p>
                   </div>
                   <div className="flex items-center justify-between text-sm text-foreground/60">
-                    <span>{caseItem.location}</span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded">{caseItem.industry}</span>
+                    <div>
+                      <div className="font-medium text-foreground">
+                        {review.author}
+                      </div>
+                      <div className="text-xs">
+                        {review.company ? (
+                          <>
+                            {review.company}
+                            <br />
+                            {review.location}
+                          </>
+                        ) : (
+                          review.location
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1 justify-end">
+                      {review.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="text-xs bg-secondary px-2 py-1 rounded">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>

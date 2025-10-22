@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-printer.jpg";
 
@@ -233,6 +234,8 @@ export default function PrinterPage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/printer" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{
