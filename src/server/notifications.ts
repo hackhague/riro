@@ -22,7 +22,7 @@ const DEFAULT_FROM =
   process.env.APPOINTMENT_FROM_EMAIL ||
   process.env.ZAPIER_FROM_EMAIL ||
   process.env.RESEND_FROM_EMAIL ||
-  "onboarding@resend.dev";
+  "Instant IT <support@instantit.nl>";
 
 let cachedResend: Resend | null = null;
 
