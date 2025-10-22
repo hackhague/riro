@@ -221,6 +221,8 @@ export default function MacSupportPage() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/mac-support" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "hardware",
