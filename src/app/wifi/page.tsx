@@ -229,6 +229,8 @@ export default function WiFiPage() {
 
       <PartnersSection />
 
+      <ReviewSection servicePath="/wifi" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "network",
