@@ -434,14 +434,14 @@ export const Navigation = () => {
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
-                    <Phone className="h-3.5 w-3.5 mr-1.5" />
-                    {contact.phoneNumber}
+                  <a href="/afspraak">
+                    Afspraak maken
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href="/afspraak">
-                    Afspraak maken
+                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
+                    <Phone className="h-3.5 w-3.5 mr-1.5" />
+                    {contact.phoneNumber}
                   </a>
                 </Button>
               </div>
