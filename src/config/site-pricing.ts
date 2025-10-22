@@ -321,7 +321,7 @@ export const SITE_PRICING: SitePricingConfig = {
           currency: "EUR",
           display: "€119",
           unit: "v.a. arbeidskosten",
-          extra: "+ onderdeel (SSD €80–150)",
+          extra: "+ onderdeel v.a. €80",
         },
       },
       antivirusSetup: {
