@@ -319,6 +319,8 @@ export default function Expat() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/expat" title="What expats say" showLink={false} />
+
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
