@@ -179,7 +179,7 @@ export default function HulpOpAfstand() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-accent font-bold">✓</span>
-                      <span>7 dagen gratis nazorg (max 30 min remote)</span>
+                      <span>7 dagen gratis nazorg (max 30 min op afstand)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-accent font-bold">✓</span>
