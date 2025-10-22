@@ -210,7 +210,7 @@ export default function EmailGehackt() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="/afspraak">Afspraak inplannen</a>
+              <a href="/afspraak">Afspraak maken</a>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">Bel direct</a>
