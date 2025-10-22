@@ -76,8 +76,8 @@ export function BlogSection() {
           </p>
         </div>
 
-        {/* Blog Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-5 mb-10">
+        {/* Blog Cards Grid - Desktop */}
+        <div className="hidden md:grid md:grid-cols-3 gap-5 mb-10">
           {currentSection.posts.map((post) => (
             <Card
               key={post.id}
@@ -124,6 +124,70 @@ export function BlogSection() {
             </Card>
           ))}
         </div>
+
+        {/* Blog Card Carousel - Mobile */}
+        {isMobile && currentSection.posts.length > 0 && (
+          <div className="md:hidden mb-10">
+            <div className="relative">
+              <Card className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full">
+                {/* Image Container */}
+                <div className="relative h-48 w-full bg-secondary overflow-hidden">
+                  <Image
+                    src={currentSection.posts[currentPostIndex].image}
+                    alt={currentSection.posts[currentPostIndex].title}
+                    fill
+                    className="object-cover transition-transform duration-300"
+                  />
+                </div>
+
+                <CardContent className="p-4 flex flex-col flex-grow">
+                  {/* Category & Read Time */}
+                  <div className="flex items-center justify-between mb-2 text-xs">
+                    <span className="font-semibold text-primary uppercase tracking-wide">
+                      {currentSection.posts[currentPostIndex].category}
+                    </span>
+                    <span className="text-foreground/60">{currentSection.posts[currentPostIndex].readTime}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-heading font-semibold text-base mb-2 line-clamp-2 text-foreground">
+                    {currentSection.posts[currentPostIndex].title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-foreground/70 text-xs mb-4 line-clamp-2 flex-grow">
+                    {currentSection.posts[currentPostIndex].description}
+                  </p>
+
+                  {/* Link */}
+                  <Link
+                    href={`/blog/${currentSection.posts[currentPostIndex].slug}`}
+                    className="inline-flex items-center text-xs font-semibold text-accent hover:text-accent/80 transition-colors"
+                  >
+                    Lees verder
+                    <span className="ml-1">→</span>
+                  </Link>
+                </CardContent>
+              </Card>
+
+              {/* Mobile Post Indicators */}
+              <div className="flex items-center justify-center gap-2 mt-4">
+                {currentSection.posts.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPostIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentPostIndex
+                        ? 'bg-primary w-8'
+                        : 'bg-primary/30 hover:bg-primary/50 w-2'
+                    }`}
+                    aria-label={`Go to post ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Navigation Controls */}
         <div className="flex items-center justify-between">
