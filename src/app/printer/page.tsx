@@ -235,6 +235,8 @@ export default function PrinterPage() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/printer" title="Wat klanten zeggen" showLink={false} />
+
       <PlanAppointmentCta
         preselect={{
           category: "hardware_other",
