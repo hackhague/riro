@@ -89,6 +89,7 @@ export const Navigation = () => {
   };
 
   const topNavItems = [
+    { label: "Blog", path: "/blog" },
     { label: "Tarieven", path: "/tarieven" },
     { label: "Contact", path: "/contact" },
     { label: "Over ons", path: "/over-ons" },
