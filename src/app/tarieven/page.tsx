@@ -47,7 +47,7 @@ export default function Tarieven() {
 
   const cyberApkPricing = [
     {
-      name: "Veiligheidscheck (Cyber-APK) op afstand",
+      name: "Veiligheidscheck (Cyber-APK) op afstand - thuis of op kantoor",
       price: "€79",
       originalPrice: "€79",
       upsellPrice: "€39,50",
@@ -56,7 +56,7 @@ export default function Tarieven() {
       upsellDesc: "50% korting bij meeboeken met andere dienst",
     },
     {
-      name: "Veiligheidscheck (Cyber-APK) aan huis",
+      name: "Veiligheidscheck (Cyber-APK) aan huis of op kantoor",
       price: "€99",
       originalPrice: "€99",
       upsellPrice: "€49,50",
