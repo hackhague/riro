@@ -211,7 +211,7 @@ export const reviews: Review[] = [
   // ==================== WIFI & INTERNET ====================
   {
     id: "review-wifi-1",
-    author: "Thomas Bakker",
+    author: "T. Bakker",
     location: "Zoetermeer",
     problem: "WiFi bereik slecht, niet overal in huis",
     solution: "Mesh netwerk geïnstalleerd, alles geoptimaliseerd",
@@ -221,7 +221,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-2",
-    author: "Henk Poot",
+    author: "H. Poot",
     location: "Zoetermeer",
     problem: "Internet langzaam voor videobellen",
     solution: "Internet getest, WiFi geoptimaliseerd",
@@ -230,7 +230,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-3",
-    author: "Patricia de Jong",
+    author: "P. de Jong",
     location: "Scheveningen",
     problem: "WiFi viel steeds weg",
     solution: "Router hersteld, alles bijgewerkt",
@@ -239,7 +239,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-4",
-    author: "Wouter Jansen",
+    author: "W. Jansen",
     location: "Rijswijk",
     problem: "Wachtwoord vergeten voor WiFi",
     solution: "Router reset, nieuw wachtwoord ingesteld",
@@ -248,7 +248,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-5",
-    author: "Inge Maas",
+    author: "I. Maas",
     location: "Den Haag",
     problem: "Internet was veel langzamer dan betaald",
     solution: "Netwerk geoptimaliseerd, alles gecontroleerd",
@@ -257,7 +257,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-6",
-    author: "Dieter Klein",
+    author: "D. Klein",
     location: "Voorburg",
     problem: "Veel apparaten waren langzaam op WiFi",
     solution: "Instellingen aangepast, alles geoptimaliseerd",
@@ -266,7 +266,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-7",
-    author: "Carla Hoffman",
+    author: "C. Hoffman",
     location: "Delft",
     problem: "WiFi signaal onderbroken veel te vaak",
     solution: "Kanaal aangepast, alles hersteld",
@@ -275,7 +275,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-wifi-8",
-    author: "Jan Smits",
+    author: "J. Smits",
     location: "Den Haag",
     problem: "Nieuwe router maar kon niet goed instellen",
     solution: "Router correct ingesteld, beveiligd",
@@ -286,7 +286,7 @@ export const reviews: Review[] = [
   // ==================== PRINTER ====================
   {
     id: "review-printer-1",
-    author: "Mirjam Kok",
+    author: "M. Kok",
     location: "Scheveningen",
     problem: "Printer weigerde te printen",
     solution: "Drivers geupdate, alles gerepareerd",
@@ -295,7 +295,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-printer-2",
-    author: "Robert van der Berg",
+    author: "R. van der Berg",
     location: "Rijswijk",
     problem: "WiFi printer gaf veel printfouten",
     solution: "Printer opnieuw ingesteld, getest",
