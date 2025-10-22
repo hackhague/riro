@@ -136,11 +136,11 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           <div className="max-w-3xl mx-auto">
             <h2 className="font-heading font-bold text-3xl mb-8">Meer artikelen</h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-5">
               {relatedPosts.map((relatedPost) => (
                 <Link key={relatedPost.id} href={`/blog/${relatedPost.slug}`}>
                   <Card className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden h-full cursor-pointer">
-                    <div className="relative h-40 w-full bg-secondary overflow-hidden">
+                    <div className="relative h-32 w-full bg-secondary overflow-hidden">
                       <Image
                         src={relatedPost.image}
                         alt={relatedPost.title}
@@ -149,15 +149,15 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
                       />
                     </div>
 
-                    <CardContent className="p-5 flex flex-col h-full">
-                      <div className="flex items-center justify-between mb-3 text-xs">
+                    <CardContent className="p-4 flex flex-col h-full">
+                      <div className="flex items-center justify-between mb-2 text-xs">
                         <span className="font-semibold text-primary uppercase tracking-wide">
                           {relatedPost.category}
                         </span>
-                        <span className="text-foreground/60">{relatedPost.readTime}</span>
+                        <span className="text-foreground/60 text-xs">{relatedPost.readTime}</span>
                       </div>
 
-                      <h3 className="font-heading font-semibold text-base line-clamp-2 text-foreground">
+                      <h3 className="font-heading font-semibold text-sm line-clamp-2 text-foreground">
                         {relatedPost.title}
                       </h3>
                     </CardContent>
