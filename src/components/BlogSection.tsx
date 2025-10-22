@@ -47,14 +47,14 @@ export function BlogSection() {
         </div>
 
         {/* Blog Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        <div className="grid md:grid-cols-3 gap-5 mb-10">
           {currentSection.posts.map((post) => (
             <Card
               key={post.id}
               className="border border-border hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full"
             >
               {/* Image Container */}
-              <div className="relative h-48 w-full bg-secondary overflow-hidden">
+              <div className="relative h-36 w-full bg-secondary overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -63,9 +63,9 @@ export function BlogSection() {
                 />
               </div>
 
-              <CardContent className="p-5 flex flex-col flex-grow">
+              <CardContent className="p-4 flex flex-col flex-grow">
                 {/* Category & Read Time */}
-                <div className="flex items-center justify-between mb-3 text-xs">
+                <div className="flex items-center justify-between mb-2 text-xs">
                   <span className="font-semibold text-primary uppercase tracking-wide">
                     {post.category}
                   </span>
@@ -73,22 +73,22 @@ export function BlogSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-heading font-semibold text-lg mb-2 line-clamp-2 text-foreground">
+                <h3 className="font-heading font-semibold text-base mb-2 line-clamp-2 text-foreground">
                   {post.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-foreground/70 text-sm mb-5 line-clamp-2 flex-grow">
+                <p className="text-foreground/70 text-xs mb-4 line-clamp-2 flex-grow">
                   {post.description}
                 </p>
 
                 {/* Link */}
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center text-sm font-semibold text-accent hover:text-accent/80 transition-colors"
+                  className="inline-flex items-center text-xs font-semibold text-accent hover:text-accent/80 transition-colors"
                 >
                   Lees verder
-                  <span className="ml-2">→</span>
+                  <span className="ml-1">→</span>
                 </Link>
               </CardContent>
             </Card>
