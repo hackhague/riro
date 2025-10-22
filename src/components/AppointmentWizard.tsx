@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon } from "lucide-react";
+import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { format, isWeekend, startOfToday } from "date-fns";
 import "react-day-picker/dist/style.css";
