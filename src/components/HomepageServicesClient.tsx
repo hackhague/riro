@@ -65,7 +65,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
       description: consumerPricing.remote.summary,
       features: [
         "Snelle respons, meestal direct",
-        "Maximum van €99 en altijd vooraf duidelijk",
+        "Maximum van €129 en altijd vooraf duidelijk",
         "Live uitleg met beveiligde verbinding",
       ],
       links: [
