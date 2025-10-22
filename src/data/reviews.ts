@@ -24,7 +24,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-2",
-    author: "Petra Jansen",
+    author: "P. Jansen",
     location: "Zoetermeer",
     problem: "Computer startte helemaal niet meer op",
     solution: "Windows hersteld, hard drive gecontroleerd, alles gerepareerd",
@@ -33,7 +33,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-3",
-    author: "Thomas Bakker",
+    author: "T. Bakker",
     location: "Delft",
     problem: "Computer veel veel langzamer geworden, veel spyware",
     solution: "Spyware verwijderd, schijf schoongemaakt, beveiligd",
@@ -42,7 +42,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-4",
-    author: "Anita Muller",
+    author: "A. Muller",
     location: "Leiden",
     problem: "Computer crashte willekeurig terwijl ik eraan werkte",
     solution: "Geheugen (RAM) getest en vervangen, alles bijgewerkt",
@@ -51,7 +51,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-5",
-    author: "Hans Vermeulen",
+    author: "H. Vermeulen",
     location: "Rijswijk",
     problem: "Computer voelde oud en traag, alles duurde lang",
     solution: "SSD geïnstalleerd, meer geheugen toegevoegd, schoongemaakt",
@@ -60,7 +60,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-6",
-    author: "Marieke Hendriks",
+    author: "M. Hendriks",
     location: "Voorburg",
     problem: "Schijf was helemaal vol, computer werkte nauwelijks",
     solution: "Opgeruimd, oude dingen weg, goed georganiseerd",
@@ -69,7 +69,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-7",
-    author: "Robert de Wit",
+    author: "R. de Wit",
     location: "Scheveningen",
     problem: "Geluid was heel slecht en scherm flikkerde soms",
     solution: "Drivers bijgewerkt, instellingen aangepast, alles afgesteld",
@@ -78,7 +78,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-8",
-    author: "Lisa van de Berg",
+    author: "L. van de Berg",
     location: "Den Haag",
     problem: "Computer voelde onveilig, veel waarschuwingen",
     solution: "Antivirus geïnstalleerd, beveiligd, alle dreigingen verwijderd",
@@ -87,7 +87,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-9",
-    author: "Dirk Jansen",
+    author: "D. Jansen",
     location: "Zoetermeer",
     problem: "Enkele programma's deden rare dingen, kon niet goed werken",
     solution: "Programma's hersteld, alles opnieuw geïnstalleerd",
@@ -96,7 +96,7 @@ export const reviews: Review[] = [
   },
   {
     id: "review-computer-10",
-    author: "Yvonne Smit",
+    author: "Y. Smit",
     location: "Den Haag",
     problem: "Muis en toetsenbord werkten soms niet goed",
     solution: "Drivers bijgewerkt, verbindingen gecontroleerd",
@@ -107,7 +107,7 @@ export const reviews: Review[] = [
   // ==================== WINDOWS SUPPORT ====================
   {
     id: "review-windows-1",
-    author: "Sandra Jansen",
+    author: "S. Jansen",
     location: "Delft",
     problem: "Printer werkte na Windows update niet meer",
     solution: "Printer drivers geupdate, alles opnieuw geïnstalleerd",
