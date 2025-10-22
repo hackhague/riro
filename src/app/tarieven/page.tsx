@@ -49,7 +49,6 @@ export default function Tarieven() {
     {
       name: "Veiligheidscheck (Cyber-APK) op afstand - thuis of op kantoor",
       price: "€79",
-      originalPrice: "€79",
       upsellPrice: "€39,50",
       unit: "Vaste prijs",
       desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
@@ -57,9 +56,8 @@ export default function Tarieven() {
     },
     {
       name: "Veiligheidscheck (Cyber-APK) aan huis of op kantoor",
-      price: "€99",
-      originalPrice: "€99",
-      upsellPrice: "€49,50",
+      price: "€79",
+      upsellPrice: "€39,50",
       unit: "Vaste prijs",
       desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
       upsellDesc: "50% korting bij meeboeken met andere dienst",
