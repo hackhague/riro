@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { getReviewsByService } from "@/data/reviews";
+import { getReviewsByService, type Review } from "@/data/reviews";
 
 interface ReviewSectionProps {
   servicePath?: string;
@@ -12,9 +12,9 @@ export function ReviewSection({
   title = "Wat klanten zeggen",
   showLink = false,
 }: ReviewSectionProps) {
-  const reviews = servicePath ? getReviewsByService(servicePath) : [];
+  const reviewList: Review[] = servicePath ? getReviewsByService(servicePath) : [];
 
-  if (reviews.length === 0) {
+  if (reviewList.length === 0) {
     return null;
   }
 
