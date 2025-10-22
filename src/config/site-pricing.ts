@@ -228,7 +228,7 @@ export const SITE_PRICING: SitePricingConfig = {
         id: "consumer-cyber-apk-remote",
         label: "Veiligheidscheck (Cyber-APK) op afstand",
         shortLabel: "Cyber-APK remote",
-        location: "op afstand", "aan huis"
+        location: "op afstand",
         tagline: "Digitale veiligheidscheck op afstand",
         summary: "Preventieve veiligheidscheck met updates, backup en 2FA-setup. 50% korting bij boeking met andere dienst.",
         bookingSummary: "Digitale veiligheidscheck op afstand – Normaal €79, nu €39,50 bij meeboeken.",
