@@ -125,7 +125,7 @@ export default function HelpdeskFraude() {
               Helpdesk Fraude – Vals Technici die je willen Oplichten
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
-              Nep Microsoft-medewerkers die zeggen dat je computer 'problemen' heeft? Leer hoe je ze herkent en beschermt jezelf.
+              Oplichters bellen je voor als Microsoft/Apple support ("vals technici") en claimen dat je computer gehackt is. Leer hoe je ze herkent en beschermt jezelf tegen deze fraude.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="accent" size="lg" asChild>
