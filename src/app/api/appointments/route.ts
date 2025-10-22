@@ -119,20 +119,21 @@ export async function POST(request: Request) {
     process.env.SUPABASE_SERVICE_API_KEY ??
     "";
 
+  let supabaseConfigured = true;
   if (!supabaseUrl || !supabaseKey) {
-    console.error("Supabase credentials missing while handling appointment request");
-    return NextResponse.json(
-      { error: "Supabase credentials are not configured" },
-      { status: 500 }
-    );
+    console.warn("Supabase credentials missing; continuing without persistence");
+    supabaseConfigured = false;
   }
 
-  const supabase = createClient<Database>(supabaseUrl, supabaseKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-    },
-  });
+  let supabase: any = null;
+  if (supabaseConfigured) {
+    supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    });
+  }
 
   const approvalToken = crypto.randomUUID();
 
@@ -173,18 +174,25 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString(),
   } satisfies Record<string, unknown>;
 
-  const { data, error } = await supabase
-    .from("appointments")
-    .insert(insertPayload)
-    .select("id")
-    .single();
+  let recordId: string | number | null = null;
 
-  if (error) {
-    console.error("Failed to insert appointment", error);
-    return NextResponse.json({ error: "Failed to store appointment" }, { status: 500 });
+  if (supabase) {
+    const { data, error } = await supabase
+      .from("appointments")
+      .insert(insertPayload)
+      .select("id")
+      .single();
+
+    if (error) {
+      console.error("Failed to insert appointment", error);
+      return NextResponse.json({ error: "Failed to store appointment" }, { status: 500 });
+    }
+
+    recordId = data?.id ?? null;
+  } else {
+    // No persistence available; continue and still send notifications
+    recordId = null;
   }
-
-  const recordId = data?.id ?? null;
 
   const approvalBase =
     process.env.APPOINTMENT_APPROVAL_URL ??
