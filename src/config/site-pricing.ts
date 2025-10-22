@@ -94,7 +94,7 @@ export const SITE_PRICING: SitePricingConfig = {
         label: "Computerhulp op afstand",
         shortLabel: "Hulp op afstand",
         location: "op afstand",
-        tagline: "Op afstand • reactie binnen 10–30 minuten",
+        tagline: "Op afstand • Reactie binnen 10–30 minuten",
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €129.",
         bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
