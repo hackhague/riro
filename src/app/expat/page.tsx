@@ -304,12 +304,12 @@ export default function Expat() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="text-center p-4 bg-secondary rounded-lg">
                     <Clock className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <p className="font-semibold mb-1">Op afstand Ondersteuning</p>
+                    <p className="font-semibold mb-1">Remote Support</p>
                     <p className="text-sm text-foreground/70">Usually 10-30 minutes</p>
                   </div>
                   <div className="text-center p-4 bg-secondary rounded-lg">
                     <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
-                    <p className="font-semibold mb-1">Op locatie Bezoek</p>
+                    <p className="font-semibold mb-1">On-site Visit</p>
                     <p className="text-sm text-foreground/70">Within 24-48 hours (Haaglanden)</p>
                   </div>
                 </div>
