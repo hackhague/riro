@@ -251,6 +251,8 @@ export default function MobileTabletPage() {
         </div>
       </section>
 
+      <ReviewSection servicePath="/mobiel-tablet" title="Wat klanten zeggen" showLink={false} />
+
       {/* FAQ */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
