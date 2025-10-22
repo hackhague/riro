@@ -162,8 +162,8 @@ export function BlogSection() {
 
         {/* Navigation Controls */}
         <div className="flex items-center justify-between">
-          {/* Section Indicators - Desktop Only */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Section Indicators - Both Mobile and Desktop */}
+          <div className="flex items-center gap-2">
             {sections.map((_, index) => (
               <button
                 key={index}
@@ -177,9 +177,6 @@ export function BlogSection() {
               />
             ))}
           </div>
-
-          {/* Empty space for mobile layout */}
-          <div className="md:hidden flex-1" />
 
           {/* Navigation Buttons */}
           <div className="flex gap-2">
