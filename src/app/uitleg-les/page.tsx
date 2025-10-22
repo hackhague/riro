@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-lessons.jpg";
 
@@ -227,6 +228,8 @@ export default function UitlegLesPage() {
           <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
+
+      <ReviewSection servicePath="/uitleg-les" title="Wat klanten zeggen" showLink={false} />
 
       {/* Why Choose Us */}
       <section className="py-12 md:py-16 bg-secondary">

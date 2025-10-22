@@ -3,6 +3,7 @@ import Image from "next/image";
 import { MessageCircle, Phone, Globe, CheckCircle, Clock, Shield, Zap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -317,6 +318,8 @@ export default function Expat() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/expat" title="What expats say" showLink={false} />
 
       {/* Final CTA */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">

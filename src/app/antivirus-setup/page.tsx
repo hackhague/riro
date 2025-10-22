@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-antivirus.svg";
 
@@ -296,6 +297,8 @@ export default function AntivirusSetupPage() {
       </section>
 
       <HomepageServicesClient />
+
+      <ReviewSection servicePath="/antivirus-setup" title="Wat klanten zeggen" showLink={false} />
 
       {/* Safety Tips */}
       <section className="py-12 md:py-16 bg-secondary">

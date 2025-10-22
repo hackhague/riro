@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const heroImage = "/images/hero-technician.jpg";
 
@@ -150,6 +151,8 @@ export default function CyberAPK() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/cyber-apk" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{
