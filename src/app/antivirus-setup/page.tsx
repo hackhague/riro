@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Virus, Flame, RotateCcw, Filter, Update, VPN, Zap, Barcode, Radio } from "lucide-react";
+import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap, Barcode, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
