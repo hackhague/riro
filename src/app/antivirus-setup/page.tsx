@@ -298,6 +298,8 @@ export default function AntivirusSetupPage() {
 
       <HomepageServicesClient />
 
+      <ReviewSection servicePath="/antivirus-setup" title="Wat klanten zeggen" showLink={false} />
+
       {/* Safety Tips */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
