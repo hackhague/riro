@@ -325,7 +325,7 @@ export default function Home() {
       {/* ------------------- FAQ ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
             <div>
               <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
               <p className="text-foreground/80">
