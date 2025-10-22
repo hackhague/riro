@@ -144,7 +144,7 @@ export const SITE_PRICING: SitePricingConfig = {
         location: "hybride",
         tagline: "Alleen bij niet-opgeloste storingen",
         summary: "Wanneer we een probleem niet kunnen oplossen binnen de afgesproken tijd, betaal je alleen €19 diagnosevergoeding.",
-        bookingSummary: "Niet opgelost? Diagnosevergoeding: €19.",
+        bookingSummary: "Niet opgelost? Enkel diagnosevergoeding: €19.",
         price: {
           amount: 19,
           currency: "EUR",
