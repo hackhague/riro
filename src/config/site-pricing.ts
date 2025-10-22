@@ -98,9 +98,9 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Geen voorrijkosten, maximum tarief €99.",
         bookingSummary: "Remote via beveiligde schermdeling – voordelig en snel.",
         price: {
-          amount: 39,
+          amount: 35,
           currency: "EUR",
-          display: "€39",
+          display: "€35",
           unit: "Eerste 30 min",
           extra: "Daarna €15 per 15 min (max €99)",
         },
@@ -114,11 +114,11 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Grondige diagnose en herstel op uw locatie in Haaglanden. Geen voorrijkosten.",
         bookingSummary: "Bij u aan huis – eerste 45 minuten inbegrepen.",
         price: {
-          amount: 59,
+          amount: 52,
           currency: "EUR",
-          display: "€59",
+          display: "€52",
           unit: "Eerste 45 min",
-          extra: "Daarna €17,25 per 15 min + avondtoeslag na 18:00",
+          extra: "Daarna €15,00 per 15 min + avondtoeslag na 18:00",
         },
       },
       emergency: {
