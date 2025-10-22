@@ -511,14 +511,18 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
             {serviceAreas.map((area, index) => (
-              <Link
-                key={index}
-                href={area.link}
-                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
-              >
-                {area.name}
+              <Link key={index} href={area.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-8 flex flex-col items-center justify-center text-center">
+                    <div className="mb-4 p-3 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-2xl mb-2">{area.name}</h3>
+                    <p className="text-foreground/70 text-sm font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
