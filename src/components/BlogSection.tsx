@@ -191,8 +191,8 @@ export function BlogSection() {
 
         {/* Navigation Controls */}
         <div className="flex items-center justify-between">
-          {/* Section Indicators */}
-          <div className="flex items-center gap-2">
+          {/* Section Indicators - Desktop Only */}
+          <div className="hidden md:flex items-center gap-2">
             {sections.map((_, index) => (
               <button
                 key={index}
@@ -207,19 +207,22 @@ export function BlogSection() {
             ))}
           </div>
 
+          {/* Empty space for mobile layout */}
+          <div className="md:hidden flex-1" />
+
           {/* Navigation Buttons */}
           <div className="flex gap-2">
             <button
               onClick={handlePrevious}
               className="p-2 rounded-lg border border-primary/30 text-primary hover:border-primary hover:bg-primary/5 transition-colors"
-              aria-label="Previous section"
+              aria-label={isMobile ? "Previous post" : "Previous section"}
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={handleNext}
               className="p-2 rounded-lg border border-primary/30 text-primary hover:border-primary hover:bg-primary/5 transition-colors"
-              aria-label="Next section"
+              aria-label={isMobile ? "Next post" : "Next section"}
             >
               <ChevronRight className="h-5 w-5" />
             </button>
