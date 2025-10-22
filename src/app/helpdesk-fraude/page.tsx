@@ -68,7 +68,7 @@ export default function HelpdeskFraude() {
     {
       step: "1",
       title: "Beëindig contact",
-      description: "Hang op en sluit elke remote verbinding onmiddellijk",
+      description: "Hang op en sluit elke op afstand verbinding onmiddellijk",
     },
     {
       step: "2",
