@@ -94,7 +94,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
       ],
       links: [
         { label: "Meer info", href: "/computerhulp", variant: "default" },
-        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
       ],
     },
     {
@@ -190,7 +190,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },
-        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
       ],
     },
     {
