@@ -854,6 +854,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
                         </div>
                       )}
+                      {pricingSummary.extras && pricingSummary.extras.length > 0 && (
+                        <>
+                          {pricingSummary.extras.map((extra) => (
+                            <div key={extra.id} className="flex items-center justify-between">
+                              <span>{extra.label}</span>
+                              <span>+{currency.format(extra.amount)}</span>
+                            </div>
+                          ))}
+                        </>
+                      )}
                       <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
                         <span>Totaal indicatie</span>
                         <span>{currency.format(pricingSummary.total)}</span>
@@ -981,6 +991,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span>Cyber-APK (50% korting)</span>
                           <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
                         </div>
+                      )}
+                      {pricingSummary.extras && pricingSummary.extras.length > 0 && (
+                        <>
+                          {pricingSummary.extras.map((extra) => (
+                            <div key={extra.id} className="flex items-center justify-between">
+                              <span>{extra.label}</span>
+                              <span>+{currency.format(extra.amount)}</span>
+                            </div>
+                          ))}
+                        </>
                       )}
                       <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
                         <span>Totaal indicatie</span>
