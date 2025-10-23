@@ -10,6 +10,7 @@ export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string | null>(null);
   const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const formTimestampRef = useRef<number>(Date.now());
 
   useEffect(() => {
     return () => {
@@ -24,10 +25,16 @@ export function ContactForm() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const honeypot = String(formData.get("company") ?? "").trim();
+    const timestampValue = Number(formData.get("timestamp"));
+    const timestamp = Number.isFinite(timestampValue) ? timestampValue : Date.now();
+
     const payload = {
       name: String(formData.get("name") ?? "").trim(),
       contact: String(formData.get("contact") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
+      honeypot,
+      timestamp,
     };
 
     setStatus("loading");
@@ -82,6 +89,15 @@ export function ContactForm() {
           <input id="contact-details" name="contact" required className="w-full border rounded-md px-3 py-2" />
         </div>
       </div>
+      <input type="hidden" name="timestamp" value={String(formTimestampRef.current)} />
+      <input
+        type="text"
+        name="company"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        aria-hidden="true"
+      />
       <div>
         <label className="block text-sm font-medium mb-1" htmlFor="contact-message">
           Je vraag
