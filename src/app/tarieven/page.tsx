@@ -290,6 +290,33 @@ export default function Tarieven() {
             </Card>
           </div>
 
+          <div className="bg-secondary rounded-lg p-6 max-w-2xl mx-auto mb-8">
+            <h3 className="font-heading font-semibold text-lg mb-3">Zakelijk (Cyber-APK)</h3>
+            <div className="grid md:grid-cols-1 gap-4">
+              {cyberApkBusinessPricing.map((item, index) => (
+                <div key={index} className="border border-border rounded p-4">
+                  <p className="font-semibold mb-2">{item.name}</p>
+                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
+                  <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
+                  <p className="text-xs text-foreground/60 mt-2">{item.unit}</p>
+                  <p className="text-sm text-foreground/70 mt-2">{item.desc}</p>
+                  <p className="text-xs text-accent italic mt-2">{item.upsellDesc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant="accent" asChild>
+              <a href="/afspraak">Afspraak maken</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="tel:+31702119191">Bel nu</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Extra Services */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
