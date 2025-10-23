@@ -94,7 +94,7 @@ export default function Diensten() {
     },
     {
       icon: Shield,
-      title: "Directe hulp bij gehackt voor praktijk of winkel",
+      title: "Directe hulp bij hack voor kantoor, praktijk of winkel",
       description: "Phishing, gehackte e-mail of vergrendelde systemen? We helpen direct en praktisch.",
       link: "/ik-ben-gehackt",
       features: [
