@@ -284,7 +284,7 @@ export default function Home() {
         </div>
         <div className="mt-8 flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
+            <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
