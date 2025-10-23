@@ -78,7 +78,7 @@ export default function AntivirusSetupPage() {
   const faqs = [
     {
       q: "Welke antivirus moet ik hebben?",
-      a: "Dat hangt af van je gebruik. We adviseren ESET (partnership), maar ook gratis opties als Windows Defender kunnen volstaan.",
+      a: "Dat hangt af van je gebruik. We adviseren ESET voor betere virusbescherming, maar ook gratis opties als Windows Defender kunnen volstaan.",
     },
     {
       q: "Is ESET beter dan Windows Defender?",
