@@ -11,117 +11,74 @@ import {
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 
-const SITE_URL = "https://www.instantit.nl";
+const DEFAULT_BASE_URL = "https://www.instantit.nl";
 
-interface BreadcrumbEntry {
+type BreadcrumbEntry = {
   label: string;
   href: string;
-}
+  canonicalUrl?: string;
+};
 
-interface NormalizedBreadcrumbEntry extends BreadcrumbEntry {
-  canonicalUrl: string;
-  relativeHref: string;
-}
-
-export interface BreadcrumbTrailProps {
+type BreadcrumbTrailProps = {
   items: BreadcrumbEntry[];
   className?: string;
+  baseUrl?: string;
+};
+
+function toAbsoluteUrl(href: string, baseUrl: string) {
+  try {
+    return new URL(href, baseUrl).toString();
+  } catch (error) {
+    return href;
+  }
 }
 
-const ensureAbsoluteUrl = (href: string): string => {
-  if (!href) {
-    return SITE_URL;
-  }
-
-  try {
-    const url = new URL(href, SITE_URL);
-    if (!url.origin || url.origin === "null") {
-      return `${SITE_URL}${url.pathname}`;
-    }
-
-    return url.toString().replace(/\/$/, (match) => (url.pathname === "/" ? match : ""));
-  } catch {
-    const normalized = href.startsWith("/") ? href : `/${href}`;
-    return `${SITE_URL}${normalized}`;
-  }
-};
-
-const toRelativeHref = (href: string): string => {
-  try {
-    const url = new URL(href, SITE_URL);
-    const path = url.pathname || "/";
-    const search = url.search ?? "";
-    const hash = url.hash ?? "";
-    const relative = `${path}${search}${hash}`;
-    return relative || "/";
-  } catch {
-    if (!href) {
-      return "/";
-    }
-
-    if (href.startsWith("http")) {
-      try {
-        const url = new URL(href);
-        return url.pathname || "/";
-      } catch {
-        return "/";
-      }
-    }
-
-    return href.startsWith("/") ? href : `/${href}`;
-  }
-};
-
-const normalizeItems = (items: BreadcrumbEntry[]): NormalizedBreadcrumbEntry[] =>
-  items.map((item) => {
-    const canonicalUrl = ensureAbsoluteUrl(item.href);
-
-    return {
-      ...item,
-      canonicalUrl,
-      relativeHref: toRelativeHref(canonicalUrl),
-    };
-  });
-
-export const BreadcrumbTrail = ({ items, className }: BreadcrumbTrailProps) => {
-  if (!items?.length) {
+export function BreadcrumbTrail({
+  items,
+  className,
+  baseUrl = DEFAULT_BASE_URL,
+}: BreadcrumbTrailProps) {
+  if (!items.length) {
     return null;
   }
-
-  const normalizedItems = normalizeItems(items);
-  const lastIndex = normalizedItems.length - 1;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: normalizedItems.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: item.canonicalUrl,
+      item: item.canonicalUrl ?? toAbsoluteUrl(item.href, baseUrl),
     })),
   };
 
   return (
-    <div className={cn("py-3 text-sm text-muted-foreground", className)}>
-      <Breadcrumb>
-        <BreadcrumbList>
-          {normalizedItems.map((item, index) => (
-            <Fragment key={`${item.canonicalUrl}-${item.label}`}> 
-              <BreadcrumbItem>
-                {index === lastIndex ? (
-                  <BreadcrumbPage>{item.label}</BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink asChild>
-                    <Link href={item.relativeHref}>{item.label}</Link>
-                  </BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-              {index < lastIndex && <BreadcrumbSeparator />}
-            </Fragment>
-          ))}
-        </BreadcrumbList>
-      </Breadcrumb>
+    <div className={cn("bg-background/80 py-3", className)}>
+      <div className="container mx-auto px-4">
+        <Breadcrumb>
+          <BreadcrumbList>
+            {items.map((item, index) => {
+              const isLast = index === items.length - 1;
+
+              return (
+                <Fragment key={`${item.href}-${item.label}-${index}`}>
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild>
+                        <Link href={item.href}>{item.label}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                  {!isLast && <BreadcrumbSeparator />}
+                </Fragment>
+              );
+            })}
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -129,4 +86,4 @@ export const BreadcrumbTrail = ({ items, className }: BreadcrumbTrailProps) => {
       />
     </div>
   );
-};
+}

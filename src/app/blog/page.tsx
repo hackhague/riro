@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const breadcrumbItems = [
-    { label: "Home", href: "https://www.instantit.nl/" },
-    { label: "Blog", href: "https://www.instantit.nl/blog" },
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
@@ -56,11 +56,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <div className="bg-muted/40 border-b border-border/60">
-        <div className="container mx-auto px-4">
-          <BreadcrumbTrail items={breadcrumbItems} />
-        </div>
-      </div>
+      <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* Blog Rotating Section */}
       <BlogSection />

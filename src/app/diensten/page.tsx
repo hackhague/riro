@@ -189,8 +189,8 @@ export default function Diensten() {
   });
 
   const breadcrumbItems = [
-    { label: "Home", href: "https://www.instantit.nl/" },
-    { label: "Diensten", href: "https://www.instantit.nl/diensten" },
+    { label: "Home", href: "/" },
+    { label: "Diensten", href: "/diensten" },
   ];
 
   return (
@@ -235,11 +235,7 @@ export default function Diensten() {
         </div>
       </section>
 
-      <div className="bg-muted/40 border-b border-border/60">
-        <div className="container mx-auto px-4">
-          <BreadcrumbTrail items={breadcrumbItems} />
-        </div>
-      </div>
+      <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* Particulier */}
       <section className="py-12 md:py-16">

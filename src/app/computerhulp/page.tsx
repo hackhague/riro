@@ -33,6 +33,7 @@ interface ComputerhulpProps {
 }
 
 type CityContent = {
+  marketingName?: string;
   neighborhoods: string[];
   caseStudy: {
     problem: string;
@@ -53,6 +54,7 @@ type CityContent = {
 // City-specific data with neighborhoods, hero copy and case studies
 const cityData: Record<string, CityContent> = {
   "Den Haag": {
+    marketingName: "Den Haag & regio",
     neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
@@ -246,10 +248,7 @@ const cityData: Record<string, CityContent> = {
   },
 };
 
-export default function Computerhulp({
-  city = "Den Haag & regio",
-  canonicalUrl = SERVICE_CANONICAL_URL,
-}: ComputerhulpProps) {
+export default function Computerhulp({ city = "Den Haag" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
@@ -263,15 +262,7 @@ export default function Computerhulp({
   const currentCityData = cityData[city] || cityData["Den Haag"];
   const neighborhoods = currentCityData.neighborhoods;
   const hero = currentCityData.hero;
-  const breadcrumbItems = [
-    { label: "Home", href: "https://www.instantit.nl/" },
-    { label: "Diensten", href: "https://www.instantit.nl/diensten" },
-    { label: "Computerhulp aan huis", href: SERVICE_CANONICAL_URL },
-  ];
-
-  if (canonicalUrl !== SERVICE_CANONICAL_URL) {
-    breadcrumbItems.push({ label: `Computerhulp ${city}`, href: canonicalUrl });
-  }
+  const marketingCity = currentCityData.marketingName ?? city;
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
@@ -293,6 +284,25 @@ export default function Computerhulp({
     { name: "Leiden", link: "/computerhulp-leiden" },
   ];
 
+  const cityEntry = serviceAreas.find((area) => area.name === city);
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Diensten", href: "/diensten" },
+    {
+      label: "Computerhulp aan huis",
+      href: "/computerhulp",
+      canonicalUrl: "https://www.instantit.nl/computerhulp-aan-huis",
+    },
+    ...(cityEntry
+      ? [
+          {
+            label: `Computerhulp ${city}`,
+            href: cityEntry.link,
+          },
+        ]
+      : []),
+  ];
+
   const steps = [
     { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
     { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 24-48 uur aan de deur" },
@@ -302,12 +312,18 @@ export default function Computerhulp({
 
   const faqs = [
     {
-      q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
+      q: "Hoe snel kunnen jullie in " + marketingCity + " helpen?",
+      a:
+        "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " +
+        marketingCity +
+        " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs in " + city + ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
+      a:
+        "Dan komen we langs in " +
+        marketingCity +
+        ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
     },
     {
       q: "Is op afstand hulp veilig?",
@@ -416,11 +432,7 @@ export default function Computerhulp({
         </div>
       </section>
 
-      <div className="bg-muted/40 border-b border-border/60">
-        <div className="container mx-auto px-4">
-          <BreadcrumbTrail items={breadcrumbItems} />
-        </div>
-      </div>
+      <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
