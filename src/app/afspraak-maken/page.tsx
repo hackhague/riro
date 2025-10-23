@@ -1,33 +1,87 @@
-'use client';
-// This file uses Image from next/image which is imported above
-
-import { useSearchParams } from "next/navigation";
+import type { Metadata } from "next";
 import Image from "next/image";
+
 import AppointmentWizard from "@/components/AppointmentWizard";
 
 const heroImage = "/images/hero-technician.jpg";
 
-export default function Afspraak() {
-  const searchParams = useSearchParams();
+const getFirstValue = (value: string | string[] | undefined) => {
+  if (Array.isArray(value)) {
+    return value[0];
+  }
 
-  const normalize = (value: string | null) => {
-    return value || undefined;
-  };
+  return value;
+};
 
-  const normalizeServiceType = (value: string | null): "consumer" | "business" | undefined => {
-    if (!value) return undefined;
-    if (value === "zakelijk") return "business";
-    if (value === "particulier") return "consumer";
-    return value as "consumer" | "business" | undefined;
-  };
+const normalize = (value: string | string[] | undefined) => {
+  const firstValue = getFirstValue(value);
+  return firstValue || undefined;
+};
 
+const normalizeServiceType = (
+  value: string | string[] | undefined,
+): "consumer" | "business" | undefined => {
+  const firstValue = getFirstValue(value);
+
+  if (!firstValue) return undefined;
+  if (firstValue === "zakelijk") return "business";
+  if (firstValue === "particulier") return "consumer";
+
+  return firstValue as "consumer" | "business" | undefined;
+};
+
+export const metadata: Metadata = {
+  title: "Afspraak maken | Plan directe hulp van instantIT",
+  description:
+    "Plan direct een afspraak voor computerhulp of cyberhulp. Kies je dienst, selecteer datum en tijdslot en wij nemen snel contact op.",
+  alternates: {
+    canonical: "https://www.instantit.nl/afspraak-maken",
+  },
+  openGraph: {
+    url: "https://www.instantit.nl/afspraak-maken",
+    title: "Afspraak maken | Plan directe hulp van instantIT",
+    description:
+      "Plan direct een afspraak voor computerhulp of cyberhulp. Kies je dienst, selecteer datum en tijdslot en wij nemen snel contact op.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Afspraak maken | Plan directe hulp van instantIT",
+    description:
+      "Plan direct een afspraak voor computerhulp of cyberhulp. Kies je dienst, selecteer datum en tijdslot en wij nemen snel contact op.",
+  },
+};
+
+interface AfspraakSearchParams {
+  category?: string | string[];
+  type?: string | string[];
+  channel?: string | string[];
+  speed?: string | string[];
+  date?: string | string[];
+  slot?: string | string[];
+  [key: string]: string | string[] | undefined;
+}
+
+interface AfspraakPageProps {
+  searchParams: AfspraakSearchParams;
+}
+
+export default function Afspraak({ searchParams }: AfspraakPageProps) {
   const initialState: React.ComponentProps<typeof AppointmentWizard>["initialState"] = {
-    problemCategory: normalize(searchParams.get("category")) as "" | "security" | "other" | "network" | "hardware" | "mobile" | "hardware_other" | "training" | undefined,
-    serviceType: normalizeServiceType(searchParams.get("type")),
-    serviceChannel: normalize(searchParams.get("channel")) as "remote" | "onsite" | "" | undefined,
-    urgency: normalize(searchParams.get("speed")) as "standaard" | "spoed" | "" | undefined,
-    date: normalize(searchParams.get("date")),
-    timeSlot: normalize(searchParams.get("slot")),
+    problemCategory: normalize(searchParams.category) as
+      | ""
+      | "security"
+      | "other"
+      | "network"
+      | "hardware"
+      | "mobile"
+      | "hardware_other"
+      | "training"
+      | undefined,
+    serviceType: normalizeServiceType(searchParams.type),
+    serviceChannel: normalize(searchParams.channel) as "remote" | "onsite" | "" | undefined,
+    urgency: normalize(searchParams.speed) as "standaard" | "spoed" | "" | undefined,
+    date: normalize(searchParams.date),
+    timeSlot: normalize(searchParams.slot),
   };
 
   return (
@@ -46,7 +100,7 @@ export default function Afspraak() {
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)",
             }}
             aria-hidden="true"
           />
