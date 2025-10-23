@@ -741,7 +741,7 @@ export function getReviewsByService(servicePath: string): Review[] {
     "/computerhulp-rijswijk": ["computerhulp-aan-huis"],
     "/computerhulp-voorburg": ["computerhulp-aan-huis"],
     "/computerhulp-zoetermeer": ["computerhulp-aan-huis"],
-    "/hulp-op-afstand": ["computerhulp-aan-huis"],
+    "/computerhulp-op-afstand": ["computerhulp-aan-huis"],
     "/ik-ben-gehackt": ["ik-ben-gehackt"],
     "/phishing-hulp": ["phishing"],
     "/instagram-gehackt": ["ik-ben-gehackt", "social-media-hack"],
