@@ -725,7 +725,7 @@ export function getReviewsByService(servicePath: string): Review[] {
 
   const topicMap: Record<string, string[]> = {
     "/diensten": ["computerhulp-aan-huis", "zakelijk"],
-    "/computerhulp": ["computerhulp-aan-huis"],
+    "/computerhulp-aan-huis": ["computerhulp-aan-huis"],
     "/windows-support": ["windows-support"],
     "/mac-support": ["mac-support"],
     "/antivirus-setup": ["computerhulp-aan-huis", "malware"],
