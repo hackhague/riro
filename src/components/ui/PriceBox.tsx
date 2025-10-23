@@ -81,7 +81,7 @@ export function PriceBox() {
                   ))}
                 </ul>
                 <Button asChild size="lg" className="w-full">
-                  <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
+                  <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
                 </Button>
               </div>
             </div>
