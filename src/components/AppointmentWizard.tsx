@@ -675,7 +675,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <Button variant="outline" onClick={() => goToStep(1)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => goToStep(3)} disabled={!isStep2Valid}>
+                  <Button onClick={() => goToStep(booking.problemCategory === "security" ? 4 : 3)} disabled={!isStep2Valid}>
                     Volgende stap
                   </Button>
                 </div>
