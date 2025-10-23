@@ -61,7 +61,7 @@ export const Navigation = () => {
       },
       {
         label: "Computerhulp op afstand",
-        path: "/hulp-op-afstand",
+        path: "/computerhulp-op-afstand",
         description: "Snelle op afstand hulp via schermdeling",
       },
     ],
