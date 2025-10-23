@@ -200,9 +200,9 @@ export default function Tarieven() {
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {businessPricing.map((item, index) => {
               const serviceLinks = [
-                "/computerhulp",
-                "/hulp-op-afstand",
-                "/computerhulp",
+                "/computerhulp-aan-huis",
+                "/computerhulp-op-afstand",
+                "/computerhulp-aan-huis",
                 "/ik-ben-gehackt"
               ];
               const serviceLink = serviceLinks[index];
