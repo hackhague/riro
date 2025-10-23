@@ -829,7 +829,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                             Professionele antivirus installatie en basisbeveiliging setup.
                           </p>
                           <p className="text-sm font-semibold text-primary mt-2">
-                            Vanaf €50 te verkrijgen (+€15 bij nieuwe apparaat)
+                            Vanaf €50 te verkrijgen (+€15 bij extra apparaat)
                           </p>
                         </div>
                       </div>
