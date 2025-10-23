@@ -758,8 +758,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   </div>
 
-                  {/* Windows/Mac herinstallatie - alleen voor Hardware */}
-                  {booking.problemCategory === "hardware" && (
+                  {/* Windows/Mac herinstallatie - voor Hardware OF Zakelijk */}
+                  {(booking.problemCategory === "hardware" || booking.serviceType === "business") && (
                     <div className="border rounded-lg p-4">
                       <div className="flex items-start gap-3">
                         <input
