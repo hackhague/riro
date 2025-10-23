@@ -23,12 +23,10 @@ export default function AntivirusSetupPage() {
   const protection_elements = [
     "Real-time virusscanning",
     "Malware en ransomware bescherming",
-    "Phishing filtration",
-    "Firewall",
-    "Quarantine & removal",
+    "Phishing bescherming",
+    "Netwerk bescherming",
+    "Bankieren bescherming",
     "Automatische updates",
-    "Network optioneel",
-    "Minimal CPU impact",
   ];
 
   const antivirus_options = [
