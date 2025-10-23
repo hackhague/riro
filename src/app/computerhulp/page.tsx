@@ -569,7 +569,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />
+              <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />
                 Afspraak maken
               </Link>
             </Button>
