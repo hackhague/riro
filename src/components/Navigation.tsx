@@ -82,9 +82,9 @@ export const Navigation = () => {
       },
     ],
     zakelijkExpat: [
-      { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
-      { label: "Zakelijk IT-support op locatie", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
-      { label: "Expat support", path: "/expat", description: "IT-hulp in het Engels" },
+      { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "" },
+      { label: "Zakelijk IT-support op locatie", path: "/zakelijk", description: "" },
+      { label: "Expat support", path: "/expat", description: "IT-support in English" },
     ],
   };
 
