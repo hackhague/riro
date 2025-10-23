@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComputerhulpDenHaagPage() {
-  return <Computerhulp city="Den Haag" />;
+  return <Computerhulp city="Den Haag" canonicalUrl="https://www.instantit.nl/computerhulp-den-haag" />;
 }

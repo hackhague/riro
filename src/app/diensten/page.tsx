@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Laptop, Shield, Wifi, CheckCircle2, Briefcase, MessageCircle } from "lucide-react";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PRICE_TIERS } from "@/data/pricing";
@@ -187,6 +188,11 @@ export default function Diensten() {
     ],
   });
 
+  const breadcrumbItems = [
+    { label: "Home", href: "https://www.instantit.nl/" },
+    { label: "Diensten", href: "https://www.instantit.nl/diensten" },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* JSON-LD */}
@@ -228,6 +234,12 @@ export default function Diensten() {
           </div>
         </div>
       </section>
+
+      <div className="bg-muted/40 border-b border-border/60">
+        <div className="container mx-auto px-4">
+          <BreadcrumbTrail items={breadcrumbItems} />
+        </div>
+      </div>
 
       {/* Particulier */}
       <section className="py-12 md:py-16">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BlogSection } from "@/components/BlogSection";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
 
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const breadcrumbItems = [
+    { label: "Home", href: "https://www.instantit.nl/" },
+    { label: "Blog", href: "https://www.instantit.nl/blog" },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -49,6 +55,12 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      <div className="bg-muted/40 border-b border-border/60">
+        <div className="container mx-auto px-4">
+          <BreadcrumbTrail items={breadcrumbItems} />
+        </div>
+      </div>
 
       {/* Blog Rotating Section */}
       <BlogSection />

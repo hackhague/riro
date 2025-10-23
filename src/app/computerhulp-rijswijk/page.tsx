@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComputerhulpRijswijkPage() {
-  return <Computerhulp city="Rijswijk" />;
+  return <Computerhulp city="Rijswijk" canonicalUrl="https://www.instantit.nl/computerhulp-rijswijk" />;
 }

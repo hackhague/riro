@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin, Calendar } from "lucide-react";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -12,6 +13,7 @@ import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
+const SERVICE_CANONICAL_URL = "https://www.instantit.nl/computerhulp-aan-huis";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
@@ -27,6 +29,7 @@ export const metadata: Metadata = {
 
 interface ComputerhulpProps {
   city?: string;
+  canonicalUrl?: string;
 }
 
 type CityContent = {
@@ -243,7 +246,10 @@ const cityData: Record<string, CityContent> = {
   },
 };
 
-export default function Computerhulp({ city = "Den Haag & regio" }: ComputerhulpProps) {
+export default function Computerhulp({
+  city = "Den Haag & regio",
+  canonicalUrl = SERVICE_CANONICAL_URL,
+}: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
@@ -257,6 +263,15 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
   const currentCityData = cityData[city] || cityData["Den Haag"];
   const neighborhoods = currentCityData.neighborhoods;
   const hero = currentCityData.hero;
+  const breadcrumbItems = [
+    { label: "Home", href: "https://www.instantit.nl/" },
+    { label: "Diensten", href: "https://www.instantit.nl/diensten" },
+    { label: "Computerhulp aan huis", href: SERVICE_CANONICAL_URL },
+  ];
+
+  if (canonicalUrl !== SERVICE_CANONICAL_URL) {
+    breadcrumbItems.push({ label: `Computerhulp ${city}`, href: canonicalUrl });
+  }
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
@@ -400,6 +415,12 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
           </div>
         </div>
       </section>
+
+      <div className="bg-muted/40 border-b border-border/60">
+        <div className="container mx-auto px-4">
+          <BreadcrumbTrail items={breadcrumbItems} />
+        </div>
+      </div>
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
