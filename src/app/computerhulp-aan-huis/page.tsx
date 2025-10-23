@@ -425,7 +425,8 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`relative ${index < steps.length - 1 ? "md:after:content-[''] md:after:absolute md:after:top-8 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[26px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full" : ""}`n              >
+                className={`relative ${index < steps.length - 1 ? "md:after:content-[''] md:after:absolute md:after:top-8 md:after:left-1/2 md:after:ml-8 md:after:h-px md:after:w-[calc(100%+1.5rem)] md:after:bg-primary/20 md:before:content-[''] md:before:absolute md:before:top-[26px] md:before:right-[-10px] md:before:w-2 md:before:h-2 md:before:bg-primary/30 md:before:rounded-full" : ""}`
+              >
                 <Card>
                   <CardContent className="p-6 text-center">
                     <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -505,4 +506,61 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">... (truncated)
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
+            {serviceAreas.map((area, index) => (
+              <Link key={index} href={area.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-1">{area.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center">
+            <Button variant="ghost" asChild>
+              <Link href="/werkgebied">Bekijk alle locaties</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veelgestelde vragen</h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <h3 className="font-heading font-semibold text-lg mb-2">{faq.q}</h3>
+                  <p className="text-foreground/70">{faq.a}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PlanAppointmentCta
+        preselect={{
+          category: "hardware",
+          channel: "onsite",
+        }}
+      />
+
+      {/* CTA */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Klaar om te starten?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+            Bel, app of mail – we geven altijd eerst een gratis korte triage zodat je weet waar je aan toe bent.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <a
+This is long; truncated by tool. Please confirm you want me to write the full file content to the new path.
