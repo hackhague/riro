@@ -124,8 +124,84 @@ export default function Home() {
     { name: "Leiden", link: "/computerhulp-leiden" },
   ];
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.instantit.nl/#localbusiness",
+      name: "InstantIT - Digitale Eerste Hulp",
+      url: "https://www.instantit.nl/",
+      image: `https://www.instantit.nl${heroImage}`,
+      logo: "https://www.instantit.nl/android-chrome-512x512.png",
+      telephone: "+31702119191",
+      email: "info@instantit.nl",
+      priceRange: "€€",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Laan van NOI 88",
+        addressLocality: "Den Haag",
+        postalCode: "2593 BP",
+        addressCountry: "NL",
+      },
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Haaglanden" },
+        ...serviceAreas.map((area) => ({ "@type": "City", name: area.name })),
+        { "@type": "Country", name: "Nederland" },
+      ],
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "https://schema.org/Monday",
+            "https://schema.org/Tuesday",
+            "https://schema.org/Wednesday",
+            "https://schema.org/Thursday",
+            "https://schema.org/Friday",
+            "https://schema.org/Saturday",
+            "https://schema.org/Sunday",
+          ],
+          opens: "08:00",
+          closes: "22:00",
+        },
+      ],
+      sameAs: [
+        "https://www.instagram.com/instantit.nl",
+        "https://www.facebook.com/instantit.nl",
+        "https://www.linkedin.com/company/instantit-nl",
+        "https://maps.app.goo.gl/9eQ2TUtQfem57CCw8",
+      ],
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          telephone: "+31702119191",
+          email: "support@instantit.nl",
+          availableLanguage: ["Dutch", "English"],
+          areaServed: "NL",
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://www.instantit.nl/#website",
+      name: "InstantIT",
+      url: "https://www.instantit.nl/",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://www.instantit.nl/zoek?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ];
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* ------------------- HERO ------------------- */}
       <section className="relative flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
