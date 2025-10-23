@@ -5,7 +5,7 @@ const lastModified = new Date();
 
 const staticRoutes: Array<{ path: string; priority: number }> = [
   { path: "/", priority: 1 },
-  { path: "/computerhulp", priority: 0.9 },
+  { path: "/computerhulp-aan-huis", priority: 0.9 },
   { path: "/computerhulp-den-haag", priority: 0.9 },
   { path: "/computerhulp-delft", priority: 0.8 },
   { path: "/computerhulp-zoetermeer", priority: 0.8 },
