@@ -93,8 +93,8 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         consumerPricing.diagnosis.bookingSummary,
       ],
       links: [
-        { label: "Meer info", href: "/computerhulp", variant: "default" },
-        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
+        { label: "Meer info", href: "/computerhulp-aan-huis", variant: "default" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak-maken", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
       ],
     },
     {
