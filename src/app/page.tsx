@@ -71,7 +71,7 @@ export default function Home() {
 
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
-    { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.svg" },
+    { title: "Computerhulp", href: "/computerhulp-aan-huis", image: "/images/services/computerhulp.svg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
