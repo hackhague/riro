@@ -61,7 +61,7 @@ export const Navigation = () => {
       },
       {
         label: "Computerhulp op afstand",
-        path: "/hulp-op-afstand",
+        path: "/computerhulp-op-afstand",
         description: "Snelle op afstand hulp via schermdeling",
       },
     ],
@@ -224,7 +224,7 @@ export const Navigation = () => {
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a href="/afspraak">
+              <a href="/afspraak-maken">
                 <Calendar className="h-3.5 w-3.5 mr-1.5" />
                 Afspraak maken
               </a>
@@ -435,7 +435,7 @@ export const Navigation = () => {
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href="/afspraak">
+                  <a href="/afspraak-maken">
                     <Calendar className="h-3.5 w-3.5 mr-1.5" />
                     Afspraak maken
                   </a>

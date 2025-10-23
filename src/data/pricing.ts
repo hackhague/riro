@@ -12,7 +12,7 @@ export const PRICE_TIERS = {
     label: "QuickFix op afstand",
     price: "€39",
     subline: "Eerste 30 min • daarna €15 per 15 min (cap €99)",
-    href: "/hulp-op-afstand",
+    href: "/computerhulp-op-afstand",
   },
   homeVisit: {
     id: "homeVisit",

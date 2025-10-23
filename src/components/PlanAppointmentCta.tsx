@@ -1,5 +1,5 @@
+import { CalendarCheck, Calendar, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
-import { CalendarCheck, MessageCircle, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -34,7 +34,7 @@ export function PlanAppointmentCta({
   preselect,
   ctaLabel = "Afspraak maken",
 }: PlanAppointmentCtaProps) {
-  const href = buildHref("/afspraak", preselect);
+  const href = buildHref("/afspraak-maken", preselect);
 
   return (
     <section className="py-12 md:py-16">
@@ -55,7 +55,7 @@ export function PlanAppointmentCta({
 
             <div className="flex flex-col gap-3">
               <Button asChild size="lg" className="w-full">
-                <Link href={href}>{ctaLabel}</Link>
+                <Link href={href}><Calendar className="h-4 w-4 mr-2" />{ctaLabel}</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="w-full">
                 <a href="tel:+31702119191">

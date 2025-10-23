@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   description:
     "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
   alternates: {
-    canonical: "https://www.instantit.nl/computerhulp",
+    canonical: "https://www.instantit.nl/computerhulp-aan-huis",
     languages: {
-      "nl-NL": "https://www.instantit.nl/computerhulp",
+      "nl-NL": "https://www.instantit.nl/computerhulp-aan-huis",
     },
   },
 };
@@ -169,7 +169,7 @@ const cityData: Record<string, CityContent> = {
         "Op afstand diagnose beschikbaar buiten openingstijden",
       ],
       links: [
-        { label: "Plan directe hulp", href: "/afspraak" },
+        { label: "Plan directe hulp", href: "/afspraak-maken" },
         { label: "Bekijk zakelijke diensten", href: "/zakelijk" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
@@ -569,7 +569,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <Link href="/afspraak">
+              <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />
                 Afspraak maken
               </Link>
             </Button>

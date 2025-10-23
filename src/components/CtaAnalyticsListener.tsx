@@ -17,7 +17,7 @@ function resolveCtaType(node: HTMLElement | null) {
     const normalized = href.toLowerCase();
     if (normalized.startsWith("tel:")) return "phone";
     if (normalized.includes("wa.me") || normalized.includes("whatsapp")) return "whatsapp";
-    if (normalized.includes("/afspraak")) return "appointment";
+    if (normalized.includes("/afspraak-maken")) return "appointment";
   }
 
   if (node instanceof HTMLButtonElement) {
@@ -26,7 +26,7 @@ function resolveCtaType(node: HTMLElement | null) {
       const normalized = href.toLowerCase();
       if (normalized.startsWith("tel:")) return "phone";
       if (normalized.includes("wa.me") || normalized.includes("whatsapp")) return "whatsapp";
-      if (normalized.includes("/afspraak")) return "appointment";
+      if (normalized.includes("/afspraak-maken")) return "appointment";
     }
   }
 

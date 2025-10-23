@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -152,9 +152,9 @@ export default function Tarieven() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {consumerPricing.map((item, index) => {
               const serviceLinks = [
-                "/hulp-op-afstand",
-                "/computerhulp",
-                "/computerhulp",
+                "/computerhulp-op-afstand",
+                "/computerhulp-aan-huis",
+                "/computerhulp-aan-huis",
                 "/ik-ben-gehackt"
               ];
               const serviceLink = serviceLinks[index];
@@ -184,7 +184,7 @@ export default function Tarieven() {
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Afspraak maken</a>
+              <a href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -200,9 +200,9 @@ export default function Tarieven() {
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {businessPricing.map((item, index) => {
               const serviceLinks = [
-                "/computerhulp",
-                "/hulp-op-afstand",
-                "/computerhulp",
+                "/computerhulp-aan-huis",
+                "/computerhulp-op-afstand",
+                "/computerhulp-aan-huis",
                 "/ik-ben-gehackt"
               ];
               const serviceLink = serviceLinks[index];
@@ -232,7 +232,7 @@ export default function Tarieven() {
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Afspraak maken</a>
+              <a href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -292,7 +292,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Afspraak maken</a>
+              <a href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>
@@ -330,7 +330,7 @@ export default function Tarieven() {
 
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <a href="/afspraak">Afspraak maken</a>
+              <a href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" asChild>
               <a href="tel:+31702119191">Bel nu</a>

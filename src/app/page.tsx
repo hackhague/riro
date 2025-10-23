@@ -16,6 +16,7 @@ import {
   Home as HomeIcon,
   Laptop,
   MapPin,
+  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -70,7 +71,7 @@ export default function Home() {
 
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
-    { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.svg" },
+    { title: "Computerhulp", href: "/computerhulp-aan-huis", image: "/images/services/computerhulp.svg" },
     { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
     { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
     { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
@@ -283,7 +284,7 @@ export default function Home() {
         </div>
         <div className="mt-8 flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak">Afspraak maken</Link>
+            <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>

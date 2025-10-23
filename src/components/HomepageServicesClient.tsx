@@ -12,6 +12,7 @@ import {
   CheckCircle,
   MessageCircle,
   Phone,
+  Calendar
 } from "lucide-react";
 import { usePrices } from "@/hooks/use-prices";
 
@@ -69,7 +70,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         "Live uitleg met beveiligde verbinding",
       ],
       links: [
-        { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
+        { label: "Meer info", href: "/computerhulp-op-afstand", variant: "default" },
         {
           label: "Start nu",
           href: `${priceConfig.contact.whatsappHref}?text=Ik%20heb%20nu%20hulp%20op%20afstand%20nodig`,
@@ -92,8 +93,8 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         consumerPricing.diagnosis.bookingSummary,
       ],
       links: [
-        { label: "Meer info", href: "/computerhulp", variant: "default" },
-        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
+        { label: "Meer info", href: "/computerhulp-aan-huis", variant: "default" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak-maken", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
       ],
     },
     {
@@ -189,7 +190,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
       ],
       links: [
         { label: "Meer info", href: "/zakelijk", variant: "default" },
-        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline" },
+        { label: priceConfig.ctas.planAppointment, href: "/afspraak", variant: "outline", icon: <Calendar className="h-4 w-4" /> },
       ],
     },
     {
@@ -361,7 +362,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         {/* Bottom CTA buttons */}
         <div className="flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak">Afspraak maken</Link>
+            <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="tel:+31702119191">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePrices } from "@/hooks/use-prices";
 
@@ -75,7 +75,7 @@ export function OtherServicesGrid({ serviceBlocks, showCTA = true, title = "Ande
         {showCTA && (
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="accent" asChild>
-              <Link href="/afspraak">{ctas.planAppointment}</Link>
+              <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />{ctas.planAppointment}</Link>
             </Button>
             <Button variant="outline" asChild>
               <a href={contact.phoneHref}>{contact.phoneLabel}</a>

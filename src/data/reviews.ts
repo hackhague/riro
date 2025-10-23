@@ -725,7 +725,7 @@ export function getReviewsByService(servicePath: string): Review[] {
 
   const topicMap: Record<string, string[]> = {
     "/diensten": ["computerhulp-aan-huis", "zakelijk"],
-    "/computerhulp": ["computerhulp-aan-huis"],
+    "/computerhulp-aan-huis": ["computerhulp-aan-huis"],
     "/windows-support": ["windows-support"],
     "/mac-support": ["mac-support"],
     "/antivirus-setup": ["computerhulp-aan-huis", "malware"],
@@ -741,7 +741,7 @@ export function getReviewsByService(servicePath: string): Review[] {
     "/computerhulp-rijswijk": ["computerhulp-aan-huis"],
     "/computerhulp-voorburg": ["computerhulp-aan-huis"],
     "/computerhulp-zoetermeer": ["computerhulp-aan-huis"],
-    "/hulp-op-afstand": ["computerhulp-aan-huis"],
+    "/computerhulp-op-afstand": ["computerhulp-aan-huis"],
     "/ik-ben-gehackt": ["ik-ben-gehackt"],
     "/phishing-hulp": ["phishing"],
     "/instagram-gehackt": ["ik-ben-gehackt", "social-media-hack"],

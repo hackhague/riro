@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
-import { Phone, MessageCircle, Clock, Shield, MonitorSmartphone } from "lucide-react";
+import { Phone, MessageCircle, Clock, Shield, MonitorSmartphone, Calendar } from "lucide-react";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { ReviewSection } from "@/components/ReviewSection";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description:
     "Hulp op afstand door heel Nederland — snel geholpen via je scherm, zonder dat er iemand langs hoeft te komen. Transparante tarieven en duidelijke stappen.",
   alternates: {
-    canonical: "https://www.instantit.nl/hulp-op-afstand",
+    canonical: "https://www.instantit.nl/computerhulp-op-afstand",
   },
 };
 
@@ -32,6 +32,13 @@ export default function HulpOpAfstand() {
     "Virus- en malwareonderzoek",
     "Printer- of netwerkinstellingen",
     "Backups maken en terugzetten",
+  ];
+
+  const steps = [
+    { title: "Je belt of app't ons", desc: "We reageren meestal binnen 10-30 minuten" },
+    { title: "Korte intake", desc: "We vragen wat er aan de hand is" },
+    { title: "Toestemming & schermdeling", desc: "Met jouw toestemming kijken we mee via je scherm en lossen het op" },
+    { title: "Afronding", desc: "Klaar? We sturen een korte samenvatting en de rekening" },
   ];
 
   return (
@@ -117,28 +124,28 @@ export default function HulpOpAfstand() {
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante afrekening</h2>
-            <Card className="border-accent/40 mb-8">
-              <CardContent className="p-8">
-                <p className="text-lg font-semibold text-primary mb-4">€35 eerste 30 minuten</p>
-                <p className="text-foreground/80 mb-4">
-                  De eerste 30 minuten helpdesk kost €35. Daarna rekenen we per 15 minuten volgens vaste tarieven. Je weet altijd vooraf wat het kost.
-                </p>
-                <p className="text-lg font-semibold text-primary mb-4 mt-6">Daarna €15 per 15 minuten</p>
-                <p className="text-foreground/80">
-                  Eenvoudige problemen zijn vaak binnen één sessie klaar. Lukt het niet op afstand, dan bespreken we samen de volgende stappen.
-                </p>
-              </CardContent>
-            </Card>
-
             <div className="bg-secondary rounded-lg p-6 mb-8">
               <h3 className="font-heading font-semibold text-xl mb-4">Hoe werkt het stap voor stap?</h3>
-              <ol className="space-y-3 list-decimal list-inside text-foreground/80">
-                <li>Je belt of app't ons - we reageren meestal binnen 10-30 minuten</li>
-                <li>Korte intake: we vragen wat er aan de hand is</li>
-                <li>Met jouw toestemming kijken we mee via je scherm en lossen het op</li>
-                <li>Klaar? We sturen een korte samenvatting en de rekening</li>
-              </ol>
+              <div className="space-y-4">
+                {steps.map((step, index) => (
+                  <Card key={index}>
+                    <CardContent className="p-6 flex items-start gap-4">
+                      <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-lg font-bold text-primary-foreground">{index + 1}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-heading font-semibold">{step.title}</h4>
+                        <p className="text-sm text-foreground/70">{step.desc}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="mt-6">
+                <Button variant="outline" asChild>
+                  <a href="#" aria-disabled="true">Download hulpprogramma</a>
+                </Button>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -209,7 +216,7 @@ export default function HulpOpAfstand() {
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <Link href="/afspraak">Afspraak maken</Link>
+              <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">
