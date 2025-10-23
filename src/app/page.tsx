@@ -30,7 +30,7 @@ const heroImage = "/images/hero-technician.jpg";
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
   description:
-    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. WhatsApp of bel 070 211 9191.",
+    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. We helpen ook op afstand door heel Nederland. WhatsApp of bel 070 211 9191.",
   keywords: [
     "computerhulp den haag",
     "cyberhulp",
@@ -102,7 +102,7 @@ export default function Home() {
     {
       icon: Star,
       title: "Regionaal actief",
-      description: "Direct inzetbaar in Den Haag, Delft, Zoetermeer, Rijswijk & omgeving.",
+      description: "Op locatie inzetbaar in Den Haag, Delft, Zoetermeer, Rijswijk & omgeving; op afstand helpen we door heel Nederland.",
     },
   ];
 
@@ -153,7 +153,7 @@ export default function Home() {
             </h1>
 
             <h2 className="font-heading font-semibold text-sm md:text-base lg:text-lg leading-snug text-white/95 mb-4 md:mb-5">
-              24/7 computerhulp in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en omgeving.
+              Op afstand geholpen door heel Nederland — op locatie in <strong>Den Haag</strong>, <strong>Rotterdam</strong>, <strong>Delft</strong>, <strong>Zoetermeer</strong> en omgeving.
             </h2>
 
             <div className="hidden md:block">
