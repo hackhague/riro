@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
+import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 import {
   Star,
   Clock,
@@ -25,8 +26,6 @@ import PartnersSection from "@/components/PartnersSection";
 import { ReviewSection } from "@/components/ReviewSection";
 import { BlogSection } from "@/components/BlogSection";
 import { SITE_PRICING } from "@/config/site-pricing";
-
-const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
@@ -206,11 +205,12 @@ export default function Home() {
       <section className="relative flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage}
+            src={heroTechnicianImage}
             alt="InstantIT monteur helpt klant met computerhulp aan huis in Den Haag"
             fill
             priority
-            sizes="100vw"
+            placeholder="blur"
+            sizes={HERO_IMAGE_SIZES}
             className="object-cover object-right"
           />
           <div

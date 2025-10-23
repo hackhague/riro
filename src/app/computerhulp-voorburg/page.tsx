@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Computerhulp from "../computerhulp-aan-huis/page";
+import Computerhulp from "../computerhulp/page";
 
 export const metadata: Metadata = {
   title: "Computerhulp Voorburg | Geduldig, Rustig & Betrouwbaar",

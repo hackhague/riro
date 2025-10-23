@@ -3,8 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Phone, Shield, Users, ThumbsUp, Clock } from "lucide-react";
-
-const heroImage = "/images/hero-technician.jpg";
+import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 
 export const metadata: Metadata = {
   title: "Over InstantIT",
@@ -28,11 +27,12 @@ export default function OverOns() {
       <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage}
+            src={heroTechnicianImage}
             alt="InstantIT team over ons"
             fill
             priority
-            sizes="100vw"
+            placeholder="blur"
+            sizes={HERO_IMAGE_SIZES}
             className="object-cover object-right"
           />
           <div

@@ -4,8 +4,7 @@ import { MessageCircle, Phone, Globe, CheckCircle, Clock, Shield, Zap, MapPin } 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ReviewSection } from "@/components/ReviewSection";
-
-const heroImage = "/images/hero-technician.jpg";
+import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 
 export const metadata: Metadata = {
   title: "IT Support for Expats",
@@ -59,11 +58,12 @@ export default function Expat() {
       <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage}
+            src={heroTechnicianImage}
             alt="InstantIT expat IT support"
             fill
             priority
-            sizes="100vw"
+            placeholder="blur"
+            sizes={HERO_IMAGE_SIZES}
             className="object-cover object-right"
           />
           <div

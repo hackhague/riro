@@ -9,8 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const heroImage = "/images/hero-technician.jpg";
+import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 
 export const metadata: Metadata = {
   title: "Veelgestelde vragen",
@@ -81,11 +80,12 @@ export default function FAQ() {
       <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage}
+            src={heroTechnicianImage}
             alt="InstantIT veelgestelde vragen"
             fill
             priority
-            sizes="100vw"
+            placeholder="blur"
+            sizes={HERO_IMAGE_SIZES}
             className="object-cover object-right"
           />
           <div
