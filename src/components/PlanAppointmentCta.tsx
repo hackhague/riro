@@ -34,7 +34,7 @@ export function PlanAppointmentCta({
   preselect,
   ctaLabel = "Afspraak maken",
 }: PlanAppointmentCtaProps) {
-  const href = buildHref("/afspraak", preselect);
+  const href = buildHref("/afspraak-maken", preselect);
 
   return (
     <section className="py-12 md:py-16">
