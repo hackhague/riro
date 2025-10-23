@@ -169,7 +169,7 @@ const cityData: Record<string, CityContent> = {
         "Op afstand diagnose beschikbaar buiten openingstijden",
       ],
       links: [
-        { label: "Plan directe hulp", href: "/afspraak" },
+        { label: "Plan directe hulp", href: "/afspraak-maken" },
         { label: "Bekijk zakelijke diensten", href: "/zakelijk" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
