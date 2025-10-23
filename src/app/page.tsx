@@ -4,21 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
-import {
-  Star,
-  Clock,
-  Shield,
-  CheckCircle,
-  MessageCircle,
-  Phone,
-  Zap,
-  ArrowRight,
-  ZapOff,
-  Home as HomeIcon,
-  Laptop,
-  MapPin,
-  Calendar,
-} from "lucide-react";
+import { Star, Clock, Shield, CheckCircle, MessageCircle, Phone, Zap, MapPin, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
@@ -69,15 +55,6 @@ export default function Home() {
   const consumerPricing = pricing.consumer;
 
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
-  const serviceBlocks = [
-    { title: "Computerhulp", href: "/computerhulp-aan-huis", image: "/images/services/computerhulp.svg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
-    { title: "Tablet & Smartphone", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.svg" },
-    { title: "Uitleg & Les", href: "/uitleg-les", image: "/images/services/uitleg-les.svg" },
-  ];
-
   const usps = [
     {
       icon: Clock,

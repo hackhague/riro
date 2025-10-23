@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Phone, Printer, MessageCircle, AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings, Barcode, Radio, Layers3, Grid3x3 } from "lucide-react";
+import { Phone, MessageCircle, AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings, Barcode, Radio, Layers3, Grid3x3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";

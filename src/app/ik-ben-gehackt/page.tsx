@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, ArrowUpRight, Lock, Eye, AlertCircle } from "lucide-react";
+import { MessageCircle, Phone, Zap, Shield, Clock, AlertTriangle, Lock, Eye, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
@@ -75,11 +73,6 @@ export default function IkBenGehackt(): JSX.Element {
       { "@type": "HowToStep", "name": "Bel of app InstantIT", "text": "Stuur een screenshot en wij starten op afstand hulp." },
       { "@type": "HowToStep", "name": "Reset wachtwoord en 2FA", "text": "Wij helpen met het terugkrijgen van het account en zetten 2FA aan." }
     ]
-  };
-
-  const toSchemaPrice = (price: string) => {
-    const normalized = price.replace(/[^0-9,]/g, "").replace(",", ".");
-    return normalized.includes(".") ? normalized : `${normalized}.00`;
   };
 
   const businessProfileLd = localBusinessJsonLd({

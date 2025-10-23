@@ -44,46 +44,6 @@ export default function Tarieven() {
     },
   ];
 
-  const cyberApkPricing = [
-    {
-      name: "Veiligheidscheck (Cyber-APK) op afstand - thuis of op kantoor",
-      price: "€79",
-      upsellPrice: "€39,50",
-      unit: "Vaste prijs",
-      desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
-      upsellDesc: "50% korting bij meeboeken met andere dienst",
-    },
-    {
-      name: "Veiligheidscheck (Cyber-APK) aan huis of op kantoor",
-      price: "€79",
-      upsellPrice: "€39,50",
-      unit: "Vaste prijs",
-      desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
-      upsellDesc: "50% korting bij meeboeken met andere dienst",
-    },
-  ];
-
-  const cyberApkBusinessPricing = [
-    {
-      name: "Veiligheidscheck (Cyber-APK) remote - zakelijk (thuis of kantoor)",
-      price: "€299",
-      upsellPrice: "€149,50",
-      unit: "Vaste prijs (ex btw)",
-      desc: "Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup.",
-      upsellDesc: "50% korting bij meeboeken met andere dienst",
-      exVat: true,
-    },
-    {
-      name: "Veiligheidscheck (Cyber-APK) ter plaatse - zakelijk",
-      price: "€449",
-      upsellPrice: "€224,50",
-      unit: "Vaste prijs (ex btw)",
-      desc: "Netwerk, wifi en endpoint-check op locatie inclusief rapport.",
-      upsellDesc: "50% korting bij meeboeken met andere dienst",
-      exVat: true,
-    },
-  ];
-
   const extraServices = [
     {
       name: "Windows/Mac herinstallatie",

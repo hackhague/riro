@@ -22,6 +22,12 @@ Minimaal uit te voeren voor codewijzigingen:
 - Playwright rooktest: `npx playwright test --config playwright.smoke.config.ts` (indien relevant)
 - Visuele regressie (Percy/Chromatic) wanneer UI wijzigt
 
+## ESLint beleid
+- Houd `.eslintrc.json` aan: `@typescript-eslint/no-unused-vars`, `@typescript-eslint/no-explicit-any` en `@typescript-eslint/no-empty-object-type` staan op fouteniveau.
+- Los lint-fouten op in de broncode (verwijder ongebruikte variabelen/imports, kies passende types in plaats van `any`, vervang lege interfaces door type-aliasen).
+- Schakel regels niet globaal uit; gebruik indien nodig gerichte `overrides` voor specifieke mappen zoals `__tests__/`.
+- Nieuwe code mag geen ESLint-waarschuwingen introduceren; zorg dat `npm run lint` schoon draait voordat je een PR opent.
+
 ## Documentatie
 - Documenteer onderzoeksresultaten in de aangewezen bestanden binnen `/docs`.
 - Bewaar ADR's in `/docs/adr/` met het format `ADR-XXX-titel.md`.

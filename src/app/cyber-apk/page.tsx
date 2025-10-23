@@ -3,7 +3,6 @@ import Image from "next/image";
 import { MessageCircle, Phone, Shield, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { ReviewSection } from "@/components/ReviewSection";
 import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
@@ -32,21 +31,6 @@ export default function CyberAPK() {
     { title: "Scan & check", desc: "60–90 min remote of on-site" },
     { title: "Adviesrapport", desc: "Puntsgewijze verbeteringen (geen jargon)" },
     { title: "Implementatie", desc: "Optioneel: wij voeren het uit (tegen uurtarief)" },
-  ];
-
-  const faqs = [
-    {
-      q: "Voor wie is een Cyber APK?",
-      a: "Iedereen die nóóit een veiligheidscheck heeft gedaan, of recent een hack meemaakte en preventie wil.",
-    },
-    {
-      q: "Krijg ik een rapport?",
-      a: "Ja, een kort PDF met concrete actiepunten + prioriteit (hoog/midden/laag).",
-    },
-    {
-      q: "Moet ik alles zelf doen?",
-      a: "Nee, we kunnen het ook voor je uitvoeren. We stemmen vooraf af wat er nodig is en werken met onze vaste tarieven.",
-    },
   ];
 
   return (

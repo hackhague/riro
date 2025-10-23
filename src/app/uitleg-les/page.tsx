@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Phone, BookOpen, CheckCircle2, Heart, MessageCircle, Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile, Keyboard, Globe, Lightbulb, Award } from "lucide-react";
+import { Phone, MessageCircle, Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile, Keyboard, Globe, Lightbulb, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";

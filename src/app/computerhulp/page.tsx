@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin, Calendar } from "lucide-react";
 import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,6 @@ import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
-const SERVICE_CANONICAL_URL = "https://www.instantit.nl/computerhulp-aan-huis";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",

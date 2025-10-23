@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap, Barcode, Radio } from "lucide-react";
+import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { ReviewSection } from "@/components/ReviewSection";
