@@ -829,7 +829,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                             Professionele antivirus installatie en basisbeveiliging setup.
                           </p>
                           <p className="text-sm font-semibold text-primary mt-2">
-                            Kosten worden met u besproken
+                            Vanaf €50 beschikbaar
                           </p>
                         </div>
                       </div>
