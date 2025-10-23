@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function HulpOpAfstand() {
   const benefits = [
     { title: "Snel geholpen", desc: "Meestal binnen 10–30 minuten reactie en direct aan de slag" },
-    { title: "Veilig", desc: "Versleutelde verbinding, jij geeft per stap toestemming" },
+    { title: "Veilig", desc: "Je geeft altijd zelf toestemming — we verbinden pas als jij het goedvindt" },
     { title: "Transparante prijs", desc: "We werken met vaste tarieven. Je ziet vooraf wat het kost." },
     { title: "Geen bezoek nodig", desc: "Ideaal voor snelle fixes, advies en ondersteuning" },
   ];
@@ -77,7 +77,7 @@ export default function HulpOpAfstand() {
       {/* Benefits */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Waarom remote hulp?</h2>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Waarom hulp op afstand?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {benefits.map((b, i) => (
               <Card key={i}>
@@ -138,7 +138,7 @@ export default function HulpOpAfstand() {
                 <li>Je belt of app't ons - we zijn meestal binnen 10-30 minuten bereikbaar</li>
                 <li>Korte intake: wat is het probleem en hoe snel moet het opgelost zijn?</li>
                 <li>We geven je een inschatting: "Dit gaat waarschijnlijk 30-45 minuten duren"</li>
-                <li>Met jouw toestemming helpen we je via schermdeling (veilig en versleuteld)</li>
+                <li>Met jouw toestemming helpen we je via schermdeling (veilig)</li>
                 <li>We leggen uit wat we doen en hoe we het probleem aanpakken</li>
                 <li>Klaar? Korte factuur en klaar!</li>
               </ol>
