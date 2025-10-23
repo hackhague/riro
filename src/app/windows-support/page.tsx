@@ -116,7 +116,7 @@ export default function WindowsSupportPage() {
               <Shield className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
               <div>
                 <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-4">
-                  Windows 10 - Einde ondersteuning: 14 oktober 2025
+                  Windows 10 - Ondersteuning eindigt: 14 oktober 2025
                 </h2>
                 <p className="text-foreground/80 mb-6 text-lg">
                   Microsoft stopt binnenkort met beveiligingsupdates voor Windows 10. Na deze datum wordt je computer kwetsbaar voor virussen en cyberaanvallen.
