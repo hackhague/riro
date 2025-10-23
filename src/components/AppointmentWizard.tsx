@@ -806,7 +806,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         mode="single"
                         selected={booking.date}
                         onSelect={(date) => setBooking((b) => ({ ...b, date, timeSlot: "" }))}
-                        disabled={(date) => isWeekend(date) || date < minSelectableDate || (maxSelectableDate && date > maxSelectableDate)}
+                        disabled={(date) => date < minSelectableDate || (maxSelectableDate && date > maxSelectableDate)}
                         className="flex justify-center"
                       />
                     </div>
