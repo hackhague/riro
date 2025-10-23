@@ -10,7 +10,7 @@ const heroImage = "/images/hero-technician.jpg";
 export const metadata: Metadata = {
   title: "Tarieven",
   description:
-    "Transparante prijzen voor remote support, hulp aan huis, hacklijn en zakelijke strippenkaarten.",
+    "Transparante prijzen voor hulp op afstand, hulp aan huis, hacklijn en zakelijke strippenkaarten.",
   alternates: {
     canonical: "https://www.instantit.nl/tarieven",
     languages: {
@@ -21,20 +21,20 @@ export const metadata: Metadata = {
 
 export default function Tarieven() {
   const consumerPricing = [
-    { name: "Computerhulp op afstand", price: "€35", unit: "Eerste 30 min", extra: "Daarna €15 per 15 min", desc: "Snelle remote hulp met lage instapkosten. Transparante per-minuut afrekening." },
+    { name: "Computerhulp op afstand", price: "€35", unit: "Eerste 30 min", extra: "Daarna €15 per 15 min", desc: "Snelle hulp op afstand met lage instapkosten. Transparante per-minuut afrekening." },
     { name: "Computerhulp aan huis", price: "€59", unit: "Eerste 45 min", extra: "Daarna €17,25 per 15 min", desc: "Grondige diagnose en reparatie op jouw locatie in Haaglanden. Geen voorrijkosten." },
     { name: "IT Spoedhulp aan huis", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor acute problemen. Geen afspraak nodig." },
     {
       name: "Directe hulp bij gehackt",
       price: "Vanaf €149",
-      unit: "Remote of op locatie",
+      unit: "Op afstand of op locatie",
       desc: "Gehackt of ransomware? Remote triage binnen 60 min, op locatie herstel binnen 24–48 uur.",
     },
   ];
 
   const businessPricing = [
     { name: "IT-support aan kantoor", price: "€79", unit: "Eerste uur (ex btw)", extra: "Daarna €20 per 15 min", desc: "Professionele IT-ondersteuning op uw kantoor in Haaglanden. Geen voorrijkosten." },
-    { name: "IT-support op afstand", price: "€35", unit: "Eerste 30 min (ex btw)", extra: "Daarna €17,50 per 15 min", desc: "Snelle remote support voor zakelijke systemen. Consistent tarief." },
+    { name: "IT-support op afstand", price: "€35", unit: "Eerste 30 min (ex btw)", extra: "Daarna €17,50 per 15 min", desc: "Snelle hulp op afstand voor zakelijke systemen. Consistent tarief." },
     { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
     {
       name: "Directe hulp bij gehackt (zakelijk)",
