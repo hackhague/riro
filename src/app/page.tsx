@@ -134,7 +134,7 @@ export default function Home() {
       image: `https://www.instantit.nl${heroImage}`,
       logo: "https://www.instantit.nl/android-chrome-512x512.png",
       telephone: "+31702119191",
-      email: "hallo@instantit.nl",
+      email: "info@instantit.nl",
       priceRange: "€€",
       address: {
         "@type": "PostalAddress",
@@ -161,7 +161,7 @@ export default function Home() {
             "https://schema.org/Sunday",
           ],
           opens: "08:00",
-          closes: "21:00",
+          closes: "22:00",
         },
       ],
       sameAs: [
