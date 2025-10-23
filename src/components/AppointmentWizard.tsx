@@ -296,7 +296,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
 
     return { basePrice, surcharges, cyberApkPrice, extras, total };
-  }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
+  }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, booking.addWindowsMacReinstall, booking.addFasterComputerSsd, booking.addAntivirusSetup, priceConfig]);
 
   const handleSubmit = async () => {
     if (!isStep5Valid || !isStep4Valid) return;
