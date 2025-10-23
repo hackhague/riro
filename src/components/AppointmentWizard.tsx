@@ -784,8 +784,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   )}
 
-                  {/* SSD upgrade - alleen voor Hardware */}
-                  {booking.problemCategory === "hardware" && (
+                  {/* SSD upgrade - voor Hardware OF Zakelijk */}
+                  {(booking.problemCategory === "hardware" || booking.serviceType === "business") && (
                     <div className="border rounded-lg p-4">
                       <div className="flex items-start gap-3">
                         <input
