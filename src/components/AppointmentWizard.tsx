@@ -3,13 +3,12 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
-import { format, isWeekend, startOfToday, addDays } from "date-fns";
+import { format, startOfToday, addDays } from "date-fns";
 import "react-day-picker/dist/style.css";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,8 +25,6 @@ const PROBLEM_CATEGORIES = [
   { id: "training", title: "Uitleg & Les", description: "Training, handleiding, leren hoe het werkt" },
   { id: "other", title: "Iets anders", description: "Niet zeker? Bel ons even" },
 ] as const;
-
-const PROBLEM_IDS = new Set(PROBLEM_CATEGORIES.map((category) => category.id));
 
 const SERVICE_TYPES = [
   { id: "consumer", label: "Voor thuis (particulier)" },
@@ -95,7 +92,6 @@ type Booking = {
   postalCode: string;
   city: string;
   message: string;
-  deliveryMethod?: string;
   addCyberApk?: boolean;
   addWindowsMacReinstall?: boolean;
   addFasterComputerSsd?: boolean;
@@ -205,52 +201,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
   const selectedServiceChannel = useMemo(() => SERVICE_CHANNELS.find((c) => c.id === booking.serviceChannel)?.label ?? "", [booking.serviceChannel]);
   const selectedUrgency = useMemo(() => URGENCY_OPTIONS.find((o) => o.id === booking.urgency)?.label ?? "", [booking.urgency]);
-
-  const deliveryOptions = useMemo(() => {
-    const consumerPricing = priceConfig.pricing.consumer;
-    const businessPricing = priceConfig.pricing.business;
-    return {
-      consumer: [
-        {
-          id: consumerPricing.remote.id,
-          label: `${consumerPricing.remote.label} (${consumerPricing.remote.price.display})`,
-          description: consumerPricing.remote.bookingSummary,
-        },
-        {
-          id: consumerPricing.onsite.id,
-          label: `${consumerPricing.onsite.label} (${consumerPricing.onsite.price.display})`,
-          description: consumerPricing.onsite.bookingSummary,
-        },
-        {
-          id: consumerPricing.emergency.id,
-          label: `${consumerPricing.emergency.label} (${consumerPricing.emergency.price.display})`,
-          description: consumerPricing.emergency.bookingSummary,
-        },
-      ],
-      business: [
-        {
-          id: businessPricing.remote.id,
-          label: `${businessPricing.remote.label} (${businessPricing.remote.price.display})`,
-          description: businessPricing.remote.bookingSummary,
-        },
-        {
-          id: businessPricing.onsite.id,
-          label: `${businessPricing.onsite.label} (${businessPricing.onsite.price.display})`,
-          description: businessPricing.onsite.bookingSummary,
-        },
-        {
-          id: businessPricing.emergency.id,
-          label: `${businessPricing.emergency.label} (${businessPricing.emergency.price.display})`,
-          description: businessPricing.emergency.bookingSummary,
-        },
-      ],
-    };
-  }, [priceConfig]);
-
-  const selectedDeliveryMethod = useMemo(() => {
-    const methods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
-    return methods.find((m) => m.id === booking.deliveryMethod)?.label ?? "";
-  }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const pricingSummary = useMemo(() => {
     // For security issues (gehackt) and for zakelijke boekingen, urgency is not required
@@ -507,15 +457,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         city: "",
         message: "",
         addCyberApk: false,
-    addWindowsMacReinstall: false,
-    addFasterComputerSsd: false,
-    addAntivirusSetup: false,
-    agreedToTerms: false,
+        addWindowsMacReinstall: false,
+        addFasterComputerSsd: false,
+        addAntivirusSetup: false,
+        agreedToTerms: false,
       });
-    } catch (error: any) {
+    } catch (error) {
+      const description = error instanceof Error ? error.message : "Probeer het later opnieuw.";
       toast({
         title: "Versturen mislukt",
-        description: error?.message ?? "Probeer het later opnieuw.",
+        description,
         variant: "destructive" as const,
       });
     } finally {
@@ -523,7 +474,6 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     }
   };
 
-  const availableDeliveryMethods = deliveryOptions[booking.serviceType as keyof typeof deliveryOptions] || [];
   const contactInfo = priceConfig.contact;
 
   return (

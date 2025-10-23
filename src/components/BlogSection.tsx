@@ -10,7 +10,6 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 export function BlogSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentPostIndex, setCurrentPostIndex] = useState(0);
   const sections = getRotatingBlogSections() || [];
   const isMobile = useIsMobile();
 

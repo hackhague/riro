@@ -28,7 +28,7 @@ type BreadcrumbTrailProps = {
 function toAbsoluteUrl(href: string, baseUrl: string) {
   try {
     return new URL(href, baseUrl).toString();
-  } catch (error) {
+  } catch {
     return href;
   }
 }

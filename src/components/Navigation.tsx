@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Calendar, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
@@ -20,12 +19,8 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string>("particulier");
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set(["/computerhulp-den-haag"]));
-  const pathname = usePathname();
   const priceConfig = usePrices();
   const { contact } = priceConfig;
-  const whatsappDefaultHref = `${contact.whatsappHref}?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met`;
-
-  const isActive = (path: string) => pathname === path;
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? "" : section);

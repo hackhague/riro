@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Phone, Apple, CheckCircle2, MessageCircle, Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cpu, Battery, Shield } from "lucide-react";
+import { Phone, Apple, MessageCircle, Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cpu, Battery, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
