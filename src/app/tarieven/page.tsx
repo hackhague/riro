@@ -38,7 +38,7 @@ export default function Tarieven() {
     { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
     {
       name: "Directe hulp bij gehackt (zakelijk)",
-      price: "Vanaf €599",
+      price: "Vanaf €399",
       unit: "24/7 beschikbaar",
       extra: "Spoed op locatie of First Response",
       desc: "Spoedhulp bij hacks, forensics en herstelrapportage voor bedrijven.",
