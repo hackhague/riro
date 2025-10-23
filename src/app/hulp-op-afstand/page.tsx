@@ -114,6 +114,36 @@ export default function HulpOpAfstand() {
         </div>
       </section>
 
+      {/* Pricing & Transparency */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Afrekening</h2>
+            <Card className="border-accent/40 mb-8">
+              <CardContent className="p-8">
+                <p className="text-lg font-semibold text-primary mb-4">€35 eerste 30 minuten</p>
+                <p className="text-foreground/80 mb-4">
+                  De eerste 30 minuten helpdesk kost €35. Dit geeft ons tijd voor een grondige diagnose en je probleem op te lossen.
+                </p>
+                <p className="text-lg font-semibold text-primary mb-4 mt-6">Daarna €15 per 15 minuten</p>
+                <p className="text-foreground/80">
+                  Mocht het iets langer duren, rekenen we transparant af per 15-minuten blok. Je ziet altijd vooraf wat het gaat kosten en stemt in voordat we verder gaan.
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="bg-secondary rounded-lg p-6 mb-8">
+              <h3 className="font-heading font-semibold text-xl mb-4">Hoe werkt het stap voor stap?</h3>
+              <ol className="space-y-3 list-decimal list-inside text-foreground/80">
+                <li>Je belt of app't ons - we zijn meestal binnen 10-30 minuten bereikbaar</li>
+                <li>Korte intake: wat is het probleem en hoe snel moet het opgelost zijn?</li>
+                <li>We geven je een inschatting: "Dit gaat waarschijnlijk 30-45 minuten duren"</li>
+                <li>Met jouw toestemming helpen we je via schermdeling (veilig en versleuteld)</li>
+                <li>We leggen uit wat we doen en hoe we het probleem aanpakken</li>
+                <li>Klaar? Korte factuur en klaar!</li>
+              </ol>
+            </div>
+
             <div className="grid md:grid-cols-2 gap-6">
               <Card>
                 <CardContent className="p-6">
