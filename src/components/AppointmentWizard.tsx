@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { format, isWeekend, startOfToday } from "date-fns";
@@ -112,6 +112,23 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const priceConfig = usePrices();
   const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const [loading, setLoading] = useState(false);
+  const wizardRef = useRef<HTMLDivElement | null>(null);
+
+  const goToStep = (n: 0 | 1 | 2 | 3 | 4 | 5) => {
+    setStep(n);
+    // allow DOM to update then scroll into view
+    setTimeout(() => {
+      if (wizardRef.current) {
+        try {
+          wizardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 50);
+  };
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
     serviceType: initialState?.serviceType || "consumer",
@@ -402,7 +419,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const contactInfo = priceConfig.contact;
 
   return (
-    <div className="w-full">
+    <div ref={wizardRef} className="w-full">
       {!compact && (
         <div className="text-center mb-8">
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak</h2>
@@ -514,19 +531,19 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     <button
                       key={category.id}
                       onClick={() => setBooking((b) => ({ ...b, problemCategory: category.id }))}
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                      className={`p-2 rounded-lg border-2 text-left transition-all ${
                         booking.problemCategory === category.id
                           ? "border-primary bg-primary/10"
                           : "border-border hover:border-primary/50"
                       }`}
                     >
-                      <p className="font-semibold text-foreground">{category.title}</p>
-                      <p className="text-sm text-foreground/70 mt-1">{category.description}</p>
+                      <p className="font-semibold text-foreground text-sm">{category.title}</p>
+                      <p className="text-xs text-foreground/70 mt-1">{category.description}</p>
                     </button>
                   ))}
                 </div>
                 <div className="mt-8 flex justify-end">
-                  <Button onClick={() => setStep(1)} disabled={!isStep0Valid}>
+                  <Button onClick={() => goToStep(1)} disabled={!isStep0Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -536,7 +553,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 1 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(0)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Is dit voor thuis of voor uw bedrijf?</h3>
                 </div>
                 {booking.serviceType === "business" && (
@@ -571,10 +588,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(0)}>
+                  <Button variant="outline" onClick={() => goToStep(0)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(2)} disabled={!isStep1Valid}>
+                  <Button onClick={() => goToStep(2)} disabled={!isStep1Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -584,7 +601,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 2 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(1)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Hoe wilt u hulp ontvangen?</h3>
                 </div>
                 {booking.problemCategory === "security" && (
@@ -620,10 +637,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(1)}>
+                  <Button variant="outline" onClick={() => goToStep(1)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(3)} disabled={!isStep2Valid}>
+                  <Button onClick={() => goToStep(3)} disabled={!isStep2Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -634,7 +651,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 3 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(2)} className="px-2">
+                  <Button variant="ghost" onClick={() => goToStep(2)} className="px-2">
                     ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Welke urgentie?</h3>
@@ -667,10 +684,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(2)}>
+                  <Button variant="outline" onClick={() => goToStep(2)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>
+                  <Button onClick={() => goToStep(4)} disabled={!isStep3Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -680,7 +697,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 4 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
+                  <Button variant="ghost" onClick={() => goToStep(3)} className="px-2">
                     ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
@@ -883,10 +900,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </div>
 
                 <div className="flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(3)}>
+                  <Button variant="outline" onClick={() => goToStep(3)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
+                  <Button onClick={() => goToStep(5)} disabled={!isStep4Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -896,7 +913,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 5 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(4)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -1021,7 +1038,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </div>
 
                 <div className="flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(4)}>
+                  <Button variant="outline" onClick={() => goToStep(4)}>
                     Vorige
                   </Button>
                   <div className="flex items-start gap-3 mr-4">
