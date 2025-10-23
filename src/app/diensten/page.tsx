@@ -33,7 +33,7 @@ export default function Diensten() {
       icon: Laptop,
       title: "Computerhulp aan huis & remote",
       description: "Trage laptop? Printer doet raar? Wij lossen het op, thuis of op afstand.",
-      link: "/computerhulp",
+      link: "/computerhulp-aan-huis",
       features: [
         "Snelle diagnose en directe oplossing",
         "Opschonen en sneller maken",
