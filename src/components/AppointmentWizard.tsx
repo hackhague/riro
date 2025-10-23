@@ -163,7 +163,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     booking.phone.trim() !== "" &&
     booking.street.trim() !== "" &&
     booking.postalCode.trim() !== "" &&
-    booking.city.trim() !== "";
+    booking.city.trim() !== "" &&
+    booking.agreedToTerms === true;
 
   const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
