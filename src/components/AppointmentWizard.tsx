@@ -1022,6 +1022,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   <Button variant="outline" onClick={() => setStep(4)}>
                     Vorige
                   </Button>
+                  <div className="flex items-start gap-3 mr-4">
+                    <input
+                      id="agreeTerms"
+                      type="checkbox"
+                      checked={booking.agreedToTerms || false}
+                      onChange={(e) => setBooking((b) => ({ ...b, agreedToTerms: e.target.checked }))}
+                      className="mt-1"
+                    />
+                    <label htmlFor="agreeTerms" className="text-sm mr-2">Ik ga akkoord met de <a href="/algemene-voorwaarden" target="_blank" rel="noopener noreferrer" className="text-primary underline">algemene voorwaarden</a></label>
+                  </div>
                   <Button onClick={handleSubmit} disabled={!isStep5Valid || !isStep4Valid || loading}>
                     {loading ? "Versturen..." : "Afspraak versturen"}
                   </Button>
