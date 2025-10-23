@@ -277,9 +277,25 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       }
     }
 
-    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice;
+    const extras: Array<{ id: string; label: string; amount: number }> = [];
+    // Windows/Mac herinstallatie
+    if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+      extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+    }
+    // SSD upgrade
+    if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+      extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+    }
+    // Antivirus setup
+    if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+      extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+    }
 
-    return { basePrice, surcharges, cyberApkPrice, total };
+    const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+
+    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+    return { basePrice, surcharges, cyberApkPrice, extras, total };
   }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
 
   const handleSubmit = async () => {
