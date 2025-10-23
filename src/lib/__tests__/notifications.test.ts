@@ -30,7 +30,7 @@ describe("buildAdminEmail", () => {
 
     expect(payload.to).toBe("admin@example.com");
     expect(payload.from).toBe("Instant IT <support@instantit.nl>");
-    expect(payload.reply_to).toBe("jane@example.com");
+    expect(payload.replyTo).toBe("jane@example.com");
     expect(payload.subject).toBe("Nieuw contactbericht van Jane <Doe>");
     expect(payload.text).toContain("Supabase record: 42");
     expect(payload.text).toContain("Metadata:\n{");

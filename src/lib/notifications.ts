@@ -149,7 +149,7 @@ export function buildAdminEmail(
     subject,
     text,
     html,
-    reply_to: replyTo,
+    ...(replyTo ? { replyTo } : {}),
   } satisfies ResendEmailOptions;
 }
 

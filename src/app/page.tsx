@@ -67,6 +67,7 @@ export const metadata: Metadata = {
 export default function Home() {
   const { pricing } = SITE_PRICING;
   const consumerPricing = pricing.consumer;
+  const heroImageSrc = heroTechnicianImage.src;
 
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
@@ -130,7 +131,7 @@ export default function Home() {
       "@id": "https://www.instantit.nl/#localbusiness",
       name: "InstantIT - Digitale Eerste Hulp",
       url: "https://www.instantit.nl/",
-      image: `https://www.instantit.nl${heroImage}`,
+      image: `https://www.instantit.nl${heroImageSrc}`,
       logo: "https://www.instantit.nl/android-chrome-512x512.png",
       telephone: "+31702119191",
       email: "info@instantit.nl",
