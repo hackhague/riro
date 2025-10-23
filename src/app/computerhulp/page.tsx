@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   description:
     "Trage computer? Virus? We lossen het snel op – remote of aan huis. Transparante prijzen, geen verrassingen.",
   alternates: {
-    canonical: "https://www.instantit.nl/computerhulp",
+    canonical: "https://www.instantit.nl/computerhulp-aan-huis",
     languages: {
-      "nl-NL": "https://www.instantit.nl/computerhulp",
+      "nl-NL": "https://www.instantit.nl/computerhulp-aan-huis",
     },
   },
 };
