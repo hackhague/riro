@@ -30,6 +30,7 @@ interface ComputerhulpProps {
 }
 
 type CityContent = {
+  marketingName?: string;
   neighborhoods: string[];
   caseStudy: {
     problem: string;
@@ -50,6 +51,7 @@ type CityContent = {
 // City-specific data with neighborhoods, hero copy and case studies
 const cityData: Record<string, CityContent> = {
   "Den Haag": {
+    marketingName: "Den Haag & regio",
     neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
@@ -243,7 +245,7 @@ const cityData: Record<string, CityContent> = {
   },
 };
 
-export default function Computerhulp({ city = "Den Haag & regio" }: ComputerhulpProps) {
+export default function Computerhulp({ city = "Den Haag" }: ComputerhulpProps) {
   const serviceBlocks = [
     { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
     { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
@@ -257,6 +259,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
   const currentCityData = cityData[city] || cityData["Den Haag"];
   const neighborhoods = currentCityData.neighborhoods;
   const hero = currentCityData.hero;
+  const marketingCity = currentCityData.marketingName ?? city;
 
   const problems = [
     "Computer werkt te langzaam of sluit zomaar af",
@@ -287,12 +290,18 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
 
   const faqs = [
     {
-      q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
+      q: "Hoe snel kunnen jullie in " + marketingCity + " helpen?",
+      a:
+        "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " +
+        marketingCity +
+        " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs in " + city + ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
+      a:
+        "Dan komen we langs in " +
+        marketingCity +
+        ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
     },
     {
       q: "Is op afstand hulp veilig?",
