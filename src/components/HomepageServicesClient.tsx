@@ -70,7 +70,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         "Live uitleg met beveiligde verbinding",
       ],
       links: [
-        { label: "Meer info", href: "/hulp-op-afstand", variant: "default" },
+        { label: "Meer info", href: "/computerhulp-op-afstand", variant: "default" },
         {
           label: "Start nu",
           href: `${priceConfig.contact.whatsappHref}?text=Ik%20heb%20nu%20hulp%20op%20afstand%20nodig`,
