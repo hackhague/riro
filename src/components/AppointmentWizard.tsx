@@ -100,6 +100,7 @@ type Booking = {
   addWindowsMacReinstall?: boolean;
   addFasterComputerSsd?: boolean;
   addAntivirusSetup?: boolean;
+  agreedToTerms?: boolean;
 };
 
 const currency = new Intl.NumberFormat("nl-NL", {
@@ -746,7 +747,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                               <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
                             )}
                             {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
-                              <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
+                              <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">��149,50</span> bij meeboeken (ex btw)</>
                             )}
                             {booking.serviceType === "business" && booking.serviceChannel === "onsite" && (
                               <>Normaal <span className="line-through">€449</span>, nu <span className="font-bold">€224,50</span> bij meeboeken (ex btw)</>
