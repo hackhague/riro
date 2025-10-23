@@ -5,7 +5,6 @@ type CloudflareContext = {
 
 const redirects = new Map<string, string>([
   ["/computerhulp-denhaag", "/computerhulp-den-haag"],
-  ["/computerhulp-op-afstand", "/hulp-op-afstand"],
 ]);
 
 const normalizePath = (path: string) => {
