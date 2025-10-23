@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
+import { stripHeaderBreaks } from "@/lib/notifications";
 import { sendAppointmentNotifications } from "@/server/notifications";
 import type { AppointmentNotificationPayload } from "@/server/notifications";
 
@@ -65,9 +66,18 @@ const bookingSchema = z.object({
   source: z.string().optional(),
 });
 
-function sanitizeString(value: string | null | undefined) {
+function sanitizeString(
+  value: string | null | undefined,
+  options: { stripBreaks?: boolean } = {}
+) {
   if (typeof value !== "string") return "";
-  return value.trim();
+  const trimmed = value.trim();
+
+  if (options.stripBreaks) {
+    return stripHeaderBreaks(trimmed);
+  }
+
+  return trimmed;
 }
 
 export async function POST(request: Request) {
@@ -138,20 +148,22 @@ export async function POST(request: Request) {
   const approvalToken = crypto.randomUUID();
 
   const sanitized = {
-    service: sanitizeString(body.service),
-    serviceLabel: sanitizeString(body.serviceLabel),
-    dateISO: body.dateISO ?? null,
-    dateDisplay: body.dateDisplay ?? null,
-    timeSlot: sanitizeString(body.timeSlot),
-    firstName: sanitizeString(body.firstName),
-    lastName: sanitizeString(body.lastName),
-    email: sanitizeString(body.email ?? "") || null,
-    phone: sanitizeString(body.phone),
-    street: sanitizeString(body.street),
-    postalCode: sanitizeString(body.postalCode),
-    city: sanitizeString(body.city),
+    service: sanitizeString(body.service, { stripBreaks: true }),
+    serviceLabel: sanitizeString(body.serviceLabel, { stripBreaks: true }),
+    dateISO: body.dateISO ? sanitizeString(body.dateISO, { stripBreaks: true }) : null,
+    dateDisplay: body.dateDisplay
+      ? sanitizeString(body.dateDisplay, { stripBreaks: true })
+      : null,
+    timeSlot: sanitizeString(body.timeSlot, { stripBreaks: true }),
+    firstName: sanitizeString(body.firstName, { stripBreaks: true }),
+    lastName: sanitizeString(body.lastName, { stripBreaks: true }),
+    email: sanitizeString(body.email ?? "", { stripBreaks: true }) || null,
+    phone: sanitizeString(body.phone, { stripBreaks: true }),
+    street: sanitizeString(body.street, { stripBreaks: true }),
+    postalCode: sanitizeString(body.postalCode, { stripBreaks: true }),
+    city: sanitizeString(body.city, { stripBreaks: true }),
     message: sanitizeString(body.message ?? ""),
-    source: sanitizeString(body.source ?? "") || "website",
+    source: sanitizeString(body.source ?? "", { stripBreaks: true }) || "website",
   };
 
   const insertPayload = {

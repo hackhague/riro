@@ -38,6 +38,19 @@ describe("buildAdminEmail", () => {
     expect(payload.html).toContain("Hallo daar!<br />Tot snel.");
     expect(payload.html).toContain("&lt;Edge&gt;");
   });
+
+  it("strips header breaks from subject and reply_to", () => {
+    const payload = buildAdminEmail({
+      name: "Bob\r\nSmith",
+      contact: "bob@example.com",
+      message: "Test",
+      customerEmail: "bob\n@example.com",
+    });
+
+    expect(payload.subject).toBe("Nieuw contactbericht van Bob Smith");
+    expect(payload.subject).not.toMatch(/[\r\n]/);
+    expect(payload.reply_to).toBe("bob@example.com");
+  });
 });
 
 describe("buildCustomerEmail", () => {
