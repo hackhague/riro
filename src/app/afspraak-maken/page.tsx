@@ -4,14 +4,19 @@
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import AppointmentWizard from "@/components/AppointmentWizard";
-
-const heroImage = "/images/hero-technician.jpg";
+import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 
 export default function Afspraak() {
   const searchParams = useSearchParams();
 
   const normalize = (value: string | null) => {
     return value || undefined;
+  };
+
+  const normalizeDate = (value: string | null) => {
+    if (!value) return undefined;
+    const parsed = new Date(value);
+    return Number.isNaN(parsed.getTime()) ? undefined : parsed;
   };
 
   const normalizeServiceType = (value: string | null): "consumer" | "business" | undefined => {
@@ -26,7 +31,7 @@ export default function Afspraak() {
     serviceType: normalizeServiceType(searchParams.get("type")),
     serviceChannel: normalize(searchParams.get("channel")) as "remote" | "onsite" | "" | undefined,
     urgency: normalize(searchParams.get("speed")) as "standaard" | "spoed" | "" | undefined,
-    date: normalize(searchParams.get("date")),
+    date: normalizeDate(searchParams.get("date")),
     timeSlot: normalize(searchParams.get("slot")),
   };
 
@@ -35,11 +40,12 @@ export default function Afspraak() {
       <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src={heroImage}
+            src={heroTechnicianImage}
             alt="InstantIT plan een afspraak"
             fill
             priority
-            sizes="100vw"
+            placeholder="blur"
+            sizes={HERO_IMAGE_SIZES}
             className="object-cover object-right"
           />
           <div

@@ -85,7 +85,7 @@ type Booking = {
   serviceType: ServiceType;
   serviceChannel: ServiceChannel | "";
   urgency: Urgency | "";
-  date: Date | string | undefined;
+  date: Date | undefined;
   timeSlot: string;
   firstName: string;
   lastName: string;
@@ -441,11 +441,13 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         ? `${booking.message || ""}\n\n---\nPrijsindicatie\n${summaryLines.join("\n")}`.trim()
         : booking.message;
 
+      const appointmentDate = booking.date instanceof Date ? booking.date : null;
+
       const payload = {
         service: `${booking.serviceType}:${booking.serviceChannel}:${booking.urgency}`,
         serviceLabel: `${selectedProblem} · ${serviceLabelParts.join(" · ")}`.trim(),
-        dateISO: booking.date ? booking.date.toISOString() : null,
-        dateDisplay: booking.date ? format(booking.date, "PPP") : null,
+        dateISO: appointmentDate ? appointmentDate.toISOString() : null,
+        dateDisplay: appointmentDate ? format(appointmentDate, "PPP") : null,
         timeSlot: booking.timeSlot || (booking.urgency === "spoed" ? SPOED_SLOT_LABEL : ""),
         firstName: booking.firstName,
         lastName: booking.lastName,
@@ -806,7 +808,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         mode="single"
                         selected={booking.date}
                         onSelect={(date) => setBooking((b) => ({ ...b, date, timeSlot: "" }))}
-                        disabled={(date) => date < minSelectableDate || (maxSelectableDate && date > maxSelectableDate)}
+                        disabled={(date) =>
+                          date < minSelectableDate ||
+                          (maxSelectableDate !== undefined && date > maxSelectableDate)
+                        }
                         className="flex justify-center"
                       />
                     </div>
