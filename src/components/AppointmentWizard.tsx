@@ -743,11 +743,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         </p>
                         <div className="text-sm mt-2 space-y-1">
                           <p className="font-semibold text-accent">
-                            {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
+                            {booking.serviceType === "consumer" && (booking.serviceChannel === "remote" || booking.serviceChannel === "onsite") && (
                               <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
-                            )}
-                            {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
-                              <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
                             )}
                             {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
                               <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
