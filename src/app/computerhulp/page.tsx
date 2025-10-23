@@ -13,6 +13,7 @@ import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
+const SERVICE_CANONICAL_URL = "https://www.instantit.nl/computerhulp-aan-huis";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag & Regio | Snel & Betrouwbaar",
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
 
 interface ComputerhulpProps {
   city?: string;
+  canonicalUrl?: string;
 }
 
 type CityContent = {

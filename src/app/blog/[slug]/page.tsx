@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPostBySlug, getAllBlogPostSlugs, getAllBlogPosts } from "@/data/blog";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Phone, ArrowLeft } from "lucide-react";
@@ -45,6 +46,11 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
   const allPosts = getAllBlogPosts();
   const currentIndex = allPosts.findIndex((p) => p.slug === post.slug);
   const relatedPosts = allPosts.filter((_, index) => index !== currentIndex).slice(0, 3);
+  const breadcrumbItems = [
+    { label: "Home", href: "https://www.instantit.nl/" },
+    { label: "Blog", href: "https://www.instantit.nl/blog" },
+    { label: post.title, href: `https://www.instantit.nl/blog/${post.slug}` },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -93,6 +99,12 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
           </div>
         </div>
       </section>
+
+      <div className="bg-muted/40 border-b border-border/60">
+        <div className="container mx-auto px-4">
+          <BreadcrumbTrail items={breadcrumbItems} />
+        </div>
+      </div>
 
       {/* Article Content */}
       <section className="container mx-auto px-4 mb-16">
