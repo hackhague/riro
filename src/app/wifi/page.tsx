@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-wifi.jpg";
 
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function WiFiPage() {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.svg" },
   ];
 
   const services = [
@@ -82,36 +82,33 @@ export default function WiFiPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Internet & WiFi verbeteren
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Een goede internetverbinding is belangrijk. Van router installatie tot netwerk optimalisatie – je internet gaat werken zoals het hoort.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a href="/afspraak">Afspraak maken</a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel nu
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="WiFi optimalisatie in Den Haag" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Internet & WiFi verbeteren
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Een goede internetverbinding is belangrijk. Van router installatie tot netwerk optimalisatie – je internet gaat werken zoals het hoort.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a href="/afspraak">Afspraak maken</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel nu
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Services */}
       <section className="py-12 md:py-16">
@@ -231,6 +228,8 @@ export default function WiFiPage() {
       </section>
 
       <PartnersSection />
+
+      <ReviewSection servicePath="/wifi" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-mobile.jpg";
 
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function MobileTabletPage() {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Computerlessen", href: "/uitleg-les", image: "/images/services/uitleg-les.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Computerlessen", href: "/uitleg-les", image: "/images/services/uitleg-les.svg" },
   ];
 
   const problems = [
@@ -84,43 +84,40 @@ export default function MobileTabletPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Smartphone & Tablet hulp
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Apps installeren, WhatsApp, foto's, e-mail – we helpen je je telefoon of tablet beter te benutten. Stap voor stap.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Hulp%20met%20smartphone%20of%20tablet"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Smartphone en Tablet hulp" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Smartphone & Tablet hulp
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Apps installeren, WhatsApp, foto's, e-mail – we helpen je je telefoon of tablet beter te benutten. Stap voor stap.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Hulp%20met%20smartphone%20of%20tablet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Solve */}
       <section className="py-12 md:py-16">
@@ -253,6 +250,8 @@ export default function MobileTabletPage() {
           <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
+
+      <ReviewSection servicePath="/mobiel-tablet" title="Wat klanten zeggen" showLink={false} />
 
       {/* FAQ */}
       <section className="py-12 md:py-16 bg-secondary">

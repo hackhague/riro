@@ -15,16 +15,17 @@ interface ServiceBlock {
 interface OtherServicesGridProps {
   serviceBlocks: ServiceBlock[];
   showCTA?: boolean;
+  title?: string;
 }
 
-export function OtherServicesGrid({ serviceBlocks, showCTA = true }: OtherServicesGridProps) {
+export function OtherServicesGrid({ serviceBlocks, showCTA = true, title = "Andere diensten" }: OtherServicesGridProps) {
   const priceConfig = usePrices();
   const { ctas, contact } = priceConfig;
   return (
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">
-          Andere diensten
+          {title}
         </h2>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">

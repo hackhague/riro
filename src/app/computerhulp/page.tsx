@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, Phone, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/PriceBox";
-import { PRICE_TIERS } from "@/data/pricing";
+import { ReviewSection } from "@/components/ReviewSection";
 import { faqPageJsonLd, localBusinessJsonLd, serviceOfferJsonLd } from "@/lib/seo";
 
 const serviceImage = "/images/service-computer.jpg";
@@ -44,7 +43,6 @@ type CityContent = {
     intro: string;
     highlights: string[];
     links: { label: string; href: string }[];
-    priceTierIds: (keyof typeof PRICE_TIERS)[];
     imageAlt: string;
   };
 };
@@ -55,7 +53,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Scheveningen", "Zeeheldenkwartier", "Statenkwartier", "Archipelbuurt", "Duinoord"],
     caseStudy: {
       problem: "Kantoorlaptop crasht na Windows update in Centrum",
-      solution: "Remote diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
+      solution: "Op afstand diagnose, driver conflict gevonden en opgelost, systeem gestabiliseerd",
       result: "Werkdag voortgezet, alle data veilig, heldere tarieven",
       location: "Den Haag Centrum",
     },
@@ -79,7 +77,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Directe hulp bij gehackt", href: "/ik-ben-gehackt" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT computerhulp aan huis in Den Haag",
     },
   },
@@ -102,7 +100,7 @@ const cityData: Record<string, CityContent> = {
       intro:
         "Snel hulp bij vastlopers, netwerkproblemen of cyberincidenten in alle Delftse wijken. Ideaal voor TU Delft-studenten, scale-ups en bewoners.",
       highlights: [
-        "Remote fix meestal binnen 30 minuten",
+        "Op afstand fix meestal binnen 30 minuten",
         "Aan huis in Delft en omliggende dorpen",
         "Ervaring met campusnetwerken en startup-omgevingen",
       ],
@@ -111,7 +109,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Mac & Windows support", href: "/diensten" },
         { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT ondersteunt een ondernemer in Delft",
     },
   },
@@ -119,7 +117,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Bos- en Gasthuisdistrict", "Morsdistrict", "Boerhaavedistrict", "Merenwijk", "Stevenshofdistrict"],
     caseStudy: {
       problem: "Huisarts aan Prins Clausplein: e-mailserver down",
-      solution: "Remote stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
+      solution: "Op afstand stabilisatie, backup recovery, beveiligingsupdate, nazorg 2 weken",
       result: "Alle patiëntgegevens veilig, praktijk online in 2 uur",
       location: "Leiden Merenwijk",
     },
@@ -135,7 +133,7 @@ const cityData: Record<string, CityContent> = {
         "Van Merenwijk tot binnenstad: wij stabiliseren pc's, zorgen voor veilige backups en lossen e-mailstoringen direct op.",
       highlights: [
         "GDPR-proof ondersteuning voor praktijken & kantoren",
-        "Remote triage binnen 30 minuten, aan huis dezelfde dag",
+        "Op afstand triage binnen 30 minuten, aan huis dezelfde dag",
         "Ook beschikbaar voor Cyber-APK en directe hulp bij gehackt",
       ],
       links: [
@@ -143,7 +141,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Cyber-APK", href: "/cyber-apk" },
         { label: "Bekijk alle prijzen", href: "/tarieven" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT helpt een huisartsenpraktijk in Leiden",
     },
   },
@@ -151,7 +149,7 @@ const cityData: Record<string, CityContent> = {
     neighborhoods: ["Oud-Rijswijk", "Leeuwendaal", "Te Werve", "Rembrandtkwartier", "Ministerbuurt"],
     caseStudy: {
       problem: "Winkel in Oud-Rijswijk: PIN niet werkend op vrijdag",
-      solution: "On-site diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
+      solution: "Op locatie diagnose, ethernet vervangen, netwerk opnieuw geconfigureerd, backup backup gemaakt",
       result: "PIN werkend in 1 uur, geen omzet verliest",
       location: "Rijswijk Oud-Rijswijk",
     },
@@ -168,14 +166,14 @@ const cityData: Record<string, CityContent> = {
       highlights: [
         "Snelle hulp voor retail en horeca",
         "Geen voorrijkosten binnen Rijswijk en Haaglanden",
-        "Remote diagnose beschikbaar buiten openingstijden",
+        "Op afstand diagnose beschikbaar buiten openingstijden",
       ],
       links: [
         { label: "Plan directe hulp", href: "/afspraak" },
         { label: "Bekijk zakelijke diensten", href: "/zakelijk" },
         { label: "Cyber-APK", href: "/cyber-apk" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT monteurs herstellen kassasysteem in Rijswijk",
     },
   },
@@ -207,7 +205,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Bekijk tarieven", href: "/tarieven" },
         { label: "Hulp bij hacks", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT geeft computerles in Voorburg",
     },
   },
@@ -231,7 +229,7 @@ const cityData: Record<string, CityContent> = {
         "Voor scale-ups, winkels en huishoudens: wij optimaliseren netwerk, lossen storingen op en bieden directe hulp bij gehackt.",
       highlights: [
         "Mesh- en glasvezelnetwerken zonder downtime",
-        "Remote diagnose en monitoring mogelijk",
+        "Op afstand diagnose en monitoring mogelijk",
         "Aan huis of kantoor binnen Haaglanden zonder voorrijkosten",
       ],
       links: [
@@ -239,7 +237,7 @@ const cityData: Record<string, CityContent> = {
         { label: "Zakelijke pakketten", href: "/zakelijk" },
         { label: "Direct gehackt-hulp", href: "/ik-ben-gehackt" },
       ],
-      priceTierIds: ["remoteQuickFix", "homeVisit", "emergencyHacked"],
+
       imageAlt: "InstantIT optimaliseert netwerk bij bedrijf in Zoetermeer",
     },
   },
@@ -247,12 +245,12 @@ const cityData: Record<string, CityContent> = {
 
 export default function Computerhulp({ city = "Den Haag & regio" }: ComputerhulpProps) {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
   ];
 
   // Get city-specific data
@@ -290,14 +288,14 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
   const faqs = [
     {
       q: "Hoe snel kunnen jullie in " + city + " helpen?",
-      a: "Remote meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
+      a: "Op afstand meestal binnen 10-30 min reactie. Op locatie in en rond " + city + " meestal binnen 24-48 uur.",
     },
     {
       q: "Wat als het niet lukt op afstand?",
-      a: "Dan komen we langs in " + city + ". Remote tijd rekenen we af tegen on-site als we toch komen.",
+      a: "Dan komen we langs in " + city + ". Op afstand tijd rekenen we af tegen op locatie als we toch komen.",
     },
     {
-      q: "Is remote veilig?",
+      q: "Is op afstand hulp veilig?",
       a: "Ja! We gebruiken versleutelde tools en vragen altijd toestemming voordat we iets doen.",
     },
     ...(currentCityData.faqExtra || []),
@@ -330,16 +328,7 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
     description: hero.intro,
     serviceType: "Computerhulp",
     areaServed: city,
-    offers: hero.priceTierIds.map((tierId) => {
-      const tier = PRICE_TIERS[tierId];
-      return {
-        name: tier.label,
-        price: tier.price,
-        priceCurrency: "EUR",
-        url: `https://www.instantit.nl${tier.href}`,
-        description: tier.subline,
-      };
-    }),
+    offers: [],
   });
 
   const faqSchema = faqPageJsonLd(
@@ -359,71 +348,58 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
         }}
       />
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                {hero.headline}
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-6">{hero.intro}</p>
-              <ul className="space-y-2 mb-8">
-                {hero.highlights.map((highlight) => (
-                  <li key={highlight} className="flex items-start gap-2 text-foreground/80">
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-              <div className="mt-6">
-                <PriceBox tierIds={hero.priceTierIds} />
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {hero.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                ))}
-              </div>
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              {hero.headline}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-6">{hero.intro}</p>
+            <ul className="space-y-2 mb-8">
+              {hero.highlights.map((highlight) => (
+                <li key={highlight} className="flex items-start gap-2 text-white/90">
+                  <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20computer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src={serviceImage}
-                alt={hero.imageAlt}
-                className="w-full h-auto"
-                width={800}
-                height={600}
-                priority={false}
-              />
+            <div className="mt-8 flex flex-wrap gap-3">
+              {hero.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-white hover:text-white/80"
+                >
+                  {link.label}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
@@ -475,7 +451,9 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
 
       <HomepageServicesClient />
 
-      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} />
+      <ReviewSection servicePath="/computerhulp" title="Wat klanten zeggen" showLink={false} />
+
+      <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={true} title="Wij kunnen helpen met" />
 
       {/* Neighborhoods */}
       <section className="py-12 md:py-16">
@@ -533,14 +511,18 @@ export default function Computerhulp({ city = "Den Haag & regio" }: Computerhulp
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
             {serviceAreas.map((area, index) => (
-              <Link
-                key={index}
-                href={area.link}
-                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
-              >
-                {area.name}
+              <Link key={index} href={area.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-1">{area.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>

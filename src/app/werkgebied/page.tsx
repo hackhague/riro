@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+const heroImage = "/images/hero-technician.jpg";
 
 export const metadata: Metadata = {
   title: "Werkgebied Zuid-Holland",
@@ -50,16 +53,35 @@ export default function Werkgebied() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImage}
+            alt="InstantIT werkgebied"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(2,6,23,0.88) 0%, rgba(2,6,23,0.72) 35%, rgba(2,6,23,0.4) 70%, rgba(2,6,23,0.12) 100%)"
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 py-16 md:py-20">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <MapPin className="h-10 w-10 text-primary" />
+            <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <MapPin className="h-10 w-10 text-white" />
             </div>
-            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
               Ons Werkgebied
             </h1>
-            <p className="text-lg md:text-xl text-foreground/80">
+            <p className="text-lg md:text-xl text-white/90">
               InstantIT helpt particulieren en bedrijven in heel Zuid-Holland. Remote zijn we overal beschikbaar –
               op locatie binnen 24-48 uur in Haaglanden.
             </p>
@@ -73,21 +95,17 @@ export default function Werkgebied() {
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Belangrijkste steden</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {locations.map((location, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all border-2 hover:border-primary">
-                <CardContent className="p-6">
-                  <h3 className="font-heading font-bold text-2xl mb-2 flex items-center gap-2">
-                    <MapPin className="h-6 w-6 text-primary" />
-                    {location.name}
-                  </h3>
-                  <p className="text-foreground/70 text-sm mb-4">{location.desc}</p>
-                  <Button variant="ghost" asChild className="group/btn p-0">
-                    <Link href={location.link} className="flex items-center gap-2">
-                      Computerhulp in {location.name}
-                      <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+              <Link key={index} href={location.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-1">{location.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
@@ -128,7 +146,7 @@ export default function Werkgebied() {
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">Remote</h3>
+                <h3 className="font-heading font-semibold text-xl mb-3">Op afstand</h3>
                 <p className="text-3xl font-bold text-primary mb-2">10–30 min</p>
                 <p className="text-foreground/70">
                   Meestal binnen een half uur aan de slag – ongeacht waar je bent in Nederland.
@@ -137,7 +155,7 @@ export default function Werkgebied() {
             </Card>
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold text-xl mb-3">On-site (Haaglanden)</h3>
+                <h3 className="font-heading font-semibold text-xl mb-3">Op locatie (Haaglanden)</h3>
                 <p className="text-3xl font-bold text-primary mb-2">Op locatie binnen 24-48 uur</p>
                 <p className="text-foreground/70">
                   In Haaglanden (Den Haag, Delft, Rijswijk, Voorburg, etc.) op locatie binnen 24-48 uur.

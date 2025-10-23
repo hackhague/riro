@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle } from "lucide-react";
+import { Phone, Shield, CheckCircle2, AlertTriangle, Lock, MessageCircle, Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap, Barcode, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
-const serviceImage = "/images/service-antivirus.jpg";
+const serviceImage = "/images/service-antivirus.svg";
 
 export const metadata: Metadata = {
   title: "Antivirus & Beveiliging Installatie | ESET & meer",
@@ -23,12 +23,10 @@ export default function AntivirusSetupPage() {
   const protection_elements = [
     "Real-time virusscanning",
     "Malware en ransomware bescherming",
-    "Phishing filtration",
-    "Firewall",
-    "Quarantine & removal",
+    "Phishing bescherming",
+    "Netwerk bescherming",
+    "Bankieren bescherming",
     "Automatische updates",
-    "VPN optioneel",
-    "Minimal CPU impact",
   ];
 
   const antivirus_options = [
@@ -80,7 +78,7 @@ export default function AntivirusSetupPage() {
   const faqs = [
     {
       q: "Welke antivirus moet ik hebben?",
-      a: "Dat hangt af van je gebruik. We adviseren ESET (partnership), maar ook gratis opties als Windows Defender kunnen volstaan.",
+      a: "Dat hangt af van je gebruik. We adviseren ESET voor betere virusbescherming, maar ook gratis opties als Windows Defender kunnen volstaan.",
     },
     {
       q: "Is ESET beter dan Windows Defender?",
@@ -103,43 +101,40 @@ export default function AntivirusSetupPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Antivirus & Beveiliging
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Bescherm je computer tegen virussen, malware en hackers. We helpen je de juiste antivirus te kiezen en professioneel in te stellen.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Antivirus%20installatie%20nodig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Antivirus installatie" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Antivirus & Beveiliging
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Bescherm je computer tegen virussen, malware en hackers. We helpen je de juiste antivirus te kiezen en professioneel in te stellen.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Antivirus%20installatie%20nodig"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Security Warning */}
       <section className="py-12 md:py-16 bg-destructive/10 border-l-4 border-destructive">
@@ -181,14 +176,18 @@ export default function AntivirusSetupPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat je nodig hebt</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {protection_elements.map((element, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{element}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {protection_elements.map((element, index) => {
+              const icons = [Eye, Bug, Flame, RotateCcw, Filter, RefreshCw, Network, Zap];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{element}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -239,25 +238,29 @@ export default function AntivirusSetupPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Keuze aan beveiligingsoplossingen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {antivirus_options.map((option, index) => (
-              <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>
-                <CardContent className="p-6">
-                  {option.badge && (
-                    <div className={`text-xs font-semibold px-2 py-1 rounded-full w-fit mb-3 ${
-                      option.badge === "Partnership" 
-                        ? "bg-primary text-primary-foreground" 
-                        : "bg-secondary text-foreground"
-                    }`}>
-                      {option.badge}
-                    </div>
-                  )}
-                  <Lock className="h-6 w-6 text-primary mb-3" />
-                  <h3 className="font-heading font-semibold text-lg mb-2">{option.name}</h3>
-                  <p className="text-foreground/70 text-sm mb-4">{option.desc}</p>
-                  <p className="text-2xl font-bold text-primary">{option.price}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {antivirus_options.map((option, index) => {
+              const icons = [Lock, Shield, Bug, Flame, Eye, Filter];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index} className={option.badge === "Partnership" ? "border-2 border-primary" : "border-2"}>
+                  <CardContent className="p-6">
+                    {option.badge && (
+                      <div className={`text-xs font-semibold px-2 py-1 rounded-full w-fit mb-3 ${
+                        option.badge === "Partnership"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-foreground"
+                      }`}>
+                        {option.badge}
+                      </div>
+                    )}
+                    <IconComponent className="h-6 w-6 text-primary mb-3" />
+                    <h3 className="font-heading font-semibold text-lg mb-2">{option.name}</h3>
+                    <p className="text-foreground/70 text-sm mb-4">{option.desc}</p>
+                    <p className="text-2xl font-bold text-primary">{option.price}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -292,6 +295,8 @@ export default function AntivirusSetupPage() {
       </section>
 
       <HomepageServicesClient />
+
+      <ReviewSection servicePath="/antivirus-setup" title="Wat klanten zeggen" showLink={false} />
 
       {/* Safety Tips */}
       <section className="py-12 md:py-16 bg-secondary">

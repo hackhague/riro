@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Apple, CheckCircle2, MessageCircle } from "lucide-react";
+import { Phone, Apple, CheckCircle2, MessageCircle, Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cpu, Battery, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-mac.jpg";
 
@@ -28,7 +28,7 @@ export default function MacSupportPage() {
     "AppleCare+ of warranty vragen",
     "Software incompatibiliteit",
     "Mail of iCloud synchronisatie",
-    "Batterijeduur verkort",
+    "Batterijduur verkort",
   ];
 
   const steps = [
@@ -64,57 +64,58 @@ export default function MacSupportPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Mac Support & Onderhoud
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                MacBook traag? Storage vol? iCloud sync problemen? We helpen je Mac weer top-prestatie te laten leveren – snel en betrouwbaar.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Mac%20ondersteuning%20nodig"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Mac ondersteuning" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Mac Support & Onderhoud
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              MacBook traag? Storage vol? iCloud sync problemen? We helpen je Mac weer top-prestatie te laten leveren – snel en betrouwbaar.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Mac%20ondersteuning%20nodig"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat we voor je doen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {mac_problems.map((problem, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Apple className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{problem}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {mac_problems.map((problem, index) => {
+              const icons = [Zap, HardDrive, RefreshCw, Wifi, Cloud, Activity, Cloud, Battery];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{problem}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -153,14 +154,18 @@ export default function MacSupportPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We werken met alle Mac modellen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {["MacBook Air", "MacBook Pro", "iMac", "Mac Mini", "Mac Studio", "Mac Pro", "M1/M2/M3/Intel", "Alle generaties"].map((model) => (
-              <Card key={model} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <Apple className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{model}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {["MacBook Air", "MacBook Pro", "iMac", "Mac Mini", "Mac Studio", "Mac Pro", "M1/M2/M3/Intel", "Alle generaties"].map((model, index) => {
+              const icons = [Cpu, Zap, Activity, HardDrive, Shield, Wifi, Battery, Apple];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={model} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{model}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -215,6 +220,8 @@ export default function MacSupportPage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/mac-support" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

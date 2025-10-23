@@ -6,7 +6,7 @@ import PartnersSection from "@/components/PartnersSection";
 import { Phone, Shield, Clock, MonitorSmartphone, MousePointerClick, MessageCircle } from "lucide-react";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-computer.jpg";
 
@@ -39,43 +39,40 @@ export default function HulpOpAfstand() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Computerhulp op afstand
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                We helpen je via je scherm. Snel, veilig en zonder dat iemand langs hoeft te komen.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20op%20afstand"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    Start nu via WhatsApp
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Computerhulp op afstand via schermdeling" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Computerhulp op afstand
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              We helpen je via je scherm. Snel, veilig en zonder dat iemand langs hoeft te komen.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20op%20afstand"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  Start nu via WhatsApp
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Benefits */}
       <section className="py-12 md:py-16">
@@ -117,9 +114,94 @@ export default function HulpOpAfstand() {
         </div>
       </section>
 
+      {/* Pricing & Transparency */}
+      <section className="py-12 md:py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Transparante Afrekening</h2>
+            <Card className="border-accent/40 mb-8">
+              <CardContent className="p-8">
+                <p className="text-lg font-semibold text-primary mb-4">€35 eerste 30 minuten</p>
+                <p className="text-foreground/80 mb-4">
+                  De eerste 30 minuten helpdesk kost €35. Dit geeft ons tijd voor een grondige diagnose en je probleem op te lossen.
+                </p>
+                <p className="text-lg font-semibold text-primary mb-4 mt-6">Daarna €15 per 15 minuten</p>
+                <p className="text-foreground/80">
+                  Mocht het iets langer duren, rekenen we transparant af per 15-minuten blok. Je ziet altijd vooraf wat het gaat kosten en stemt in voordat we verder gaan.
+                </p>
+              </CardContent>
+            </Card>
+
+            <div className="bg-secondary rounded-lg p-6 mb-8">
+              <h3 className="font-heading font-semibold text-xl mb-4">Hoe werkt het stap voor stap?</h3>
+              <ol className="space-y-3 list-decimal list-inside text-foreground/80">
+                <li>Je belt of app't ons - we zijn meestal binnen 10-30 minuten bereikbaar</li>
+                <li>Korte intake: wat is het probleem en hoe snel moet het opgelost zijn?</li>
+                <li>We geven je een inschatting: "Dit gaat waarschijnlijk 30-45 minuten duren"</li>
+                <li>Met jouw toestemming helpen we je via schermdeling (veilig en versleuteld)</li>
+                <li>We leggen uit wat we doen en hoe we het probleem aanpakken</li>
+                <li>Klaar? Korte factuur en klaar!</li>
+              </ol>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-heading font-semibold text-lg mb-3">Voordelen</h3>
+                  <ul className="space-y-2 text-sm text-foreground/80">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Geen lange wachtlijsten</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Je betaalt alleen voor wat je gebruikt</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Voor eenvoudige problemen vaak al in 30 min klaar</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Geen verrassingen - je weet vooraf wat het kost</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="font-heading font-semibold text-lg mb-3">Wat gebeurt er na afloop?</h3>
+                  <ul className="space-y-2 text-sm text-foreground/80">
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Je krijgt een korte samenvatting via e-mail</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>7 dagen gratis nazorg (max 30 min op afstand)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Vragen over wat we deden? We helpen je graag</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-accent font-bold">✓</span>
+                      <span>Hetzelfde probleem weer? Gratis herbeoordeling</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <PartnersSection />
 
       <HomepageServicesClient />
+
+      <ReviewSection servicePath="/hulp-op-afstand" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

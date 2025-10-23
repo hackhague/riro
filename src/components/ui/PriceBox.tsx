@@ -20,7 +20,7 @@ export function PriceBox() {
     },
     {
       title: "Geen voorrijkosten in Haaglanden",
-      description: "Voor remote en afspraken aan huis betaal je alleen voor de werktijd.",
+      description: "Voor op afstand en afspraken aan huis betaal je alleen voor de werktijd.",
     },
     {
       title: `Niet opgelost? Alleen ${consumer.diagnosis.price.display}`,
@@ -38,7 +38,7 @@ export function PriceBox() {
                 Onze vaste tarieven
               </h2>
               <p className="text-sm md:text-base text-foreground/70 max-w-2xl">
-                Transparant en inclusief: remote ondersteuning, hulp aan huis en spoedservice. Kies wat bij jouw situatie past
+                Transparant en inclusief: op afstand ondersteuning, hulp aan huis en spoedservice. Kies wat bij jouw situatie past
                 en plan direct je afspraak.
               </p>
             </div>

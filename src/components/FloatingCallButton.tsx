@@ -35,7 +35,7 @@ export function FloatingCallButton() {
         <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
           <Phone className="mr-2" />
           <span className="inline md:hidden">{contact.shortCallLabel}</span>
-          <span className="hidden md:inline">Direct hulp? {contact.phoneLabel}</span>
+          <span className="hidden md:inline">Computerstoring? {contact.phoneLabel}</span>
         </a>
       </Button>
     </div>,

@@ -15,12 +15,14 @@ import {
   ZapOff,
   Home as HomeIcon,
   Laptop,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
+import { BlogSection } from "@/components/BlogSection";
 import { SITE_PRICING } from "@/config/site-pricing";
 
 const heroImage = "/images/hero-technician.jpg";
@@ -68,12 +70,12 @@ export default function Home() {
 
   // ---------- SERVICE TEGELS (nieuwe blokken) ----------
   const serviceBlocks = [
-    { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.jpg" },
-    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
-    { title: "Tablet & Smartphone", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
-    { title: "Uitleg & Les", href: "/uitleg-les", image: "/images/services/uitleg-les.jpg" },
+    { title: "Computerhulp", href: "/computerhulp", image: "/images/services/computerhulp.svg" },
+    { title: "Printerhulp", href: "/printer", image: "/images/services/printerhulp.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
+    { title: "Tablet & Smartphone", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.svg" },
+    { title: "Uitleg & Les", href: "/uitleg-les", image: "/images/services/uitleg-les.svg" },
   ];
 
   const usps = [
@@ -111,26 +113,6 @@ export default function Home() {
     { number: "4", text: "Nazorg - 7 dagen gratis nazorg (30 min, op afstand)" },
   ];
 
-  const reviews = [
-    {
-      problem: "PIN en kassa down op vrijdagavond",
-      solution: "4G-failover + noodplan",
-      result: "Binnen 1 uur weer online",
-      location: "Scheveningen",
-    },
-    {
-      problem: "Ransomware op laptop",
-      solution: "Herstel + 2FA",
-      result: "Alles veilig, rapport voor verzekering",
-      location: "Ypenburg",
-    },
-    {
-      problem: "WiFi dode zones",
-      solution: "Mesh + router-hardening",
-      result: "Volle snelheid op alle kamers",
-      location: "Delft",
-    },
-  ];
 
   const serviceAreas = [
     { name: "Den Haag", link: "/computerhulp-den-haag" },
@@ -245,8 +227,6 @@ export default function Home() {
         </div>
       </section>
 
-      <PriceBox />
-
       {/* ------------------- USPs ------------------- */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -314,50 +294,24 @@ export default function Home() {
       <PlanAppointmentCta />
 
       {/* ------------------- REVIEWS / CASES ------------------- */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat klanten zeggen</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {reviews.map((review, index) => (
-              <Card key={index}>
-                <CardContent className="p-6">
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-accent uppercase">Probleem</span>
-                    <p className="text-foreground/80 mt-1">{review.problem}</p>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-primary uppercase">Oplossing</span>
-                    <p className="text-foreground/80 mt-1">{review.solution}</p>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold text-foreground uppercase">Resultaat</span>
-                    <p className="font-semibold mt-1">"{review.result}"</p>
-                  </div>
-                  <p className="text-sm text-foreground/60">{review.location}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center">
-            <Button variant="default" size="lg" asChild>
-              <Link href="/reviews">Bekijk alle Google reviews</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <ReviewSection servicePath="/" title="Wat klanten zeggen" showLink={true} />
 
       {/* ------------------- SERVICE AREAS ------------------- */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Ons Werkgebied</h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8 max-w-6xl mx-auto">
             {serviceAreas.map((area, index) => (
-              <Link
-                key={index}
-                href={area.link}
-                className="p-6 bg-background rounded-lg border-2 border-border hover:border-primary transition-colors text-center font-semibold text-lg"
-              >
-                {area.name}
+              <Link key={index} href={area.link}>
+                <Card className="group hover:shadow-xl transition-all duration-300 cursor-pointer h-full">
+                  <CardContent className="p-5 flex flex-col items-center justify-center text-center">
+                    <div className="mb-3 p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-heading font-bold text-xl mb-1">{area.name}</h3>
+                    <p className="text-foreground/70 text-xs font-medium">Computerhulp</p>
+                  </CardContent>
+                </Card>
               </Link>
             ))}
           </div>
@@ -372,7 +326,7 @@ export default function Home() {
       {/* ------------------- FAQ ------------------- */}
       <section className="py-12 md:py-16 bg-secondary">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
             <div>
               <h2 className="font-heading font-bold text-3xl md:text-4xl mb-4">Veelgestelde vragen</h2>
               <p className="text-foreground/80">
@@ -401,7 +355,7 @@ export default function Home() {
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
-                      <p>We reageren meestal binnen 10–30 minuten via remote. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
+                      <p>We reageren meestal binnen 10–30 minuten op afstand. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
@@ -435,14 +389,14 @@ export default function Home() {
 
                   <details>
                     <summary className="cursor-pointer list-none px-4 py-3 font-medium flex items-center justify-between">
-                      <span>Is remote toegang veilig?</span>
+                      <span>Is op afstand toegang veilig?</span>
                       <svg className="h-4 w-4 ml-2 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9" /></svg>
                     </summary>
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Ja — we gebruiken versleutelde tools en vragen altijd jouw toestemming voordat we meekijken. We delen je gegevens niet met derden.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/hulp-op-afstand">Lees meer over veiligheid</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start remote</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start op afstand</a>
                       </div>
                     </div>
                   </details>
@@ -481,7 +435,8 @@ export default function Home() {
         </div>
       </section>
 
-
+      {/* ------------------- BLOG SECTION ------------------- */}
+      <BlogSection />
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">

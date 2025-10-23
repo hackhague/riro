@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, Printer, MessageCircle } from "lucide-react";
+import { Phone, Printer, MessageCircle, AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings, Barcode, Radio, Layers3, Grid3x3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-printer.jpg";
 
@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 
 export default function PrinterPage() {
   const serviceBlocks = [
-    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.jpg" },
-    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.jpg" },
-    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.jpg" },
-    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.jpg" },
-    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.jpg" },
-    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.jpg" },
+    { title: "Windows 10/11 Ondersteuning", href: "/windows-support", image: "/images/services/windows-support.svg" },
+    { title: "Mac Support", href: "/mac-support", image: "/images/services/mac-support.svg" },
+    { title: "Antivirus & Beveiliging", href: "/antivirus-setup", image: "/images/services/antivirus.svg" },
+    { title: "E-mail Problemen", href: "/email", image: "/images/services/email-problemen.svg" },
+    { title: "Internet & WiFi", href: "/wifi", image: "/images/services/wifi.svg" },
+    { title: "Smartphone & Tablet", href: "/mobiel-tablet", image: "/images/services/tablet-smartphone.svg" },
   ];
 
   const problems = [
@@ -73,57 +73,58 @@ export default function PrinterPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Printerhulp aan huis
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Papiertoringen, cartridges, draadloos printen – je printer gaat weer werken. Snel, professioneel en zonder gedoe.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20printer"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Printerhulp aan huis" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Printerhulp aan huis
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Papiertoringen, cartridges, draadloos printen – je printer gaat weer werken. Snel, professioneel en zonder gedoe.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20printer"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat lossen we op?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {problems.map((problem, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Printer className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{problem}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {problems.map((problem, index) => {
+              const icons = [AlertTriangle, Wifi, Droplet, Layers, RotateCcw, Search, Copy, Settings];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{problem}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -162,14 +163,18 @@ export default function PrinterPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">We ondersteunen alle merken</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {["HP", "Canon", "Epson", "Brother", "Lexmark", "Ricoh", "Kyocera", "Xerox"].map((brand) => (
-              <Card key={brand} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <Printer className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{brand}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {["HP", "Canon", "Epson", "Brother", "Lexmark", "Ricoh", "Kyocera", "Xerox"].map((brand, index) => {
+              const icons = [Barcode, Radio, Layers3, Grid3x3, Layers, Copy, Settings, AlertTriangle];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={brand} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{brand}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -229,6 +234,8 @@ export default function PrinterPage() {
           </div>
         </div>
       </section>
+
+      <ReviewSection servicePath="/printer" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

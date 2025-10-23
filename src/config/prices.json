@@ -414,6 +414,47 @@
       "description": "20 uur support voor mkb-klanten (i.p.v. €1.300)."
     }
   ],
+  "extraServices": [
+    {
+      "id": "windows_mac_reinstall",
+      "name": "Windows/Mac herinstallatie",
+      "category": "software",
+      "description": "Volledige besturingssysteem herinstallatie met data backup",
+      "consumer": {
+        "amount": 99,
+        "unit": "vaste prijs",
+        "includesVat": true,
+        "notes": "Windows of Linux. Mac €119 indien eerder gebruikt."
+      },
+      "tags": ["project", "software"]
+    },
+    {
+      "id": "faster_computer_ssd",
+      "name": "Computer sneller maken met nieuwe schijf",
+      "category": "hardware",
+      "description": "SSD upgrade met installatie en datamigration",
+      "consumer": {
+        "amount": 119,
+        "unit": "arbeidskosten",
+        "includesVat": true,
+        "notes": "+ SSD onderdeel €80–150 afhankelijk van capaciteit."
+      },
+      "tags": ["project", "hardware"]
+    },
+    {
+      "id": "antivirus_basic_setup",
+      "name": "Antivirus + basisbeveiliging (2 apparaten)",
+      "category": "security",
+      "description": "Antivirus en basisbeveiliging installatie en configuratie",
+      "consumer": {
+        "amount": 79,
+        "unit": "2 apparaten",
+        "includesVat": true,
+        "notes": "+€15 per extra apparaat."
+      },
+      "tags": ["software", "security"]
+    }
+  ],
   "spoedFees": [
     {
       "id": "consumer_on_site_spoed",

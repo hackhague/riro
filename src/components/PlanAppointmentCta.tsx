@@ -57,13 +57,13 @@ export function PlanAppointmentCta({
               <Button asChild size="lg" className="w-full">
                 <Link href={href}>{ctaLabel}</Link>
               </Button>
-              <Button asChild variant="secondary" size="lg" className="w-full">
+              <Button asChild variant="outline" size="lg" className="w-full">
                 <a href="tel:+31702119191">
                   <Phone className="mr-2 h-4 w-4" />
                   Bel 070 211 9191
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full">
+              <Button asChild variant="whatsapp" size="lg" className="w-full">
                 <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   WhatsApp

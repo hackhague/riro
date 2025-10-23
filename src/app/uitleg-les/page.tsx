@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, BookOpen, CheckCircle2, Heart, MessageCircle } from "lucide-react";
+import { Phone, BookOpen, CheckCircle2, Heart, MessageCircle, Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile, Keyboard, Globe, Lightbulb, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { OtherServicesGrid } from "@/components/OtherServicesGrid";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-lessons.jpg";
 
@@ -84,57 +84,58 @@ export default function UitlegLesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Persoonlijke computerles aan huis
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Wilt u beter leren omgaan met uw computer? Onze geduldige specialisten geven rustige uitleg op uw eigen tempo.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Ik%20wil%20computerles%20volgen"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Computerles aan huis" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Persoonlijke computerles aan huis
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Wilt u beter leren omgaan met uw computer? Onze geduldige specialisten geven rustige uitleg op uw eigen tempo.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Ik%20wil%20computerles%20volgen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* What We Teach */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Wat u leert</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {lessons.map((lesson, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <BookOpen className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{lesson}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {lessons.map((lesson, index) => {
+              const icons = [Monitor, Mail, Video, CreditCard, Image, Users, Lock, Smile];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{lesson}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -173,14 +174,18 @@ export default function UitlegLesPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Onderwerpen die we behandelen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {topics.map((topic) => (
-              <Card key={topic} className="border-2">
-                <CardContent className="p-6 text-center">
-                  <BookOpen className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="font-semibold text-lg">{topic}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {topics.map((topic, index) => {
+              const icons = [Keyboard, Globe, Mail, Video, Lock, Users, Lightbulb, Award];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={topic} className="border-2">
+                  <CardContent className="p-6 text-center">
+                    <IconComponent className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="font-semibold text-lg">{topic}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -223,6 +228,8 @@ export default function UitlegLesPage() {
           <OtherServicesGrid serviceBlocks={serviceBlocks} showCTA={false} />
         </div>
       </section>
+
+      <ReviewSection servicePath="/uitleg-les" title="Wat klanten zeggen" showLink={false} />
 
       {/* Why Choose Us */}
       <section className="py-12 md:py-16 bg-secondary">

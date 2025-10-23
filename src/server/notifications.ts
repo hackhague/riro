@@ -18,7 +18,11 @@ const CUSTOMER_NOTIFICATION_ENDPOINT =
   null;
 
 const ADMIN_EMAILS = process.env.APPOINTMENT_ADMIN_EMAILS;
-const DEFAULT_FROM = process.env.APPOINTMENT_FROM_EMAIL ?? process.env.ZAPIER_FROM_EMAIL ?? process.env.RESEND_FROM_EMAIL ?? "Instant IT <support@instantit.nl>";
+const DEFAULT_FROM =
+  process.env.APPOINTMENT_FROM_EMAIL ||
+  process.env.ZAPIER_FROM_EMAIL ||
+  process.env.RESEND_FROM_EMAIL ||
+  "Instant IT <support@instantit.nl>";
 
 let cachedResend: Resend | null = null;
 

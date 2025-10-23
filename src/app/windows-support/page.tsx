@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, AlertTriangle, CheckCircle2, Monitor, Shield, MessageCircle } from "lucide-react";
+import { Phone, AlertTriangle, CheckCircle2, Monitor, Shield, MessageCircle, Volume2, LogIn, Zap, Wifi, RotateCcw, Usb, AlertCircle, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import { HomepageServicesClient } from "@/components/HomepageServicesClient";
-import { PriceBox } from "@/components/ui/PriceBox";
+import { ReviewSection } from "@/components/ReviewSection";
 
 const serviceImage = "/images/service-windows.jpg";
 
@@ -73,43 +73,40 @@ export default function WindowsSupportPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-secondary to-background py-16 md:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Windows 10 & 11 Ondersteuning
-              </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8">
-                Update-problemen, langzame computer, hardware-issues? We diagnosticeren snel en fixen je Windows-problemen. Plus: Windows 11 upgrade service inclusief backup en nazorg.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="accent" size="lg" asChild>
-                  <a
-                    href="https://wa.me/31702119191?text=Hulp%20met%20Windows%20probleem"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="mr-2" />
-                    WhatsApp nu
-                  </a>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <a href="tel:+31702119191">
-                    <Phone className="mr-2" />
-                    Bel 070 211 9191
-                  </a>
-                </Button>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src={serviceImage} alt="Windows ondersteuning" className="w-full h-auto" />
+      <section
+        className="relative py-20 md:py-32 bg-cover bg-center"
+        style={{ backgroundImage: `url(${serviceImage})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-black/40"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+              Windows 10 & 11 Ondersteuning
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-8">
+              Update-problemen, langzame computer, hardware-issues? We diagnosticeren snel en fixen je Windows-problemen. Plus: Windows 11 upgrade service inclusief backup en nazorg.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="accent" size="lg" asChild>
+                <a
+                  href="https://wa.me/31702119191?text=Hulp%20met%20Windows%20probleem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-2" />
+                  WhatsApp nu
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="tel:+31702119191">
+                  <Phone className="mr-2" />
+                  Bel 070 211 9191
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </section>
-
-      <PriceBox />
 
       {/* Windows 10 End of Life Warning */}
       <section className="py-12 md:py-16 bg-accent/10 border-l-4 border-accent">
@@ -119,7 +116,7 @@ export default function WindowsSupportPage() {
               <Shield className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
               <div>
                 <h2 className="font-heading font-bold text-2xl md:text-3xl text-foreground mb-4">
-                  Windows 10 Einde ondersteuning: 14 oktober 2025
+                  Windows 10 - Einde ondersteuning: 14 oktober 2025
                 </h2>
                 <p className="text-foreground/80 mb-6 text-lg">
                   Microsoft stopt binnenkort met beveiligingsupdates voor Windows 10. Na deze datum wordt je computer kwetsbaar voor virussen en cyberaanvallen.
@@ -161,14 +158,18 @@ export default function WindowsSupportPage() {
         <div className="container mx-auto px-4">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-10">Veel voorkomende Windows problemen</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-            {windows10_11_problems.map((problem, index) => (
-              <Card key={index}>
-                <CardContent className="p-4 flex items-start gap-3">
-                  <Monitor className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">{problem}</span>
-                </CardContent>
-              </Card>
-            ))}
+            {windows10_11_problems.map((problem, index) => {
+              const icons = [Volume2, LogIn, Zap, Wifi, RotateCcw, Usb, AlertCircle, Activity];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <Card key={index}>
+                  <CardContent className="p-4 flex items-start gap-3">
+                    <IconComponent className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{problem}</span>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -218,7 +219,7 @@ export default function WindowsSupportPage() {
             Klaar voor Windows 11? Wij helpen je met een zorgeloze upgrade. Volledige backup, professionele installatie en alles opnieuw geconfigureerd.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12">
             <div>
               <h3 className="font-heading font-semibold text-2xl mb-6">Voordelen Windows 11</h3>
               <div className="space-y-3">
@@ -318,6 +319,8 @@ export default function WindowsSupportPage() {
       </section>
 
       <PartnersSection />
+
+      <ReviewSection servicePath="/windows-support" title="Wat klanten zeggen" showLink={false} />
 
       <PlanAppointmentCta
         preselect={{

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, MessageCircle, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, Calendar, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 const logo = "https://cdn.builder.io/api/v1/image/assets%2F7909ad45653f41d3a06b8bfbecb8e57b%2F80a2912febff44cb923f467a2b6013c2?format=webp&width=800";
 import {
@@ -62,14 +62,24 @@ export const Navigation = () => {
       {
         label: "Computerhulp op afstand",
         path: "/hulp-op-afstand",
-        description: "Snelle remote hulp via schermdeling",
+        description: "Snelle op afstand hulp via schermdeling",
       },
     ],
     // Note: Windows, Mac, Antivirus are only shown as subitems under Computerhulp aan huis
     spoedhulp: [
-      { label: "Ik ben gehackt", path: "/ik-ben-gehackt", description: "Directe cyberhulp, snel opgelost" },
-      { label: "Phishing", path: "/ik-ben-gehackt", description: "Herstel na klikken op verdachte link" },
-      { label: "Instagram account gehackt", path: "/ik-ben-gehackt", description: "Toegang direct hersteld" },
+      {
+        label: "Ik ben gehackt",
+        path: "/ik-ben-gehackt",
+        description: "Directe cyberhulp, snel opgelost",
+        subitems: [
+          { label: "Phishing & Verdachte E-mails", path: "/phishing-hulp" },
+          { label: "Instagram Account Gehackt", path: "/instagram-gehackt" },
+          { label: "E-mail Account Gehackt", path: "/email-gehackt" },
+          { label: "WhatsApp Fraude", path: "/whatsapp-fraude" },
+          { label: "Ransomware Hulp", path: "/ransomware-hulp" },
+          { label: "Helpdesk Fraude", path: "/helpdesk-fraude" },
+        ],
+      },
     ],
     zakelijkExpat: [
       { label: "Zakelijk IT-support op afstand", path: "/zakelijk", description: "SLA, monitoring, snelle service" },
@@ -152,6 +162,22 @@ export const Navigation = () => {
                                   <div className="text-xs text-muted-foreground">{item.description}</div>
                                 </Link>
                               </NavigationMenuLink>
+                              {item.subitems && (
+                                <ul className="mt-2 ml-3 space-y-1 border-l border-border pl-3">
+                                  {item.subitems.map((subitem) => (
+                                    <li key={`${subitem.path}-${subitem.label}`}>
+                                      <NavigationMenuLink asChild>
+                                        <Link
+                                          href={subitem.path}
+                                          className="block text-sm text-foreground/70 hover:text-primary transition-colors"
+                                        >
+                                          {subitem.label}
+                                        </Link>
+                                      </NavigationMenuLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -198,19 +224,15 @@ export const Navigation = () => {
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-2">
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
-                <Phone className="h-3.5 w-3.5 mr-1.5" />
-                {contact.phoneNumber}
+              <a href="/afspraak">
+                <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                Afspraak maken
               </a>
             </Button>
             <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-              <a
-                href={whatsappDefaultHref}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                {contact.whatsappLabel}
+              <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
+                <Phone className="h-3.5 w-3.5 mr-1.5" />
+                {contact.phoneNumber}
               </a>
             </Button>
           </div>
@@ -255,34 +277,43 @@ export const Navigation = () => {
                     {menuSections.particulier.map((item) => (
                       <div key={`${item.path}-${item.label}`}>
                         {item.subitems ? (
-                          <button
-                            onClick={() => toggleExpandedItem(item.path)}
-                            className="flex items-center justify-between w-full px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                          >
-                            {item.label}
-                            <ChevronDown
-                              className={`h-4 w-4 transition-transform ${
-                                expandedItems.has(item.path) ? "rotate-180" : ""
-                              }`}
-                            />
-                          </button>
+                          <div className="flex items-center justify-between w-full gap-2">
+                            <Link
+                              href={item.path}
+                              onClick={() => setIsOpen(false)}
+                              className="flex-1 px-2 py-2 text-base text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors font-medium"
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              onClick={() => toggleExpandedItem(item.path)}
+                              className="px-2 py-2 text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors flex-shrink-0"
+                              aria-label={`Toggle submenu for ${item.label}`}
+                            >
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform ${
+                                  expandedItems.has(item.path) ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
                         ) : (
                           <Link
                             href={item.path}
                             onClick={() => setIsOpen(false)}
-                            className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                            className="block px-2 py-2 text-base text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors font-medium"
                           >
                             {item.label}
                           </Link>
                         )}
                         {item.subitems && expandedItems.has(item.path) && (
-                          <div className="ml-4 space-y-1 border-l border-border pl-2 mt-1">
+                          <div className="ml-4 space-y-1 border-l border-border pl-3 mt-2">
                             {item.subitems.map((subitem) => (
                               <Link
                                 key={`${subitem.path}-${subitem.label}`}
                                 href={subitem.path}
                                 onClick={() => setIsOpen(false)}
-                                className="block px-2 py-1 text-xs text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                                className="block px-2 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                               >
                                 {subitem.label}
                               </Link>
@@ -308,16 +339,54 @@ export const Navigation = () => {
                   />
                 </button>
                 {openSection === "spoedhulp" && (
-                  <div className="mt-1">
+                  <div className="mt-1 space-y-1">
                     {menuSections.spoedhulp.map((item) => (
-                      <Link
-                        key={`${item.path}-${item.label}`}
-                        href={item.path}
-                        onClick={() => setIsOpen(false)}
-                        className="block px-2 py-1.5 text-sm text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                      >
-                        {item.label}
-                      </Link>
+                      <div key={`${item.path}-${item.label}`}>
+                        {item.subitems ? (
+                          <div className="flex items-center justify-between w-full gap-2">
+                            <Link
+                              href={item.path}
+                              onClick={() => setIsOpen(false)}
+                              className="flex-1 px-2 py-2 text-base text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors font-medium"
+                            >
+                              {item.label}
+                            </Link>
+                            <button
+                              onClick={() => toggleExpandedItem(item.path)}
+                              className="px-2 py-2 text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors flex-shrink-0"
+                              aria-label={`Toggle submenu for ${item.label}`}
+                            >
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform ${
+                                  expandedItems.has(item.path) ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
+                        ) : (
+                          <Link
+                            href={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block px-2 py-2 text-base text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md transition-colors font-medium"
+                          >
+                            {item.label}
+                          </Link>
+                        )}
+                        {item.subitems && expandedItems.has(item.path) && (
+                          <div className="ml-4 space-y-1 border-l border-border pl-3 mt-2">
+                            {item.subitems.map((subitem) => (
+                              <Link
+                                key={`${subitem.path}-${subitem.label}`}
+                                href={subitem.path}
+                                onClick={() => setIsOpen(false)}
+                                className="block px-2 py-2 text-sm text-foreground/70 hover:text-foreground hover:bg-secondary rounded-md transition-colors"
+                              >
+                                {subitem.label}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 )}
@@ -366,19 +435,15 @@ export const Navigation = () => {
 
               <div className="flex items-center justify-center gap-3 pt-2">
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
-                    <Phone className="h-3.5 w-3.5 mr-1.5" />
-                    {contact.phoneNumber}
+                  <a href="/afspraak">
+                    <Calendar className="h-3.5 w-3.5 mr-1.5" />
+                    Afspraak maken
                   </a>
                 </Button>
                 <Button variant="accent" size="sm" asChild className="rounded-full px-4">
-                  <a
-                    href={whatsappDefaultHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="h-3.5 w-3.5 mr-1.5" />
-                    {contact.whatsappLabel}
+                  <a href={contact.phoneHref} aria-label={contact.phoneAriaLabel}>
+                    <Phone className="h-3.5 w-3.5 mr-1.5" />
+                    {contact.phoneNumber}
                   </a>
                 </Button>
               </div>
