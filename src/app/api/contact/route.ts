@@ -5,10 +5,56 @@ import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { sendContactNotifications } from "@/lib/notifications";
 
+const TOKEN_BUCKET_CAPACITY = 5;
+const TOKEN_BUCKET_REFILL_MS = 60_000;
+const MIN_SUBMISSION_DELAY_MS = 1_000;
+const MAX_FUTURE_DRIFT_MS = 10_000;
+
+const rateLimitBuckets = new Map<
+  string,
+  {
+    tokens: number;
+    lastRefill: number;
+  }
+>();
+
+function getClientIp(request: Request) {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    request.headers.get("cf-connecting-ip") ||
+    "unknown"
+  );
+}
+
+function consumeToken(ip: string) {
+  const now = Date.now();
+  const bucket = rateLimitBuckets.get(ip) ?? {
+    tokens: TOKEN_BUCKET_CAPACITY,
+    lastRefill: now,
+  };
+
+  if (now - bucket.lastRefill >= TOKEN_BUCKET_REFILL_MS) {
+    bucket.tokens = TOKEN_BUCKET_CAPACITY;
+    bucket.lastRefill = now;
+  }
+
+  if (bucket.tokens <= 0) {
+    rateLimitBuckets.set(ip, bucket);
+    return false;
+  }
+
+  bucket.tokens -= 1;
+  rateLimitBuckets.set(ip, bucket);
+  return true;
+}
+
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Naam is verplicht").max(200),
   contact: z.string().trim().min(3, "Contactgegeven is verplicht").max(200),
   message: z.string().trim().min(1, "Bericht is verplicht").max(4000),
+  honeypot: z.string().optional(),
+  timestamp: z.coerce.number().optional(),
 });
 
 type ContactMessageInsert = Database["public"]["Tables"]["contact_messages"]["Insert"];
@@ -61,19 +107,72 @@ const getSupabaseConfig = () => {
 };
 
 export async function POST(request: Request) {
-  let parsed;
+  const ip = getClientIp(request);
 
+  if (!consumeToken(ip)) {
+    console.warn("Contact form rate limit exceeded", { ip, path: request.url });
+    return NextResponse.json(
+      { error: "Te veel verzoeken. Probeer het later opnieuw." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": Math.ceil(TOKEN_BUCKET_REFILL_MS / 1000).toString(),
+        },
+      }
+    );
+  }
+
+  let rawBody: unknown;
   try {
-    const json = await request.json();
-    parsed = contactSchema.parse(json);
+    rawBody = await request.json();
   } catch (error) {
-    const message =
-      error instanceof z.ZodError ? error.issues[0]?.message ?? "Ongeldig verzoek" : "Ongeldige JSON payload";
+    console.warn("Invalid JSON payload received for contact endpoint", { ip, error });
+    return NextResponse.json({ error: "Ongeldige JSON payload" }, { status: 400 });
+  }
+
+  const parsedResult = contactSchema.safeParse(rawBody);
+
+  if (!parsedResult.success) {
+    console.warn("Contact payload validation failed", { ip, issues: parsedResult.error.flatten() });
+    const message = parsedResult.error.issues[0]?.message ?? "Ongeldig verzoek";
     return NextResponse.json({ error: message }, { status: 400 });
   }
 
+  const { honeypot, timestamp, ...contactData } = parsedResult.data;
+  const honeypotValue = (honeypot ?? "").trim();
+
+  if (honeypotValue) {
+    console.warn("Contact honeypot field triggered", { ip });
+    return NextResponse.json({ error: "Verdacht verzoek geblokkeerd" }, { status: 400 });
+  }
+
+  const submissionTimestamp =
+    typeof timestamp === "number" && Number.isFinite(timestamp) ? timestamp : undefined;
+
+  if (!submissionTimestamp) {
+    console.warn("Contact submission missing timestamp", { ip, timestamp });
+    return NextResponse.json({ error: "Verdacht verzoek geblokkeerd" }, { status: 400 });
+  }
+
+  const now = Date.now();
+  const timeSinceRender = now - submissionTimestamp;
+
+  if (submissionTimestamp - now > MAX_FUTURE_DRIFT_MS) {
+    console.warn("Contact submission timestamp too far in the future", {
+      ip,
+      submissionTimestamp,
+      now,
+    });
+    return NextResponse.json({ error: "Verdacht verzoek geblokkeerd" }, { status: 400 });
+  }
+
+  if (timeSinceRender < MIN_SUBMISSION_DELAY_MS) {
+    console.warn("Contact submission failed timestamp check", { ip, timeSinceRender });
+    return NextResponse.json({ error: "Verdacht verzoek geblokkeerd" }, { status: 400 });
+  }
+
   const metadata = toMetadata(request);
-  const { email, phone } = extractContactChannel(parsed.contact);
+  const { email, phone } = extractContactChannel(contactData.contact);
   let recordId: string | number | null = null;
 
   const supabaseConfig = getSupabaseConfig();
@@ -84,11 +183,11 @@ export async function POST(request: Request) {
     });
 
     const payload: ContactMessageInsert = {
-      name: parsed.name,
-      contact: parsed.contact,
+      name: contactData.name,
+      contact: contactData.contact,
       email,
       phone,
-      message: parsed.message,
+      message: contactData.message,
       metadata,
     };
 
@@ -108,9 +207,9 @@ export async function POST(request: Request) {
 
   try {
     await sendContactNotifications({
-      name: parsed.name,
-      contact: parsed.contact,
-      message: parsed.message,
+      name: contactData.name,
+      contact: contactData.contact,
+      message: contactData.message,
       recordId,
       metadata: metadata ?? undefined,
       customerEmail: email,
