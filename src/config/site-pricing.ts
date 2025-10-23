@@ -85,7 +85,7 @@ export const SITE_PRICING: SitePricingConfig = {
     whatsapp: "WhatsApp",
   },
   floatingCallButton: {
-    hideOnRoutes: ["/afspraak"],
+    hideOnRoutes: ["/afspraak-maken"],
   },
   pricing: {
     consumer: {
@@ -247,7 +247,7 @@ export const SITE_PRICING: SitePricingConfig = {
         location: "aan huis",
         tagline: "Veiligheidscheck aan huis met netwerk en wifi check",
         summary: "Netwerk, wifi en endpoint-check op locatie inclusief rapport. 50% korting bij boeking met andere dienst.",
-        bookingSummary: "Veiligheidscheck aan huis – Normaal €79, nu €39,50 bij meeboeken.",
+        bookingSummary: "Veiligheidscheck aan huis – Normaal €79, nu ���39,50 bij meeboeken.",
         price: {
           amount: 79,
           currency: "EUR",
