@@ -97,7 +97,7 @@ export default function WiFiPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="accent" size="lg" asChild>
-                <a href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
+                <a href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31702119191">
