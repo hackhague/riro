@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone, AlertTriangle, CheckCircle2, Monitor, Shield, MessageCircle, Volume2, LogIn, Zap, Wifi, RotateCcw, Usb, AlertCircle, Activity } from "lucide-react";
+import { Phone, AlertTriangle, CheckCircle2, Monitor, Shield, MessageCircle, Volume2, LogIn, Zap, Wifi, RotateCcw, Usb, AlertCircle, Activity, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -261,7 +261,7 @@ export default function WindowsSupportPage() {
                   </li>
                 </ul>
                 <Button variant="default" size="lg" className="w-full" asChild>
-                  <Link href="/afspraak">Afspraak maken</Link>
+                  <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
                 </Button>
               </CardContent>
             </Card>
