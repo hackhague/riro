@@ -7,6 +7,7 @@ export interface BlogPost {
   category: string;
   readTime: string;
   image: string;
+  publishedAt: string;
 }
 
 export interface RotatingBlogSection {
@@ -30,6 +31,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/antivirus.svg",
         category: "Beveiliging",
         readTime: "5 min",
+        publishedAt: "2024-09-10",
         content: "Phishing e-mails zijn een van de meest gebruikte methodes voor cybercriminelen om toegang tot je gegevens te krijgen. Leer hoe je deze nep-e-mails herkent aan verdachte afzenders, urgentie-boodschappen, verzoeken om persoonlijke informatie, en onverwachte links. Met enkele eenvoudige stappen kun je jezelf en je gegevens beschermen.",
       },
       {
@@ -40,6 +42,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/email-problemen.svg",
         category: "Noodgevallen",
         readTime: "4 min",
+        publishedAt: "2024-09-17",
         content: "Als je account is gehackt, is snelle actie essentieel. Stap 1: Wijzig je wachtwoord onmiddellijk. Stap 2: Controleer de beveiligingsinstellingen. Stap 3: Zet twee-factor authenticatie in. Stap 4: Controleer recente activiteiten. Stap 5: Meld het aan de dienstverlener. Wij kunnen je helpen met incident response.",
       },
       {
@@ -50,6 +53,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/computerhulp.svg",
         category: "Preventie",
         readTime: "6 min",
+        publishedAt: "2024-09-24",
         content: "Ransomware is schadelijke software die je bestanden versleutelt en losgeld eist. Bescherm jezelf door regelmatig backups te maken, je systeem up-to-date te houden, voorzichtig te zijn met e-mailbijlagen, een goed antivirusprogramma te gebruiken, en niet op verdachte links te klikken.",
       },
     ],
@@ -67,6 +71,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/wifi.svg",
         category: "Optimalisatie",
         readTime: "5 min",
+        publishedAt: "2024-08-20",
         content: "Je WiFi is traag? Probeer deze 5 stappen: 1) Restart je router (unplugged voor 30 seconden). 2) Verplaats je router naar een centraal, hoger punt. 3) Verminder interferentie van microgolven en andere apparaten. 4) Wijzig je WiFi-kanaal naar een minder druk kanaal. 5) Update je routerfirmware. Veel van deze wijzigingen hebben onmiddellijk effect.",
       },
       {
@@ -77,6 +82,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/tablet-smartphone.svg",
         category: "Setup",
         readTime: "4 min",
+        publishedAt: "2024-08-27",
         content: "De plaatsing van je router is cruciaal voor goede WiFi-prestaties. Plaats je router centraal in je huis, op een hoger punt (bijvoorbeeld op een schap), weg van obstakels zoals muren en metalen objecten. Vermijd plaatsing in kasten, achter meubels, of naast andere elektronische apparaten. Een hoger en meer open locatie geeft beter bereik.",
       },
       {
@@ -87,6 +93,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/mac-support.svg",
         category: "Troubleshooting",
         readTime: "5 min",
+        publishedAt: "2024-09-03",
         content: "Traag internet kan veel oorzaken hebben. Controleer eerst je internetsnelheid met een speedtest. Controleer het aantal verbonden apparaten. Scan op malware. Controleer of je ISP-kanaal niet overbelast is. Gebruik een kabelverbinding voor snellere resultaten. Als niets helpt, neem contact met ons op voor professionele diagnostiek.",
       },
     ],
@@ -104,6 +111,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/windows-support.svg",
         category: "Prestatie",
         readTime: "6 min",
+        publishedAt: "2024-10-05",
         content: "Een trage computer kan gefrustreerd zijn. Veelvoorkomende oorzaken: te veel opstartprogramma's, schijfruimte vol, malware, te veel tabs open in browser, of verouderde hardware. Maak schijfruimte vrij, verwijder onnodige opstartprogramma's, voer een malwarescan uit, en restart regelmatig. Voor hulp kun je ons altijd bellen.",
       },
       {
@@ -114,6 +122,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/antivirus.svg",
         category: "Beveiliging",
         readTime: "5 min",
+        publishedAt: "2024-10-12",
         content: "Een virus voegt zichzelf in aan andere programma's en verspreidt zich. Malware is bredere term voor alle schadelijke software. Spyware volgt je activiteiten. Ransomware versleutelt je bestanden. Protect jezelf met goed antivirussoftware, regelmatige updates, voorzichtige browsing, en geen onverwachte downloads.",
       },
       {
@@ -124,6 +133,7 @@ export const rotatingBlogSections: RotatingBlogSection[] = [
         image: "/images/services/computerhulp.svg",
         category: "Preventie",
         readTime: "4 min",
+        publishedAt: "2024-10-19",
         content: "Onderhoud je computer regelmatig voor optimale prestaties: 1) Verwijder tijdelijke bestanden. 2) Update je besturingssysteem en programma's. 3) Voer antivirusscan uit. 4) Schoon je schijf op. 5) Defragmenteer je schijf (HDD) of trim (SSD). 6) Controleer hardwartemperaturen. Deze eenvoudige stappen voorkomen veel problemen.",
       },
     ],
