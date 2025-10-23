@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle, Phone, CheckCircle2, ArrowUpRight, MapPin, Calendar } from "lucide-react";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import PartnersSection from "@/components/PartnersSection";
@@ -281,6 +282,25 @@ export default function Computerhulp({ city = "Den Haag" }: ComputerhulpProps) {
     { name: "Leiden", link: "/computerhulp-leiden" },
   ];
 
+  const cityEntry = serviceAreas.find((area) => area.name === city);
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Diensten", href: "/diensten" },
+    {
+      label: "Computerhulp aan huis",
+      href: "/computerhulp",
+      canonicalUrl: "https://www.instantit.nl/computerhulp-aan-huis",
+    },
+    ...(cityEntry
+      ? [
+          {
+            label: `Computerhulp ${city}`,
+            href: cityEntry.link,
+          },
+        ]
+      : []),
+  ];
+
   const steps = [
     { title: "Gratis intake", desc: "Korte triage via telefoon of WhatsApp" },
     { title: "Remote of on-site", desc: "Meestal remote opgelost; anders binnen 24-48 uur aan de deur" },
@@ -409,6 +429,8 @@ export default function Computerhulp({ city = "Den Haag" }: ComputerhulpProps) {
           </div>
         </div>
       </section>
+
+      <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* What We Fix */}
       <section className="py-12 md:py-16">

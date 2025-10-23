@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BlogSection } from "@/components/BlogSection";
+import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
 
@@ -20,6 +21,11 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -49,6 +55,8 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* Blog Rotating Section */}
       <BlogSection />
