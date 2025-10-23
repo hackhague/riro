@@ -758,8 +758,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   </div>
 
-                  {/* Windows/Mac herinstallatie - voor Hardware OF Zakelijk */}
-                  {(booking.problemCategory === "hardware" || booking.serviceType === "business") && (
+                  {/* Windows/Mac herinstallatie - alleen voor Hardware */}
+                  {booking.problemCategory === "hardware" && (
                     <div className="border rounded-lg p-4">
                       <div className="flex items-start gap-3">
                         <input
@@ -784,8 +784,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   )}
 
-                  {/* SSD upgrade - voor Hardware OF Zakelijk */}
-                  {(booking.problemCategory === "hardware" || booking.serviceType === "business") && (
+                  {/* SSD upgrade - alleen voor Hardware */}
+                  {booking.problemCategory === "hardware" && (
                     <div className="border rounded-lg p-4">
                       <div className="flex items-start gap-3">
                         <input
@@ -810,29 +810,31 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   )}
 
-                  {/* Antivirus - altijd voor hardware, security en rest */}
-                  <div className="border rounded-lg p-4">
-                    <div className="flex items-start gap-3">
-                      <input
-                        id="antivirusSetup"
-                        type="checkbox"
-                        checked={booking.addAntivirusSetup || false}
-                        onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
-                        className="mt-1"
-                      />
-                      <div className="flex-1">
-                        <Label htmlFor="antivirusSetup" className="cursor-pointer">
-                          <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
-                        </Label>
-                        <p className="text-sm text-foreground/70 mt-1">
-                          Professionele antivirus installatie en basisbeveiliging setup.
-                        </p>
-                        <p className="text-sm font-semibold text-primary mt-2">
-                          Kosten worden met u besproken
-                        </p>
+                  {/* Antivirus - alleen voor particulier (consumer) */}
+                  {booking.serviceType === "consumer" && (
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="antivirusSetup"
+                          type="checkbox"
+                          checked={booking.addAntivirusSetup || false}
+                          onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <Label htmlFor="antivirusSetup" className="cursor-pointer">
+                            <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
+                          </Label>
+                          <p className="text-sm text-foreground/70 mt-1">
+                            Professionele antivirus installatie en basisbeveiliging setup.
+                          </p>
+                          <p className="text-sm font-semibold text-primary mt-2">
+                            Kosten worden met u besproken
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="border rounded-lg p-4 bg-secondary/30">
