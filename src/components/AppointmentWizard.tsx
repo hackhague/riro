@@ -311,6 +311,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             summaryLines.push(`${item.label}: +${currency.format(item.amount)}`);
           });
         }
+        if (pricingSummary.extras && pricingSummary.extras.length) {
+          pricingSummary.extras.forEach((extra) => {
+            summaryLines.push(`${extra.label}: +${currency.format(extra.amount)}`);
+          });
+        }
         if (booking.addCyberApk && pricingSummary.cyberApkPrice > 0) {
           summaryLines.push(`Cyber-APK upsell (50% korting): +${currency.format(pricingSummary.cyberApkPrice)}`);
         }
