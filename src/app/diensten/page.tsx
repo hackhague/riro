@@ -229,20 +229,6 @@ export default function Diensten() {
         </div>
       </section>
 
-      {/* LLM-answer card (kort, feitelijk) */}
-      <section className="py-6">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="rounded-lg border p-4 bg-white">
-            <p className="font-medium">Wie</p>
-            <p className="mb-2">Particulieren en kleine bedrijven in Haaglanden.</p>
-            <p className="font-medium">Wat</p>
-            <p className="mb-2">Hulp bij hacks, trage computers, wifi en back-ups.</p>
-            <p className="font-medium">Wanneer & prijs</p>
-            <p>Remote meestal binnen 60 min (cap €149). On-site doorgaans binnen 24–48 uur (spoed mogelijk).</p>
-          </div>
-        </div>
-      </section>
-
       {/* Particulier */}
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
