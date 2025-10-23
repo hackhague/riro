@@ -1,5 +1,7 @@
 import { Resend } from "resend";
 
+import { stripHeaderBreaks } from "@/lib/notifications";
+
 const ADMIN_NOTIFICATION_ENDPOINT =
   process.env.APPOINTMENT_ADMIN_NOTIFICATION_WEBHOOK_URL ??
   process.env.ZAPIER_ADMIN_NOTIFICATION_WEBHOOK_URL ??
@@ -81,69 +83,107 @@ type NotificationRequest = {
   from?: string | null;
 };
 
+function sanitizeOptional(value: string | null | undefined) {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  const sanitized = stripHeaderBreaks(value);
+  return sanitized || null;
+}
+
+function sanitizeAppointmentForHeaders(
+  appointment: AppointmentNotificationPayload
+): AppointmentNotificationPayload {
+  return {
+    ...appointment,
+    service: stripHeaderBreaks(appointment.service),
+    serviceLabel: stripHeaderBreaks(appointment.serviceLabel),
+    dateISO: sanitizeOptional(appointment.dateISO),
+    dateDisplay: sanitizeOptional(appointment.dateDisplay),
+    timeSlot: stripHeaderBreaks(appointment.timeSlot),
+    firstName: stripHeaderBreaks(appointment.firstName),
+    lastName: stripHeaderBreaks(appointment.lastName),
+    email: sanitizeOptional(appointment.email),
+    phone: stripHeaderBreaks(appointment.phone),
+    street: stripHeaderBreaks(appointment.street),
+    postalCode: stripHeaderBreaks(appointment.postalCode),
+    city: stripHeaderBreaks(appointment.city),
+    message: appointment.message,
+    approvalToken: stripHeaderBreaks(appointment.approvalToken),
+    approveUrl: sanitizeOptional(appointment.approveUrl),
+    cancelUrl: sanitizeOptional(appointment.cancelUrl),
+    source: stripHeaderBreaks(appointment.source),
+  };
+}
+
 function buildAdminAppointmentEmail(appointment: AppointmentNotificationPayload) {
-  const subject = `Nieuwe afspraak: ${appointment.firstName} ${appointment.lastName}`;
+  const sanitized = sanitizeAppointmentForHeaders(appointment);
+  const subject = stripHeaderBreaks(
+    `Nieuwe afspraak: ${sanitized.firstName} ${sanitized.lastName}`
+  );
 
   const text = [
     "Nieuwe afspraak ontvangen",
     "",
-    `Klant: ${appointment.firstName} ${appointment.lastName}`,
-    `E-mail: ${appointment.email || "Niet opgegeven"}`,
-    `Telefoon: ${appointment.phone}`,
+    `Klant: ${sanitized.firstName} ${sanitized.lastName}`,
+    `E-mail: ${sanitized.email || "Niet opgegeven"}`,
+    `Telefoon: ${sanitized.phone}`,
     "",
-    `Adres: ${appointment.street}, ${appointment.postalCode} ${appointment.city}`,
+    `Adres: ${sanitized.street}, ${sanitized.postalCode} ${sanitized.city}`,
     "",
-    `Dienst: ${appointment.serviceLabel}`,
-    `Datum: ${appointment.dateDisplay}`,
-    `Tijd: ${appointment.timeSlot}`,
+    `Dienst: ${sanitized.serviceLabel}`,
+    `Datum: ${sanitized.dateDisplay}`,
+    `Tijd: ${sanitized.timeSlot}`,
     "",
     `Bericht: ${appointment.message}`,
     "",
-    `Goedkeuren: ${appointment.approveUrl || "Niet beschikbaar"}`,
-    `Afwijzen: ${appointment.cancelUrl || "Niet beschikbaar"}`,
+    `Goedkeuren: ${sanitized.approveUrl || "Niet beschikbaar"}`,
+    `Afwijzen: ${sanitized.cancelUrl || "Niet beschikbaar"}`,
   ].join("\n");
 
   const html = `
     <h1>Nieuwe afspraak</h1>
-    <h2>${escapeHtml(appointment.firstName)} ${escapeHtml(appointment.lastName)}</h2>
+    <h2>${escapeHtml(sanitized.firstName)} ${escapeHtml(sanitized.lastName)}</h2>
 
     <h3>Contactgegevens</h3>
     <p>
-      <strong>E-mail:</strong> ${escapeHtml(appointment.email || "Niet opgegeven")}<br />
-      <strong>Telefoon:</strong> ${escapeHtml(appointment.phone)}<br />
-      <strong>Adres:</strong> ${escapeHtml(appointment.street)}, ${escapeHtml(appointment.postalCode)} ${escapeHtml(appointment.city)}
+      <strong>E-mail:</strong> ${escapeHtml(sanitized.email || "Niet opgegeven")}<br />
+      <strong>Telefoon:</strong> ${escapeHtml(sanitized.phone)}<br />
+      <strong>Adres:</strong> ${escapeHtml(sanitized.street)}, ${escapeHtml(sanitized.postalCode)} ${escapeHtml(sanitized.city)}
     </p>
 
     <h3>Afspraak details</h3>
     <p>
-      <strong>Dienst:</strong> ${escapeHtml(appointment.serviceLabel)}<br />
-      <strong>Datum:</strong> ${escapeHtml(appointment.dateDisplay || "Niet opgegeven")}<br />
-      <strong>Tijd:</strong> ${escapeHtml(appointment.timeSlot)}
+      <strong>Dienst:</strong> ${escapeHtml(sanitized.serviceLabel)}<br />
+      <strong>Datum:</strong> ${escapeHtml(sanitized.dateDisplay || "Niet opgegeven")}<br />
+      <strong>Tijd:</strong> ${escapeHtml(sanitized.timeSlot)}
     </p>
 
     ${appointment.message ? `<h3>Bericht van klant</h3><p>${formatMultiline(appointment.message)}</p>` : ""}
 
     <h3>Acties</h3>
-    ${appointment.approveUrl ? `<p><a href="${escapeHtml(appointment.approveUrl)}">Goedkeuren</a></p>` : ""}
-    ${appointment.cancelUrl ? `<p><a href="${escapeHtml(appointment.cancelUrl)}">Afwijzen</a></p>` : ""}
+    ${sanitized.approveUrl ? `<p><a href="${escapeHtml(sanitized.approveUrl)}">Goedkeuren</a></p>` : ""}
+    ${sanitized.cancelUrl ? `<p><a href="${escapeHtml(sanitized.cancelUrl)}">Afwijzen</a></p>` : ""}
   `;
 
   return { subject, text, html };
 }
 
 function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPayload) {
+  const sanitized = sanitizeAppointmentForHeaders(appointment);
   const subject = "Je afspraak is ontvangen";
 
   const text = [
-    `Hoi ${appointment.firstName},`,
+    `Hoi ${sanitized.firstName},`,
     "",
     "Bedankt voor het maken van een afspraak met Instant IT. We hebben je aanvraag ontvangen en zullen deze spoedig in behandeling nemen.",
     "",
     "Afspraak details:",
-    `Dienst: ${appointment.serviceLabel}`,
-    `Datum: ${appointment.dateDisplay}`,
-    `Tijd: ${appointment.timeSlot}`,
-    `Locatie: ${appointment.street}, ${appointment.postalCode} ${appointment.city}`,
+    `Dienst: ${sanitized.serviceLabel}`,
+    `Datum: ${sanitized.dateDisplay}`,
+    `Tijd: ${sanitized.timeSlot}`,
+    `Locatie: ${sanitized.street}, ${sanitized.postalCode} ${sanitized.city}`,
     "",
     "We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.",
     "",
@@ -154,15 +194,15 @@ function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPaylo
   ].join("\n");
 
   const html = `
-    <p>Hoi ${escapeHtml(appointment.firstName)},</p>
+    <p>Hoi ${escapeHtml(sanitized.firstName)},</p>
     <p>Bedankt voor het maken van een afspraak met Instant IT. We hebben je aanvraag ontvangen en zullen deze spoedig in behandeling nemen.</p>
 
     <h2>Afspraak details</h2>
     <ul>
-      <li><strong>Dienst:</strong> ${escapeHtml(appointment.serviceLabel)}</li>
-      <li><strong>Datum:</strong> ${escapeHtml(appointment.dateDisplay || "Niet opgegeven")}</li>
-      <li><strong>Tijd:</strong> ${escapeHtml(appointment.timeSlot)}</li>
-      <li><strong>Locatie:</strong> ${escapeHtml(appointment.street)}, ${escapeHtml(appointment.postalCode)} ${escapeHtml(appointment.city)}</li>
+      <li><strong>Dienst:</strong> ${escapeHtml(sanitized.serviceLabel)}</li>
+      <li><strong>Datum:</strong> ${escapeHtml(sanitized.dateDisplay || "Niet opgegeven")}</li>
+      <li><strong>Tijd:</strong> ${escapeHtml(sanitized.timeSlot)}</li>
+      <li><strong>Locatie:</strong> ${escapeHtml(sanitized.street)}, ${escapeHtml(sanitized.postalCode)} ${escapeHtml(sanitized.city)}</li>
     </ul>
 
     <p>We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
@@ -195,6 +235,7 @@ async function postNotification(endpoint: string, payload: NotificationRequest) 
 
 export async function sendAppointmentNotifications(appointment: AppointmentNotificationPayload) {
   const tasks: Promise<void>[] = [];
+  const sanitizedAppointment = sanitizeAppointmentForHeaders(appointment);
 
   // Send admin notification via Resend email
   const resend = getResendClient();
@@ -203,7 +244,7 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
     : [];
 
   if (resend && adminRecipients.length > 0) {
-    const { subject, html, text } = buildAdminAppointmentEmail(appointment);
+    const { subject, html, text } = buildAdminAppointmentEmail(sanitizedAppointment);
 
     for (const adminEmail of adminRecipients) {
       tasks.push(
@@ -215,7 +256,7 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
               subject,
               html,
               text,
-              replyTo: appointment.email || undefined,
+              replyTo: sanitizedAppointment.email || undefined,
             });
 
             if (result.error) {
@@ -230,9 +271,9 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
   }
 
   // Send customer confirmation via Resend email
-  if (resend && appointment.email) {
-    const { subject, html, text } = buildCustomerAppointmentEmail(appointment);
-    const customerEmail = appointment.email;
+  if (resend && sanitizedAppointment.email) {
+    const { subject, html, text } = buildCustomerAppointmentEmail(sanitizedAppointment);
+    const customerEmail = sanitizedAppointment.email;
 
     tasks.push(
       (async () => {
@@ -262,7 +303,7 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
     tasks.push(
       postNotification(ADMIN_NOTIFICATION_ENDPOINT, {
         target: "admin",
-        appointment,
+        appointment: sanitizedAppointment,
         to: zapierAdminRecipients,
         from: DEFAULT_FROM,
       }).catch((error) => {
@@ -271,12 +312,12 @@ export async function sendAppointmentNotifications(appointment: AppointmentNotif
     );
   }
 
-  if (CUSTOMER_NOTIFICATION_ENDPOINT && appointment.email) {
+  if (CUSTOMER_NOTIFICATION_ENDPOINT && sanitizedAppointment.email) {
     tasks.push(
       postNotification(CUSTOMER_NOTIFICATION_ENDPOINT, {
         target: "customer",
-        appointment,
-        to: [appointment.email],
+        appointment: sanitizedAppointment,
+        to: [sanitizedAppointment.email],
         from: DEFAULT_FROM,
       }).catch((error) => {
         console.warn("Failed to send customer appointment notification via webhook", error);

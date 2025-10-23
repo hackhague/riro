@@ -42,6 +42,21 @@ function getResendClient() {
 const defaultFromAddress =
   getFirstEnv(fromEmailEnvKeys) ?? "Instant IT <support@instantit.nl>";
 
+export function stripHeaderBreaks(value: string | null | undefined): string {
+  if (!value) {
+    return "";
+  }
+
+  const withoutBreaks = value.replace(/[\r\n]+/g, " ");
+  const collapsed = withoutBreaks.replace(/\s+/g, " ").trim();
+
+  if (collapsed.includes("@")) {
+    return collapsed.replace(/\s*@\s*/g, "@");
+  }
+
+  return collapsed;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -94,9 +109,12 @@ export function buildAdminEmail(
 ): ResendEmailOptions {
   const from = overrides?.from ?? defaultFromAddress;
   const to = overrides?.to ?? getFirstEnv(adminEmailEnvKeys) ?? "info@instantit.nl";
-  const subject = overrides?.subject ?? `Nieuw contactbericht van ${input.name}`;
+  const subject = stripHeaderBreaks(
+    overrides?.subject ?? `Nieuw contactbericht van ${input.name}`
+  );
   const replyToOverride = overrides?.replyTo ?? overrides?.reply_to;
-  const replyTo = replyToOverride ?? input.customerEmail ?? undefined;
+  const replyToCandidate = replyToOverride ?? input.customerEmail ?? undefined;
+  const replyTo = stripHeaderBreaks(replyToCandidate ?? null) || undefined;
 
   const textLines = [
     "Nieuw contactbericht",
