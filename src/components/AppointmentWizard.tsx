@@ -235,12 +235,47 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const pricingSummary = useMemo(() => {
-    if (!booking.serviceChannel || !booking.urgency) {
-      return { basePrice: 0, surcharges: [], cyberApkPrice: 0, total: 0 };
+    // For security issues (gehackt) urgency is not required and price starts from €149
+    if (!booking.serviceChannel || (booking.problemCategory !== "security" && !booking.urgency)) {
+      return { basePrice: 0, surcharges: [], cyberApkPrice: 0, extras: [], total: 0 };
     }
 
     const pricing = priceConfig.pricing;
     let service: ServiceOffering | null = null;
+
+    // Special case: security/hacked -> fixed starting price
+    if (booking.problemCategory === "security") {
+      const basePrice = 149;
+      const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+      const isEveningSlot = booking.timeSlot && (
+        booking.timeSlot.startsWith("18:") ||
+        booking.timeSlot.startsWith("19:") ||
+        booking.timeSlot.startsWith("20:")
+      );
+
+      if (isEveningSlot && booking.serviceChannel === "onsite") {
+        surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: Math.round(basePrice * 0.25) });
+      }
+
+      const cyberApkPrice = 0; // not relevant here by default
+
+      const extras: Array<{ id: string; label: string; amount: number }> = [];
+      if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+        extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+      }
+      if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+        extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+      }
+      if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+        extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+      }
+
+      const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+      const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+      return { basePrice, surcharges, cyberApkPrice, extras, total };
+    }
 
     if (booking.serviceType === "consumer") {
       const consumerPricing = pricing.consumer;
