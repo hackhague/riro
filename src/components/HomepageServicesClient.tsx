@@ -12,6 +12,7 @@ import {
   CheckCircle,
   MessageCircle,
   Phone,
+  Calendar
 } from "lucide-react";
 import { usePrices } from "@/hooks/use-prices";
 
@@ -361,7 +362,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
         {/* Bottom CTA buttons */}
         <div className="flex justify-center gap-3">
           <Button variant="outline" asChild>
-            <Link href="/afspraak">Afspraak maken</Link>
+            <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
             <a href="tel:+31702119191">

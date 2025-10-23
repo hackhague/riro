@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Calendar } from "lucide-react";
 
 import { usePrices } from "@/hooks/use-prices";
 import { Button } from "@/components/ui/button";
@@ -81,7 +81,7 @@ export function PriceBox() {
                   ))}
                 </ul>
                 <Button asChild size="lg" className="w-full">
-                  <Link href="/afspraak">Afspraak maken</Link>
+                  <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
                 </Button>
               </div>
             </div>
