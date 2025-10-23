@@ -235,13 +235,55 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const pricingSummary = useMemo(() => {
-    // For security issues (gehackt) urgency is not required and price starts from €149
-    if (!booking.serviceChannel || (booking.problemCategory !== "security" && !booking.urgency)) {
+    // For security issues (gehackt) and for zakelijke boekingen, urgency is not required
+    if (!booking.serviceChannel || (booking.problemCategory !== "security" && booking.serviceType !== "business" && !booking.urgency)) {
       return { basePrice: 0, surcharges: [], cyberApkPrice: 0, extras: [], total: 0 };
     }
 
     const pricing = priceConfig.pricing;
     let service: ServiceOffering | null = null;
+
+    // Special case: business bookings -> fixed starting price
+    if (booking.serviceType === "business") {
+      const basePrice = 399;
+      const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+      const isEveningSlot = booking.timeSlot && (
+        booking.timeSlot.startsWith("18:") ||
+        booking.timeSlot.startsWith("19:") ||
+        booking.timeSlot.startsWith("20:")
+      );
+
+      if (isEveningSlot && booking.serviceChannel === "onsite") {
+        surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: Math.round(basePrice * 0.25) });
+      }
+
+      let cyberApkPrice = 0;
+      if (booking.addCyberApk) {
+        const cyberApkPricing = pricing.cyberApk;
+        if (booking.serviceChannel === "remote" && cyberApkPricing.businessRemote.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessRemote.price.amount * 0.5 * 100) / 100;
+        } else if (booking.serviceChannel === "onsite" && cyberApkPricing.businessOnsite.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessOnsite.price.amount * 0.5 * 100) / 100;
+        }
+      }
+
+      const extras: Array<{ id: string; label: string; amount: number }> = [];
+      if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+        extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+      }
+      if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+        extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+      }
+      if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+        extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+      }
+
+      const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+      const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+      return { basePrice, surcharges, cyberApkPrice, extras, total };
+    }
 
     // Special case: security/hacked -> fixed starting price
     if (booking.problemCategory === "security") {
