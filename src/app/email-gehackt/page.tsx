@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MessageCircle, Phone, Mail, Shield, Lock, CheckCircle } from "lucide-react";
+import { MessageCircle, Phone, Mail, Shield, Lock, CheckCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
@@ -213,7 +213,7 @@ export default function EmailGehackt() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="/afspraak">Afspraak maken</a>
+              <a href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a href="tel:+31702119191">Bel direct</a>
