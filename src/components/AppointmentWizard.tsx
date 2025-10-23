@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
-import { format, isWeekend, startOfToday } from "date-fns";
+import { format, isWeekend, startOfToday, addDays } from "date-fns";
 import "react-day-picker/dist/style.css";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -52,7 +52,7 @@ const DEFAULT_SLOTS = [
   "11:00 – 13:00",
   "13:00 – 15:00",
   "15:00 – 17:00",
-  "18:00 – 20:00",
+  "18:00 – 22:00",
 ];
 
 function parseSlotStartHour(slot: string): number | null {
@@ -152,13 +152,28 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   });
 
   useEffect(() => {
-    if (booking.urgency === "spoed") {
+    const localToday = startOfToday();
+    const minForStandard = addDays(localToday, 2);
+
+    if (booking.urgency === "standaard") {
+      // Default to the first available standard date (today + 2 days)
       setBooking((prev) => {
-        const nextDate = prev.date ?? startOfToday();
-        if (prev.timeSlot === SPOED_SLOT_LABEL && prev.date?.toDateString() === nextDate.toDateString()) {
-          return prev;
+        const currentDate = prev.date ?? minForStandard;
+        if (currentDate < minForStandard) {
+          return { ...prev, date: minForStandard, timeSlot: "" };
         }
-        return { ...prev, date: nextDate, timeSlot: SPOED_SLOT_LABEL };
+        return { ...prev, date: currentDate, timeSlot: "" };
+      });
+    } else if (booking.urgency === "spoed") {
+      // For spoed allow selection for today or tomorrow; default to today if none set
+      const earliest = localToday;
+      const latest = addDays(localToday, 1);
+      setBooking((prev) => {
+        const currentDate = prev.date ?? earliest;
+        if (currentDate < earliest || currentDate > latest) {
+          return { ...prev, date: earliest, timeSlot: "" };
+        }
+        return { ...prev, date: currentDate, timeSlot: "" };
       });
     } else if (booking.timeSlot === SPOED_SLOT_LABEL) {
       setBooking((prev) => ({ ...prev, timeSlot: "" }));
@@ -167,11 +182,14 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
   const today = startOfToday();
 
+  const minSelectableDate = booking.urgency === "standaard" ? addDays(today, 2) : booking.urgency === "spoed" ? today : today;
+  const maxSelectableDate: Date | undefined = booking.urgency === "spoed" ? addDays(today, 1) : undefined;
+
   const isStep0Valid = booking.problemCategory !== "";
   const isStep1Valid = booking.serviceType !== "";
   const isStep2Valid = booking.serviceChannel !== "";
   const isStep3Valid = booking.urgency !== "";
-  const requiresSchedule = booking.urgency !== "spoed";
+  const requiresSchedule = true;
   const hasSchedule = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
   const isStep4Valid = requiresSchedule ? hasSchedule : true;
   const isStep5Valid =
@@ -788,7 +806,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         mode="single"
                         selected={booking.date}
                         onSelect={(date) => setBooking((b) => ({ ...b, date, timeSlot: "" }))}
-                        disabled={(date) => isWeekend(date) || date < today}
+                        disabled={(date) => isWeekend(date) || date < minSelectableDate || (maxSelectableDate && date > maxSelectableDate)}
                         className="flex justify-center"
                       />
                     </div>
