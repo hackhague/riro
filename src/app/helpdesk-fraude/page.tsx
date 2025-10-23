@@ -123,10 +123,10 @@ export default function HelpdeskFraude() {
               <AlertTriangle className="h-8 w-8 text-white" />
             </div>
             <h1 className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-              Helpdesk Fraude – Vals Technici die je willen Oplichten
+              Helpdesk Fraude – Oplichting door valse support
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8">
-              Oplichters bellen je voor als Microsoft/Apple support ("vals technici") en claimen dat je computer gehackt is. Leer hoe je ze herkent en beschermt jezelf tegen deze fraude.
+              Oplichters bellen je voor als Microsoft/Apple support en claimen dat je computer gehackt is. Leer hoe je ze herkent en beschermt jezelf tegen deze fraude.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="accent" size="lg" asChild>

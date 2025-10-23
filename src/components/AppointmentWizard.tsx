@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { format, isWeekend, startOfToday } from "date-fns";
@@ -100,6 +100,7 @@ type Booking = {
   addWindowsMacReinstall?: boolean;
   addFasterComputerSsd?: boolean;
   addAntivirusSetup?: boolean;
+  agreedToTerms?: boolean;
 };
 
 const currency = new Intl.NumberFormat("nl-NL", {
@@ -111,6 +112,23 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const priceConfig = usePrices();
   const [step, setStep] = useState<0 | 1 | 2 | 3 | 4 | 5>(0);
   const [loading, setLoading] = useState(false);
+  const wizardRef = useRef<HTMLDivElement | null>(null);
+
+  const goToStep = (n: 0 | 1 | 2 | 3 | 4 | 5) => {
+    setStep(n);
+    // allow DOM to update then scroll into view
+    setTimeout(() => {
+      if (wizardRef.current) {
+        try {
+          wizardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }, 50);
+  };
   const [booking, setBooking] = useState<Booking>({
     problemCategory: initialState?.problemCategory || "",
     serviceType: initialState?.serviceType || "consumer",
@@ -130,6 +148,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     addWindowsMacReinstall: false,
     addFasterComputerSsd: false,
     addAntivirusSetup: false,
+    agreedToTerms: false,
   });
 
   useEffect(() => {
@@ -161,7 +180,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     booking.phone.trim() !== "" &&
     booking.street.trim() !== "" &&
     booking.postalCode.trim() !== "" &&
-    booking.city.trim() !== "";
+    booking.city.trim() !== "" &&
+    booking.agreedToTerms === true;
 
   const selectedProblem = useMemo(() => PROBLEM_CATEGORIES.find((c) => c.id === booking.problemCategory)?.title ?? "", [booking.problemCategory]);
   const selectedServiceType = useMemo(() => SERVICE_TYPES.find((s) => s.id === booking.serviceType)?.label ?? "", [booking.serviceType]);
@@ -215,12 +235,89 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   }, [booking.serviceType, booking.deliveryMethod, deliveryOptions]);
 
   const pricingSummary = useMemo(() => {
-    if (!booking.serviceChannel || !booking.urgency) {
-      return { basePrice: 0, surcharges: [], cyberApkPrice: 0, total: 0 };
+    // For security issues (gehackt) and for zakelijke boekingen, urgency is not required
+    if (!booking.serviceChannel || (booking.problemCategory !== "security" && booking.serviceType !== "business" && !booking.urgency)) {
+      return { basePrice: 0, surcharges: [], cyberApkPrice: 0, extras: [], total: 0 };
     }
 
     const pricing = priceConfig.pricing;
     let service: ServiceOffering | null = null;
+
+    // Special case: business bookings -> fixed starting price
+    if (booking.serviceType === "business") {
+      const basePrice = 399;
+      const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+      const isEveningSlot = booking.timeSlot && (
+        booking.timeSlot.startsWith("18:") ||
+        booking.timeSlot.startsWith("19:") ||
+        booking.timeSlot.startsWith("20:")
+      );
+
+      if (isEveningSlot && booking.serviceChannel === "onsite") {
+        surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: Math.round(basePrice * 0.25) });
+      }
+
+      let cyberApkPrice = 0;
+      if (booking.addCyberApk) {
+        const cyberApkPricing = pricing.cyberApk;
+        if (booking.serviceChannel === "remote" && cyberApkPricing.businessRemote.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessRemote.price.amount * 0.5 * 100) / 100;
+        } else if (booking.serviceChannel === "onsite" && cyberApkPricing.businessOnsite.price.amount) {
+          cyberApkPrice = Math.round(cyberApkPricing.businessOnsite.price.amount * 0.5 * 100) / 100;
+        }
+      }
+
+      const extras: Array<{ id: string; label: string; amount: number }> = [];
+      if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+        extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+      }
+      if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+        extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+      }
+      if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+        extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+      }
+
+      const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+      const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+      return { basePrice, surcharges, cyberApkPrice, extras, total };
+    }
+
+    // Special case: security/hacked -> fixed starting price
+    if (booking.problemCategory === "security") {
+      const basePrice = 149;
+      const surcharges: Array<{ id: string; label: string; amount: number }> = [];
+
+      const isEveningSlot = booking.timeSlot && (
+        booking.timeSlot.startsWith("18:") ||
+        booking.timeSlot.startsWith("19:") ||
+        booking.timeSlot.startsWith("20:")
+      );
+
+      if (isEveningSlot && booking.serviceChannel === "onsite") {
+        surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: Math.round(basePrice * 0.25) });
+      }
+
+      const cyberApkPrice = 0; // not relevant here by default
+
+      const extras: Array<{ id: string; label: string; amount: number }> = [];
+      if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+        extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+      }
+      if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+        extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+      }
+      if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+        extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+      }
+
+      const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+      const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+      return { basePrice, surcharges, cyberApkPrice, extras, total };
+    }
 
     if (booking.serviceType === "consumer") {
       const consumerPricing = pricing.consumer;
@@ -277,10 +374,26 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       }
     }
 
-    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice;
+    const extras: Array<{ id: string; label: string; amount: number }> = [];
+    // Windows/Mac herinstallatie
+    if (booking.addWindowsMacReinstall && pricing.extraServices.windowsMacReinstall.price.amount) {
+      extras.push({ id: pricing.extraServices.windowsMacReinstall.id, label: pricing.extraServices.windowsMacReinstall.label, amount: pricing.extraServices.windowsMacReinstall.price.amount });
+    }
+    // SSD upgrade
+    if (booking.addFasterComputerSsd && pricing.extraServices.fasterComputer.price.amount) {
+      extras.push({ id: pricing.extraServices.fasterComputer.id, label: pricing.extraServices.fasterComputer.label, amount: pricing.extraServices.fasterComputer.price.amount });
+    }
+    // Antivirus setup
+    if (booking.addAntivirusSetup && pricing.extraServices.antivirusSetup.price.amount) {
+      extras.push({ id: pricing.extraServices.antivirusSetup.id, label: pricing.extraServices.antivirusSetup.label, amount: pricing.extraServices.antivirusSetup.price.amount });
+    }
 
-    return { basePrice, surcharges, cyberApkPrice, total };
-  }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, priceConfig]);
+    const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+
+    const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
+
+    return { basePrice, surcharges, cyberApkPrice, extras, total };
+  }, [booking.serviceChannel, booking.urgency, booking.serviceType, booking.timeSlot, booking.addCyberApk, booking.addWindowsMacReinstall, booking.addFasterComputerSsd, booking.addAntivirusSetup, priceConfig]);
 
   const handleSubmit = async () => {
     if (!isStep5Valid || !isStep4Valid) return;
@@ -288,11 +401,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     try {
       const serviceLabelParts = [selectedServiceType, selectedServiceChannel, selectedUrgency].filter(Boolean);
       const summaryLines: string[] = [];
-      if (pricingSummary.basePrice) {
+      if (pricingSummary.total > 0) {
         summaryLines.push(`Basisprijs: ${currency.format(pricingSummary.basePrice)}`);
         if (pricingSummary.surcharges.length) {
           pricingSummary.surcharges.forEach((item) => {
             summaryLines.push(`${item.label}: +${currency.format(item.amount)}`);
+          });
+        }
+        if (pricingSummary.extras && pricingSummary.extras.length) {
+          pricingSummary.extras.forEach((extra) => {
+            summaryLines.push(`${extra.label}: +${currency.format(extra.amount)}`);
           });
         }
         if (booking.addCyberApk && pricingSummary.cyberApkPrice > 0) {
@@ -358,9 +476,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         city: "",
         message: "",
         addCyberApk: false,
-        addWindowsMacReinstall: false,
-        addFasterComputerSsd: false,
-        addAntivirusSetup: false,
+    addWindowsMacReinstall: false,
+    addFasterComputerSsd: false,
+    addAntivirusSetup: false,
+    agreedToTerms: false,
       });
     } catch (error: any) {
       toast({
@@ -377,7 +496,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const contactInfo = priceConfig.contact;
 
   return (
-    <div className="w-full">
+    <div ref={wizardRef} className="w-full">
       {!compact && (
         <div className="text-center mb-8">
           <h2 className="font-heading font-bold text-3xl md:text-4xl">Plan vandaag nog een afspraak</h2>
@@ -489,19 +608,19 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     <button
                       key={category.id}
                       onClick={() => setBooking((b) => ({ ...b, problemCategory: category.id }))}
-                      className={`p-4 rounded-lg border-2 text-left transition-all ${
+                      className={`p-2 rounded-lg border-2 text-left transition-all ${
                         booking.problemCategory === category.id
                           ? "border-primary bg-primary/10"
                           : "border-border hover:border-primary/50"
                       }`}
                     >
-                      <p className="font-semibold text-foreground">{category.title}</p>
-                      <p className="text-sm text-foreground/70 mt-1">{category.description}</p>
+                      <p className="font-semibold text-foreground text-sm">{category.title}</p>
+                      <p className="text-xs text-foreground/70 mt-1">{category.description}</p>
                     </button>
                   ))}
                 </div>
                 <div className="mt-8 flex justify-end">
-                  <Button onClick={() => setStep(1)} disabled={!isStep0Valid}>
+                  <Button onClick={() => goToStep(1)} disabled={!isStep0Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -511,7 +630,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 1 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(0)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(0)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Is dit voor thuis of voor uw bedrijf?</h3>
                 </div>
                 {booking.serviceType === "business" && (
@@ -546,10 +665,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(0)}>
+                  <Button variant="outline" onClick={() => goToStep(0)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(2)} disabled={!isStep1Valid}>
+                  <Button onClick={() => goToStep(2)} disabled={!isStep1Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -559,7 +678,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 2 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(1)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(1)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Hoe wilt u hulp ontvangen?</h3>
                 </div>
                 {booking.problemCategory === "security" && (
@@ -595,10 +714,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(1)}>
+                  <Button variant="outline" onClick={() => goToStep(1)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(3)} disabled={!isStep2Valid}>
+                  <Button onClick={() => goToStep(booking.problemCategory === "security" || booking.serviceType === "business" ? 4 : 3)} disabled={!isStep2Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -609,7 +728,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 3 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(2)} className="px-2">
+                  <Button variant="ghost" onClick={() => goToStep(2)} className="px-2">
                     ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Welke urgentie?</h3>
@@ -633,7 +752,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     >
                       <p className="font-semibold text-foreground">{option.label}</p>
                       <p className="text-sm text-foreground/70 mt-1">{option.description}</p>
-                      {booking.serviceChannel && booking.urgency === option.id && pricingSummary.basePrice ? (
+                      {booking.serviceChannel && booking.urgency === option.id && pricingSummary.total > 0 ? (
                         <p className="text-sm font-semibold text-primary mt-2">
                           Indicatie: {currency.format(pricingSummary.basePrice)}
                         </p>
@@ -642,10 +761,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                   ))}
                 </div>
                 <div className="mt-8 flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(2)}>
+                  <Button variant="outline" onClick={() => goToStep(2)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(4)} disabled={!isStep3Valid}>
+                  <Button onClick={() => goToStep(4)} disabled={!isStep3Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -655,7 +774,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 4 && (
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <Button variant="ghost" onClick={() => setStep(3)} className="px-2">
+                  <Button variant="ghost" onClick={() => goToStep(3)} className="px-2">
                     ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
@@ -718,11 +837,8 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                         </p>
                         <div className="text-sm mt-2 space-y-1">
                           <p className="font-semibold text-accent">
-                            {booking.serviceType === "consumer" && booking.serviceChannel === "remote" && (
+                            {booking.serviceType === "consumer" && (booking.serviceChannel === "remote" || booking.serviceChannel === "onsite") && (
                               <>Normaal <span className="line-through">€79</span>, nu <span className="font-bold">€39,50</span> bij meeboeken</>
-                            )}
-                            {booking.serviceType === "consumer" && booking.serviceChannel === "onsite" && (
-                              <>Normaal <span className="line-through">€99</span>, nu <span className="font-bold">€49,50</span> bij meeboeken</>
                             )}
                             {booking.serviceType === "business" && booking.serviceChannel === "remote" && (
                               <>Normaal <span className="line-through">€299</span>, nu <span className="font-bold">€149,50</span> bij meeboeken (ex btw)</>
@@ -788,34 +904,36 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     </div>
                   )}
 
-                  {/* Antivirus - altijd voor hardware, security en rest */}
-                  <div className="border rounded-lg p-4">
-                    <div className="flex items-start gap-3">
-                      <input
-                        id="antivirusSetup"
-                        type="checkbox"
-                        checked={booking.addAntivirusSetup || false}
-                        onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
-                        className="mt-1"
-                      />
-                      <div className="flex-1">
-                        <Label htmlFor="antivirusSetup" className="cursor-pointer">
-                          <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
-                        </Label>
-                        <p className="text-sm text-foreground/70 mt-1">
-                          Professionele antivirus installatie en basisbeveiliging setup.
-                        </p>
-                        <p className="text-sm font-semibold text-primary mt-2">
-                          Kosten worden met u besproken
-                        </p>
+                  {/* Antivirus - alleen voor particulier (consumer) */}
+                  {booking.serviceType === "consumer" && (
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="antivirusSetup"
+                          type="checkbox"
+                          checked={booking.addAntivirusSetup || false}
+                          onChange={(e) => setBooking((b) => ({ ...b, addAntivirusSetup: e.target.checked }))}
+                          className="mt-1"
+                        />
+                        <div className="flex-1">
+                          <Label htmlFor="antivirusSetup" className="cursor-pointer">
+                            <span className="font-semibold">Antivirus + basisbeveiliging (2 apparaten)</span>
+                          </Label>
+                          <p className="text-sm text-foreground/70 mt-1">
+                            Professionele antivirus installatie en basisbeveiliging setup.
+                          </p>
+                          <p className="text-sm font-semibold text-primary mt-2">
+                            Vanaf €50 te verkrijgen (+€15 bij extra apparaat)
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 <div className="border rounded-lg p-4 bg-secondary/30">
                   <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
-                  {pricingSummary.basePrice ? (
+                  {pricingSummary.total > 0 ? (
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
                         <span>Basis</span>
@@ -833,6 +951,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
                         </div>
                       )}
+                      {pricingSummary.extras && pricingSummary.extras.length > 0 && (
+                        <>
+                          {pricingSummary.extras.map((extra) => (
+                            <div key={extra.id} className="flex items-center justify-between">
+                              <span>{extra.label}</span>
+                              <span>+{currency.format(extra.amount)}</span>
+                            </div>
+                          ))}
+                        </>
+                      )}
                       <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
                         <span>Totaal indicatie</span>
                         <span>{currency.format(pricingSummary.total)}</span>
@@ -849,10 +977,10 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </div>
 
                 <div className="flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(3)}>
+                  <Button variant="outline" onClick={() => goToStep(3)}>
                     Vorige
                   </Button>
-                  <Button onClick={() => setStep(5)} disabled={!isStep4Valid}>
+                  <Button onClick={() => goToStep(5)} disabled={!isStep4Valid}>
                     Volgende stap
                   </Button>
                 </div>
@@ -862,7 +990,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
             {step === 5 && (
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <Button variant="ghost" onClick={() => setStep(4)} className="px-2">←</Button>
+                  <Button variant="ghost" onClick={() => goToStep(4)} className="px-2">←</Button>
                   <h3 className="font-heading font-semibold text-xl">Uw gegevens</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -943,7 +1071,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
                 <div className="border rounded-lg p-4 bg-secondary/30">
                   <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
-                  {pricingSummary.basePrice ? (
+                  {pricingSummary.total > 0 ? (
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
                         <span>Basis</span>
@@ -961,6 +1089,16 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                           <span>+{currency.format(pricingSummary.cyberApkPrice)}</span>
                         </div>
                       )}
+                      {pricingSummary.extras && pricingSummary.extras.length > 0 && (
+                        <>
+                          {pricingSummary.extras.map((extra) => (
+                            <div key={extra.id} className="flex items-center justify-between">
+                              <span>{extra.label}</span>
+                              <span>+{currency.format(extra.amount)}</span>
+                            </div>
+                          ))}
+                        </>
+                      )}
                       <div className="border-t border-border pt-2 flex items-center justify-between font-semibold text-base">
                         <span>Totaal indicatie</span>
                         <span>{currency.format(pricingSummary.total)}</span>
@@ -977,9 +1115,19 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                 </div>
 
                 <div className="flex justify-between">
-                  <Button variant="outline" onClick={() => setStep(4)}>
+                  <Button variant="outline" onClick={() => goToStep(4)}>
                     Vorige
                   </Button>
+                  <div className="flex items-start gap-3 mr-4">
+                    <input
+                      id="agreeTerms"
+                      type="checkbox"
+                      checked={booking.agreedToTerms || false}
+                      onChange={(e) => setBooking((b) => ({ ...b, agreedToTerms: e.target.checked }))}
+                      className="mt-1"
+                    />
+                    <label htmlFor="agreeTerms" className="text-sm mr-2">Ik ga akkoord met de <a href="/algemene-voorwaarden" target="_blank" rel="noopener noreferrer" className="text-primary underline">algemene voorwaarden</a></label>
+                  </div>
                   <Button onClick={handleSubmit} disabled={!isStep5Valid || !isStep4Valid || loading}>
                     {loading ? "Versturen..." : "Afspraak versturen"}
                   </Button>

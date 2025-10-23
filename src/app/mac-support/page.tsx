@@ -28,7 +28,7 @@ export default function MacSupportPage() {
     "AppleCare+ of warranty vragen",
     "Software incompatibiliteit",
     "Mail of iCloud synchronisatie",
-    "Batterijeduur verkort",
+    "Batterijduur verkort",
   ];
 
   const steps = [

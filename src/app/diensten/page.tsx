@@ -94,7 +94,7 @@ export default function Diensten() {
     },
     {
       icon: Shield,
-      title: "Directe hulp bij gehackt voor praktijk of winkel",
+      title: "Directe hulp bij hack voor kantoor, praktijk of winkel",
       description: "Phishing, gehackte e-mail of vergrendelde systemen? We helpen direct en praktisch.",
       link: "/ik-ben-gehackt",
       features: [
@@ -225,20 +225,6 @@ export default function Diensten() {
               Van snelle hulp bij een hack tot eenvoudige controles om problemen te voorkomen.
               InstantIT helpt particulieren en kleine bedrijven in Den Haag en omgeving.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* LLM-answer card (kort, feitelijk) */}
-      <section className="py-6">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="rounded-lg border p-4 bg-white">
-            <p className="font-medium">Wie</p>
-            <p className="mb-2">Particulieren en kleine bedrijven in Haaglanden.</p>
-            <p className="font-medium">Wat</p>
-            <p className="mb-2">Hulp bij hacks, trage computers, wifi en back-ups.</p>
-            <p className="font-medium">Wanneer & prijs</p>
-            <p>Remote meestal binnen 60 min (cap €149). On-site doorgaans binnen 24–48 uur (spoed mogelijk).</p>
           </div>
         </div>
       </section>

@@ -38,7 +38,7 @@ export default function Tarieven() {
     { name: "IT Spoedhulp kantoor", price: "€89", unit: "Eerste uur", extra: "Daarna €19,50 per 15 min", desc: "Snel ter plaatse voor bedrijfskritische problemen. Geen afspraak nodig." },
     {
       name: "Directe hulp bij gehackt (zakelijk)",
-      price: "Vanaf €599",
+      price: "Vanaf €399",
       unit: "24/7 beschikbaar",
       extra: "Spoed op locatie of First Response",
       desc: "Spoedhulp bij hacks, forensics en herstelrapportage voor bedrijven.",
@@ -158,10 +158,16 @@ export default function Tarieven() {
                 "/ik-ben-gehackt"
               ];
               const serviceLink = serviceLinks[index];
+              const isPopular = index === 2; // IT Spoedhulp
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow flex flex-col">
+                <Card key={index} className={`hover:shadow-lg transition-shadow flex flex-col ${isPopular ? "border-primary ring-1 ring-primary/20" : ""}`}>
                   <CardHeader>
-                    <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                    <div className="flex items-start justify-between">
+                      <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                      {isPopular && (
+                        <div className="bg-accent text-accent-foreground text-xs font-bold px-2.5 py-1 rounded-full">POPULAIR</div>
+                      )}
+                    </div>
                   </CardHeader>
                   <CardContent className="flex-1 flex flex-col">
                     <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
@@ -200,10 +206,16 @@ export default function Tarieven() {
                 "/ik-ben-gehackt"
               ];
               const serviceLink = serviceLinks[index];
+              const isPopular = index === 2; // IT Spoedhulp kantoor
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow flex flex-col">
+                <Card key={index} className={`hover:shadow-lg transition-shadow flex flex-col ${isPopular ? "border-primary ring-1 ring-primary/20" : ""}`}>
                   <CardHeader>
-                    <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                    <div className="flex items-start justify-between">
+                      <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
+                      {isPopular && (
+                        <div className="bg-accent text-accent-foreground text-xs font-bold px-2.5 py-1 rounded-full">POPULAIR</div>
+                      )}
+                    </div>
                   </CardHeader>
                   <CardContent className="flex-1 flex flex-col">
                     <p className="text-3xl font-bold text-primary mb-0.5">{item.price}</p>
@@ -238,38 +250,44 @@ export default function Tarieven() {
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-12">
-            {cyberApkPricing.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow border-accent/40">
-                <CardHeader>
-                  <CardTitle className="font-heading text-lg">{item.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <p className="text-3xl font-bold text-primary mb-1">{item.price}</p>
-                    <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
-                  </div>
-                  <p className="text-sm text-foreground/60">{item.unit}</p>
-                  <p className="text-sm text-foreground/70">{item.desc}</p>
-                  <p className="text-xs text-accent italic">{item.upsellDesc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="bg-secondary rounded-lg p-6 max-w-2xl mx-auto mb-8">
-            <h3 className="font-heading font-semibold text-lg mb-3">Zakelijk (Cyber-APK)</h3>
-            <div className="grid md:grid-cols-1 gap-4">
-              {cyberApkBusinessPricing.map((item, index) => (
-                <div key={index} className="border border-border rounded p-4">
-                  <p className="font-semibold mb-2">{item.name}</p>
-                  <p className="text-2xl font-bold text-primary mb-1">{item.price}</p>
-                  <p className="text-sm font-semibold text-accent">Bij meeboeken: {item.upsellPrice}</p>
-                  <p className="text-xs text-foreground/60 mt-2">{item.unit}</p>
-                  <p className="text-sm text-foreground/70 mt-2">{item.desc}</p>
-                  <p className="text-xs text-accent italic mt-2">{item.upsellDesc}</p>
+            {/* Consumer Cyber-APK combined tile */}
+            <Card className="hover:shadow-lg transition-shadow border-accent/40">
+              <CardHeader>
+                <CardTitle className="font-heading text-lg">Veiligheidscheck (Cyber-APK) voor particulieren</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <p className="text-3xl font-bold text-primary mb-1">€79</p>
+                  <p className="text-sm font-semibold text-accent">Bij meeboeken: €39,50</p>
                 </div>
-              ))}
-            </div>
+                <p className="text-sm text-foreground/60">Vaste prijs — op afstand of aan huis</p>
+                <p className="text-sm text-foreground/70">Preventieve digitale veiligheidscheck met updates, backup en 2FA-setup. Aan huis omvat netwerk- en wifi-check en rapport.</p>
+                <p className="text-xs text-accent italic">50% korting bij meeboeken met andere dienst</p>
+              </CardContent>
+            </Card>
+
+            {/* Business Cyber-APK combined tile */}
+            <Card className="hover:shadow-lg transition-shadow border-accent/40">
+              <CardHeader>
+                <CardTitle className="font-heading text-lg">Veiligheidscheck (Cyber-APK) voor zakelijk</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-foreground/60">Remote (zakelijk)</p>
+                    <p className="text-2xl font-bold text-primary">€299</p>
+                    <p className="text-sm font-semibold text-accent">Bij meeboeken: €149,50 (ex btw)</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-foreground/60">Op locatie (zakelijk)</p>
+                    <p className="text-2xl font-bold text-primary">€449</p>
+                    <p className="text-sm font-semibold text-accent">Bij meeboeken: €224,50 (ex btw)</p>
+                  </div>
+                </div>
+                <p className="text-sm text-foreground/70">Preventieve digitale veiligheidscheck voor bedrijven inclusief netwerkcheck en rapportage. Prijzen exclusief btw waar aangegeven.</p>
+                <p className="text-xs text-accent italic">50% korting bij meeboeken met andere dienst</p>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="mt-8 flex justify-center gap-3">
