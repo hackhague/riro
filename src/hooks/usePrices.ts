@@ -90,7 +90,7 @@ export const createPriceUtils = (config: PricesConfig, holidayList: Holiday[]): 
     weekendMultiplier = 0,
     holidayMultiplier = 0,
   }) => {
-    const components = [
+    const components: SurchargeResult["components"] = [
       {
         label: "base",
         amount: baseAmount,

@@ -17,6 +17,16 @@ const normalize = (value: string | string[] | undefined) => {
   return firstValue || undefined;
 };
 
+const normalizeDate = (value: string | string[] | undefined) => {
+  const normalized = normalize(value);
+  if (!normalized) {
+    return undefined;
+  }
+
+  const parsed = new Date(normalized);
+  return Number.isNaN(parsed.getTime()) ? undefined : parsed;
+};
+
 const normalizeServiceType = (
   value: string | string[] | undefined,
 ): "consumer" | "business" | undefined => {
@@ -79,7 +89,7 @@ export default function Afspraak({ searchParams }: AfspraakPageProps) {
     serviceType: normalizeServiceType(searchParams.type),
     serviceChannel: normalize(searchParams.channel) as "remote" | "onsite" | "" | undefined,
     urgency: normalize(searchParams.speed) as "standaard" | "spoed" | "" | undefined,
-    date: normalize(searchParams.date),
+    date: normalizeDate(searchParams.date),
     timeSlot: normalize(searchParams.slot),
   };
 
