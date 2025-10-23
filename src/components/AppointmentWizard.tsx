@@ -288,7 +288,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     try {
       const serviceLabelParts = [selectedServiceType, selectedServiceChannel, selectedUrgency].filter(Boolean);
       const summaryLines: string[] = [];
-      if (pricingSummary.basePrice) {
+      if (pricingSummary.total > 0) {
         summaryLines.push(`Basisprijs: ${currency.format(pricingSummary.basePrice)}`);
         if (pricingSummary.surcharges.length) {
           pricingSummary.surcharges.forEach((item) => {
@@ -633,7 +633,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
                     >
                       <p className="font-semibold text-foreground">{option.label}</p>
                       <p className="text-sm text-foreground/70 mt-1">{option.description}</p>
-                      {booking.serviceChannel && booking.urgency === option.id && pricingSummary.basePrice ? (
+                      {booking.serviceChannel && booking.urgency === option.id && pricingSummary.total > 0 ? (
                         <p className="text-sm font-semibold text-primary mt-2">
                           Indicatie: {currency.format(pricingSummary.basePrice)}
                         </p>
@@ -815,7 +815,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
                 <div className="border rounded-lg p-4 bg-secondary/30">
                   <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
-                  {pricingSummary.basePrice ? (
+                  {pricingSummary.total > 0 ? (
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
                         <span>Basis</span>
@@ -943,7 +943,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
                 <div className="border rounded-lg p-4 bg-secondary/30">
                   <h4 className="font-heading font-semibold text-lg mb-3">Kostenindicatie</h4>
-                  {pricingSummary.basePrice ? (
+                  {pricingSummary.total > 0 ? (
                     <div className="space-y-2 text-sm">
                       <div className="flex items-center justify-between">
                         <span>Basis</span>
