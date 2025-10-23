@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Hulp op afstand door heel Nederland — snel geholpen via je scherm, zonder dat er iemand langs hoeft te komen. Transparante tarieven en duidelijke stappen.",
   alternates: {
-    canonical: "https://www.instantit.nl/computerhulp-op-afstand",
+    canonical: "https://www.instantit.nl/hulp-op-afstand",
   },
 };
 

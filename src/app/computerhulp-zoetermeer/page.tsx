@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComputerhulpZoetermeerPage() {
-  return <Computerhulp city="Zoetermeer" />;
+  return <Computerhulp city="Zoetermeer" canonicalUrl="https://www.instantit.nl/computerhulp-zoetermeer" />;
 }

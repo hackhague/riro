@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function ComputerhulpLeidenPage() {
-  return <Computerhulp city="Leiden" />;
+  return <Computerhulp city="Leiden" canonicalUrl="https://www.instantit.nl/computerhulp-leiden" />;
 }
