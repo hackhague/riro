@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+export const runtime = "edge";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 
@@ -215,8 +216,36 @@ export async function POST(request: Request) {
       customerEmail: email,
     });
   } catch (error) {
-    console.error("Contact notification failed", error);
-    return NextResponse.json({ error: "Notificatie versturen is mislukt" }, { status: 502 });
+    console.warn("Contact notification failed, attempting webhook fallback", error);
+    const webhook =
+      process.env.CONTACT_NOTIFICATION_WEBHOOK_URL ||
+      process.env.ZAPIER_CONTACT_WEBHOOK_URL ||
+      process.env.NEXT_PUBLIC_ZAPIER_WEBHOOK_URL ||
+      process.env.VITE_ZAPIER_WEBHOOK_URL ||
+      null;
+
+    if (webhook) {
+      try {
+        await fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            type: "contact",
+            payload: {
+              name: contactData.name,
+              contact: contactData.contact,
+              message: contactData.message,
+              recordId,
+              metadata,
+              email,
+              phone,
+            },
+          }),
+        });
+      } catch (e) {
+        console.error("Contact webhook fallback failed", e);
+      }
+    }
   }
 
   return NextResponse.json({ success: true });
