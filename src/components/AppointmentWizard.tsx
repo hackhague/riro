@@ -207,7 +207,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       date: validDate || prev.date,
       timeSlot: slot || prev.timeSlot,
     }));
-  }, [initialState, searchParams]);
+  }, [initialState, searchParams, booking.problemCategory, booking.serviceType, booking.serviceChannel, booking.urgency, booking.date, booking.timeSlot]);
 
   useEffect(() => {
     const localToday = startOfToday();
