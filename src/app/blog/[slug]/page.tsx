@@ -126,9 +126,9 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg">
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2 h-4 w-4" />
-                  Bel nu: 070 211 9191
+                  Bel nu: 085 369 6124
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">

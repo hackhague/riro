@@ -121,7 +121,7 @@ export default function PhishingHulp() {
               <Button variant="accent" size="lg" asChild>
                 <a href="tel:+31702119191">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>

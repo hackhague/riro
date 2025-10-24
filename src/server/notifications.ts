@@ -187,7 +187,7 @@ function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPaylo
     "",
     "We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.",
     "",
-    "Bij vragen kun je ons bereiken op 070 211 9191 of info@instantit.nl",
+    "Bij vragen kun je ons bereiken op 085 369 6124 of info@instantit.nl",
     "",
     "Met vriendelijke groet,",
     "Instant IT",
