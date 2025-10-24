@@ -1,157 +1,80 @@
-export interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  description: string;
-  content: string;
-  category: string;
-  readTime: string;
-  image: string;
-  publishedAt: string;
-}
+import "server-only";
 
-export interface RotatingBlogSection {
+import { sanityFetch } from "@/lib/sanity";
+import type { BlogPost, RotatingBlogSection } from "@/types/blog";
+
+const DEFAULT_REVALIDATE_SECONDS = 300;
+
+const BLOG_POST_FIELDS = `{
+  "id": _id,
+  "slug": slug.current,
+  title,
+  description,
+  content,
+  category,
+  readTime,
+  image,
+  publishedAt,
+}`;
+
+const ALL_POSTS_QUERY = `*[_type == "blogPost"] | order(publishedAt desc) ${BLOG_POST_FIELDS}`;
+const POST_BY_SLUG_QUERY = `*[_type == "blogPost" && slug.current == $slug][0] ${BLOG_POST_FIELDS}`;
+const ALL_SLUGS_QUERY = `*[_type == "blogPost" && defined(slug.current)]{ "slug": slug.current }`;
+
+const BLOG_SECTIONS_QUERY = `*[_type == "blogSection"] | order(coalesce(order, 1e6) asc, _createdAt asc) {
+  "id": coalesce(identifier, _id),
+  title,
+  subtitle,
+  posts[]->${BLOG_POST_FIELDS}
+}`;
+
+type SlugResult = Array<{ slug: string | null }>; 
+
+type BlogSectionResult = Array<{
   id: string;
   title: string;
   subtitle: string;
   posts: BlogPost[];
+}>;
+
+export async function getAllBlogPosts(): Promise<BlogPost[]> {
+  return sanityFetch<BlogPost[]>({
+    query: ALL_POSTS_QUERY,
+    revalidate: DEFAULT_REVALIDATE_SECONDS,
+    tags: ["sanity.blog.posts"],
+  });
 }
 
-export const rotatingBlogSections: RotatingBlogSection[] = [
-  {
-    id: "cybersecurity-tips",
-    title: "Cybersecurity tips & tricks",
-    subtitle: "Bescherm je computer en gegevens tegen digitale bedreigingen",
-    posts: [
-      {
-        id: "cyber-1",
-        slug: "herken-phishing-email",
-        title: "Hoe herken je een phishing e-mail?",
-        description: "Leer de waarschuwingssignalen van phishing aanvallen herkennen en voorkomen.",
-        image: "/images/services/antivirus.svg",
-        category: "Beveiliging",
-        readTime: "5 min",
-        publishedAt: "2024-09-10",
-        content: "Phishing e-mails zijn een van de meest gebruikte methodes voor cybercriminelen om toegang tot je gegevens te krijgen. Leer hoe je deze nep-e-mails herkent aan verdachte afzenders, urgentie-boodschappen, verzoeken om persoonlijke informatie, en onverwachte links. Met enkele eenvoudige stappen kun je jezelf en je gegevens beschermen.",
-      },
-      {
-        id: "cyber-2",
-        slug: "account-gehackt-wat-te-doen",
-        title: "Je account is gehackt? Handel nu!",
-        description: "Stappen om snel actie te ondernemen bij een gehackt e-mail of social media account.",
-        image: "/images/services/email-problemen.svg",
-        category: "Noodgevallen",
-        readTime: "4 min",
-        publishedAt: "2024-09-17",
-        content: "Als je account is gehackt, is snelle actie essentieel. Stap 1: Wijzig je wachtwoord onmiddellijk. Stap 2: Controleer de beveiligingsinstellingen. Stap 3: Zet twee-factor authenticatie in. Stap 4: Controleer recente activiteiten. Stap 5: Meld het aan de dienstverlener. Wij kunnen je helpen met incident response.",
-      },
-      {
-        id: "cyber-3",
-        slug: "ransomware-bescherming",
-        title: "Ransomware: hoe je je beschermt",
-        description: "Praktische tips om je systeem veilig te houden tegen ransomware aanvallen.",
-        image: "/images/services/computerhulp.svg",
-        category: "Preventie",
-        readTime: "6 min",
-        publishedAt: "2024-09-24",
-        content: "Ransomware is schadelijke software die je bestanden versleutelt en losgeld eist. Bescherm jezelf door regelmatig backups te maken, je systeem up-to-date te houden, voorzichtig te zijn met e-mailbijlagen, een goed antivirusprogramma te gebruiken, en niet op verdachte links te klikken.",
-      },
-    ],
-  },
-  {
-    id: "wifi-optimalisatie",
-    title: "WiFi & Internet tips",
-    subtitle: "Verbeter je internetsnelheid en WiFi bereik met deze eenvoudige stappen",
-    posts: [
-      {
-        id: "wifi-1",
-        slug: "wifi-snelheid-verbeteren",
-        title: "WiFi snelheid verbeteren in 5 stappen",
-        description: "Eenvoudige tips om je WiFi sneller en stabieler te maken zonder nieuwe apparatuur.",
-        image: "/images/services/wifi.svg",
-        category: "Optimalisatie",
-        readTime: "5 min",
-        publishedAt: "2024-08-20",
-        content: "Je WiFi is traag? Probeer deze 5 stappen: 1) Restart je router (unplugged voor 30 seconden). 2) Verplaats je router naar een centraal, hoger punt. 3) Verminder interferentie van microgolven en andere apparaten. 4) Wijzig je WiFi-kanaal naar een minder druk kanaal. 5) Update je routerfirmware. Veel van deze wijzigingen hebben onmiddellijk effect.",
-      },
-      {
-        id: "wifi-2",
-        slug: "router-plaatsing-tips",
-        title: "Waar plaats je je router het beste?",
-        description: "De juiste locatie van je router maakt het verschil in signaalsterkte.",
-        image: "/images/services/tablet-smartphone.svg",
-        category: "Setup",
-        readTime: "4 min",
-        publishedAt: "2024-08-27",
-        content: "De plaatsing van je router is cruciaal voor goede WiFi-prestaties. Plaats je router centraal in je huis, op een hoger punt (bijvoorbeeld op een schap), weg van obstakels zoals muren en metalen objecten. Vermijd plaatsing in kasten, achter meubels, of naast andere elektronische apparaten. Een hoger en meer open locatie geeft beter bereik.",
-      },
-      {
-        id: "wifi-3",
-        slug: "traag-internet-oplossen",
-        title: "Wat te doen bij traag internet?",
-        description: "Stap voor stap je internetverbinding controleren en versnellen.",
-        image: "/images/services/mac-support.svg",
-        category: "Troubleshooting",
-        readTime: "5 min",
-        publishedAt: "2024-09-03",
-        content: "Traag internet kan veel oorzaken hebben. Controleer eerst je internetsnelheid met een speedtest. Controleer het aantal verbonden apparaten. Scan op malware. Controleer of je ISP-kanaal niet overbelast is. Gebruik een kabelverbinding voor snellere resultaten. Als niets helpt, neem contact met ons op voor professionele diagnostiek.",
-      },
-    ],
-  },
-  {
-    id: "computer-onderhoud",
-    title: "Computer onderhoud & prestaties",
-    subtitle: "Houd je computer snel en soepel draaiend met deze handige tips",
-    posts: [
-      {
-        id: "comp-1",
-        slug: "computer-traag-oorzaken",
-        title: "Waarom is mijn computer zo traag?",
-        description: "Ontdek de meest voorkomende oorzaken van traag werkende computers en hoe je dit oplos.",
-        image: "/images/services/windows-support.svg",
-        category: "Prestatie",
-        readTime: "6 min",
-        publishedAt: "2024-10-05",
-        content: "Een trage computer kan gefrustreerd zijn. Veelvoorkomende oorzaken: te veel opstartprogramma's, schijfruimte vol, malware, te veel tabs open in browser, of verouderde hardware. Maak schijfruimte vrij, verwijder onnodige opstartprogramma's, voer een malwarescan uit, en restart regelmatig. Voor hulp kun je ons altijd bellen.",
-      },
-      {
-        id: "comp-2",
-        slug: "virus-malware-verschil",
-        title: "Virussen en malware: wat is het verschil?",
-        description: "Begrijp het verschil en bescherm je computer beter tegen alle bedreigingen.",
-        image: "/images/services/antivirus.svg",
-        category: "Beveiliging",
-        readTime: "5 min",
-        publishedAt: "2024-10-12",
-        content: "Een virus voegt zichzelf in aan andere programma's en verspreidt zich. Malware is bredere term voor alle schadelijke software. Spyware volgt je activiteiten. Ransomware versleutelt je bestanden. Protect jezelf met goed antivirussoftware, regelmatige updates, voorzichtige browsing, en geen onverwachte downloads.",
-      },
-      {
-        id: "comp-3",
-        slug: "computer-onderhoud-tips",
-        title: "Regelmatig onderhoud = beter prestaties",
-        description: "Eenvoudige onderhoudstaken die je kunt doen om je computer fit te houden.",
-        image: "/images/services/computerhulp.svg",
-        category: "Preventie",
-        readTime: "4 min",
-        publishedAt: "2024-10-19",
-        content: "Onderhoud je computer regelmatig voor optimale prestaties: 1) Verwijder tijdelijke bestanden. 2) Update je besturingssysteem en programma's. 3) Voer antivirusscan uit. 4) Schoon je schijf op. 5) Defragmenteer je schijf (HDD) of trim (SSD). 6) Controleer hardwartemperaturen. Deze eenvoudige stappen voorkomen veel problemen.",
-      },
-    ],
-  },
-];
-
-export function getRotatingBlogSections(): RotatingBlogSection[] {
-  return rotatingBlogSections;
+export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+  return sanityFetch<BlogPost | null>({
+    query: POST_BY_SLUG_QUERY,
+    params: { slug },
+    revalidate: DEFAULT_REVALIDATE_SECONDS,
+    tags: ["sanity.blog.posts", `sanity.blog.post.${slug}`],
+  });
 }
 
-export function getAllBlogPosts(): BlogPost[] {
-  return rotatingBlogSections.flatMap(section => section.posts);
+export async function getAllBlogPostSlugs(): Promise<string[]> {
+  const slugs = await sanityFetch<SlugResult>({
+    query: ALL_SLUGS_QUERY,
+    revalidate: DEFAULT_REVALIDATE_SECONDS,
+    tags: ["sanity.blog.posts"],
+  });
+
+  return slugs
+    .map((item) => item.slug)
+    .filter((slug): slug is string => Boolean(slug));
 }
 
-export function getBlogPostBySlug(slug: string): BlogPost | undefined {
-  return getAllBlogPosts().find(post => post.slug === slug);
-}
+export async function getRotatingBlogSections(): Promise<RotatingBlogSection[]> {
+  const sections = await sanityFetch<BlogSectionResult>({
+    query: BLOG_SECTIONS_QUERY,
+    revalidate: DEFAULT_REVALIDATE_SECONDS,
+    tags: ["sanity.blog.sections"],
+  });
 
-export function getAllBlogPostSlugs(): string[] {
-  return getAllBlogPosts().map(post => post.slug);
+  return sections.map((section) => ({
+    ...section,
+    posts: section.posts.filter((post) => Boolean(post?.slug)),
+  }));
 }

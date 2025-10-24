@@ -1,17 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { getRotatingBlogSections } from '@/data/blog';
 import { useIsMobile } from '@/hooks/use-mobile';
+import type { RotatingBlogSection } from '@/types/blog';
 
-export function BlogSection() {
+type BlogSectionProps = {
+  sections?: RotatingBlogSection[];
+};
+
+export function BlogSection({ sections: incomingSections = [] }: BlogSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const sections = getRotatingBlogSections() || [];
+  const sections = useMemo(() => incomingSections.filter((section) => section.posts.length > 0), [incomingSections]);
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [sections.length]);
 
   // Desktop: rotate sections every 10 seconds
   useEffect(() => {

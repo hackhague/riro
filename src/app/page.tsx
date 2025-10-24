@@ -11,7 +11,8 @@ import { PlanAppointmentCta } from "@/components/PlanAppointmentCta";
 import PartnersSection from "@/components/PartnersSection";
 import { ReviewSection } from "@/components/ReviewSection";
 import { BlogSection } from "@/components/BlogSection";
-import { SITE_PRICING } from "@/config/site-pricing";
+import { getSitePricingConfig } from "@/server/sanity/site";
+import { getRotatingBlogSections } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
@@ -50,8 +51,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  const { pricing } = SITE_PRICING;
+export default async function Home() {
+  const [sitePricing, blogSections] = await Promise.all([
+    getSitePricingConfig(),
+    getRotatingBlogSections(),
+  ]);
+
+  const { pricing } = sitePricing;
   const consumerPricing = pricing.consumer;
   const heroImageSrc = heroTechnicianImage.src;
 
@@ -491,7 +497,7 @@ export default function Home() {
       </section>
 
       {/* ------------------- BLOG SECTION ------------------- */}
-      <BlogSection />
+              <BlogSection sections={blogSections} />
       {/* ------------------- FINAL CTA ------------------- */}
       <section className="py-16 md:py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">

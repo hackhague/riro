@@ -4,12 +4,13 @@ const options = {
   skipMissing: true,
   ignoreMatches: [
     "@cloudflare/workers-types",
+    "@cloudflare/next-on-pages",
     "@tailwindcss/typography",
     "autoprefixer",
     "postcss",
     "tailwindcss",
     "typescript",
-    "lovable-tagger",
+    "wrangler",
   ],
   specials: [
     depcheck.special.eslint,

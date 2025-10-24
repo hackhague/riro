@@ -1,88 +1,65 @@
-# Welcome to your Lovable project
+# Riro Web Application
 
-## Project info
+This repository contains the Riro marketing and application shell built with **Next.js 15** and the App Router. The project is designed to run on **Cloudflare Pages** with server-side logic handled by **Cloudflare Workers**. Data access is powered by **Supabase REST** endpoints, and transactional email is delivered through **Resend**.
 
-**URL**: https://lovable.dev/projects/e1a130b6-3a0d-41f3-9d48-853115ae6774
+## Stack Overview
 
-## How can I edit this code?
+- **Framework:** Next.js 15 (App Router, server actions, Route Handlers)
+- **UI:** React 18 with TypeScript, shadcn/ui, Tailwind CSS
+- **Hosting:** Cloudflare Pages for static assets and Cloudflare Workers for dynamic routes
+- **Data:** Supabase REST APIs
+- **Email:** Resend
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e1a130b6-3a0d-41f3-9d48-853115ae6774) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Install dependencies and start the local development server:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The development server runs on [http://localhost:3000](http://localhost:3000) with hot reloading.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Building for Production
 
-**Use GitHub Codespaces**
+Cloudflare Pages uses the standard Next.js build output together with `@cloudflare/next-on-pages`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+# Generate the Cloudflare-compatible build output
+npm run cf:build
+```
 
-## What technologies are used for this project?
+The build artifact is written to the `.vercel/output` directory and includes the Pages Functions bundle.
 
-This project is built with:
+## Previewing Locally with Cloudflare Workers
 
-- Next.js 14 (App Router)
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+You can preview the production build locally using Wrangler:
 
-## How can I deploy this project?
+```sh
+npm run preview
+```
 
-Simply open [Lovable](https://lovable.dev/projects/e1a130b6-3a0d-41f3-9d48-853115ae6774) and click on Share -> Publish.
+This command runs `npm run cf:build` and then serves the generated output with `wrangler pages dev`, emulating the Cloudflare environment (including Workers bindings).
 
-### Deploying to Cloudflare Pages
+## Deploying
 
-Cloudflare Pages can deploy this site directly via static HTML export. Configure your project as follows:
+1. Push your changes to the `main` branch (or the branch configured in Cloudflare Pages).
+2. Cloudflare Pages will install dependencies (`npm install`), execute `npm run cf:build`, and deploy the generated `.vercel/output/static` assets along with the Workers bundle.
+3. Configure environment variables such as Supabase API keys or Resend secrets via the Cloudflare Pages dashboard.
 
-1. In the Cloudflare dashboard, go to **Workers & Pages → Create application → Pages → Import an existing Git repository** and choose this repo.
-2. Under **Build settings**, select the **Next.js (Static HTML Export)** preset. Cloudflare will populate:
-   - **Production branch**: `main`
-   - **Build command**: `npx next build`
-   - **Build output directory**: `out`
-3. Override the **Install command** to `npm ci` if you prefer reproducible installs.
-4. Add the required `NEXT_PUBLIC_*` environment variables for Supabase, Zapier, analytics, etc. in the Pages dashboard.
-5. Trigger your first deployment. Pages will install dependencies, run `npx next build` (which exports to `out` thanks to `next.config.mjs`), upload the static assets, and attach the Cloudflare Pages Functions bundled in `/functions`.
+For manual deployments, you can upload the `.vercel/output/static` directory using `wrangler pages deploy` if needed.
 
-> Need a manual deployment instead? Run `npm ci && npx next build` locally, then upload the generated `out/` directory with `wrangler pages deploy out`.
+## Dependency Checks
 
-## Can I connect a custom domain to my Lovable project?
+Use the bundled depcheck script to ensure there are no unused dependencies:
 
-Yes, you can!
+```sh
+npm run check:deps
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The script runs automatically in CI to keep the dependency graph clean.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+For contribution guidelines and additional documentation, refer to the files in the `docs/` directory and `CONTRIBUTING.md`.
