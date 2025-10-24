@@ -286,7 +286,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         service = booking.serviceChannel === "remote" ? pricing.business.remote : pricing.business.onsite;
       }
 
-      const basePrice = service?.price.amount || 0;
+      let basePrice = service?.price.amount || 0;
       const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
       const isEveningSlot = booking.timeSlot && (
@@ -376,7 +376,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       }
     }
 
-    const basePrice = service?.price.amount || 0;
+    let basePrice = service?.price.amount || 0;
     const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
     const isEveningSlot = booking.timeSlot && (
