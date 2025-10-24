@@ -23,7 +23,7 @@ export default function AlgemeneVoorwaarden() {
         </p>
       </header>
 
-      <section className="prose prose-sm md:prose base:text-foreground max-w-none">
+      <section className="prose prose-sm md:prose text-foreground max-w-none">
         <h2>0. Begrippen &amp; rangorde</h2>
         <ul>
           <li>
