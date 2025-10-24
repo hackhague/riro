@@ -112,11 +112,11 @@ export default function RansomwareHulp() {
               <Button variant="accent" size="lg" asChild>
                 <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://wa.me/31702119191?text=Ransomware%20gehad%20hulp" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/31853696124?text=Ransomware%20gehad%20hulp" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2" />
                   WhatsApp
                 </a>
