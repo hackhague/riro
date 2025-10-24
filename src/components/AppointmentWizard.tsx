@@ -148,6 +148,67 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     agreedToTerms: false,
   });
 
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // If no initialState provided, attempt to read values from the URL search params on the client
+    if (initialState) return;
+
+    // Only apply params when the booking is still at default values (avoid overwriting user actions)
+    const isDefaultBooking =
+      booking.problemCategory === "" &&
+      booking.serviceType === "consumer" &&
+      booking.serviceChannel === "" &&
+      booking.urgency === "" &&
+      !booking.date &&
+      booking.timeSlot === "";
+
+    if (!isDefaultBooking) return;
+
+    if (!searchParams) return;
+
+    const getFirst = (value: string | null) => (value === null ? undefined : value);
+
+    const category = getFirst(searchParams.get("category"));
+    const type = getFirst(searchParams.get("type"));
+    const channel = getFirst(searchParams.get("channel"));
+    const speed = getFirst(searchParams.get("speed"));
+    const date = getFirst(searchParams.get("date"));
+    const slot = getFirst(searchParams.get("slot"));
+
+    const mapServiceType = (v: string | undefined): ServiceType => {
+      if (!v) return "consumer";
+      if (v === "zakelijk") return "business";
+      if (v === "particulier") return "consumer";
+      return v as ServiceType;
+    };
+
+    const mapServiceChannel = (v: string | undefined): ServiceChannel | "" => {
+      if (!v) return "";
+      if (v === "remote" || v === "onsite") return v as ServiceChannel;
+      return "";
+    };
+
+    const mapUrgency = (v: string | undefined): Urgency | "" => {
+      if (!v) return "";
+      if (v === "standaard" || v === "spoed") return v as Urgency;
+      return "";
+    };
+
+    const parsedDate = date ? new Date(date) : undefined;
+    const validDate = parsedDate && !Number.isNaN(parsedDate.getTime()) ? parsedDate : undefined;
+
+    setBooking((prev) => ({
+      ...prev,
+      problemCategory: (category as ProblemCategory) || prev.problemCategory,
+      serviceType: mapServiceType(type) || prev.serviceType,
+      serviceChannel: mapServiceChannel(channel) || prev.serviceChannel,
+      urgency: mapUrgency(speed) || prev.urgency,
+      date: validDate || prev.date,
+      timeSlot: slot || prev.timeSlot,
+    }));
+  }, [initialState, searchParams]);
+
   useEffect(() => {
     const localToday = startOfToday();
     const minForStandard = addDays(localToday, 2);
