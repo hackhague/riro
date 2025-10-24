@@ -143,7 +143,7 @@ export default function Diensten() {
     image: "https://www.instantit.nl/images/service-computer.jpg",
     logo: "https://www.instantit.nl/android-chrome-512x512.png",
     address: {
-      streetAddress: "Laan van NOI 88",
+      streetAddress: "",
       addressLocality: "Den Haag",
       postalCode: "2593 BP",
       addressCountry: "NL",
