@@ -286,6 +286,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         service = booking.serviceChannel === "remote" ? pricing.business.remote : pricing.business.onsite;
       }
 
+      // eslint-disable-next-line prefer-const
       let basePrice = service?.price.amount || 0;
       const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
