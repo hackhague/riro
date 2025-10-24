@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | instantIT",
   },
   description:
-    "Snelle computerhulp & cyberhulp in Den Haag en omgeving. Binnen 10–30 minuten reactie en meestal binnen 2 uur opgelost.",
+    "Snelle computerhulp & cyberhulp in Den Haag en omgeving. Binnen 10–30 minuten reactie en meestal binnen 24 uur opgelost.",
   keywords: [
     "computerhulp den haag",
     "cyberhulp",
