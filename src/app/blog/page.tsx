@@ -41,15 +41,15 @@ export default function BlogPage() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg" variant="outline">
-              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Chat via WhatsApp
               </a>
             </Button>
             <Button asChild size="lg">
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2 h-4 w-4" />
-                Bel 070 211 9191
+                Bel 085 369 6124
               </a>
             </Button>
           </div>
@@ -73,13 +73,13 @@ export default function BlogPage() {
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg">
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2 h-4 w-4" />
-                Bel nu: 070 211 9191
+                Bel nu: 085 369 6124
               </a>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
                 WhatsApp ons
               </a>

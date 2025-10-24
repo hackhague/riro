@@ -1,6 +1,4 @@
-import { Resend } from "resend";
-
-import { stripHeaderBreaks } from "@/lib/notifications";
+import { stripHeaderBreaks, getResendClient } from "@/lib/notifications";
 
 const ADMIN_NOTIFICATION_ENDPOINT =
   process.env.APPOINTMENT_ADMIN_NOTIFICATION_WEBHOOK_URL ??
@@ -26,21 +24,6 @@ const DEFAULT_FROM =
   process.env.RESEND_FROM_EMAIL ||
   "Instant IT <support@instantit.nl>";
 
-let cachedResend: Resend | null = null;
-
-function getResendClient() {
-  if (cachedResend) {
-    return cachedResend;
-  }
-
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return null;
-  }
-
-  cachedResend = new Resend(apiKey);
-  return cachedResend;
-}
 
 function escapeHtml(value: string): string {
   return value
@@ -187,7 +170,7 @@ function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPaylo
     "",
     "We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.",
     "",
-    "Bij vragen kun je ons bereiken op 070 211 9191 of info@instantit.nl",
+    "Bij vragen kun je ons bereiken op 085 369 6124 of info@instantit.nl",
     "",
     "Met vriendelijke groet,",
     "Instant IT",
@@ -206,7 +189,7 @@ function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPaylo
     </ul>
 
     <p>We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
-    <p>Bij vragen kun je ons bereiken op <strong>070 211 9191</strong> of <strong>info@instantit.nl</strong></p>
+    <p>Bij vragen kun je ons bereiken op <strong>085 369 6124</strong> of <strong>info@instantit.nl</strong></p>
 
     <p>Met vriendelijke groet,<br />Instant IT</p>
   `;

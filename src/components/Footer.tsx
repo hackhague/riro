@@ -98,16 +98,16 @@ export const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li>
                 <a
-                  href="tel:+31702119191"
+                  href="tel:+31853696124"
                   className="flex items-start gap-2 text-background/80 hover:text-background transition-colors"
                 >
                   <Phone className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                  <span>070 211 9191</span>
+                  <span>085 369 6124</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://wa.me/31702119191"
+                  href="https://wa.me/31853696124"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-2 text-background/80 hover:text-background transition-colors"
@@ -127,7 +127,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-start gap-2 text-background/80">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Laan van NOI 88<br />2593 BP, Den Haag</span>
+                <span>Landelijk actief</span>
               </li>
             </ul>
           </div>

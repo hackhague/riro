@@ -219,10 +219,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       // Default to the first available standard date (today + 2 days)
       setBooking((prev) => {
         const currentDate = prev.date ?? minForStandard;
-        if (currentDate < minForStandard) {
-          return { ...prev, date: minForStandard, timeSlot: "" };
+        const adjusted = currentDate < minForStandard ? minForStandard : currentDate;
+        if (adjusted !== prev.date) {
+          return { ...prev, date: adjusted, timeSlot: "" };
         }
-        return { ...prev, date: currentDate, timeSlot: "" };
+        return prev;
       });
     } else if (booking.urgency === "spoed") {
       // For spoed allow selection for today or tomorrow; default to today if none set
@@ -230,15 +231,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       const latest = addDays(localToday, 1);
       setBooking((prev) => {
         const currentDate = prev.date ?? earliest;
-        if (currentDate < earliest || currentDate > latest) {
-          return { ...prev, date: earliest, timeSlot: "" };
+        const outOfRange = currentDate < earliest || currentDate > latest;
+        const adjusted = outOfRange ? earliest : currentDate;
+        if (adjusted !== prev.date || prev.timeSlot === SPOED_SLOT_LABEL) {
+          return { ...prev, date: adjusted, timeSlot: "" };
         }
-        return { ...prev, date: currentDate, timeSlot: "" };
+        return prev;
       });
-    } else if (booking.timeSlot === SPOED_SLOT_LABEL) {
-      setBooking((prev) => ({ ...prev, timeSlot: "" }));
     }
-  }, [booking.urgency, booking.timeSlot]);
+  }, [booking.urgency]);
 
   const today = startOfToday();
 
@@ -249,7 +250,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
   const isStep1Valid = booking.serviceType !== "";
   const isStep2Valid = booking.serviceChannel !== "";
   const isStep3Valid = booking.urgency !== "";
-  const requiresSchedule = true;
+  const requiresSchedule = booking.urgency !== "spoed";
   const hasSchedule = !!booking.date && !!booking.timeSlot && !booking.timeSlot.includes("geen slots");
   const isStep4Valid = requiresSchedule ? hasSchedule : true;
   const isStep5Valid =
@@ -277,7 +278,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
     // Special case: business bookings -> fixed starting price
     if (booking.serviceType === "business") {
-      const basePrice = 399;
+      // Zakelijk: spoed op afstand gebruikt remote-tarief; spoed op locatie gebruikt emergency.
+      let service: ServiceOffering | null = null;
+      if (booking.urgency === "spoed") {
+        service = booking.serviceChannel === "remote" ? pricing.business.remote : pricing.business.emergency;
+      } else if (booking.urgency === "standaard") {
+        service = booking.serviceChannel === "remote" ? pricing.business.remote : pricing.business.onsite;
+      }
+
+      let basePrice = service?.price.amount || 0;
       const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
       const isEveningSlot = booking.timeSlot && (
@@ -286,7 +295,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
         booking.timeSlot.startsWith("20:")
       );
 
-      if (isEveningSlot && booking.serviceChannel === "onsite") {
+      if (isEveningSlot && booking.serviceChannel === "onsite" && basePrice > 0) {
         surcharges.push({ id: "evening", label: "Avondtoeslag (na 18:00)", amount: Math.round(basePrice * 0.25) });
       }
 
@@ -353,25 +362,21 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
     if (booking.serviceType === "consumer") {
       const consumerPricing = pricing.consumer;
-      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
-        service = consumerPricing.remote;
-      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
-        service = consumerPricing.onsite;
-      } else if (booking.urgency === "spoed") {
-        service = consumerPricing.emergency;
+      if (booking.urgency === "spoed") {
+        service = booking.serviceChannel === "remote" ? consumerPricing.remote : consumerPricing.emergency;
+      } else if (booking.urgency === "standaard") {
+        service = booking.serviceChannel === "remote" ? consumerPricing.remote : consumerPricing.onsite;
       }
     } else if (booking.serviceType === "business") {
       const businessPricing = pricing.business;
-      if (booking.urgency === "standaard" && booking.serviceChannel === "remote") {
-        service = businessPricing.remote;
-      } else if (booking.urgency === "standaard" && booking.serviceChannel === "onsite") {
-        service = businessPricing.onsite;
-      } else if (booking.urgency === "spoed") {
-        service = businessPricing.emergency;
+      if (booking.urgency === "spoed") {
+        service = booking.serviceChannel === "remote" ? businessPricing.remote : businessPricing.emergency;
+      } else if (booking.urgency === "standaard") {
+        service = booking.serviceChannel === "remote" ? businessPricing.remote : businessPricing.onsite;
       }
     }
 
-    const basePrice = service?.price.amount || 0;
+    let basePrice = service?.price.amount || 0;
     const surcharges: Array<{ id: string; label: string; amount: number }> = [];
 
     const isEveningSlot = booking.timeSlot && (
@@ -421,6 +426,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
     }
 
     const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
+
+    // Override: if consumer remote booking is marked as spoed, use immediate spoed remote base price
+    if (booking.serviceType === "consumer" && booking.serviceChannel === "remote" && booking.urgency === "spoed") {
+      basePrice = 39;
+    }
 
     const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
 
@@ -820,7 +830,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <Button variant="ghost" onClick={() => goToStep(3)} className="px-2">
-                    ���
+                    ←
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
                 </div>

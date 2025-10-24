@@ -69,19 +69,19 @@ export type SitePricingConfig = {
 
 export const SITE_PRICING: SitePricingConfig = {
   contact: {
-    phoneNumber: "070 211 9191",
-    phoneHref: "tel:+31702119191",
-    phoneLabel: "Bel 070 211 9191",
-    phoneAriaLabel: "Direct hulp nodig? Bel 070 211 9191",
+    phoneNumber: "085 369 6124",
+    phoneHref: "tel:+31853696124",
+    phoneLabel: "Bel 085 369 6124",
+    phoneAriaLabel: "Direct hulp nodig? Bel 085 369 6124",
     shortCallLabel: "Bel nu",
-    whatsappHref: "https://wa.me/31702119191",
+    whatsappHref: "https://wa.me/31853696124",
     whatsappLabel: "WhatsApp",
     whatsappCta: "App direct via WhatsApp",
   },
   ctas: {
     planAppointment: "Plan een afspraak",
     callNow: "Bel nu",
-    callWithNumber: "Bel 070 211 9191",
+    callWithNumber: "Bel 085 369 6124",
     whatsapp: "WhatsApp",
   },
   floatingCallButton: {
@@ -95,14 +95,14 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Hulp op afstand",
         location: "op afstand",
         tagline: "Op afstand • Reactie binnen 10–30 minuten",
-        summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €129.",
+        summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €99.",
         bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
           amount: 35,
           currency: "EUR",
           display: "€35",
           unit: "Eerste 30 min",
-          extra: "Daarna €15 per 15 min (max €129)",
+          extra: "Daarna €15 per 15 min (cap €99)",
         },
       },
       onsite: {

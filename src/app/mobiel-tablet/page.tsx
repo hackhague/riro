@@ -99,7 +99,7 @@ export default function MobileTabletPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="accent" size="lg" asChild>
                 <a
-                  href="https://wa.me/31702119191?text=Hulp%20met%20smartphone%20of%20tablet"
+                  href="https://wa.me/31853696124?text=Hulp%20met%20smartphone%20of%20tablet"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -108,9 +108,9 @@ export default function MobileTabletPage() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
             </div>
@@ -283,7 +283,7 @@ export default function MobileTabletPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=Hulp%20met%20mijn%20telefoon"
+                href="https://wa.me/31853696124?text=Hulp%20met%20mijn%20telefoon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -297,9 +297,9 @@ export default function MobileTabletPage() {
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2" />
-                Bel 070 211 9191
+                Bel 085 369 6124
               </a>
             </Button>
           </div>

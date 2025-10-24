@@ -370,7 +370,7 @@ export function HomepageServicesClient({ defaultType = "particulier" }: Homepage
             <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
-            <a href="tel:+31702119191">
+            <a href="tel:+31853696124">
               <Phone className="mr-2" />
               Bel nu
             </a>

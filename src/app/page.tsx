@@ -16,7 +16,7 @@ import { SITE_PRICING } from "@/config/site-pricing";
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
   description:
-    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. We helpen ook op afstand door heel Nederland. WhatsApp of bel 070 211 9191.",
+    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. We helpen ook op afstand door heel Nederland. WhatsApp of bel 085 369 6124.",
   keywords: [
     "computerhulp den haag",
     "cyberhulp",
@@ -110,12 +110,12 @@ export default function Home() {
       url: "https://www.instantit.nl/",
       image: `https://www.instantit.nl${heroImageSrc}`,
       logo: "https://www.instantit.nl/android-chrome-512x512.png",
-      telephone: "+31702119191",
+      telephone: "+31853696124",
       email: "info@instantit.nl",
       priceRange: "€€",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Laan van NOI 88",
+        streetAddress: "",
         addressLocality: "Den Haag",
         postalCode: "2593 BP",
         addressCountry: "NL",
@@ -151,7 +151,7 @@ export default function Home() {
         {
           "@type": "ContactPoint",
           contactType: "customer support",
-          telephone: "+31702119191",
+          telephone: "+31853696124",
           email: "support@instantit.nl",
           availableLanguage: ["Dutch", "English"],
           areaServed: "NL",
@@ -242,7 +242,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
               <Button variant="outline" size="default" asChild className="bg-white text-black border border-white shadow-none hover:shadow-none h-10 md:h-10 font-normal">
                 <a
-                  href="https://wa.me/31702119191?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
+                  href="https://wa.me/31853696124?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -252,9 +252,9 @@ export default function Home() {
               </Button>
 
               <Button variant="accent" size="default" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="h-4 w-4" />
-                  Computerstoring? Bel 070 211 9191
+                  Computerstoring? Bel 085 369 6124
                 </a>
               </Button>
             </div>
@@ -301,10 +301,10 @@ export default function Home() {
           </div>
           <div className="mt-8 flex justify-center gap-3">
             <Button variant="outline" asChild>
-              <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
+              <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
             </Button>
             <Button variant="accent" asChild>
-              <a href="tel:+31702119191"><Phone className="mr-2" />Bel nu</a>
+              <a href="tel:+31853696124"><Phone className="mr-2" />Bel nu</a>
             </Button>
           </div>
         </div>
@@ -341,7 +341,7 @@ export default function Home() {
             <Link href="/afspraak-maken"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
           </Button>
           <Button variant="accent" asChild>
-            <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
+            <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2" />WhatsApp</a>
           </Button>
         </div>
       </section>
@@ -388,10 +388,10 @@ export default function Home() {
                 Hier beantwoorden we de meestgestelde vragen over <strong>computerhulp</strong>, <strong>virusverwijdering</strong>,
                 <strong> WiFi-problemen</strong> en <strong>cyberhulp</strong>.
                 Staat jouw vraag er niet tussen? Bel ons op{" "}
-                <a className="font-semibold underline" href="tel:+31702119191">070 211 9191</a> of stuur een bericht via{" "}
+                <a className="font-semibold underline" href="tel:+31853696124">085 369 6124</a> of stuur een bericht via{" "}
                 <a
                   className="font-semibold underline"
-                  href="https://wa.me/31702119191"
+                  href="https://wa.me/31853696124"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -412,8 +412,8 @@ export default function Home() {
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>We reageren meestal binnen 10–30 minuten op afstand. Bij spoed kunnen we vaak dezelfde dag op locatie zijn.</p>
                       <div className="flex flex-wrap gap-2">
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31853696124">Bel nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">WhatsApp direct</a>
                       </div>
                     </div>
                   </details>
@@ -437,7 +437,7 @@ export default function Home() {
                       </p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/tarieven">Bekijk prijzen</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start hulp</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">Start hulp</a>
                       </div>
                     </div>
                   </details>
@@ -451,7 +451,7 @@ export default function Home() {
                       <p>Ja — we gebruiken versleutelde tools en vragen altijd jouw toestemming voordat we meekijken. We delen je gegevens niet met derden.</p>
                       <div className="flex flex-wrap gap-2">
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/hulp-op-afstand">Lees meer over veiligheid</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">Start op afstand</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">Start op afstand</a>
                       </div>
                     </div>
                   </details>
@@ -477,8 +477,8 @@ export default function Home() {
                     <div className="px-4 pb-4 pt-0 text-sm text-foreground/80 space-y-3">
                       <p>Het snelst is bellen of WhatsAppen — dat kost bijna geen tijd en we plannen meteen een korte intake. Je kunt ook via het afspraakformulier boeken.</p>
                       <div className="flex flex-wrap gap-2">
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31702119191">Bel nu</a>
-                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">WhatsApp nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground hover:bg-accent/90" href="tel:+31853696124">Bel nu</a>
+                        <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">WhatsApp nu</a>
                         <a className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium border border-primary text-primary hover:bg-primary hover:text-primary-foreground" href="/afspraak">Plan afspraak</a>
                       </div>
                     </div>
@@ -501,7 +501,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
+                href="https://wa.me/31853696124?text=Hallo%2C%20ik%20heb%20hulp%20nodig%20met"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -515,9 +515,9 @@ export default function Home() {
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2" />
-                Bel 070 211 9191
+                Bel 085 369 6124
               </a>
             </Button>
           </div>

@@ -143,7 +143,7 @@ export default function Diensten() {
     image: "https://www.instantit.nl/images/service-computer.jpg",
     logo: "https://www.instantit.nl/android-chrome-512x512.png",
     address: {
-      streetAddress: "Laan van NOI 88",
+      streetAddress: "",
       addressLocality: "Den Haag",
       postalCode: "2593 BP",
       addressCountry: "NL",
@@ -278,7 +278,7 @@ export default function Diensten() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="tel:+31702119191">
+                      <a href="tel:+31853696124">
                         Bel nu
                       </a>
                     </Button>
@@ -331,7 +331,7 @@ export default function Diensten() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="tel:+31702119191">
+                      <a href="tel:+31853696124">
                         Bel nu
                       </a>
                     </Button>
@@ -361,7 +361,7 @@ export default function Diensten() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="accent" size="lg" asChild>
               <a
-                href="https://wa.me/31702119191?text=Hallo%2C%20ik%20wil%20advies%20over%20mijn%20computer"
+                href="https://wa.me/31853696124?text=Hallo%2C%20ik%20wil%20advies%20over%20mijn%20computer"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -370,7 +370,7 @@ export default function Diensten() {
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="tel:+31702119191">Bel 070 211 9191</a>
+              <a href="tel:+31853696124">Bel 085 369 6124</a>
             </Button>
           </div>
         </div>
