@@ -2,7 +2,6 @@ export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import type { Database } from "@/integrations/supabase/types";
 import { sendContactNotifications } from "@/lib/notifications";
 
 const TOKEN_BUCKET_CAPACITY = 5;
