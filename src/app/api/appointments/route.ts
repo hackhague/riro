@@ -134,16 +134,6 @@ export async function POST(request: Request) {
     supabaseConfigured = false;
   }
 
-  let supabase: SupabaseClient<Database> | null = null;
-  if (supabaseConfigured) {
-    supabase = createClient<Database>(supabaseUrl, supabaseKey, {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    });
-  }
-
   const approvalToken = (globalThis.crypto as Crypto)?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2,10)}`;
 
   const sanitized = {
