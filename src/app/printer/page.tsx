@@ -88,7 +88,7 @@ export default function PrinterPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="accent" size="lg" asChild>
                 <a
-                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20printer"
+                  href="https://wa.me/31853696124?text=Ik%20heb%20hulp%20nodig%20met%20mijn%20printer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
