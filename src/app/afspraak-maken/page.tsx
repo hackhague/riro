@@ -4,40 +4,6 @@ import Image from "next/image";
 import AppointmentWizard from "@/components/AppointmentWizard";
 import { heroTechnicianImage, HERO_IMAGE_SIZES } from "@/lib/image-assets";
 
-const getFirstValue = (value: string | string[] | undefined) => {
-  if (Array.isArray(value)) {
-    return value[0];
-  }
-
-  return value;
-};
-
-const normalize = (value: string | string[] | undefined) => {
-  const firstValue = getFirstValue(value);
-  return firstValue || undefined;
-};
-
-const normalizeDate = (value: string | string[] | undefined) => {
-  const normalized = normalize(value);
-  if (!normalized) {
-    return undefined;
-  }
-
-  const parsed = new Date(normalized);
-  return Number.isNaN(parsed.getTime()) ? undefined : parsed;
-};
-
-const normalizeServiceType = (
-  value: string | string[] | undefined,
-): "consumer" | "business" | undefined => {
-  const firstValue = getFirstValue(value);
-
-  if (!firstValue) return undefined;
-  if (firstValue === "zakelijk") return "business";
-  if (firstValue === "particulier") return "consumer";
-
-  return firstValue as "consumer" | "business" | undefined;
-};
 
 export const metadata: Metadata = {
   title: "Afspraak maken | Plan directe hulp van instantIT",
