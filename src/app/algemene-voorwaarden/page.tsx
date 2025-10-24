@@ -19,7 +19,7 @@ export default function AlgemeneVoorwaarden() {
           Versie: 1.1 • Datum: 20-10-2025
         </p>
         <p className="text-sm text-muted-foreground mt-1">
-          Onderneming: InstantIT • Gegevens: 85746916, info@instantsecure.nl
+          Onderneming: InstantIT • Gegevens: 85746916, info@instantit.nl
         </p>
       </header>
 
