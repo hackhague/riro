@@ -179,31 +179,37 @@ export async function POST(request: Request) {
   const supabaseConfig = getSupabaseConfig();
 
   if (supabaseConfig) {
-    const supabase = createClient<Database>(supabaseConfig.url, supabaseConfig.serviceKey, {
-      auth: { persistSession: false },
-    });
+    try {
+      const res = await fetch(`${supabaseConfig.url.replace(/\/$/, "")}/rest/v1/contact_messages`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: supabaseConfig.serviceKey,
+          Authorization: `Bearer ${supabaseConfig.serviceKey}`,
+          Prefer: "return=representation",
+        },
+        body: JSON.stringify({
+          name: contactData.name,
+          contact: contactData.contact,
+          email,
+          phone,
+          message: contactData.message,
+          metadata,
+        }),
+      });
 
-    const payload: ContactMessageInsert = {
-      name: contactData.name,
-      contact: contactData.contact,
-      email,
-      phone,
-      message: contactData.message,
-      metadata,
-    };
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        console.error("Failed to store contact message in Supabase", res.status, text);
+        return NextResponse.json({ error: "Opslaan van bericht is mislukt" }, { status: 500 });
+      }
 
-    const { data, error } = await supabase
-      .from("contact_messages")
-      .insert(payload)
-      .select("id")
-      .maybeSingle();
-
-    if (error) {
+      const data = await res.json().catch(() => null);
+      recordId = (Array.isArray(data) ? data[0]?.id : data?.id) ?? null;
+    } catch (error) {
       console.error("Failed to store contact message in Supabase", error);
       return NextResponse.json({ error: "Opslaan van bericht is mislukt" }, { status: 500 });
     }
-
-    recordId = data?.id ?? null;
   }
 
   try {
