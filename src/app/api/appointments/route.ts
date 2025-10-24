@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import type { SupabaseClient } from "@supabase/supabase-js";
