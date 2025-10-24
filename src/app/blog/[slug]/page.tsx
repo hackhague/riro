@@ -15,10 +15,15 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug);
+type BlogPageParams = Promise<{ slug: string }>;
+
+type BlogPageProps = {
+  params: BlogPageParams;
+};
+
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -36,8 +41,9 @@ export async function generateMetadata(
   };
 }
 
-export default function BlogArticlePage({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug);
+export default async function BlogArticlePage({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
