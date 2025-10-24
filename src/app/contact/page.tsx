@@ -60,7 +60,7 @@ export default function Contact() {
                 <h3 className="font-heading font-bold text-2xl mb-2">Telefoon</h3>
                 <p className="text-foreground/70 mb-4">Direct met een specialist</p>
                 <Button variant="accent" size="lg" asChild className="w-full">
-                  <a href="tel:+31702119191">070 211 9191</a>
+                  <a href="tel:+31853696124">085 369 6124</a>
                 </Button>
               </CardContent>
             </Card>
@@ -71,7 +71,7 @@ export default function Contact() {
                 <h3 className="font-heading font-bold text-2xl mb-2">WhatsApp</h3>
                 <p className="text-foreground/70 mb-4">Snelste reactie (vaak binnen 10 min)</p>
                 <Button variant="whatsapp" size="lg" asChild className="w-full">
-                  <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">
                     WhatsApp ons nu
                   </a>
                 </Button>
