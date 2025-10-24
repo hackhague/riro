@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 
 import AppointmentWizard from "@/components/AppointmentWizard";
