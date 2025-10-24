@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { format, startOfToday, addDays } from "date-fns";
