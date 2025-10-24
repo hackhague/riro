@@ -1,7 +1,6 @@
 export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import type { Database } from "@/integrations/supabase/types";
 import { stripHeaderBreaks } from "@/lib/notifications";
 import { sendAppointmentNotifications } from "@/server/notifications";
 import type { AppointmentNotificationPayload } from "@/server/notifications";

@@ -57,7 +57,6 @@ const contactSchema = z.object({
   timestamp: z.coerce.number().optional(),
 });
 
-type ContactMessageInsert = Database["public"]["Tables"]["contact_messages"]["Insert"];
 
 type ContactChannel = {
   email: string | null;

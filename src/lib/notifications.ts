@@ -25,7 +25,7 @@ function requireEnv(value: string | null, name: string): string {
   return value;
 }
 
-let cachedResend: { emails: { send: (opts: any) => Promise<{ id?: string; error?: any }>; }; } | null = null;
+let cachedResend: { emails: { send: (opts: ResendEmailOptions) => Promise<{ data?: { id?: string } | null; error?: unknown }>; }; } | null = null;
 
 export function getResendClient() {
   if (cachedResend) return cachedResend;
@@ -36,7 +36,7 @@ export function getResendClient() {
     emails: {
       send: async function (opts: ResendEmailOptions) {
         try {
-          const body: any = {
+          const body: Record<string, unknown> = {
             from: opts.from,
             to: Array.isArray(opts.to) ? opts.to : opts.to,
             subject: opts.subject,
@@ -45,7 +45,8 @@ export function getResendClient() {
           if (opts.html) body.html = opts.html;
           if (opts.text) body.text = opts.text;
           if (opts.replyTo) body.reply_to = opts.replyTo;
-          if ((opts as any).reply_to) body.reply_to = (opts as any).reply_to;
+          const optsAny = opts as unknown as Record<string, unknown>;
+          if (optsAny.reply_to) body.reply_to = String(optsAny.reply_to);
 
           const res = await fetch("https://api.resend.com/emails", {
             method: "POST",
@@ -62,7 +63,7 @@ export function getResendClient() {
             return { error: { message: `Resend API error: ${res.status} ${text}` } };
           }
 
-          const data = JSON.parse(text || "{}") as any;
+          const data = JSON.parse(text || "{}") as { id?: string };
           return { data: { id: data.id } };
         } catch (error) {
           return { error };
