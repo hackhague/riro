@@ -115,7 +115,7 @@ export default function Home() {
       priceRange: "€€",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Laan van NOI 88",
+        streetAddress: "",
         addressLocality: "Den Haag",
         postalCode: "2593 BP",
         addressCountry: "NL",

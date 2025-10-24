@@ -89,16 +89,6 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardContent className="p-8">
-                <MapPin className="h-10 w-10 text-primary mb-4" />
-                <h3 className="font-heading font-bold text-2xl mb-2">Adres</h3>
-                <p className="text-foreground/70">
-                  Laan van NOI 88<br />
-                  2593 BP Den Haag
-                </p>
-              </CardContent>
-            </Card>
           </div>
 
           <Card className="max-w-3xl mx-auto mt-8">
