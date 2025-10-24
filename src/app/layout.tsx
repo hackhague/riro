@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 import FloatingCallButton from "@/components/FloatingCallButton";
@@ -35,9 +36,28 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const measurementId = process.env.NEXT_PUBLIC_GA_ID ?? "G-QBY7X2FM5K";
+
   return (
     <html lang="nl" suppressHydrationWarning>
       <body className="bg-background text-foreground">
+        {measurementId ? (
+          <>
+            <Script
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {[
+                "window.dataLayer = window.dataLayer || [];",
+                "function gtag(){window.dataLayer.push(arguments);}",
+                "window.gtag = gtag;",
+                "gtag('js', new Date());",
+                `gtag('config', '${measurementId}');`,
+              ].join("\n")}
+            </Script>
+          </>
+        ) : null}
         <Providers>
           <Navigation />
           <main className="min-h-screen">{children}</main>
