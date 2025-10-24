@@ -60,8 +60,8 @@ const toDate = (value?: string | Date): Date | undefined => {
   return Number.isNaN(parsed.getTime()) ? undefined : parsed;
 };
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const blogPosts = getAllBlogPosts();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const blogPosts = await getAllBlogPosts();
   const blogDates = blogPosts
     .map((post) => toDate(post.publishedAt))
     .filter((date): date is Date => Boolean(date));
