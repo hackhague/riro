@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 const adminEmailEnvKeys = [
   "CONTACT_NOTIFICATION_ADMIN_EMAIL",
   "ADMIN_NOTIFICATION_EMAIL",
@@ -27,15 +25,50 @@ function requireEnv(value: string | null, name: string): string {
   return value;
 }
 
-let cachedResend: Resend | null = null;
+let cachedResend: { emails: { send: (opts: any) => Promise<{ id?: string; error?: any }>; }; } | null = null;
 
 function getResendClient() {
-  if (cachedResend) {
-    return cachedResend;
-  }
+  if (cachedResend) return cachedResend;
 
   const apiKey = requireEnv(process.env.RESEND_API_KEY ?? null, "RESEND_API_KEY");
-  cachedResend = new Resend(apiKey);
+
+  const client = {
+    emails: {
+      send: async function (opts: { from?: string; to?: string; subject?: string; html?: string; text?: string; replyTo?: string | undefined; }) {
+        try {
+          const body: any = {
+            from: opts.from,
+            to: typeof opts.to === "string" ? opts.to : opts.to,
+            subject: opts.subject,
+          };
+          if (opts.html) body.html = opts.html;
+          if (opts.text) body.text = opts.text;
+          if (opts.replyTo) body.reply_to = opts.replyTo;
+
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${apiKey}`,
+            },
+            body: JSON.stringify(body),
+          });
+
+          if (!res.ok) {
+            const text = await res.text().catch(() => "");
+            return { error: `Resend API error: ${res.status} ${text}` };
+          }
+
+          const data = await res.json().catch(() => ({}));
+          return { id: data.id };
+        } catch (error) {
+          return { error };
+        }
+      },
+    },
+  };
+
+  cachedResend = client;
   return cachedResend;
 }
 
