@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 export const runtime = "edge";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 import { createClient } from "@supabase/supabase-js";
 
