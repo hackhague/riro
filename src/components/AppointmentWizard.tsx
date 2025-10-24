@@ -219,10 +219,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       // Default to the first available standard date (today + 2 days)
       setBooking((prev) => {
         const currentDate = prev.date ?? minForStandard;
-        if (currentDate < minForStandard) {
-          return { ...prev, date: minForStandard, timeSlot: "" };
+        const adjusted = currentDate < minForStandard ? minForStandard : currentDate;
+        if (adjusted !== prev.date) {
+          return { ...prev, date: adjusted, timeSlot: "" };
         }
-        return { ...prev, date: currentDate, timeSlot: "" };
+        return prev;
       });
     } else if (booking.urgency === "spoed") {
       // For spoed allow selection for today or tomorrow; default to today if none set
@@ -230,15 +231,15 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
       const latest = addDays(localToday, 1);
       setBooking((prev) => {
         const currentDate = prev.date ?? earliest;
-        if (currentDate < earliest || currentDate > latest) {
-          return { ...prev, date: earliest, timeSlot: "" };
+        const outOfRange = currentDate < earliest || currentDate > latest;
+        const adjusted = outOfRange ? earliest : currentDate;
+        if (adjusted !== prev.date || prev.timeSlot === SPOED_SLOT_LABEL) {
+          return { ...prev, date: adjusted, timeSlot: "" };
         }
-        return { ...prev, date: currentDate, timeSlot: "" };
+        return prev;
       });
-    } else if (booking.timeSlot === SPOED_SLOT_LABEL) {
-      setBooking((prev) => ({ ...prev, timeSlot: "" }));
     }
-  }, [booking.urgency, booking.timeSlot]);
+  }, [booking.urgency]);
 
   const today = startOfToday();
 
