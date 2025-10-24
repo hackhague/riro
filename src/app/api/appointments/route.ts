@@ -1,7 +1,5 @@
 export const runtime = "edge";
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
 import { stripHeaderBreaks } from "@/lib/notifications";
