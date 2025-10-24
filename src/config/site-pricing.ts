@@ -100,7 +100,7 @@ export const SITE_PRICING: SitePricingConfig = {
         price: {
           amount: 35,
           currency: "EUR",
-          display: "€39",
+          display: "€35",
           unit: "Eerste 30 min",
           extra: "Daarna €15 per 15 min (cap €99)",
         },
