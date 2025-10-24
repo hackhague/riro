@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 
 import AppointmentWizard from "@/components/AppointmentWizard";
@@ -62,7 +63,9 @@ export default function Afspraak() {
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <AppointmentWizard />
+          <Suspense fallback={<div />}>
+            <AppointmentWizard />
+          </Suspense>
         </div>
       </section>
     </div>

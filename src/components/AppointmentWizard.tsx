@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { Calendar as CalendarIcon, CheckCircle2, HelpCircle, ShieldAlert, Timer, User as UserIcon, Building2 } from "lucide-react";
@@ -818,7 +820,7 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
                   <Button variant="ghost" onClick={() => goToStep(3)} className="px-2">
-                    ←
+                    ���
                   </Button>
                   <h3 className="font-heading font-semibold text-xl">Opties & planning</h3>
                 </div>
