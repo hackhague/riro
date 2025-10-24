@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-import { stripHeaderBreaks } from "@/lib/notifications";
+import { stripHeaderBreaks, getResendClient } from "@/lib/notifications";
 
 const ADMIN_NOTIFICATION_ENDPOINT =
   process.env.APPOINTMENT_ADMIN_NOTIFICATION_WEBHOOK_URL ??
