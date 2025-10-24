@@ -1,7 +1,6 @@
 export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { createClient } from "@supabase/supabase-js";
 
 import type { Database } from "@/integrations/supabase/types";
 import { sendContactNotifications } from "@/lib/notifications";
