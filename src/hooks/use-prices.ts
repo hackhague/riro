@@ -1,9 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
-
-import { SITE_PRICING } from "@/config/site-pricing";
+import { useSitePricing } from "@/contexts/site-pricing";
 
 export function usePrices() {
-  return useMemo(() => SITE_PRICING, []);
+  return useSitePricing();
 }
