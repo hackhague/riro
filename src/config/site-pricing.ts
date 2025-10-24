@@ -98,7 +98,7 @@ export const SITE_PRICING: SitePricingConfig = {
         summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €99.",
         bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
-          amount: 39,
+          amount: 35,
           currency: "EUR",
           display: "€39",
           unit: "Eerste 30 min",
