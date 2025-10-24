@@ -5,6 +5,7 @@ import FloatingCallButton from "@/components/FloatingCallButton";
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 import { Providers } from "./providers";
+import { getSitePricingConfig } from "@/server/sanity/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.instantit.nl"),
@@ -34,11 +35,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const sitePricing = await getSitePricingConfig();
+
   return (
     <html lang="nl" suppressHydrationWarning>
       <body className="bg-background text-foreground">
-        <Providers>
+        <Providers sitePricing={sitePricing}>
           <Navigation />
           <main className="min-h-screen">{children}</main>
           <Footer />

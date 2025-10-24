@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { MessageCircle, Phone, ArrowLeft } from "lucide-react";
 
 export async function generateStaticParams() {
-  const slugs = getAllBlogPostSlugs();
+  const slugs = await getAllBlogPostSlugs();
   return slugs.map((slug) => ({
     slug,
   }));
@@ -23,7 +23,7 @@ type BlogPageProps = {
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -43,13 +43,13 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
 
 export default async function BlogArticlePage({ params }: BlogPageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const allPosts = getAllBlogPosts();
+  const allPosts = await getAllBlogPosts();
   const currentIndex = allPosts.findIndex((p) => p.slug === post.slug);
   const relatedPosts = allPosts.filter((_, index) => index !== currentIndex).slice(0, 3);
   const breadcrumbItems = [

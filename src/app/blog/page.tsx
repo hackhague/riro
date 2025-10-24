@@ -3,6 +3,7 @@ import { BlogSection } from "@/components/BlogSection";
 import { BreadcrumbTrail } from "@/components/BreadcrumbTrail";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
+import { getRotatingBlogSections } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Blog | InstantIT - Tips en Advies",
@@ -20,7 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const sections = await getRotatingBlogSections();
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
@@ -59,7 +61,7 @@ export default function BlogPage() {
       <BreadcrumbTrail items={breadcrumbItems} />
 
       {/* Blog Rotating Section */}
-      <BlogSection />
+      <BlogSection sections={sections} />
 
       {/* Final CTA */}
       <section className="py-12 md:py-16 bg-primary/5">
