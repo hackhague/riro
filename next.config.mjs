@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: "export",
   images: {
     unoptimized: true,
     formats: ["image/avif", "image/webp"],
@@ -19,7 +18,6 @@ const nextConfig = {
     ],
   },
   compress: true,
-  swcMinify: true,
 };
 
 export default nextConfig;

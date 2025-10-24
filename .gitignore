@@ -12,6 +12,8 @@ dist
 dist-ssr
 .next
 out
+.vercel
+.open-next
 *.local
 tsconfig.tsbuildinfo
 
