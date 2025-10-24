@@ -427,6 +427,11 @@ export function AppointmentWizard({ compact = false, initialState }: { compact?:
 
     const extrasTotal = extras.reduce((sum, e) => sum + (e.amount || 0), 0);
 
+    // Override: if consumer remote booking is marked as spoed, use immediate spoed remote base price
+    if (booking.serviceType === "consumer" && booking.serviceChannel === "remote" && booking.urgency === "spoed") {
+      basePrice = 39;
+    }
+
     const total = basePrice + surcharges.reduce((sum, s) => sum + s.amount, 0) + cyberApkPrice + extrasTotal;
 
     return { basePrice, surcharges, cyberApkPrice, extras, total };
