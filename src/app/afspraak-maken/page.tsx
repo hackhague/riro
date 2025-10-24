@@ -60,39 +60,7 @@ export const metadata: Metadata = {
   },
 };
 
-interface AfspraakSearchParams {
-  category?: string | string[];
-  type?: string | string[];
-  channel?: string | string[];
-  speed?: string | string[];
-  date?: string | string[];
-  slot?: string | string[];
-  [key: string]: string | string[] | undefined;
-}
-
-interface AfspraakPageProps {
-  searchParams: AfspraakSearchParams;
-}
-
-export default function Afspraak({ searchParams }: AfspraakPageProps) {
-  const initialState: React.ComponentProps<typeof AppointmentWizard>["initialState"] = {
-    problemCategory: normalize(searchParams.category) as
-      | ""
-      | "security"
-      | "other"
-      | "network"
-      | "hardware"
-      | "mobile"
-      | "hardware_other"
-      | "training"
-      | undefined,
-    serviceType: normalizeServiceType(searchParams.type),
-    serviceChannel: normalize(searchParams.channel) as "remote" | "onsite" | "" | undefined,
-    urgency: normalize(searchParams.speed) as "standaard" | "spoed" | "" | undefined,
-    date: normalizeDate(searchParams.date),
-    timeSlot: normalize(searchParams.slot),
-  };
-
+export default function Afspraak() {
   return (
     <div className="min-h-screen">
       <section className="relative flex items-center overflow-hidden min-h-[400px] md:min-h-[500px]">
@@ -128,7 +96,7 @@ export default function Afspraak({ searchParams }: AfspraakPageProps) {
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <AppointmentWizard initialState={initialState} />
+          <AppointmentWizard />
         </div>
       </section>
     </div>
