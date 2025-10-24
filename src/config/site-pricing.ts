@@ -95,14 +95,14 @@ export const SITE_PRICING: SitePricingConfig = {
         shortLabel: "Hulp op afstand",
         location: "op afstand",
         tagline: "Op afstand • Reactie binnen 10–30 minuten",
-        summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €129.",
+        summary: "Snelle ondersteuning via een beveiligde schermdeling. Maximum tarief €99.",
         bookingSummary: "Op afstand via beveiligde schermdeling – voordelig en snel.",
         price: {
-          amount: 35,
+          amount: 39,
           currency: "EUR",
-          display: "€35",
+          display: "€39",
           unit: "Eerste 30 min",
-          extra: "Daarna €15 per 15 min (max €129)",
+          extra: "Daarna €15 per 15 min (cap €99)",
         },
       },
       onsite: {
