@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "cf:build": "npx @cloudflare/next-on-pages@latest",
-    "preview": "npm run cf:build && npx wrangler pages dev /out --local --compatibility-date=2024-10-24 --compatibility-flags=nodejs_compat --binding NODE_ENV=production",
+    "preview": "npm run cf:build && npx wrangler pages dev .vercel/output/static --local --compatibility-date=2024-10-24 --compatibility-flags=nodejs_compat --binding NODE_ENV=production",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
