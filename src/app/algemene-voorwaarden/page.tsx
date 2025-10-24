@@ -492,3 +492,7 @@ export default function AlgemeneVoorwaarden() {
           gebeurt uitsluitend na <strong>voorafgaande schriftelijke
           toestemming</strong> van de klant.
         </p>
+      </section>
+    </main>
+  );
+}
