@@ -132,7 +132,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
                 </a>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <a href="https://wa.me/31702119191" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/31853696124" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-4 w-4" />
                   WhatsApp ons
                 </a>

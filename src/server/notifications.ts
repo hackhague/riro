@@ -206,7 +206,7 @@ function buildCustomerAppointmentEmail(appointment: AppointmentNotificationPaylo
     </ul>
 
     <p>We nemen in de regel binnen 24 uur contact met je op om de afspraak te bevestigen.</p>
-    <p>Bij vragen kun je ons bereiken op <strong>070 211 9191</strong> of <strong>info@instantit.nl</strong></p>
+    <p>Bij vragen kun je ons bereiken op <strong>085 369 6124</strong> of <strong>info@instantit.nl</strong></p>
 
     <p>Met vriendelijke groet,<br />Instant IT</p>
   `;

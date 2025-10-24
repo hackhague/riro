@@ -16,7 +16,7 @@ import { SITE_PRICING } from "@/config/site-pricing";
 export const metadata: Metadata = {
   title: "Computerhulp in Den Haag | Digitale Eerste Hulp",
   description:
-    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. We helpen ook op afstand door heel Nederland. WhatsApp of bel 070 211 9191.",
+    "Snelle computerhulp & cyberhulp in Den Haag e.o. Binnen 10–30 min reactie, meestal binnen 2 uur aan de deur. We helpen ook op afstand door heel Nederland. WhatsApp of bel 085 369 6124.",
   keywords: [
     "computerhulp den haag",
     "cyberhulp",
@@ -242,7 +242,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-2.5 mb-6">
               <Button variant="outline" size="default" asChild className="bg-white text-black border border-white shadow-none hover:shadow-none h-10 md:h-10 font-normal">
                 <a
-                  href="https://wa.me/31702119191?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
+                  href="https://wa.me/31853696124?text=Hallo%20InstantIT%2C%20ik%20heb%20hulp%20nodig%20met"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -388,7 +388,7 @@ export default function Home() {
                 Hier beantwoorden we de meestgestelde vragen over <strong>computerhulp</strong>, <strong>virusverwijdering</strong>,
                 <strong> WiFi-problemen</strong> en <strong>cyberhulp</strong>.
                 Staat jouw vraag er niet tussen? Bel ons op{" "}
-                <a className="font-semibold underline" href="tel:+31853696124">070 211 9191</a> of stuur een bericht via{" "}
+                <a className="font-semibold underline" href="tel:+31853696124">085 369 6124</a> of stuur een bericht via{" "}
                 <a
                   className="font-semibold underline"
                   href="https://wa.me/31853696124"

@@ -141,7 +141,7 @@ export default function WindowsSupportPage() {
                 </div>
                 <div className="flex gap-3">
                   <Button variant="default" size="lg" asChild>
-                    <a href="https://wa.me/31702119191?text=Ik%20wil%20naar%20Windows%2011%20upgraden" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/31853696124?text=Ik%20wil%20naar%20Windows%2011%20upgraden" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="mr-2" />
                       Windows 11 Upgrade Boeken
                     </a>

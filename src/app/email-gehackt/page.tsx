@@ -113,7 +113,7 @@ export default function EmailGehackt() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="https://wa.me/31702119191?text=Email%20gehackt%20hulp" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/31853696124?text=Email%20gehackt%20hulp" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2" />
                   WhatsApp
                 </a>
