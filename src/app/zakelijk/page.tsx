@@ -232,7 +232,7 @@ export default function Zakelijk() {
             <p className="text-foreground/70 mb-4">Maandcontract of custom afspraken? Vraag een offerte aan.</p>
             <Button variant="default" size="lg" asChild>
               <a
-                href="https://wa.me/31702119191?text=Offerte%20voor%20zakelijk%20contract"
+                href="https://wa.me/31853696124?text=Offerte%20voor%20zakelijk%20contract"
                 target="_blank"
                 rel="noopener noreferrer"
               >
