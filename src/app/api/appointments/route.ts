@@ -177,19 +177,32 @@ export async function POST(request: Request) {
 
   let recordId: string | number | null = null;
 
-  if (supabase) {
-    const { data, error } = await supabase
-      .from("appointments")
-      .insert(insertPayload)
-      .select("id")
-      .single();
+  if (supabaseConfigured) {
+    try {
+      const res = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/appointments`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+          Prefer: "return=representation",
+        },
+        body: JSON.stringify(insertPayload),
+      });
 
-    if (error) {
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        console.error("Failed to insert appointment", res.status, text);
+        return NextResponse.json({ error: "Failed to store appointment" }, { status: 500 });
+      }
+
+      const data = await res.json().catch(() => null);
+      // returned representation is an array of inserted rows
+      recordId = (Array.isArray(data) ? data[0]?.id : data?.id) ?? null;
+    } catch (error) {
       console.error("Failed to insert appointment", error);
       return NextResponse.json({ error: "Failed to store appointment" }, { status: 500 });
     }
-
-    recordId = data?.id ?? null;
   } else {
     // No persistence available; continue and still send notifications
     recordId = null;
