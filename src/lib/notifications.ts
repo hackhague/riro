@@ -1,14 +1,46 @@
+type NotificationEnv = {
+  CONTACT_NOTIFICATION_ADMIN_EMAIL?: string;
+  ADMIN_NOTIFICATION_EMAIL?: string;
+  ADMIN_INBOX?: string;
+  CONTACT_NOTIFICATION_FROM_EMAIL?: string;
+  RESEND_FROM_EMAIL?: string;
+  RESEND_API_KEY?: string;
+};
+
 const adminEmailEnvKeys = [
   "CONTACT_NOTIFICATION_ADMIN_EMAIL",
   "ADMIN_NOTIFICATION_EMAIL",
   "ADMIN_INBOX",
-] as const;
+] as const satisfies readonly (keyof NotificationEnv)[];
 
-const fromEmailEnvKeys = ["CONTACT_NOTIFICATION_FROM_EMAIL", "RESEND_FROM_EMAIL"] as const;
+const fromEmailEnvKeys = [
+  "CONTACT_NOTIFICATION_FROM_EMAIL",
+  "RESEND_FROM_EMAIL",
+] as const satisfies readonly (keyof NotificationEnv)[];
 
-function getFirstEnv(keys: readonly string[]): string | null {
+function getNotificationEnv(
+  overrides?: Partial<NotificationEnv>
+): NotificationEnv {
+  const base: NotificationEnv = {
+    CONTACT_NOTIFICATION_ADMIN_EMAIL:
+      process.env.CONTACT_NOTIFICATION_ADMIN_EMAIL,
+    ADMIN_NOTIFICATION_EMAIL: process.env.ADMIN_NOTIFICATION_EMAIL,
+    ADMIN_INBOX: process.env.ADMIN_INBOX,
+    CONTACT_NOTIFICATION_FROM_EMAIL:
+      process.env.CONTACT_NOTIFICATION_FROM_EMAIL,
+    RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+  };
+
+  return overrides ? { ...base, ...overrides } : base;
+}
+
+function getFirstEnv(
+  keys: readonly (keyof NotificationEnv)[],
+  env: NotificationEnv = getNotificationEnv()
+): string | null {
   for (const key of keys) {
-    const value = process.env[key];
+    const value = env[key];
     if (value) {
       return value;
     }
@@ -25,12 +57,52 @@ function requireEnv(value: string | null, name: string): string {
   return value;
 }
 
-let cachedResend: { emails: { send: (opts: ResendEmailOptions) => Promise<{ data?: { id?: string } | null; error?: unknown }>; }; } | null = null;
+function formatErrorMessage(error: unknown): string {
+  if (!error) {
+    return "Unknown error";
+  }
 
-export function getResendClient() {
-  if (cachedResend) return cachedResend;
+  if (error instanceof Error) {
+    return error.message;
+  }
 
-  const apiKey = requireEnv(process.env.RESEND_API_KEY ?? null, "RESEND_API_KEY");
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (typeof error === "object" && "message" in error) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string" && message.trim()) {
+      return message;
+    }
+  }
+
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return String(error);
+  }
+}
+
+let cachedResend:
+  | {
+      client: {
+        emails: {
+          send: (
+            opts: ResendEmailOptions
+          ) => Promise<{ data?: { id?: string } | null; error?: unknown }>;
+        };
+      };
+      apiKey: string;
+    }
+  | null = null;
+
+export function getResendClient(env: NotificationEnv = getNotificationEnv()) {
+  const apiKey = requireEnv(env.RESEND_API_KEY ?? null, "RESEND_API_KEY");
+
+  if (cachedResend && cachedResend.apiKey === apiKey) {
+    return cachedResend.client;
+  }
 
   const client = {
     emails: {
@@ -72,12 +144,15 @@ export function getResendClient() {
     },
   };
 
-  cachedResend = client;
-  return cachedResend;
+  cachedResend = { client, apiKey };
+  return cachedResend.client;
 }
 
-const defaultFromAddress =
-  getFirstEnv(fromEmailEnvKeys) ?? "Instant IT <support@instantit.nl>";
+function getDefaultFromAddress(
+  env: NotificationEnv = getNotificationEnv()
+): string {
+  return getFirstEnv(fromEmailEnvKeys, env) ?? "Instant IT <support@instantit.nl>";
+}
 
 export function stripHeaderBreaks(value: string | null | undefined): string {
   if (!value) {
@@ -150,10 +225,12 @@ type ResendEmailOverrides = Partial<ResendEmailOptions> & {
 
 export function buildAdminEmail(
   input: ContactNotificationInput,
-  overrides?: ResendEmailOverrides
+  overrides?: ResendEmailOverrides,
+  env: NotificationEnv = getNotificationEnv()
 ): ResendEmailOptions {
-  const from = overrides?.from ?? defaultFromAddress;
-  const to = overrides?.to ?? getFirstEnv(adminEmailEnvKeys) ?? "info@instantit.nl";
+  const from = overrides?.from ?? getDefaultFromAddress(env);
+  const to =
+    overrides?.to ?? getFirstEnv(adminEmailEnvKeys, env) ?? "info@instantit.nl";
   const subject = stripHeaderBreaks(
     overrides?.subject ?? `Nieuw contactbericht van ${input.name}`
   );
@@ -194,13 +271,14 @@ export function buildAdminEmail(
     subject,
     text,
     html,
-    ...(replyTo ? { replyTo } : {}),
+    ...(replyTo ? { replyTo, reply_to: replyTo } : {}),
   } satisfies ResendEmailOptions;
 }
 
 export function buildCustomerEmail(
   input: ContactNotificationInput,
-  overrides?: Partial<ResendEmailOptions>
+  overrides?: Partial<ResendEmailOptions>,
+  env: NotificationEnv = getNotificationEnv()
 ): ResendEmailOptions | null {
   const customerEmail = overrides?.to ?? input.customerEmail ?? null;
 
@@ -208,7 +286,7 @@ export function buildCustomerEmail(
     return null;
   }
 
-  const from = overrides?.from ?? defaultFromAddress;
+  const from = overrides?.from ?? getDefaultFromAddress(env);
   const subject = overrides?.subject ?? "We hebben je bericht ontvangen";
 
   const text = [
@@ -242,22 +320,27 @@ export function buildCustomerEmail(
 }
 
 export async function sendContactNotifications(input: ContactNotificationInput) {
-  const resend = getResendClient();
-  const adminPayload = buildAdminEmail(input);
+  const env = getNotificationEnv();
+  const resend = getResendClient(env);
+  const adminPayload = buildAdminEmail(input, undefined, env);
   const adminResult = await resend.emails.send(adminPayload);
 
   if (adminResult.error) {
-    throw new Error(`Failed to send admin notification: ${adminResult.error.message}`);
+    throw new Error(
+      `Failed to send admin notification: ${formatErrorMessage(adminResult.error)}`
+    );
   }
 
-  const customerPayload = buildCustomerEmail(input);
+  const customerPayload = buildCustomerEmail(input, undefined, env);
   let customerId: string | null = null;
 
   if (customerPayload) {
     const customerResult = await resend.emails.send(customerPayload);
 
     if (customerResult.error) {
-      throw new Error(`Failed to send customer notification: ${customerResult.error.message}`);
+      throw new Error(
+        `Failed to send customer notification: ${formatErrorMessage(customerResult.error)}`
+      );
     }
 
     customerId = customerResult.data?.id ?? null;
