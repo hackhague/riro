@@ -1,5 +1,3 @@
-import { Resend } from "resend";
-
 import { stripHeaderBreaks, getResendClient } from "@/lib/notifications";
 
 const ADMIN_NOTIFICATION_ENDPOINT =

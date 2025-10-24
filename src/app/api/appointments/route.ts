@@ -1,4 +1,4 @@
-import crypto from "crypto";
+export const runtime = "edge";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -146,7 +146,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const approvalToken = crypto.randomUUID();
+  const approvalToken = (globalThis.crypto as Crypto)?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2,10)}`;
 
   const sanitized = {
     service: sanitizeString(body.service, { stripBreaks: true }),

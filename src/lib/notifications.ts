@@ -27,23 +27,25 @@ function requireEnv(value: string | null, name: string): string {
 
 let cachedResend: { emails: { send: (opts: any) => Promise<{ id?: string; error?: any }>; }; } | null = null;
 
-function getResendClient() {
+export function getResendClient() {
   if (cachedResend) return cachedResend;
 
   const apiKey = requireEnv(process.env.RESEND_API_KEY ?? null, "RESEND_API_KEY");
 
   const client = {
     emails: {
-      send: async function (opts: { from?: string; to?: string; subject?: string; html?: string; text?: string; replyTo?: string | undefined; }) {
+      send: async function (opts: ResendEmailOptions) {
         try {
           const body: any = {
             from: opts.from,
-            to: typeof opts.to === "string" ? opts.to : opts.to,
+            to: Array.isArray(opts.to) ? opts.to : opts.to,
             subject: opts.subject,
-          };
+          } as Record<string, unknown>;
+
           if (opts.html) body.html = opts.html;
           if (opts.text) body.text = opts.text;
           if (opts.replyTo) body.reply_to = opts.replyTo;
+          if ((opts as any).reply_to) body.reply_to = (opts as any).reply_to;
 
           const res = await fetch("https://api.resend.com/emails", {
             method: "POST",
@@ -54,13 +56,14 @@ function getResendClient() {
             body: JSON.stringify(body),
           });
 
+          const text = await res.text().catch(() => "");
+
           if (!res.ok) {
-            const text = await res.text().catch(() => "");
-            return { error: `Resend API error: ${res.status} ${text}` };
+            return { error: { message: `Resend API error: ${res.status} ${text}` } };
           }
 
-          const data = await res.json().catch(() => ({}));
-          return { id: data.id };
+          const data = JSON.parse(text || "{}") as any;
+          return { data: { id: data.id } };
         } catch (error) {
           return { error };
         }
@@ -129,7 +132,15 @@ export interface ContactNotificationInput {
   customerEmail?: string | null;
 }
 
-export type ResendEmailOptions = Parameters<Resend["emails"]["send"]>[0];
+export type ResendEmailOptions = {
+  from?: string;
+  to?: string | string[];
+  subject?: string;
+  html?: string;
+  text?: string;
+  replyTo?: string;
+  reply_to?: string;
+};
 
 type ResendEmailOverrides = Partial<ResendEmailOptions> & {
   replyTo?: string;
