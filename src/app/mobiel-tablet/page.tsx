@@ -110,7 +110,7 @@ export default function MobileTabletPage() {
               <Button variant="outline" size="lg" asChild>
                 <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
             </div>
@@ -299,7 +299,7 @@ export default function MobileTabletPage() {
             >
               <a href="tel:+31853696124">
                 <Phone className="mr-2" />
-                Bel 070 211 9191
+                Bel 085 369 6124
               </a>
             </Button>
           </div>
