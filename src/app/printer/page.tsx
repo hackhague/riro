@@ -97,7 +97,7 @@ export default function PrinterPage() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
                   Bel 070 211 9191
                 </a>
@@ -250,7 +250,7 @@ export default function PrinterPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=Printerhulp%20nodig"
+                href="https://wa.me/31853696124?text=Printerhulp%20nodig"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -264,7 +264,7 @@ export default function PrinterPage() {
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2" />
                 Bel 070 211 9191
               </a>

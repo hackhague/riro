@@ -278,7 +278,7 @@ export default function Diensten() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="tel:+31702119191">
+                      <a href="tel:+31853696124">
                         Bel nu
                       </a>
                     </Button>
@@ -331,7 +331,7 @@ export default function Diensten() {
                       </Link>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href="tel:+31702119191">
+                      <a href="tel:+31853696124">
                         Bel nu
                       </a>
                     </Button>
@@ -370,7 +370,7 @@ export default function Diensten() {
               </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="tel:+31702119191">Bel 070 211 9191</a>
+              <a href="tel:+31853696124">Bel 085 369 6124</a>
             </Button>
           </div>
         </div>

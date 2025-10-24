@@ -146,7 +146,7 @@ export default function FAQ() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="accent" size="lg" asChild>
               <a
-                href="https://wa.me/31702119191?text=Hallo%2C%20ik%20heb%20een%20vraag%20over"
+                href="https://wa.me/31853696124?text=Hallo%2C%20ik%20heb%20een%20vraag%20over"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -155,7 +155,7 @@ export default function FAQ() {
               </a>
             </Button>
               <Button variant="accent" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
                   Bel 070 211 9191
                 </a>

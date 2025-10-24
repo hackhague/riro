@@ -62,7 +62,7 @@ export default function HulpOpAfstand() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="accent" size="lg" asChild>
                 <a
-                  href="https://wa.me/31702119191?text=Ik%20heb%20hulp%20nodig%20op%20afstand"
+                  href="https://wa.me/31853696124?text=Ik%20heb%20hulp%20nodig%20op%20afstand"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -71,9 +71,9 @@ export default function HulpOpAfstand() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
             </div>
@@ -220,7 +220,7 @@ export default function HulpOpAfstand() {
               <Link href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</Link>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2" />
                 Bel nu
               </a>

@@ -107,9 +107,9 @@ export default function EmailGehackt() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="accent" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Bel 070 211 9191
+                  Bel 085 369 6124
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
@@ -216,7 +216,7 @@ export default function EmailGehackt() {
               <a href="/afspraak"><Calendar className="h-3.5 w-3.5 mr-1.5" />Afspraak maken</a>
             </Button>
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              <a href="tel:+31702119191">Bel direct</a>
+              <a href="tel:+31853696124">Bel direct</a>
             </Button>
           </div>
         </div>

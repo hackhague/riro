@@ -92,7 +92,7 @@ export default function Expat() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button variant="accent" size="lg" asChild>
                 <a
-                  href="https://wa.me/31702119191?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
+                  href="https://wa.me/31853696124?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -101,9 +101,9 @@ export default function Expat() {
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <a href="tel:+31702119191">
+                <a href="tel:+31853696124">
                   <Phone className="mr-2" />
-                  Call 070 211 9191
+                  Call 085 369 6124
                 </a>
               </Button>
             </div>
@@ -333,7 +333,7 @@ export default function Expat() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="outline" size="xl" asChild className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <a
-                href="https://wa.me/31702119191?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
+                href="https://wa.me/31853696124?text=Hi%2C%20I%20need%20IT%20support%20in%20English"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -347,9 +347,9 @@ export default function Expat() {
               asChild
               className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
-              <a href="tel:+31702119191">
+              <a href="tel:+31853696124">
                 <Phone className="mr-2" />
-                Call 070 211 9191
+                Call 085 369 6124
               </a>
             </Button>
           </div>
